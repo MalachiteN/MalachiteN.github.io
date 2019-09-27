@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-09-27T05:46:00.127Z</updated>
+    <updated>2019-09-27T06:22:26.777Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -10,6 +10,57 @@
     <logo>https://malachiten.github.io/images/avatar.png</logo>
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
+    <entry>
+        <title type="html"><![CDATA[笔记: 搜索]]></title>
+        <id>https://malachiten.github.io/post/bi-ji-sou-suo</id>
+        <link href="https://malachiten.github.io/post/bi-ji-sou-suo">
+        </link>
+        <updated>2019-09-27T06:08:30.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="dfs">DFS</h2>
+<h3 id="最常用的寻找最优解">最常用的：寻找最优解</h3>
+<p>这种情况下多状态</p>
+<pre><code class="language-cpp">void dfs(int cur){
+    if(!check(cur)){
+        //可行性剪枝。如果预测到某个状态以下的所有答案走到底均不可行，则剪去剩余搜索子树
+        return;
+    }
+    if(cantBetter(cur)){
+        //最优性剪枝。如果预测到某个状态下所有答案不能比当前ans更优，则剪去剩余搜索子树
+        return;
+    }
+    标记当前状态已访问;
+    存储当前状态的信息或者更新答案.这一步在答案比较简单时可放到dfs的参数里面避免手动回溯
+    for(/*枚举当前状态所有决策*/){
+        dfs(next(cur));
+    }
+    //回溯:
+    消除当前状态存储的信息并将其对答案的影响消去;
+    将当前状态标记为未访问;
+    //因为DFS算法必须通过回溯消去影响，因此又称为回溯算法
+}
+</code></pre>
+<h2 id="寻找可行解">寻找可行解</h2>
+<pre><code class="language-cpp">bool dfs(int cur){
+    if(!check(cur)){
+        //可行性剪枝
+        return 0;
+    }
+    将当前状态标记为已访问;
+    if(goal(cur)){
+        记录可行解;
+        return 1;
+    }
+    for(枚举当前状态的所有决策){
+        if(dfs(next(cur))){
+            return 1;
+        }
+    }
+    将当前状态标记为未访问;
+    return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Luogu P1305 新二叉树 题解]]></title>
         <id>https://malachiten.github.io/post/p1305-xin-er-cha-shu-ti-jie</id>

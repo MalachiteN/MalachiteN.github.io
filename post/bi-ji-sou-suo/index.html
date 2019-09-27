@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>STL容器 set 实用性说明 | Malachite</title>
+<title>笔记: 搜索 | Malachite</title>
 <meta name="description" content="夕焼けの中に吸い込まれて消えてった">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -86,15 +86,15 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">STL容器 set 实用性说明</h2>
+          <h2 class="post-title">笔记: 搜索</h2>
           <div class="post-info post-detail-info">
             <span><i class="icon-calendar-outline"></i> 2019-09-27</span>
             
               <span>
                 <i class="icon-pricetags-outline"></i>
                 
-                  <a href="https://malachiten.github.io/tag/TNO1SHAiH">
-                    技巧/说明
+                  <a href="https://malachiten.github.io/tag/9nUIq-Ba4">
+                    笔记
                     
                   </a>
                 
@@ -102,62 +102,58 @@
             
           </div>
           <div class="post-content">
-            <h1 id="stl容器-set-实用性说明">STL容器 set 实用性说明</h1>
-<p><strong>set</strong>是一种 <em>STL</em> 中的容器，采用<strong>set&lt;type_of_set&gt; name_of_set</strong>的方式进行声明。可以使用迭代器( <em>iterator</em> )对其中的元素进行指示，并使用其成员函数进行操作。<strong>set</strong>的性质是： <em>自动排序</em> 、 <em>自动去重</em> 。<strong>set</strong>的本质是“<strong>集合</strong>”，而集合具有确定性和互异性。</p>
-<p>据各类资料描述，<strong>set</strong>的底层实现是一种名为红黑树的二叉搜索树，但是其实现原理及各项操作之复杂度不处于本文描述范围内，此处只是顺带一提。</p>
-<p><strong>set</strong>可以采用这些函数进行操作（只是我觉得很实用的函数，并不是全部）：</p>
-<pre><code class="language-cpp">set&lt;type_of_set&gt;::iterator begin()
-</code></pre>
-<p>返回一个指向<strong>set</strong>开头的迭代器</p>
-<pre><code class="language-cpp">set&lt;type_of_set&gt;::iterator end()
-</code></pre>
-<p>返回一个指向<strong>set</strong>结尾的迭代器</p>
-<pre><code class="language-cpp">void clear()
-</code></pre>
-<p>清除<strong>set</strong>中的所有元素</p>
-<pre><code class="language-cpp">int size()
-</code></pre>
-<p>返回<strong>set</strong>中元素的个数。</p>
-<pre><code class="language-cpp">int max_size()
-</code></pre>
-<p>返回该<strong>set</strong>能够容纳的最大元素总数。</p>
-<pre><code class="language-cpp">void insert(type_of_set element)
-</code></pre>
-<p>将 <em>element</em> 插入<strong>set</strong>中适合的位置</p>
-<pre><code class="language-cpp">bool empty()
-</code></pre>
-<p>取该<strong>set</strong>是否为空。</p>
-<p>比较特殊的是</p>
-<pre><code class="language-cpp">void erase()
-</code></pre>
-<p>这个函数。</p>
-<p>这个函数被重载了三次：</p>
-<pre><code class="language-cpp">void erase(set&lt;type_of_set&gt;::iterator it)
-void erase(set&lt;type_of_set&gt;::iterator first,set&lt;type_of_set&gt;::iterator second)
-void erase(type_of_set key_value)
-</code></pre>
-<p>第一种用法：删除<strong>set</strong>中迭代器 it 指向的元素</p>
-<p>第二种用法：删除<strong>set</strong>中迭代器 first 到 end 之间的全部元素。</p>
-<p>第三种用法：删除<strong>set</strong>中的键值 key_value。</p>
-<p>有时，我们也需要访问<strong>set</strong>中的某些元素。然而，<strong>set</strong>并没有重载[]运算符，导致了我们无法进行随机访问。这带来了极大的困扰。不过我们还是可以进行顺序访问。</p>
-<p>访问时采用这种方式：</p>
-<p>先声明三个迭代器。一个名为 <em>it_begin</em> 指向开头，一个名为 <em>it_end</em> 指向结尾，一个名为 <em>it</em> 备用。<br>
-我们使用一个for循环进行访问。循环这样写：</p>
-<pre><code class="language-cpp">for(it=it_begin;it!=it_end;it++){
-    type_of_set temp=*it;
-    //do something
+            <h2 id="dfs">DFS</h2>
+<h3 id="最常用的寻找最优解">最常用的：寻找最优解</h3>
+<p>这种情况下多状态</p>
+<pre><code class="language-cpp">void dfs(int cur){
+    if(!check(cur)){
+        //可行性剪枝。如果预测到某个状态以下的所有答案走到底均不可行，则剪去剩余搜索子树
+        return;
+    }
+    if(cantBetter(cur)){
+        //最优性剪枝。如果预测到某个状态下所有答案不能比当前ans更优，则剪去剩余搜索子树
+        return;
+    }
+    标记当前状态已访问;
+    存储当前状态的信息或者更新答案.这一步在答案比较简单时可放到dfs的参数里面避免手动回溯
+    for(/*枚举当前状态所有决策*/){
+        dfs(next(cur));
+    }
+    //回溯:
+    消除当前状态存储的信息并将其对答案的影响消去;
+    将当前状态标记为未访问;
+    //因为DFS算法必须通过回溯消去影响，因此又称为回溯算法
 }
 </code></pre>
-<p>就像这样，你就可以完成对<strong>set</strong>中每个元素的访问了。是不是敲简单嘤嘤嘤</p>
+<h2 id="寻找可行解">寻找可行解</h2>
+<pre><code class="language-cpp">bool dfs(int cur){
+    if(!check(cur)){
+        //可行性剪枝
+        return 0;
+    }
+    将当前状态标记为已访问;
+    if(goal(cur)){
+        记录可行解;
+        return 1;
+    }
+    for(枚举当前状态的所有决策){
+        if(dfs(next(cur))){
+            return 1;
+        }
+    }
+    将当前状态标记为未访问;
+    return 0;
+}
+</code></pre>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming">
+            <a class="purple-link" href="https://malachiten.github.io/post/p1305-xin-er-cha-shu-ti-jie">
               <h3 class="post-title">
-                下一篇：PB_DS容器 trie 实用性说明
+                下一篇：Luogu P1305 新二叉树 题解
               </h3>
             </a>
           </div>
