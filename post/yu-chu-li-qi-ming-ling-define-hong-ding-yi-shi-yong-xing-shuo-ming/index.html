@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>预处理器命令 #define / 宏定义 实用性说明 | Malachite</title>
+<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569584198751">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://malachiten.github.io">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569584198751" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://malachiten.github.io">
+        <h1 class="site-title">Malachite</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">预处理器命令 #define / 宏定义 实用性说明</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-09-27</span>
+            
+          </div>
+          <div class="post-content">
+            <p>注明:本文大量引用、摘抄、改编自 <a href="https://blog.csdn.net/king110108/article/details/80728010">king110108的CSDN博客</a>。若重复引用本文，请别忘了添加对以上博客的引用。</p>
+<p>正如引用源标题(《#define用法集锦(非常全)》)所言，该文对<code>#define</code>的用法总结的极为全面，但是对于每种用法的详细介绍较少。因此，本文主要进行的是对该文章内容的总结和重排。</p>
+<h2 id="0宏定义是什么">0.宏定义是什么</h2>
+<p>define，顾名思义，表示的是进行某些定义。这种定义被称为宏(marco)。</p>
+<p>宏定义是一种传递给预处理器的命令。通过提前告诉预处理器本文件中定义的宏，能够使预处理器按照定义的方式自动替换文本中的字符串，从而大大<strong>简化</strong>代码。</p>
+<h2 id="1如何定义宏-取消宏">1.如何定义宏、取消宏</h2>
+<p>定义一个宏:</p>
+<pre><code class="language-cpp">#define [MacroName)] [MacroValue]
+</code></pre>
+<p>定义之后，除非存在取消指令，否则对于文件中所有出现该MacroName的地方，就替换为对应的MacroValue。</p>
+<p>取消一个宏:</p>
+<pre><code class="language-cpp">#undef [MacroName]
+</code></pre>
+<p>取消之后，除非再次定义，否则对于该MacroName不再进行替换。<s>(形象地理解就是这个MarcoName被预处理器甩了)</s></p>
+<h2 id="2定义常量">2.定义常量</h2>
+<p>例1:</p>
+<pre><code class="language-cpp">#define MAXN 2147483647
+</code></pre>
+<p>本例将当前文件中所有字符串&quot;MAXN&quot;全部替换成了<code>INT_MAX</code>的值<code>2147483647</code>。这就是简单的使用#define定义常量的方式。<strong>(依然建议使用const关键字来声明常量，以免引起不可预知的问题。)</strong></p>
+<h2 id="3定义数据类型">3.定义数据类型</h2>
+<p>很多时候，很像定义常量时，我们想<s>少打几个字而实现相同的效果</s>咳咳，使数据修改方便，我们也想使较长的数据类型名称被一个自定义的关键字代表。这时我们可以自定义一个宏来简化数据类型。</p>
+<p>例:</p>
+<pre><code class="language-cpp">#define ull unsigned long long
+</code></pre>
+<p>本例将当前文件中所有字符串&quot;ull&quot;全部替换成了<code>unsigned long long</code>。这可以使一个较长的类型名称变得非常短，从而简化代码。<strong>(跟上面一样，通常情况下依然建议使用专门的关键字typedef来简化指定类型的名称，如果发生了不可预知的问题可别怪我啊)</strong></p>
+<p>所谓“不可预知的问题”就像下面这个：</p>
+<pre><code class="language-cpp">#define pin (int*);
+pin a,b;
+</code></pre>
+<p>a是<code>int</code>型指针类型，而b是<code>int</code>型常规变量。而我们期望的其实是使a和b均为<code>int</code>型指针(<code>int*</code>)。</p>
+<p>要使a和b就都是<code>int</code>型指针，我们只能使用<code>typedef</code>了。这也使我们注意到一点：我们在定义的时候，一定要养成一个良好的习惯，建议所有的层次都要加括号。</p>
+<p>不过，在某些特殊情形下，比如开发机与目标机的操作系统及硬件存在巨大差异~~(比如你硬要用Core i9的机子给上世纪的80486写程序)~~的时候，由于编译器、操作系统对代码中数据类型的理解大不相同，<code>typedef</code>完全无法满足我们的需求(如果强行通过<code>typedef</code>改变编译器数据类型的定义，似乎会直接报出重复定义的错误)。这时，我们反而建议使用<code>#define</code>。</p>
+<p>例:</p>
+<pre><code class="language-cpp">typedef  unsigned char      boolean;     /* Boolean value type. */
+typedef  unsigned long int  uint32;      /* Unsigned 32 bit value */
+typedef  unsigned short     uint16;      /* Unsigned 16 bit value */
+typedef  unsigned char      uint8;       /* Unsigned 8  bit value */
+typedef  signed long int    int32;       /* Signed 32 bit value */
+typedef  signed short       int16;       /* Signed 16 bit value */
+typedef  signed char        int8;        /* Signed 8  bit value */
+</code></pre>
+<p>对于另外一些数据类型，即使是非常情况下，依然不建议使用哦……</p>
+<p>就是这些啦</p>
+<pre><code class="language-cpp">typedef  unsigned char     byte;         /* Unsigned 8  bit value type. */
+typedef  unsigned short    word;         /* Unsinged 16 bit value type. */
+typedef  unsigned long     dword;        /* Unsigned 32 bit value type. */
+typedef  unsigned char     uint1;        /* Unsigned 8  bit value type. */
+typedef  unsigned short    uint2;        /* Unsigned 16 bit value type. */
+typedef  unsigned long     uint4;        /* Unsigned 32 bit value type. */
+typedef  signed char       int1;         /* Signed 8  bit value type. */
+typedef  signed short      int2;         /* Signed 16 bit value type. */
+typedef  long int          int4;         /* Signed 32 bit value type. */
+typedef  signed long       sint31;       /* Signed 32 bit value */
+typedef  signed short      sint15;       /* Signed 16 bit value */
+typedef  signed char       sint7;        /* Signed 8  bit value */
+</code></pre>
+<h2 id="4条件编译">4.条件编译</h2>
+<p>例:</p>
+<pre><code class="language-cpp">#define debug
+#ifdef debug
+//do something
+#else
+//do something
+#endif
+#ifndef debug
+//do something 
+#else
+//do something
+#endif
+</code></pre>
+<p>本例中，提到了这几种预处理器命令:本文主要介绍的<code>#define</code>,以及依附于它而存在的命令<code>#ifdef</code>、<code>ifndef</code>、<code>else</code>、<code>endif</code>。这些命令，一般被称为“<strong>条件编译开关</strong>”。<s>(虽然我觉得叫预处理器条件分歧之类的更好听……)</s></p>
+<p><code>ifdef</code>,展开缩写为：if define，表示<strong>如果定义了</strong>某个宏，则编译从此处开始直到一个<code>endif</code>标记的位置的代码。如果没有定义，则这一部分的代码不会被编译。<s>(就像被注释掉了一样)</s></p>
+<p><code>ifndef</code>,展开缩写为：if not define，表示<strong>若未定义</strong>某个宏，则编译从此处开始直到一个<code>endif</code>标记的位置的代码。如果没有定义，则不会编译这些代码。</p>
+<p><code>else</code>,表示否则，用于对上述两个预处理器条件命令的“条件表达式”(有没有定义)进行“取反”，只能用于这两个命令作为开头、<code>endif</code>命令作为结尾的区间内。换言之，现有一个区间，从<code>#ifdef test</code>到<code>#endif</code>，</p>
+<p><code>endif</code>,则是表示对于<code>ifdef</code>、<code>ifndef</code>的界限的命令。<code>endif</code>标记之后的所有代码，<strong>不受</strong>之前标记的<code>ifdef</code>和<code>ifndef</code>影响。</p>
+<p>在大规模的开发过程中，特别是跨平台和系统的软件里，define最重要的功能是条件编译。就像这样，define可以用于跨平台:</p>
+<pre><code class="language-cpp">#ifdef WINDOWS
+//do something
+#endif
+#ifdef LINUX
+//do something
+#endif
+</code></pre>
+<p>这样就能通过在文件开始时写上<code>#define WINDOWS</code>、<code>#define LINUX</code>而简单地在Windows和Linux中编译不同的代码，而不需要麻烦地寻找哪些需要在Windows下编译，哪些需要在Linux下编译，然后在需要编译出对应平台的程序时注释掉另一部分……<s>(人生苦短，C++可能真比不上Python)</s></p>
+<h2 id="5函数式的宏定义">5.函数式的宏定义</h2>
+<p>这是一个<strong>宏定义的说明文章不可或缺的部分</strong>哦！敲黑板看重点啦！</p>
+<p>~~众所周知，宏定义的知识博大精深。~~它甚至可以当做一个类似函数的东西来用！</p>
+<p>例：</p>
+<pre><code class="language-cpp">#define Add(a,b) (a)+(b);
+</code></pre>
+<p>这<strong>看起来似乎</strong>是一个实现将形式参数a与b相加并返回其值的函数。</p>
+<p>我们观察这个宏定义，发现其中的结构其实是这样的：</p>
+<pre><code class="language-cpp">#define [FunctionalMarcoName]([Argument1],[Argument2],...) [FunctionalMarcoValue]
+</code></pre>
+<p>同时要注意，FunctionalMarcoValue中对于形式参数的引用，应该使用小括号“()”将它们括起来，否则这些参数变成替换上去的字符串之后是否产生歧义将无法保证！</p>
+<p>正因为如此上面这样写，与下面这个函数的效果其实也有差别哦！这些歧义也使函数式宏定义在某些意义下不安全。</p>
+<pre><code class="language-cpp">int Add(int a,int b){
+    return a+b;
+}
+</code></pre>
+<p>我们考虑这样一个情况：<code>c*Add(a,b)*d</code>。</p>
+<p>我们将会发现，正常来说，这行程序的逻辑是：先将a与b相加，将它们的和与c、d连乘。</p>
+<p>可是很<s>不</s>明显的是，预处理器将会<s>像个憨憨一样</s>忠实地按照宏定义的定义，将程序文本中的<code>Add(a,b)</code>全给换成<code>a+b</code>！这样一来……它将会计算<code>c*a+b*d</code>的值！它的逻辑将会变成，分别将a与c、b与d相乘，然后将两个乘积相加！这是我们不期望的。一定要警惕！</p>
+<p>不过，在避免危险情况出现的前提下，某些宏定义能够在极短的空间内完成极为复杂的操作！</p>
+<p>比如，我们已经知道，宏是用来<strong>在原文本中替换字符串</strong>的。</p>
+<p>因此，宏定义为我们提供了这几种操作：<code>#</code>和<code>##</code>。先看一个例子：</p>
+<pre><code class="language-cpp">#define paster(n) printf(&quot;token&quot;#n&quot;=%d\n&quot;,token##n)
+</code></pre>
+<p>我们了解：</p>
+<p><code>#</code>用来将宏定义的形式参数转换为**“作为数据类型存在的”**字符串，并用于替换。</p>
+<p><code>##</code>则用于将转换成**“程序文本意义上的”<strong>字符串</strong>与其他程序文本相连接**。</p>
+<p>于是我们可以知道：</p>
+<p><strong>设token1=1,token2=2,……,tokenn=n</strong></p>
+<ul>
+<li><code>paster(1)</code>等效于<code>printf(&quot;token1=%d\n&quot;,token1);</code>，输出&quot;token1=1&quot;,</li>
+<li><code>paster(2)</code>等效于<code>printf(&quot;token2=%d\n&quot;,token2);</code>，输出&quot;token2=2&quot;;</li>
+<li>
+<pre><code>  ……
+</code></pre>
+</li>
+<li><code>paster(n)</code>等效于<code>printf(&quot;tokenn=%d\n&quot;,tokenn);</code>，输出&quot;tokenn=n&quot;。</li>
+</ul>
+<p>不过我们必须知道，这些处理是在预处理器中完成的！不要希望使用预处理器命令在程序运行过程中临时声明常规变量！不过这种写法不受影响：</p>
+<pre><code class="language-cpp">#define newInt(n) int* (n)=new int(##n))
+</code></pre>
+<p>下面是几个常用的方便例子：</p>
+<h2 id="6避免重复包含-重复定义">6.避免重复包含、重复定义</h2>
+<p>由于头文件包含可以嵌套，那么 * / *.cpp / *.h / *.hpp 文件就有可能多次包含同一个头文件，就可能出现重复定义的错误，而且极难查出。<s>(我一个题的解题代码因为写反true和false这样极为???的问题，调了一个小时，如果我在数个文件中发生重复定义，怕是一年都调不出来……)</s></p>
+<p>不过好在，有了<strong>条件编译开关</strong>，就可以避免重复包含(重复定义)啦！</p>
+<p>例:</p>
+<pre><code class="language-cpp">#ifndef __headerfileXXX__
+#define __headerfileXXX__
+//file
+#endif
+</code></pre>
+<p>这样，我们就能保证即使头文件被多次包含，也不会导致里面的内容被多次定义啦！</p>
+<h2 id="7总结">7.总结</h2>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://malachiten.github.io/post/bi-ji-sou-suo">
+              <h3 class="post-title">
+                下一篇：笔记 : 搜索
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan">夕焼けの中に吸い込まれて消えてった</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '11823f499e13d196c57b',
+        clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
+        repo: 'MalachiteN.github.io',
+        owner: 'MalachiteN',
+        admin: ['MalachiteN'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

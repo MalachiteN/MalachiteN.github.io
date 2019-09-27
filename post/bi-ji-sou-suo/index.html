@@ -5,14 +5,14 @@
     
 <meta charset="utf-8" >
 
-<title>笔记: 搜索 | Malachite</title>
+<title>笔记 : 搜索 | Malachite</title>
 <meta name="description" content="夕焼けの中に吸い込まれて消えてった">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569565340547">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569584198751">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569565340547" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569584198751" alt="" width="32px" height="32px">
       </a>
       <a href="https://malachiten.github.io">
         <h1 class="site-title">Malachite</h1>
@@ -86,7 +86,7 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">笔记: 搜索</h2>
+          <h2 class="post-title">笔记 : 搜索</h2>
           <div class="post-info post-detail-info">
             <span><i class="icon-calendar-outline"></i> 2019-09-27</span>
             
@@ -102,9 +102,9 @@
             
           </div>
           <div class="post-content">
-            <h2 id="dfs">DFS</h2>
-<h3 id="最常用的寻找最优解">最常用的：寻找最优解</h3>
-<p>这种情况下多状态</p>
+            <h2 id="dfs-深度优先搜索">DFS / 深度优先搜索</h2>
+<h3 id="寻找最优解这是最常用的方法">寻找最优解(这是最常用的方法)</h3>
+<p>这种情况下,一般会有很多种不同的状态</p>
 <pre><code class="language-cpp">void dfs(int cur){
     if(!check(cur)){
         //可行性剪枝。如果预测到某个状态以下的所有答案走到底均不可行，则剪去剩余搜索子树
@@ -116,7 +116,7 @@
     }
     标记当前状态已访问;
     存储当前状态的信息或者更新答案.这一步在答案比较简单时可放到dfs的参数里面避免手动回溯
-    for(/*枚举当前状态所有决策*/){
+    for(枚举当前状态所有决策){
         dfs(next(cur));
     }
     //回溯:
@@ -125,7 +125,7 @@
     //因为DFS算法必须通过回溯消去影响，因此又称为回溯算法
 }
 </code></pre>
-<h2 id="寻找可行解">寻找可行解</h2>
+<h3 id="寻找可行解">寻找可行解</h3>
 <pre><code class="language-cpp">bool dfs(int cur){
     if(!check(cur)){
         //可行性剪枝
@@ -143,6 +143,92 @@
     }
     将当前状态标记为未访问;
     return 0;
+}
+</code></pre>
+<h3 id="dfs例题-luogu-p3154-cqoi2009循环赛">DFS例题: Luogu P3154 [CQOI2009]循环赛</h3>
+<p>解析(<strong>转载自:<a href="http://www.cnblogs.com/autsky-jadek/">AutSky_JadeK的博客</a></strong>)</p>
+<p><strong>思路</strong></p>
+<ul>
+<li>dfs+剪枝*4</li>
+<li>1.只枚举一半的比赛，另一半直接得出</li>
+<li>2.处理前缀和，若大于目标得分则剪枝</li>
+<li>3.前缀和加上若接下来全胜的得分 仍小于目标得分，则剪枝。</li>
+<li>4.枚举到每个人的最后一场比赛时直接用目标得分-前缀和 计算出最后一场的应得分。</li>
+</ul>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+using namespace std;
+const int f[]={3,1,0,0};
+int n,a[9],ans,Pre[9];
+void dfs(int x,int y)
+{
+    if(Pre[x]&gt;a[x])return;
+    if(Pre[x]+(n-y+1)*3&lt;a[x])return;
+    if(x==n){ans++;return;}
+    if(y==n)
+      {
+          int tmp=a[x]-Pre[x];
+          if(tmp==2)return;
+          Pre[y]+=f[tmp];
+        dfs(x+1,x+2);
+          Pre[y]-=f[tmp];
+      }else{
+    Pre[x]+=3;dfs(x,y+1);Pre[x]-=3;
+    Pre[y]+=3;dfs(x,y+1);Pre[y]-=3;
+    Pre[x]++;Pre[y]++;dfs(x,y+1);Pre[x]--;Pre[y]--;}
+}
+int main()
+{
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=1;i&lt;=n;i++)
+      scanf(&quot;%d&quot;,&amp;a[i]);
+    dfs(1,2);
+    printf(&quot;%d\n&quot;,ans);
+    return 0;
+}
+</code></pre>
+<h3 id="dfs-枚举子集">DFS 枚举子集</h3>
+<pre><code class="language-cpp">void dfs(int cur){
+    if(cur){
+        将cur添加进当前集合;
+    }
+    对子集的处理;
+    for(int i=cur+1;i&lt;=n;i++){
+        dfs(i);
+    }
+}
+</code></pre>
+<p>该算法处理集合 {1,2,3,4} 的过程如下:</p>
+<pre><code>1
+1 2
+1 2 3
+1 2 3 4
+2
+2 3
+2 3 4
+3
+3 4
+4
+</code></pre>
+<p>可见，该算法是<strong>将过程全部输出</strong>的DFS。</p>
+<h2 id="bfs-广度优先搜索">BFS / 广度优先搜索</h2>
+<pre><code class="language-cpp">void bfs(){
+    q.push(st_start);
+    vis[st_start]=true;
+    while(!q.empty()){
+        st U=q.front();
+        for(i in next(st)){
+            if(!vis[i]&amp;&amp;check(i)){
+                vis[i]=true;
+                i.d=st.d+1;
+                if(goal(i)){
+                    对最终状态的处理;
+                    return;
+                }
+                q.push(i);
+            }
+        }
+        q.pop();
+    }
 }
 </code></pre>
 
