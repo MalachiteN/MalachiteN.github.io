@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569584198751">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569589007435">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569584198751" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569589007435" alt="" width="32px" height="32px">
       </a>
       <a href="https://malachiten.github.io">
         <h1 class="site-title">Malachite</h1>
@@ -110,12 +110,12 @@
         //可行性剪枝。如果预测到某个状态以下的所有答案走到底均不可行，则剪去剩余搜索子树
         return;
     }
-    if(cantBetter(cur)){
+    if(cur无法比当前最优解更优)){
         //最优性剪枝。如果预测到某个状态下所有答案不能比当前ans更优，则剪去剩余搜索子树
         return;
     }
     标记当前状态已访问;
-    存储当前状态的信息或者更新答案.这一步在答案比较简单时可放到dfs的参数里面避免手动回溯
+    存储当前状态的信息或者更新答案;//这一步在答案比较简单时可放到dfs的参数里面避免手动回溯
     for(枚举当前状态所有决策){
         dfs(next(cur));
     }
@@ -231,6 +231,36 @@ int main()
     }
 }
 </code></pre>
+<h2 id="id-dfs-迭代加深-深度优先搜索">ID DFS / 迭代加深 深度优先搜索</h2>
+<p><strong>首先深度优先搜索k层，若没有找到可行解，再深度优先搜索k+1层，直到找到可行解为止</strong>。由于深度是从小到大逐渐增加的，所以当搜索到结果时可以保证搜索深度是最小的。这也是迭代加深搜索在一部分情况下可以代替广度优先搜索的原因。</p>
+<h2 id="id-a-迭代加深-启发式搜索">ID A* / 迭代加深 启发式搜索</h2>
+<pre><code class="language-cpp">void dfs(int cur){
+    if(!check(cur)){
+        //可行性剪枝。如果预测到某个状态以下的所有答案走到底均不可行，则剪去剩余搜索子树
+        return;
+    }
+    if(/*估价函数*/cantBetter(cur)){
+        //最优性剪枝。如果预测到某个状态下所有答案不能比当前ans更优，则剪去剩余搜索子树
+        return;
+    }
+    标记当前状态已访问;
+    存储当前状态的信息或者更新答案;//这一步在答案比较简单时可放到dfs的参数里面避免手动回溯
+    for(枚举当前状态所有决策){
+        dfs(next(cur));
+    }
+    //回溯:
+    消除当前状态存储的信息并将其对答案的影响消去;
+    将当前状态标记为未访问;
+    //因为DFS算法必须通过回溯消去影响，因此又称为回溯算法
+}
+</code></pre>
+<p>上面就是DFS的例子。其实ID A*就是用了启发式搜索的估价函数来改写最优性剪枝的方案。</p>
+<h2 id="a-启发式搜索">A* / 启发式搜索</h2>
+<ul>
+<li>给广搜的状态一个估价函数，然后以估价参数为优先级使用优先队列代替队列。</li>
+<li>重点是估价函数的设计。</li>
+<li>估价函数h(s)是当前状态到目标状态的乐观估计最优解。</li>
+</ul>
 
           </div>
         </div>
