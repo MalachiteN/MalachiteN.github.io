@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>PB_DS容器 trie 实用性说明 | Malachite</title>
+<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569551054422">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://malachiten.github.io">
+        <img src="https://malachiten.github.io/images/avatar.png?v=1569551054422" class="site-logo">
+        <h1 class="site-title">Malachite</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      夕焼けの中に吸い込まれて消えてった
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">PB_DS容器 trie 实用性说明</h2>
+            <div class="post-date">2019-09-27</div>
+            
+            <div class="post-content">
+              <h1 id="pb_ds容器-trie-实用性说明">PB_DS容器 trie 实用性说明</h1>
+<p>众所周知，C++提供的 <em>STL</em> (标准模板库)具有大量的预制模板，非常优秀。 PB_DS 可能了解的人比较少，但是其也是一个模板库，而且具有更加强大深入的功能。其中，<strong>trie树</strong>这种平时背诵手打模板才能打出来的高级数据结构，也被包括在其中。</p>
+<p>让我们切入正题。首先，要使用 PB_DS 的容器，需要先加上这一行预处理器命令：</p>
+<pre><code class="language-cpp">#include &lt;ext/pb_ds/assoc_container.hpp&gt;
+</code></pre>
+<p>然后包含<strong>trie树</strong>模板：</p>
+<pre><code class="language-cpp">#include&lt;ext/pb_ds/trie_policy.hpp&gt;
+</code></pre>
+<p>而且别忘了使用PB_DS的名称空间！</p>
+<pre><code class="language-cpp">using namespace __gnu_pbds;
+</code></pre>
+<p>这样，就能够使用这个模板了。</p>
+<p>不过，让我们看到一般我们使用的直接声明一棵<strong>trie树</strong>的方式：</p>
+<pre><code class="language-cpp">trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tre;
+</code></pre>
+<p>每声明一棵<strong>trie树</strong>都要进行如此复杂的操作！这是令人望而生畏的。<br>
+可是，我们又想到，以前曾经写过这一句来缩减使用 <em>long long</em> 带来的代码长度：</p>
+<pre><code class="language-cpp">typedef long long ll;
+</code></pre>
+<p>于是，我们想出了这种操作：</p>
+<pre><code class="language-cpp">typedef trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tr;
+tr tre;
+</code></pre>
+<p>通过将复杂的声明定义缩减为一个自定义类型，我们成功地缩减了代码的长度及书写的复杂度。</p>
+<p>既然已经定义了<strong>trie树</strong>类型的<strong>tre</strong>，那么我们能对它进行什么实用的操作呢？</p>
+<p>答案是：<strong>insert</strong>，<strong>erase</strong>，<strong>join</strong>，以及<strong>pair</strong>。</p>
+<pre><code class="language-cpp"> void insert(string t);
+</code></pre>
+<p>这个操作用于向一棵<strong>trie树</strong>中插入一个字符串 <em>t</em> 。</p>
+<pre><code class="language-cpp">void erase(string t);
+</code></pre>
+<p>这个操作用于从一棵<strong>trie树</strong>中删去一个字符串 <em>t</em> 。</p>
+<pre><code class="language-cpp">void join(tr b);
+</code></pre>
+<p>这个操作用于将一棵<strong>trie树</strong> <em>b</em> 并入当前<strong>trie树</strong>。</p>
+<p>而<strong>pair</strong>的使用就较为复杂。</p>
+<p>要使用一个<strong>pair</strong>，首先我们需要声明一个迭代器（ <em>iterator</em> ）：</p>
+<pre><code class="language-cpp">pair&lt;tr::iterator,tr::iterator&gt; area=tre.prefix_range(string x);
+</code></pre>
+<p>这意味着定义了一个将要<strong>依次</strong>指向<strong>每个</strong>以字符串 <em>x</em> 为前缀的字符串的迭代器。</p>
+<p>然后，我们就可以利用这个迭代器读取字典树中以字符串 <em>x</em> 作为前缀的<strong>所有</strong>字符串：</p>
+<pre><code class="language-cpp">for(tr::iterator it=area.first;it!=area.second;it++){
+	cout&lt;&lt;*it&lt;&lt;' '&lt;&lt;endl;
+} 
+</code></pre>
+<p>这就是关于 PB_DS 容器<strong>trie树</strong>的实用操作了。是否感觉有些许不足？是的。<strong>系统</strong>容器的<strong>trie树</strong>虽然<strong>看上去</strong>完成了一个强大的高级数据结构，但是其<strong>本身并不强大</strong>。由于只支持这些模板操作，它难以作为解决问题的利器。不过，由于模板书写的便捷性，只要是它能够出场的时刻，它一定不会辜负众望。</p>
+<p>最后附一个支持PB_DS中trie树容器的所有操作的DEMO代码：</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+#include &lt;ext/pb_ds/assoc_container.hpp&gt;
+#include&lt;ext/pb_ds/trie_policy.hpp&gt;
+using namespace std;
+using namespace __gnu_pbds;
+int n,m;
+string s;
+typedef trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tr;
+tr tre;
+int main(){
+	int a;
+	cout&lt;&lt;&quot;1:INSERT A STRING TO THE TRIE TREE\n2:PRINT ALL STRINGS WITH A PREFIX IN THE TRIE TREE\n3:DELETE A STRING IN THE TRIE TREE\n4:EXIT&quot;&lt;&lt;endl;
+	while(1){
+		cin&gt;&gt;a;
+		switch(a){
+			case 1:{
+				cout&lt;&lt;&quot;INSERT THIS STRING TO THE TRIE TREE:&quot;;
+				cin&gt;&gt;s;
+				tre.insert(s);
+				break;
+			}
+			case 2:{
+				cout&lt;&lt;&quot;PRINT ALL STRINGS WITH THE PREFIX IN THE TRIE TREE:&quot;;
+				cin&gt;&gt;s;
+				pair&lt;tr::iterator,tr::iterator&gt; range=tre.prefix_range(s);
+				for(tr::iterator it=range.first;it!=range.second;it++){
+					cout&lt;&lt;*it&lt;&lt;' '&lt;&lt;endl;
+				}
+				break;
+			}
+			case 3:{
+				cout&lt;&lt;&quot;DELETE THE STRING IN THE TRIE TREE:&quot;; 
+				cin&gt;&gt;s;
+				tre.erase(s);
+				break;
+			}
+			case 4:{
+				cout&lt;&lt;&quot;EXIT&quot;;
+				goto end;
+				break;
+			}
+		}
+	}
+	end:
+	return 0;
+}
+</code></pre>
+<p>运行结果如图：<br>
+<img src="https://s2.ax1x.com/2019/08/22/mdNk36.png" alt="运行截图"></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://malachiten.github.io/post/cer-fen-cha-zhao-han-shu-shi-yong-xing-shuo-ming">
+                  <h3 class="post-title">
+                    C++二分查找函数实用性说明
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '11823f499e13d196c57b',
+        clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
+        repo: 'MalachiteN.github.io',
+        owner: 'MalachiteN',
+        admin: ['MalachiteN'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

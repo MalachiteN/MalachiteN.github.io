@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>P1305 新二叉树 题解 | Malachite</title>
+<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569551054422">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://malachiten.github.io">
+        <img src="https://malachiten.github.io/images/avatar.png?v=1569551054422" class="site-logo">
+        <h1 class="site-title">Malachite</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      夕焼けの中に吸い込まれて消えてった
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">P1305 新二叉树 题解</h2>
+            <div class="post-date">2019-09-27</div>
+            
+            <div class="post-content">
+              <h1 id="p1305-新二叉树-题解">P1305 新二叉树 题解</h1>
+<p>很水的一道二叉树的题。其实并不需要真正利用在程序中构造二叉树进行求解的思路，而是利用二叉树的性质，找出规律，从而得出结果。</p>
+<p>首先让我们看到题目：</p>
+<h2 id="题目描述">题目描述</h2>
+<p><strong>输入一串二叉树，用遍历前序打出。</strong></p>
+<p>一看这个题目，似乎还无法得出一个规律。不过我们产生了问题：如何输入这一串二叉树？</p>
+<h2 id="输入格式">输入格式</h2>
+<p><strong>第一行为二叉树的节点数</strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>≤</mo><mn>26</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(n≤26)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">6</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>后面n行，每一个字母为节点，后两个字母分别为其左右儿子。</strong></p>
+<p><strong>空节点用星号表示。</strong></p>
+<p>这样似乎就明了了：二叉树好像是通过这几种形式输入的：</p>
+<ul>
+<li>父亲 左儿子 右儿子</li>
+<li>父亲 儿子 星号</li>
+<li>父亲 星号 星号</li>
+</ul>
+<h2 id="输出格式">输出格式</h2>
+<p><strong>前序排列的二叉树。</strong></p>
+<p>既然要求这样输出，那么我们就可以寻找一下前序排列的规律：</p>
+<p>在只有一个节点的情况下，这棵树长这样：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/08/22/mwEKi9.png" alt="1"></figure>
+<p>它的前序排列自然是这样： <code>A</code></p>
+<p>如果有了两个节点，则会变成这样：</p>
+<figure data-type="image" tabindex="2"><img src="https://s2.ax1x.com/2019/08/22/mwEma4.png" alt="2"></figure>
+<p>前序排列为： <code>AB</code></p>
+<p>有了三个节点，会变成这样：</p>
+<figure data-type="image" tabindex="3"><img src="https://s2.ax1x.com/2019/08/22/mwEnIJ.png" alt="3"></figure>
+<p>前序排列为： <code>ABC</code></p>
+<p>似乎还没有看出什么端倪。不过，让我们继续向下发展这棵二叉树：</p>
+<figure data-type="image" tabindex="4"><img src="https://s2.ax1x.com/2019/08/22/mwEeZF.png" alt="4"></figure>
+<p>前序排列： <code>ABDC</code></p>
+<p>等等，怎么……顺序发生了一些变化？不再是依字母表顺序排列了？</p>
+<p>再来！</p>
+<figure data-type="image" tabindex="5"><img src="https://s2.ax1x.com/2019/08/22/mwEMGR.png" alt="5"></figure>
+<p>前序排列： <code>ABDEC</code></p>
+<p>原来规律是这样！</p>
+<p><strong>每次第一个输入的序列（根节点及其子节点） 直接被加入前序中；</strong></p>
+<p><strong>后续有两种儿子的，则忽略 “ 星号 ” 字符，将左儿子插入序列中其父亲节点后的一位，将右儿子插入序列中其左儿子节点的后一位。</strong></p>
+<p><strong>仅有一种儿子的（表现形式为 父亲 儿子 星号 ），就简单将其儿子插入父亲节点的后一位即可。</strong></p>
+<p><strong>找到父亲节点或左儿子的方法很简单：通过 <code>string</code> 类的这个成员函数即可完成：</strong></p>
+<pre><code class="language-cpp">int find(string s);
+</code></pre>
+<p>这个成员函数的作用是<strong>返回子字符串s在原串中的位置</strong>。如果找不到，则返回：</p>
+<pre><code class="language-cpp">string::npos
+</code></pre>
+<p>这个常量。（这个常量在不同的编译器中，有不同的值，虽然有些时候是 <code>static_cast&lt;size_type&gt;(-1)</code> ，但是可能其他时候会出差错(比如变成size_t的最大值,4294967295)。因此，我们在这里不写-1，而写这个常量更为保险。如果想继续深入了解这个用于标记<code>find</code>失败的常量，可以参考<a href="https://blog.csdn.net/JIEJINQUANIL/article/details/51789682">其他巨佬的博客</a>）</p>
+<p>然后，我们再使用这个类里面的另一个函数 <code>insert</code> 向指定的位置插入代表子节点的字符：</p>
+<pre><code class="language-cpp">void insert(int position,int length,string s);
+</code></pre>
+<p>它的作用是 <strong>从字符串中的第position个位置开始，插入length个字符，这些字符来源于s</strong> 。</p>
+<p>这样，我们就可以得到这题的代码！</p>
+<h3 id="代码如下">代码如下：</h3>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+string t;
+int n;
+string s;
+int main(){
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++){
+		cin&gt;&gt;s;
+		if(t.find(s[0])==string::npos){t=s;continue;}
+		if(s[1]!='*') t.insert(t.find(s[0])+1,1,s[1]);
+		if(s[2]!='*') t.insert(t.find(s[1])+1,1,s[2]);
+	}
+	cout&lt;&lt;t&lt;&lt;endl;
+}
+</code></pre>
+<h5 id="你觉得一次就能ac了">你觉得一次就能AC了？</h5>
+<h4 id="并不是">并不是！</h4>
+<h3 id="实际上">实际上！</h3>
+<h2 id="这个只有20分">这个只有20分！！！</h2>
+<figure data-type="image" tabindex="6"><img src="https://s2.ax1x.com/2019/08/22/mwmhAU.png" alt="x1"></figure>
+<p>为什么？为什么只有20分？</p>
+<p>很简单。下载数据后，你会发现这是因为这份代码没有考虑到这种数据的存在：</p>
+<p><strong>“指示根节点及其子节点的第一行就含星号 ！！！”</strong></p>
+<p>这种数据会带来什么影响？</p>
+<p><strong>你的程序将把“ 星号 ”当作一种子节点！！！</strong></p>
+<p>于是，之后的输出就完全混乱了。毕竟，由于第一行是特判全部输入，“ 星号 ”这样的鬼东西都被插进了字符串里面。</p>
+<p>不过这样一来，你就找到了修改的思路：</p>
+<p>使用 <code>string</code> 类的这个成员函数： <code>erase</code> ！</p>
+<pre><code class="language-cpp">void erase(string::iterator start,string::iterator end);
+</code></pre>
+<p>直接运用它，产生的作用其实是消除<strong>一个字符串中的一段连续的长度</strong>。那么怎么达到消除<strong>全部指定字符</strong>（此处为标明了根节点及其儿子的字符串中的 “ * ” ）呢？</p>
+<p>使用 <code>algorithm</code> 库中的 <code>remove</code> 函数！</p>
+<pre><code class="language-cpp">iterator remove(iterator start,iterator end,auto c);
+</code></pre>
+<p>有了这个，我们就能够不断地清除字符串中的目标字符，并不断返回指向其未被删除元素的下一个元素的迭代器，从而使用erase函数清除它。</p>
+<p>于是，我们得到了用于<strong>清除一段字符串中全部指定字符</strong>的完整代码：</p>
+<pre><code class="language-cpp">erase(remove(string::iterator start,string::iterator end,char c),string::iterator end);
+</code></pre>
+<p>那么，新的代码也呼之欲出了！</p>
+<h3 id="新代码如下">新代码如下：</h3>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+string t;
+int n;
+string s;
+int main(){
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++){
+		cin&gt;&gt;s;
+		if(t.find(s[0])==string::npos){
+			s.erase(remove(s.begin(),s.end(),'*'),s.end());
+			t=s;
+			continue;
+		}
+		if(s[1]!='*') t.insert(t.find(s[0])+1,1,s[1]);
+		if(s[2]!='*') t.insert(t.find(s[1])+1,1,s[2]);
+	}
+	cout&lt;&lt;t&lt;&lt;endl;
+}
+</code></pre>
+<h5 id="你又觉得这次就能ac了">你又觉得这次就能AC了？</h5>
+<h4 id="并不是-2">并不是！</h4>
+<h3 id="其实">其实！</h3>
+<h2 id="这个只有30分">这个只有30分！！！</h2>
+<figure data-type="image" tabindex="7"><img src="https://s2.ax1x.com/2019/08/22/mwm4NF.png" alt="x2"></figure>
+<p><s>才多过了一个点啊……</s></p>
+<p>这次又是为什么？？！</p>
+<p>下载数据后发现，这次是栽在了一种之前<strong>从未考虑到的输入情况</strong>上。</p>
+<p>这次导致出错的输入数据为：</p>
+<ul>
+<li>父亲 星号 儿子</li>
+</ul>
+<p>……</p>
+<p><s>这也太坑了吧</s></p>
+<p>我们为了AC此题，只能继续努力了……</p>
+<p>这次更改并不需要什么新的技术，只需要添加几个判断即可绕过大坑。</p>
+<h3 id="代码如下-2">代码如下：</h3>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+string t;
+int n;
+string s;
+int main(){
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++){
+		cin&gt;&gt;s;
+		if(t.find(s[0])==string::npos){
+			s.erase(remove(s.begin(),s.end(),'*'),s.end());
+			t=s;
+			continue;
+		}
+		if(s[1]!='*'&amp;&amp;s[2]!='*'){
+			t.insert(t.find(s[0])+1,1,s[1]);
+			t.insert(t.find(s[1])+1,1,s[2]);
+		}
+		if(s[1]=='*'&amp;&amp;s[2]!='*'){
+			t.insert(t.find(s[0])+1,1,s[2]);
+		}
+		if(s[1]!='*'&amp;&amp;s[2]=='*'){
+			t.insert(t.find(s[0])+1,1,s[1]);
+		}
+	}
+	cout&lt;&lt;t&lt;&lt;endl;
+}
+</code></pre>
+<p>看着屏幕上蓝色方块上转着白色的圈圈，你想到：之前（指20分变30分那次）做了那么大的修改，才多过了一个点，想必这个算法还存在很多问题吧……难不成<strong>还得再重写几次？？！</strong></p>
+<p>然后……</p>
+<figure data-type="image" tabindex="8"><img src="https://s2.ax1x.com/2019/08/22/mwK3hF.png" alt="v"></figure>
+<p>？？？？？？</p>
+<h2 id="过了就过了">过了？？！就过了？？？？？！</h2>
+<p>历经千辛万苦，终于过了啊……<s>（接受现实）</s></p>
+<p><s>bilibili干杯！（好像并没有什么不对）</s></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://malachiten.github.io/post/zhong-ji-ya-xing-ji-qiao">
+                  <h3 class="post-title">
+                    终极压行技巧
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '11823f499e13d196c57b',
+        clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
+        repo: 'MalachiteN.github.io',
+        owner: 'MalachiteN',
+        admin: ['MalachiteN'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

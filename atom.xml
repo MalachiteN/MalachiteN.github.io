@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-09-27T01:44:54.246Z</updated>
+    <updated>2019-09-27T02:24:51.459Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -11,35 +11,466 @@
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://malachiten.github.io/post/hello-gridea</id>
-        <link href="https://malachiten.github.io/post/hello-gridea">
+        <title type="html"><![CDATA[P1305 新二叉树 题解]]></title>
+        <id>https://malachiten.github.io/post/p1305-xin-er-cha-shu-ti-jie</id>
+        <link href="https://malachiten.github.io/post/p1305-xin-er-cha-shu-ti-jie">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <updated>2019-09-27T02:16:55.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="p1305-新二叉树-题解">P1305 新二叉树 题解</h1>
+<p>很水的一道二叉树的题。其实并不需要真正利用在程序中构造二叉树进行求解的思路，而是利用二叉树的性质，找出规律，从而得出结果。</p>
+<p>首先让我们看到题目：</p>
+<h2 id="题目描述">题目描述</h2>
+<p><strong>输入一串二叉树，用遍历前序打出。</strong></p>
+<p>一看这个题目，似乎还无法得出一个规律。不过我们产生了问题：如何输入这一串二叉树？</p>
+<h2 id="输入格式">输入格式</h2>
+<p><strong>第一行为二叉树的节点数</strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>≤</mo><mn>26</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(n≤26)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">6</span><span class="mclose">)</span></span></span></span>。</p>
+<p><strong>后面n行，每一个字母为节点，后两个字母分别为其左右儿子。</strong></p>
+<p><strong>空节点用星号表示。</strong></p>
+<p>这样似乎就明了了：二叉树好像是通过这几种形式输入的：</p>
+<ul>
+<li>父亲 左儿子 右儿子</li>
+<li>父亲 儿子 星号</li>
+<li>父亲 星号 星号</li>
+</ul>
+<h2 id="输出格式">输出格式</h2>
+<p><strong>前序排列的二叉树。</strong></p>
+<p>既然要求这样输出，那么我们就可以寻找一下前序排列的规律：</p>
+<p>在只有一个节点的情况下，这棵树长这样：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/08/22/mwEKi9.png" alt="1"></figure>
+<p>它的前序排列自然是这样： <code>A</code></p>
+<p>如果有了两个节点，则会变成这样：</p>
+<figure data-type="image" tabindex="2"><img src="https://s2.ax1x.com/2019/08/22/mwEma4.png" alt="2"></figure>
+<p>前序排列为： <code>AB</code></p>
+<p>有了三个节点，会变成这样：</p>
+<figure data-type="image" tabindex="3"><img src="https://s2.ax1x.com/2019/08/22/mwEnIJ.png" alt="3"></figure>
+<p>前序排列为： <code>ABC</code></p>
+<p>似乎还没有看出什么端倪。不过，让我们继续向下发展这棵二叉树：</p>
+<figure data-type="image" tabindex="4"><img src="https://s2.ax1x.com/2019/08/22/mwEeZF.png" alt="4"></figure>
+<p>前序排列： <code>ABDC</code></p>
+<p>等等，怎么……顺序发生了一些变化？不再是依字母表顺序排列了？</p>
+<p>再来！</p>
+<figure data-type="image" tabindex="5"><img src="https://s2.ax1x.com/2019/08/22/mwEMGR.png" alt="5"></figure>
+<p>前序排列： <code>ABDEC</code></p>
+<p>原来规律是这样！</p>
+<p><strong>每次第一个输入的序列（根节点及其子节点） 直接被加入前序中；</strong></p>
+<p><strong>后续有两种儿子的，则忽略 “ 星号 ” 字符，将左儿子插入序列中其父亲节点后的一位，将右儿子插入序列中其左儿子节点的后一位。</strong></p>
+<p><strong>仅有一种儿子的（表现形式为 父亲 儿子 星号 ），就简单将其儿子插入父亲节点的后一位即可。</strong></p>
+<p><strong>找到父亲节点或左儿子的方法很简单：通过 <code>string</code> 类的这个成员函数即可完成：</strong></p>
+<pre><code class="language-cpp">int find(string s);
+</code></pre>
+<p>这个成员函数的作用是<strong>返回子字符串s在原串中的位置</strong>。如果找不到，则返回：</p>
+<pre><code class="language-cpp">string::npos
+</code></pre>
+<p>这个常量。（这个常量在不同的编译器中，有不同的值，虽然有些时候是 <code>static_cast&lt;size_type&gt;(-1)</code> ，但是可能其他时候会出差错(比如变成size_t的最大值,4294967295)。因此，我们在这里不写-1，而写这个常量更为保险。如果想继续深入了解这个用于标记<code>find</code>失败的常量，可以参考<a href="https://blog.csdn.net/JIEJINQUANIL/article/details/51789682">其他巨佬的博客</a>）</p>
+<p>然后，我们再使用这个类里面的另一个函数 <code>insert</code> 向指定的位置插入代表子节点的字符：</p>
+<pre><code class="language-cpp">void insert(int position,int length,string s);
+</code></pre>
+<p>它的作用是 <strong>从字符串中的第position个位置开始，插入length个字符，这些字符来源于s</strong> 。</p>
+<p>这样，我们就可以得到这题的代码！</p>
+<h3 id="代码如下">代码如下：</h3>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+string t;
+int n;
+string s;
+int main(){
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++){
+		cin&gt;&gt;s;
+		if(t.find(s[0])==string::npos){t=s;continue;}
+		if(s[1]!='*') t.insert(t.find(s[0])+1,1,s[1]);
+		if(s[2]!='*') t.insert(t.find(s[1])+1,1,s[2]);
+	}
+	cout&lt;&lt;t&lt;&lt;endl;
+}
+</code></pre>
+<h5 id="你觉得一次就能ac了">你觉得一次就能AC了？</h5>
+<h4 id="并不是">并不是！</h4>
+<h3 id="实际上">实际上！</h3>
+<h2 id="这个只有20分">这个只有20分！！！</h2>
+<figure data-type="image" tabindex="6"><img src="https://s2.ax1x.com/2019/08/22/mwmhAU.png" alt="x1"></figure>
+<p>为什么？为什么只有20分？</p>
+<p>很简单。下载数据后，你会发现这是因为这份代码没有考虑到这种数据的存在：</p>
+<p><strong>“指示根节点及其子节点的第一行就含星号 ！！！”</strong></p>
+<p>这种数据会带来什么影响？</p>
+<p><strong>你的程序将把“ 星号 ”当作一种子节点！！！</strong></p>
+<p>于是，之后的输出就完全混乱了。毕竟，由于第一行是特判全部输入，“ 星号 ”这样的鬼东西都被插进了字符串里面。</p>
+<p>不过这样一来，你就找到了修改的思路：</p>
+<p>使用 <code>string</code> 类的这个成员函数： <code>erase</code> ！</p>
+<pre><code class="language-cpp">void erase(string::iterator start,string::iterator end);
+</code></pre>
+<p>直接运用它，产生的作用其实是消除<strong>一个字符串中的一段连续的长度</strong>。那么怎么达到消除<strong>全部指定字符</strong>（此处为标明了根节点及其儿子的字符串中的 “ * ” ）呢？</p>
+<p>使用 <code>algorithm</code> 库中的 <code>remove</code> 函数！</p>
+<pre><code class="language-cpp">iterator remove(iterator start,iterator end,auto c);
+</code></pre>
+<p>有了这个，我们就能够不断地清除字符串中的目标字符，并不断返回指向其未被删除元素的下一个元素的迭代器，从而使用erase函数清除它。</p>
+<p>于是，我们得到了用于<strong>清除一段字符串中全部指定字符</strong>的完整代码：</p>
+<pre><code class="language-cpp">erase(remove(string::iterator start,string::iterator end,char c),string::iterator end);
+</code></pre>
+<p>那么，新的代码也呼之欲出了！</p>
+<h3 id="新代码如下">新代码如下：</h3>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+string t;
+int n;
+string s;
+int main(){
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++){
+		cin&gt;&gt;s;
+		if(t.find(s[0])==string::npos){
+			s.erase(remove(s.begin(),s.end(),'*'),s.end());
+			t=s;
+			continue;
+		}
+		if(s[1]!='*') t.insert(t.find(s[0])+1,1,s[1]);
+		if(s[2]!='*') t.insert(t.find(s[1])+1,1,s[2]);
+	}
+	cout&lt;&lt;t&lt;&lt;endl;
+}
+</code></pre>
+<h5 id="你又觉得这次就能ac了">你又觉得这次就能AC了？</h5>
+<h4 id="并不是-2">并不是！</h4>
+<h3 id="其实">其实！</h3>
+<h2 id="这个只有30分">这个只有30分！！！</h2>
+<figure data-type="image" tabindex="7"><img src="https://s2.ax1x.com/2019/08/22/mwm4NF.png" alt="x2"></figure>
+<p><s>才多过了一个点啊……</s></p>
+<p>这次又是为什么？？！</p>
+<p>下载数据后发现，这次是栽在了一种之前<strong>从未考虑到的输入情况</strong>上。</p>
+<p>这次导致出错的输入数据为：</p>
+<ul>
+<li>父亲 星号 儿子</li>
+</ul>
+<p>……</p>
+<p><s>这也太坑了吧</s></p>
+<p>我们为了AC此题，只能继续努力了……</p>
+<p>这次更改并不需要什么新的技术，只需要添加几个判断即可绕过大坑。</p>
+<h3 id="代码如下-2">代码如下：</h3>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+string t;
+int n;
+string s;
+int main(){
+	cin&gt;&gt;n;
+	for(int i=0;i&lt;n;i++){
+		cin&gt;&gt;s;
+		if(t.find(s[0])==string::npos){
+			s.erase(remove(s.begin(),s.end(),'*'),s.end());
+			t=s;
+			continue;
+		}
+		if(s[1]!='*'&amp;&amp;s[2]!='*'){
+			t.insert(t.find(s[0])+1,1,s[1]);
+			t.insert(t.find(s[1])+1,1,s[2]);
+		}
+		if(s[1]=='*'&amp;&amp;s[2]!='*'){
+			t.insert(t.find(s[0])+1,1,s[2]);
+		}
+		if(s[1]!='*'&amp;&amp;s[2]=='*'){
+			t.insert(t.find(s[0])+1,1,s[1]);
+		}
+	}
+	cout&lt;&lt;t&lt;&lt;endl;
+}
+</code></pre>
+<p>看着屏幕上蓝色方块上转着白色的圈圈，你想到：之前（指20分变30分那次）做了那么大的修改，才多过了一个点，想必这个算法还存在很多问题吧……难不成<strong>还得再重写几次？？！</strong></p>
+<p>然后……</p>
+<figure data-type="image" tabindex="8"><img src="https://s2.ax1x.com/2019/08/22/mwK3hF.png" alt="v"></figure>
+<p>？？？？？？</p>
+<h2 id="过了就过了">过了？？！就过了？？？？？！</h2>
+<p>历经千辛万苦，终于过了啊……<s>（接受现实）</s></p>
+<p><s>bilibili干杯！（好像并没有什么不对）</s></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[终极压行技巧]]></title>
+        <id>https://malachiten.github.io/post/zhong-ji-ya-xing-ji-qiao</id>
+        <link href="https://malachiten.github.io/post/zhong-ji-ya-xing-ji-qiao">
+        </link>
+        <updated>2019-09-27T02:07:19.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="终极压行技巧">终极压行技巧</h1>
+<p>看我做Luogu P1914 小书童——密码的可能是最短的AC代码！</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+int main(){
+	int n; std::string str;
+	std::cin&gt;&gt;n&gt;&gt;str;
+	for(int i=0;i&lt;str.length();i++) std::cout&lt;&lt;(char)(str[i]+n&gt;122?str[i]+n-26:str[i]+n);
+}
+</code></pre>
+<p>其实是采用了这些方法来缩减长度：</p>
+<p>1.采用**略去using namespace std;**的方法减去一行长度。代价是使用名称空间<code>std</code>中的函数或对象时必须添加<code>std::</code>前缀。不过本方法的用处在压行，对于在一行中增加长度的代价，可以忽略不计。</p>
+<p>2.使用<strong>三目运算符</strong>在一行中实现</p>
+<pre><code class="language-cpp">if(/*the value of the expression isn't False(0)*/){
+    //do something
+}else{
+    //do something
+}
+</code></pre>
+<p>的效果，从而将三行压成一行。</p>
+<p>3.从C++0x(C++11)标准开始，主函数末尾即可略去<code>return 0;</code>。采用这一特性，可以省掉一行。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[STL容器 set 实用性说明]]></title>
+        <id>https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming</id>
+        <link href="https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming">
+        </link>
+        <updated>2019-09-27T02:06:18.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="stl容器-set-实用性说明">STL容器 set 实用性说明</h1>
+<p><strong>set</strong>是一种 <em>STL</em> 中的容器，采用<strong>set&lt;type_of_set&gt; name_of_set</strong>的方式进行声明。可以使用迭代器( <em>iterator</em> )对其中的元素进行指示，并使用其成员函数进行操作。<strong>set</strong>的性质是： <em>自动排序</em> 、 <em>自动去重</em> 。<strong>set</strong>的本质是“<strong>集合</strong>”，而集合具有确定性和互异性。</p>
+<p>据各类资料描述，<strong>set</strong>的底层实现是一种名为红黑树的二叉搜索树，但是其实现原理及各项操作之复杂度不处于本文描述范围内，此处只是顺带一提。</p>
+<p><strong>set</strong>可以采用这些函数进行操作（只是我觉得很实用的函数，并不是全部）：</p>
+<pre><code class="language-cpp">set&lt;type_of_set&gt;::iterator begin()
+</code></pre>
+<p>返回一个指向<strong>set</strong>开头的迭代器</p>
+<pre><code class="language-cpp">set&lt;type_of_set&gt;::iterator end()
+</code></pre>
+<p>返回一个指向<strong>set</strong>结尾的迭代器</p>
+<pre><code class="language-cpp">void clear()
+</code></pre>
+<p>清除<strong>set</strong>中的所有元素</p>
+<pre><code class="language-cpp">int size()
+</code></pre>
+<p>返回<strong>set</strong>中元素的个数。</p>
+<pre><code class="language-cpp">int max_size()
+</code></pre>
+<p>返回该<strong>set</strong>能够容纳的最大元素总数。</p>
+<pre><code class="language-cpp">void insert(type_of_set element)
+</code></pre>
+<p>将 <em>element</em> 插入<strong>set</strong>中适合的位置</p>
+<pre><code class="language-cpp">bool empty()
+</code></pre>
+<p>取该<strong>set</strong>是否为空。</p>
+<p>比较特殊的是</p>
+<pre><code class="language-cpp">void erase()
+</code></pre>
+<p>这个函数。</p>
+<p>这个函数被重载了三次：</p>
+<pre><code class="language-cpp">void erase(set&lt;type_of_set&gt;::iterator it)
+void erase(set&lt;type_of_set&gt;::iterator first,set&lt;type_of_set&gt;::iterator second)
+void erase(type_of_set key_value)
+</code></pre>
+<p>第一种用法：删除<strong>set</strong>中迭代器 it 指向的元素</p>
+<p>第二种用法：删除<strong>set</strong>中迭代器 first 到 end 之间的全部元素。</p>
+<p>第三种用法：删除<strong>set</strong>中的键值 key_value。</p>
+<p>有时，我们也需要访问<strong>set</strong>中的某些元素。然而，<strong>set</strong>并没有重载[]运算符，导致了我们无法进行随机访问。这带来了极大的困扰。不过我们还是可以进行顺序访问。</p>
+<p>访问时采用这种方式：</p>
+<p>先声明三个迭代器。一个名为 <em>it_begin</em> 指向开头，一个名为 <em>it_end</em> 指向结尾，一个名为 <em>it</em> 备用。<br>
+我们使用一个for循环进行访问。循环这样写：</p>
+<pre><code class="language-cpp">for(it=it_begin;it!=it_end;it++){
+    type_of_set temp=*it;
+    //do something
+}
+</code></pre>
+<p>就像这样，你就可以完成对<strong>set</strong>中每个元素的访问了。是不是敲简单嘤嘤嘤</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[PB_DS容器 trie 实用性说明]]></title>
+        <id>https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming</id>
+        <link href="https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming">
+        </link>
+        <updated>2019-09-27T02:05:13.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="pb_ds容器-trie-实用性说明">PB_DS容器 trie 实用性说明</h1>
+<p>众所周知，C++提供的 <em>STL</em> (标准模板库)具有大量的预制模板，非常优秀。 PB_DS 可能了解的人比较少，但是其也是一个模板库，而且具有更加强大深入的功能。其中，<strong>trie树</strong>这种平时背诵手打模板才能打出来的高级数据结构，也被包括在其中。</p>
+<p>让我们切入正题。首先，要使用 PB_DS 的容器，需要先加上这一行预处理器命令：</p>
+<pre><code class="language-cpp">#include &lt;ext/pb_ds/assoc_container.hpp&gt;
+</code></pre>
+<p>然后包含<strong>trie树</strong>模板：</p>
+<pre><code class="language-cpp">#include&lt;ext/pb_ds/trie_policy.hpp&gt;
+</code></pre>
+<p>而且别忘了使用PB_DS的名称空间！</p>
+<pre><code class="language-cpp">using namespace __gnu_pbds;
+</code></pre>
+<p>这样，就能够使用这个模板了。</p>
+<p>不过，让我们看到一般我们使用的直接声明一棵<strong>trie树</strong>的方式：</p>
+<pre><code class="language-cpp">trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tre;
+</code></pre>
+<p>每声明一棵<strong>trie树</strong>都要进行如此复杂的操作！这是令人望而生畏的。<br>
+可是，我们又想到，以前曾经写过这一句来缩减使用 <em>long long</em> 带来的代码长度：</p>
+<pre><code class="language-cpp">typedef long long ll;
+</code></pre>
+<p>于是，我们想出了这种操作：</p>
+<pre><code class="language-cpp">typedef trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tr;
+tr tre;
+</code></pre>
+<p>通过将复杂的声明定义缩减为一个自定义类型，我们成功地缩减了代码的长度及书写的复杂度。</p>
+<p>既然已经定义了<strong>trie树</strong>类型的<strong>tre</strong>，那么我们能对它进行什么实用的操作呢？</p>
+<p>答案是：<strong>insert</strong>，<strong>erase</strong>，<strong>join</strong>，以及<strong>pair</strong>。</p>
+<pre><code class="language-cpp"> void insert(string t);
+</code></pre>
+<p>这个操作用于向一棵<strong>trie树</strong>中插入一个字符串 <em>t</em> 。</p>
+<pre><code class="language-cpp">void erase(string t);
+</code></pre>
+<p>这个操作用于从一棵<strong>trie树</strong>中删去一个字符串 <em>t</em> 。</p>
+<pre><code class="language-cpp">void join(tr b);
+</code></pre>
+<p>这个操作用于将一棵<strong>trie树</strong> <em>b</em> 并入当前<strong>trie树</strong>。</p>
+<p>而<strong>pair</strong>的使用就较为复杂。</p>
+<p>要使用一个<strong>pair</strong>，首先我们需要声明一个迭代器（ <em>iterator</em> ）：</p>
+<pre><code class="language-cpp">pair&lt;tr::iterator,tr::iterator&gt; area=tre.prefix_range(string x);
+</code></pre>
+<p>这意味着定义了一个将要<strong>依次</strong>指向<strong>每个</strong>以字符串 <em>x</em> 为前缀的字符串的迭代器。</p>
+<p>然后，我们就可以利用这个迭代器读取字典树中以字符串 <em>x</em> 作为前缀的<strong>所有</strong>字符串：</p>
+<pre><code class="language-cpp">for(tr::iterator it=area.first;it!=area.second;it++){
+	cout&lt;&lt;*it&lt;&lt;' '&lt;&lt;endl;
+} 
+</code></pre>
+<p>这就是关于 PB_DS 容器<strong>trie树</strong>的实用操作了。是否感觉有些许不足？是的。<strong>系统</strong>容器的<strong>trie树</strong>虽然<strong>看上去</strong>完成了一个强大的高级数据结构，但是其<strong>本身并不强大</strong>。由于只支持这些模板操作，它难以作为解决问题的利器。不过，由于模板书写的便捷性，只要是它能够出场的时刻，它一定不会辜负众望。</p>
+<p>最后附一个支持PB_DS中trie树容器的所有操作的DEMO代码：</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+#include &lt;ext/pb_ds/assoc_container.hpp&gt;
+#include&lt;ext/pb_ds/trie_policy.hpp&gt;
+using namespace std;
+using namespace __gnu_pbds;
+int n,m;
+string s;
+typedef trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tr;
+tr tre;
+int main(){
+	int a;
+	cout&lt;&lt;&quot;1:INSERT A STRING TO THE TRIE TREE\n2:PRINT ALL STRINGS WITH A PREFIX IN THE TRIE TREE\n3:DELETE A STRING IN THE TRIE TREE\n4:EXIT&quot;&lt;&lt;endl;
+	while(1){
+		cin&gt;&gt;a;
+		switch(a){
+			case 1:{
+				cout&lt;&lt;&quot;INSERT THIS STRING TO THE TRIE TREE:&quot;;
+				cin&gt;&gt;s;
+				tre.insert(s);
+				break;
+			}
+			case 2:{
+				cout&lt;&lt;&quot;PRINT ALL STRINGS WITH THE PREFIX IN THE TRIE TREE:&quot;;
+				cin&gt;&gt;s;
+				pair&lt;tr::iterator,tr::iterator&gt; range=tre.prefix_range(s);
+				for(tr::iterator it=range.first;it!=range.second;it++){
+					cout&lt;&lt;*it&lt;&lt;' '&lt;&lt;endl;
+				}
+				break;
+			}
+			case 3:{
+				cout&lt;&lt;&quot;DELETE THE STRING IN THE TRIE TREE:&quot;; 
+				cin&gt;&gt;s;
+				tre.erase(s);
+				break;
+			}
+			case 4:{
+				cout&lt;&lt;&quot;EXIT&quot;;
+				goto end;
+				break;
+			}
+		}
+	}
+	end:
+	return 0;
+}
+</code></pre>
+<p>运行结果如图：<br>
+<img src="https://s2.ax1x.com/2019/08/22/mdNk36.png" alt="运行截图"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C++二分查找函数实用性说明]]></title>
+        <id>https://malachiten.github.io/post/cer-fen-cha-zhao-han-shu-shi-yong-xing-shuo-ming</id>
+        <link href="https://malachiten.github.io/post/cer-fen-cha-zhao-han-shu-shi-yong-xing-shuo-ming">
+        </link>
+        <updated>2019-09-27T02:04:43.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="c二分查找函数实用性说明">C++二分查找函数实用性说明</h1>
+<p>平时我们需要“快速查找”的值，我们一般会采用二分查找来找到。二分查找的代码一般如下：</p>
+<pre><code class="language-cpp">while(l&lt;=r){
+    mid=(l+r)/2;
+    if(b[mid]&lt;=a[i]){
+        l=mid+1;
+        continue;
+    }
+    r=mid-1;
+}
+</code></pre>
+<p>这导致我们必须背模板，不但难背而且用着还容易出错。</p>
+<p>那么是否存在简单易行，不容易出错而且等效于手写的二分查找的工具呢？</p>
+<p>这样的工具是存在的。而且我们可以确切地指出，它们存在于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>T</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">STL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">L</span></span></span></span>算法库 <code>&lt;algorithm&gt;</code> 中。</p>
+<p>切入正题。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>T</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">STL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">L</span></span></span></span>为我们提供了三种不同的二分查找函数，它们分别是：</p>
+<ul>
+<li>
+<p>返回要查找的值<strong>是否存在</strong>的函数<strong>binary_search</strong>。</p>
+</li>
+<li>
+<p>返回第一个<strong>大于或等于</strong>要查找的值的<strong>位置</strong>的函数<strong>lower_bound</strong>。</p>
+</li>
+<li>
+<p>返回第一个<strong>大于</strong>要查找的值的<strong>位置</strong>的函数<strong>upper_bound</strong>。</p>
+</li>
+</ul>
+<p>那么我们应该怎么使用它们呢？</p>
+<pre><code class="language-cpp">bool binary_search(Type[]+int pos_of_begin,Type[]+int pos_of_end,val);
+</code></pre>
+<p>这是<strong>binary_search</strong>的使用方法——传入三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> 。<strong>它将返回一个布尔值，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>代表 <em>val</em> 存在于数组之中，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>则代表其不存在。</strong></p>
+<pre><code class="language-cpp">ADDR lower_bound(Type[]+int pos_of_begin,Type[]+int pos_of_end,val);
+</code></pre>
+<p>这就是<strong>lower_bound</strong>的使用方法了——把三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> ，全部传进去！它将返回一个内存地址，代表着该数组中的值 <em>val</em> 存在在内存中的位置。若找不到这个值，就会返回这个数组的末尾 <em>last</em> 在内存中位置增加1个该数据类型长度的地址！<strong>小心，如果不特判一下就直接调用的话，你就要越界了!</strong></p>
+<pre><code class="language-cpp">ADDR upper_bound(Type[]+int pos_of_begin,Type[]+int pos_of_end,val);
+</code></pre>
+<p>这是<strong>lower_bound</strong>的使用方法——跟之前那个完全一样地传入三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> 。它返回一个内存地址，还是数组中值 <em>val</em> 存在于内存中的位置。若找不到这个值，这个函数还是会返回这个数组的末尾 <em>last</em> 的值+1单位长度的地址！<strong>跟之前一样，如果你不特判这个情况，也会越界的啊!一定要注意！</strong></p>
+<p>跟往常一样……由于这个是实用性说明，所以……这些函数的复杂度证明就不存在了哦<sub>（</sub><sub>其实我也没有证过，不过……**既然是$STL$操作的话……暂且认为它们的复杂度全都是$O(\log_2n)$的吧**</sub>溜啦！~~）</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GCC 全部编译器优化开关启动命令]]></title>
+        <id>https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling</id>
+        <link href="https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling">
+        </link>
+        <updated>2019-09-27T02:03:24.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="gcc-全部编译器优化开关启动命令">GCC 全部编译器优化开关启动命令</h1>
+<p>有时，洛谷上的一些题，我们的算法并不能满分通过。一些优化之差，就导致一道题迟迟无法AC。对此，可以在我们的程序前面加上这些预处理器命令：</p>
+<pre><code class="language-cpp">#define fastcall __attribute__((optimize(&quot;-O3&quot;)))
+#pragma GCC optimize(2)
+#pragma GCC optimize(3)
+#pragma GCC optimize(&quot;Ofast&quot;)
+#pragma GCC optimize(&quot;inline&quot;)
+#pragma GCC optimize(&quot;-fgcse&quot;)
+#pragma GCC optimize(&quot;-fgcse-lm&quot;)
+#pragma GCC optimize(&quot;-fipa-sra&quot;)
+#pragma GCC optimize(&quot;-ftree-pre&quot;)
+#pragma GCC optimize(&quot;-ftree-vrp&quot;)
+#pragma GCC optimize(&quot;-fpeephole2&quot;)
+#pragma GCC optimize(&quot;-ffast-math&quot;)
+#pragma GCC optimize(&quot;-fsched-spec&quot;)
+#pragma GCC optimize(&quot;unroll-loops&quot;)
+#pragma GCC optimize(&quot;-falign-jumps&quot;)
+#pragma GCC optimize(&quot;-falign-loops&quot;)
+#pragma GCC optimize(&quot;-falign-labels&quot;)
+#pragma GCC optimize(&quot;-fdevirtualize&quot;)
+#pragma GCC optimize(&quot;-fcaller-saves&quot;)
+#pragma GCC optimize(&quot;-fcrossjumping&quot;)
+#pragma GCC optimize(&quot;-fthread-jumps&quot;)
+#pragma GCC optimize(&quot;-funroll-loops&quot;)
+#pragma GCC optimize(&quot;-freorder-blocks&quot;)
+#pragma GCC optimize(&quot;-fschedule-insns&quot;)
+#pragma GCC optimize(&quot;inline-functions&quot;)
+#pragma GCC optimize(&quot;-ftree-tail-merge&quot;)
+#pragma GCC optimize(&quot;-fschedule-insns2&quot;)
+#pragma GCC optimize(&quot;-fstrict-aliasing&quot;)
+#pragma GCC optimize(&quot;-falign-functions&quot;)
+#pragma GCC optimize(&quot;-fcse-follow-jumps&quot;)
+#pragma GCC optimize(&quot;-fsched-interblock&quot;)
+#pragma GCC optimize(&quot;-fpartial-inlining&quot;)
+#pragma GCC optimize(&quot;no-stack-protector&quot;)
+#pragma GCC optimize(&quot;-freorder-functions&quot;)
+#pragma GCC optimize(&quot;-findirect-inlining&quot;)
+#pragma GCC optimize(&quot;-fhoist-adjacent-loads&quot;)
+#pragma GCC optimize(&quot;-frerun-cse-after-loop&quot;)
+#pragma GCC optimize(&quot;inline-small-functions&quot;)
+#pragma GCC optimize(&quot;-finline-small-functions&quot;)
+#pragma GCC optimize(&quot;-ftree-switch-conversion&quot;)
+#pragma GCC optimize(&quot;-foptimize-sibling-calls&quot;)
+#pragma GCC optimize(&quot;-fexpensive-optimizations&quot;)
+#pragma GCC optimize(&quot;inline-functions-called-once&quot;)
+#pragma GCC optimize(&quot;-fdelete-null-pointer-checks&quot;)
+</code></pre>
+<p>从而开启全部优化开关，亲测将50分TLE变成了100分AC。</p>
+<p>不过……</p>
+<h2 id="警告在noip竞赛中使用任何编译命令可能导致complie-error并且无法申诉因此不要尝试在正式竞赛中使用这些编译命令本技巧仅限平时使用">警告：在NOIp竞赛中使用任何编译命令可能导致Complie Error，并且无法申诉！因此，不要尝试在正式竞赛中使用这些编译命令！本技巧仅限平时使用！！！</h2>
 ]]></content>
     </entry>
 </feed>

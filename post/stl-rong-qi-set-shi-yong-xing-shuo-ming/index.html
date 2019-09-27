@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于我 | Malachite</title>
+<title>STL容器 set 实用性说明 | Malachite</title>
 <meta name="description" content="夕焼けの中に吸い込まれて消えてった">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,29 +98,69 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于我</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">STL容器 set 实用性说明</h2>
+            <div class="post-date">2019-09-27</div>
             
             <div class="post-content">
-              <h1 id="关于">关于</h1>
-<p>欢迎来到我的小站呀，很高兴遇见你!</p>
-<h2 id="关于本站">关于本站</h2>
-<p>本站是<strong>Malachite</strong>尝试建立的用于替代我的<a href="https://malachite.blog.luogu.org/">洛谷博客</a>的技术博客。</p>
-<h2 id="博主是谁">博主是谁</h2>
-<p><s>Malachite是可爱的女孩子！</s></p>
-<h2 id="兴趣爱好">兴趣爱好</h2>
-<p><s>逼群主女装、刷洛谷</s></p>
-<p>其实听歌看番都很喜欢的~</p>
-<p>吹爆<a href="https://www.bilibili.com/bangumi/media/md790/">交响诗篇</a>，<a href="https://www.bilibili.com/bangumi/media/md1635">新世纪福音战士</a>还有<a href="https://www.bilibili.com/bangumi/media/md6304">骑士&amp;魔法</a>和<a href="https://www.bilibili.com/bangumi/media/md2740">重装武器</a>等超好看且不需要大会员的机战番！</p>
-<p>一个很像编程语言的魔塔大陆造语<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>y</mi><mi>m</mi><mi>m</mi><mi>n</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Hymmnos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">m</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>的<a href="https://conlang.fandom.com/wiki/Hymmnos">介绍(英文)</a>、中文贴吧<a href="https://tieba.baidu.com/f?kw=hymmnos&amp;ie=utf-8&amp;tab=main">hymmnos吧<br>
-</a>以及这个语言译成英语日语的网站<a href="http://hymmnoserver.uguu.ca/browse.php?page=a">Hymmnoserver</a>,Was yea ra chs hymmnos mea/.</p>
-<h2 id="联系我呀">联系我呀</h2>
-<p>follow我的<a href="https://github.com/MalachiteN">Github</a>或<a href="https://www.luogu.org/space/show?uid=228845">洛谷</a></p>
-<p><strong>OR</strong></p>
-<p>QQ:2698889729(测试平台)/1306515152(生产平台)</p>
+              <h1 id="stl容器-set-实用性说明">STL容器 set 实用性说明</h1>
+<p><strong>set</strong>是一种 <em>STL</em> 中的容器，采用<strong>set&lt;type_of_set&gt; name_of_set</strong>的方式进行声明。可以使用迭代器( <em>iterator</em> )对其中的元素进行指示，并使用其成员函数进行操作。<strong>set</strong>的性质是： <em>自动排序</em> 、 <em>自动去重</em> 。<strong>set</strong>的本质是“<strong>集合</strong>”，而集合具有确定性和互异性。</p>
+<p>据各类资料描述，<strong>set</strong>的底层实现是一种名为红黑树的二叉搜索树，但是其实现原理及各项操作之复杂度不处于本文描述范围内，此处只是顺带一提。</p>
+<p><strong>set</strong>可以采用这些函数进行操作（只是我觉得很实用的函数，并不是全部）：</p>
+<pre><code class="language-cpp">set&lt;type_of_set&gt;::iterator begin()
+</code></pre>
+<p>返回一个指向<strong>set</strong>开头的迭代器</p>
+<pre><code class="language-cpp">set&lt;type_of_set&gt;::iterator end()
+</code></pre>
+<p>返回一个指向<strong>set</strong>结尾的迭代器</p>
+<pre><code class="language-cpp">void clear()
+</code></pre>
+<p>清除<strong>set</strong>中的所有元素</p>
+<pre><code class="language-cpp">int size()
+</code></pre>
+<p>返回<strong>set</strong>中元素的个数。</p>
+<pre><code class="language-cpp">int max_size()
+</code></pre>
+<p>返回该<strong>set</strong>能够容纳的最大元素总数。</p>
+<pre><code class="language-cpp">void insert(type_of_set element)
+</code></pre>
+<p>将 <em>element</em> 插入<strong>set</strong>中适合的位置</p>
+<pre><code class="language-cpp">bool empty()
+</code></pre>
+<p>取该<strong>set</strong>是否为空。</p>
+<p>比较特殊的是</p>
+<pre><code class="language-cpp">void erase()
+</code></pre>
+<p>这个函数。</p>
+<p>这个函数被重载了三次：</p>
+<pre><code class="language-cpp">void erase(set&lt;type_of_set&gt;::iterator it)
+void erase(set&lt;type_of_set&gt;::iterator first,set&lt;type_of_set&gt;::iterator second)
+void erase(type_of_set key_value)
+</code></pre>
+<p>第一种用法：删除<strong>set</strong>中迭代器 it 指向的元素</p>
+<p>第二种用法：删除<strong>set</strong>中迭代器 first 到 end 之间的全部元素。</p>
+<p>第三种用法：删除<strong>set</strong>中的键值 key_value。</p>
+<p>有时，我们也需要访问<strong>set</strong>中的某些元素。然而，<strong>set</strong>并没有重载[]运算符，导致了我们无法进行随机访问。这带来了极大的困扰。不过我们还是可以进行顺序访问。</p>
+<p>访问时采用这种方式：</p>
+<p>先声明三个迭代器。一个名为 <em>it_begin</em> 指向开头，一个名为 <em>it_end</em> 指向结尾，一个名为 <em>it</em> 备用。<br>
+我们使用一个for循环进行访问。循环这样写：</p>
+<pre><code class="language-cpp">for(it=it_begin;it!=it_end;it++){
+    type_of_set temp=*it;
+    //do something
+}
+</code></pre>
+<p>就像这样，你就可以完成对<strong>set</strong>中每个元素的访问了。是不是敲简单嘤嘤嘤</p>
 
             </div>
             
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming">
+                  <h3 class="post-title">
+                    PB_DS容器 trie 实用性说明
+                  </h3>
+                </a>
+              </div>
             
 
             

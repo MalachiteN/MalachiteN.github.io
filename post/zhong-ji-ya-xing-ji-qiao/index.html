@@ -3,16 +3,22 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Gridea | Malachite</title>
+<title>终极压行技巧 | Malachite</title>
 <meta name="description" content="夕焼けの中に吸い込まれて消えてった">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569548691427">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569551054422">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -30,7 +36,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://malachiten.github.io">
-        <img src="https://malachiten.github.io/images/avatar.png?v=1569548691427" class="site-logo">
+        <img src="https://malachiten.github.io/images/avatar.png?v=1569551054422" class="site-logo">
         <h1 class="site-title">Malachite</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -91,35 +97,54 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: Gridea</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://malachiten.github.io/post/hello-gridea">
-                  <h2 class="post-title">Hello Gridea</h2>
-                </a>
-                <div class="post-date">
-                  2018-12-12
-                </div>
-                <div class="post-abstract">
-                  <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+          <div class="post-detail">
+            <h2 class="post-title">终极压行技巧</h2>
+            <div class="post-date">2019-09-27</div>
+            
+            <div class="post-content">
+              <h1 id="终极压行技巧">终极压行技巧</h1>
+<p>看我做Luogu P1914 小书童——密码的可能是最短的AC代码！</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+int main(){
+	int n; std::string str;
+	std::cin&gt;&gt;n&gt;&gt;str;
+	for(int i=0;i&lt;str.length();i++) std::cout&lt;&lt;(char)(str[i]+n&gt;122?str[i]+n-26:str[i]+n);
+}
+</code></pre>
+<p>其实是采用了这些方法来缩减长度：</p>
+<p>1.采用**略去using namespace std;**的方法减去一行长度。代价是使用名称空间<code>std</code>中的函数或对象时必须添加<code>std::</code>前缀。不过本方法的用处在压行，对于在一行中增加长度的代价，可以忽略不计。</p>
+<p>2.使用<strong>三目运算符</strong>在一行中实现</p>
+<pre><code class="language-cpp">if(/*the value of the expression isn't False(0)*/){
+    //do something
+}else{
+    //do something
+}
+</code></pre>
+<p>的效果，从而将三行压成一行。</p>
+<p>3.从C++0x(C++11)标准开始，主函数末尾即可略去<code>return 0;</code>。采用这一特性，可以省掉一行。</p>
 
-                </div>
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming">
+                  <h3 class="post-title">
+                    STL容器 set 实用性说明
+                  </h3>
+                </a>
               </div>
-              
-                <a class="right" href="https://malachiten.github.io/post/hello-gridea">
-                  <div class="feature-container" style="background-image: url('https://malachiten.github.io/post-images/hello-gridea.png')">
-                  </div>
-                </a>
-              
-            </article>
-          
+            
 
-          <div class="pagination-container">
-  
-  
-</div>
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
 
         </div>
       </div>
@@ -141,6 +166,29 @@ var app = new Vue({
 })
 
 </script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '11823f499e13d196c57b',
+        clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
+        repo: 'MalachiteN.github.io',
+        owner: 'MalachiteN',
+        admin: ['MalachiteN'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 

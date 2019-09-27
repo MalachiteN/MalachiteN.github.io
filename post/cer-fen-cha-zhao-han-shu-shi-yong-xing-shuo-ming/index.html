@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>C++二分查找函数实用性说明 | Malachite</title>
+<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569551054422">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://malachiten.github.io">
+        <img src="https://malachiten.github.io/images/avatar.png?v=1569551054422" class="site-logo">
+        <h1 class="site-title">Malachite</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      夕焼けの中に吸い込まれて消えてった
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">C++二分查找函数实用性说明</h2>
+            <div class="post-date">2019-09-27</div>
+            
+            <div class="post-content">
+              <h1 id="c二分查找函数实用性说明">C++二分查找函数实用性说明</h1>
+<p>平时我们需要“快速查找”的值，我们一般会采用二分查找来找到。二分查找的代码一般如下：</p>
+<pre><code class="language-cpp">while(l&lt;=r){
+    mid=(l+r)/2;
+    if(b[mid]&lt;=a[i]){
+        l=mid+1;
+        continue;
+    }
+    r=mid-1;
+}
+</code></pre>
+<p>这导致我们必须背模板，不但难背而且用着还容易出错。</p>
+<p>那么是否存在简单易行，不容易出错而且等效于手写的二分查找的工具呢？</p>
+<p>这样的工具是存在的。而且我们可以确切地指出，它们存在于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>T</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">STL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">L</span></span></span></span>算法库 <code>&lt;algorithm&gt;</code> 中。</p>
+<p>切入正题。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>T</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">STL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">L</span></span></span></span>为我们提供了三种不同的二分查找函数，它们分别是：</p>
+<ul>
+<li>
+<p>返回要查找的值<strong>是否存在</strong>的函数<strong>binary_search</strong>。</p>
+</li>
+<li>
+<p>返回第一个<strong>大于或等于</strong>要查找的值的<strong>位置</strong>的函数<strong>lower_bound</strong>。</p>
+</li>
+<li>
+<p>返回第一个<strong>大于</strong>要查找的值的<strong>位置</strong>的函数<strong>upper_bound</strong>。</p>
+</li>
+</ul>
+<p>那么我们应该怎么使用它们呢？</p>
+<pre><code class="language-cpp">bool binary_search(Type[]+int pos_of_begin,Type[]+int pos_of_end,val);
+</code></pre>
+<p>这是<strong>binary_search</strong>的使用方法——传入三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> 。<strong>它将返回一个布尔值，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>代表 <em>val</em> 存在于数组之中，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>则代表其不存在。</strong></p>
+<pre><code class="language-cpp">ADDR lower_bound(Type[]+int pos_of_begin,Type[]+int pos_of_end,val);
+</code></pre>
+<p>这就是<strong>lower_bound</strong>的使用方法了——把三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> ，全部传进去！它将返回一个内存地址，代表着该数组中的值 <em>val</em> 存在在内存中的位置。若找不到这个值，就会返回这个数组的末尾 <em>last</em> 在内存中位置增加1个该数据类型长度的地址！<strong>小心，如果不特判一下就直接调用的话，你就要越界了!</strong></p>
+<pre><code class="language-cpp">ADDR upper_bound(Type[]+int pos_of_begin,Type[]+int pos_of_end,val);
+</code></pre>
+<p>这是<strong>lower_bound</strong>的使用方法——跟之前那个完全一样地传入三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> 。它返回一个内存地址，还是数组中值 <em>val</em> 存在于内存中的位置。若找不到这个值，这个函数还是会返回这个数组的末尾 <em>last</em> 的值+1单位长度的地址！<strong>跟之前一样，如果你不特判这个情况，也会越界的啊!一定要注意！</strong></p>
+<p>跟往常一样……由于这个是实用性说明，所以……这些函数的复杂度证明就不存在了哦<sub>（</sub><sub>其实我也没有证过，不过……**既然是$STL$操作的话……暂且认为它们的复杂度全都是$O(\log_2n)$的吧**</sub>溜啦！~~）</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling">
+                  <h3 class="post-title">
+                    GCC 全部编译器优化开关启动命令
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '11823f499e13d196c57b',
+        clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
+        repo: 'MalachiteN.github.io',
+        owner: 'MalachiteN',
+        admin: ['MalachiteN'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

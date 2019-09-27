@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于我 | Malachite</title>
+<title>GCC 全部编译器优化开关启动命令 | Malachite</title>
 <meta name="description" content="夕焼けの中に吸い込まれて消えてった">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -98,26 +98,60 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于我</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">GCC 全部编译器优化开关启动命令</h2>
+            <div class="post-date">2019-09-27</div>
             
             <div class="post-content">
-              <h1 id="关于">关于</h1>
-<p>欢迎来到我的小站呀，很高兴遇见你!</p>
-<h2 id="关于本站">关于本站</h2>
-<p>本站是<strong>Malachite</strong>尝试建立的用于替代我的<a href="https://malachite.blog.luogu.org/">洛谷博客</a>的技术博客。</p>
-<h2 id="博主是谁">博主是谁</h2>
-<p><s>Malachite是可爱的女孩子！</s></p>
-<h2 id="兴趣爱好">兴趣爱好</h2>
-<p><s>逼群主女装、刷洛谷</s></p>
-<p>其实听歌看番都很喜欢的~</p>
-<p>吹爆<a href="https://www.bilibili.com/bangumi/media/md790/">交响诗篇</a>，<a href="https://www.bilibili.com/bangumi/media/md1635">新世纪福音战士</a>还有<a href="https://www.bilibili.com/bangumi/media/md6304">骑士&amp;魔法</a>和<a href="https://www.bilibili.com/bangumi/media/md2740">重装武器</a>等超好看且不需要大会员的机战番！</p>
-<p>一个很像编程语言的魔塔大陆造语<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mi>y</mi><mi>m</mi><mi>m</mi><mi>n</mi><mi>o</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">Hymmnos</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.08125em;">H</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord mathdefault">m</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mord mathdefault">o</span><span class="mord mathdefault">s</span></span></span></span>的<a href="https://conlang.fandom.com/wiki/Hymmnos">介绍(英文)</a>、中文贴吧<a href="https://tieba.baidu.com/f?kw=hymmnos&amp;ie=utf-8&amp;tab=main">hymmnos吧<br>
-</a>以及这个语言译成英语日语的网站<a href="http://hymmnoserver.uguu.ca/browse.php?page=a">Hymmnoserver</a>,Was yea ra chs hymmnos mea/.</p>
-<h2 id="联系我呀">联系我呀</h2>
-<p>follow我的<a href="https://github.com/MalachiteN">Github</a>或<a href="https://www.luogu.org/space/show?uid=228845">洛谷</a></p>
-<p><strong>OR</strong></p>
-<p>QQ:2698889729(测试平台)/1306515152(生产平台)</p>
+              <h1 id="gcc-全部编译器优化开关启动命令">GCC 全部编译器优化开关启动命令</h1>
+<p>有时，洛谷上的一些题，我们的算法并不能满分通过。一些优化之差，就导致一道题迟迟无法AC。对此，可以在我们的程序前面加上这些预处理器命令：</p>
+<pre><code class="language-cpp">#define fastcall __attribute__((optimize(&quot;-O3&quot;)))
+#pragma GCC optimize(2)
+#pragma GCC optimize(3)
+#pragma GCC optimize(&quot;Ofast&quot;)
+#pragma GCC optimize(&quot;inline&quot;)
+#pragma GCC optimize(&quot;-fgcse&quot;)
+#pragma GCC optimize(&quot;-fgcse-lm&quot;)
+#pragma GCC optimize(&quot;-fipa-sra&quot;)
+#pragma GCC optimize(&quot;-ftree-pre&quot;)
+#pragma GCC optimize(&quot;-ftree-vrp&quot;)
+#pragma GCC optimize(&quot;-fpeephole2&quot;)
+#pragma GCC optimize(&quot;-ffast-math&quot;)
+#pragma GCC optimize(&quot;-fsched-spec&quot;)
+#pragma GCC optimize(&quot;unroll-loops&quot;)
+#pragma GCC optimize(&quot;-falign-jumps&quot;)
+#pragma GCC optimize(&quot;-falign-loops&quot;)
+#pragma GCC optimize(&quot;-falign-labels&quot;)
+#pragma GCC optimize(&quot;-fdevirtualize&quot;)
+#pragma GCC optimize(&quot;-fcaller-saves&quot;)
+#pragma GCC optimize(&quot;-fcrossjumping&quot;)
+#pragma GCC optimize(&quot;-fthread-jumps&quot;)
+#pragma GCC optimize(&quot;-funroll-loops&quot;)
+#pragma GCC optimize(&quot;-freorder-blocks&quot;)
+#pragma GCC optimize(&quot;-fschedule-insns&quot;)
+#pragma GCC optimize(&quot;inline-functions&quot;)
+#pragma GCC optimize(&quot;-ftree-tail-merge&quot;)
+#pragma GCC optimize(&quot;-fschedule-insns2&quot;)
+#pragma GCC optimize(&quot;-fstrict-aliasing&quot;)
+#pragma GCC optimize(&quot;-falign-functions&quot;)
+#pragma GCC optimize(&quot;-fcse-follow-jumps&quot;)
+#pragma GCC optimize(&quot;-fsched-interblock&quot;)
+#pragma GCC optimize(&quot;-fpartial-inlining&quot;)
+#pragma GCC optimize(&quot;no-stack-protector&quot;)
+#pragma GCC optimize(&quot;-freorder-functions&quot;)
+#pragma GCC optimize(&quot;-findirect-inlining&quot;)
+#pragma GCC optimize(&quot;-fhoist-adjacent-loads&quot;)
+#pragma GCC optimize(&quot;-frerun-cse-after-loop&quot;)
+#pragma GCC optimize(&quot;inline-small-functions&quot;)
+#pragma GCC optimize(&quot;-finline-small-functions&quot;)
+#pragma GCC optimize(&quot;-ftree-switch-conversion&quot;)
+#pragma GCC optimize(&quot;-foptimize-sibling-calls&quot;)
+#pragma GCC optimize(&quot;-fexpensive-optimizations&quot;)
+#pragma GCC optimize(&quot;inline-functions-called-once&quot;)
+#pragma GCC optimize(&quot;-fdelete-null-pointer-checks&quot;)
+</code></pre>
+<p>从而开启全部优化开关，亲测将50分TLE变成了100分AC。</p>
+<p>不过……</p>
+<h2 id="警告在noip竞赛中使用任何编译命令可能导致complie-error并且无法申诉因此不要尝试在正式竞赛中使用这些编译命令本技巧仅限平时使用">警告：在NOIp竞赛中使用任何编译命令可能导致Complie Error，并且无法申诉！因此，不要尝试在正式竞赛中使用这些编译命令！本技巧仅限平时使用！！！</h2>
 
             </div>
             
