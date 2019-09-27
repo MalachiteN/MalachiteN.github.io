@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-09-27T13:23:02.167Z</updated>
+    <updated>2019-09-27T13:43:36.557Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -140,8 +140,8 @@ else do_something_else();
 <pre><code class="language-cpp">#define paster(n) printf(&quot;token&quot;#n&quot;=%d\n&quot;,token##n)
 </code></pre>
 <p>我们了解：</p>
-<p><code>#</code>用来将宏定义的形式参数转换为**“作为字符串** (string/char[]) **数据类型存在的”**字符串，并用于替换。</p>
-<p><code>##</code>则用于将转换成**“程序文本意义上的”** 字符串 <strong>与其他程序文本相连接</strong>。</p>
+<p><code>#</code>用来将宏定义的形式参数转换为“作为字符串(string/char数组)数据类型存在的”字符串，并用于替换。</p>
+<p><code>##</code>则用于将转换成“程序文本意义上的”字符串与其他程序文本相连接。</p>
 <p>于是我们可以知道：</p>
 <p><strong>设token1=1,token2=2,……,tokenn=n</strong></p>
 <ul>
