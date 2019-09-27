@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-09-27T12:56:51.154Z</updated>
+    <updated>2019-09-27T13:10:42.502Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -20,7 +20,7 @@
 <p>正如引用源标题(《#define用法集锦(非常全)》)所言，该文对<code>#define</code>的用法总结的极为全面，但是对于每种用法的详细介绍较少。因此，本文主要进行的是对该文章内容的总结和重排。</p>
 <h2 id="0宏定义是什么">0.宏定义是什么</h2>
 <p>define，顾名思义，表示的是进行某些定义。这种定义被称为宏(marco)。</p>
-<p>宏定义是一种传递给预处理器的命令。通过提前告诉预处理器本文件中定义的宏，能够使预处理器按照定义的方式自动替换文本中的字符串，从而大大<strong>简化</strong>代码。</p>
+<p>宏定义是一种传递给预处理器的命令。通过提前告诉预处理器本文件中定义的宏，能够使预处理器按照定义的方式自动替换文本中的字符串(这种过程一般称为“宏展开”)，从而大大<strong>简化</strong>代码。</p>
 <h2 id="1如何定义宏-取消宏">1.如何定义宏、取消宏</h2>
 <p>定义一个宏:</p>
 <pre><code class="language-cpp">#define [MacroName)] [MacroValue]
@@ -47,19 +47,6 @@ pin a,b;
 </code></pre>
 <p>a是<code>int</code>型指针类型，而b是<code>int</code>型常规变量。而我们期望的其实是使a和b均为<code>int</code>型指针(<code>int*</code>)。</p>
 <p>要使a和b就都是<code>int</code>型指针，我们只能使用<code>typedef</code>了。这也使我们注意到一点：我们在定义的时候，一定要养成一个良好的习惯，建议所有的层次都要加括号。</p>
-<p>宏定义为了防止错误而使用小括号的例子：</p>
-<pre><code class="language-cpp">#define DUMP_WRITE(addr,nr) {memcpy(bufp,addr,nr); bufp += nr;}//BUG
-#define DO(a,b) do{a+b;a++;}while(0)//应该使用的定义
-</code></pre>
-<p>当这样使用时：</p>
-<pre><code class="language-cpp">if(addr)DUMP_WRITE(addr,nr);
-else do_somethong_else();
-</code></pre>
-<p>宏将展开，程序变为：</p>
-<pre><code class="language-cpp">if(addr){memcpy(bufp,addr,nr); bufp += nr;};
-else do_something_else();
-</code></pre>
-<p>gcc在碰到else前面的“;”时就认为if语句已经结束，因而后面的else不在if语句中。而采用do{} while(0)的定义，在任何情况下都没有问题。而改为 #difne DO(a,b) do{a+b;a++;}while(0) 的定义则在任何情况下都不会出错</p>
 <p>不过，在某些特殊情形下，比如开发机与目标机的操作系统及硬件存在巨大差异~~(比如你硬要用Core i9的机子给上世纪的80486写程序)~~的时候，由于编译器、操作系统对代码中数据类型的理解大不相同，<code>typedef</code>完全无法满足我们的需求(如果强行通过<code>typedef</code>改变编译器数据类型的定义，似乎会直接报出重复定义的错误)。这时，我们反而建议使用<code>#define</code>。</p>
 <p>例:</p>
 <pre><code class="language-cpp">typedef  unsigned char      boolean;     /* Boolean value type. */
@@ -134,6 +121,19 @@ typedef  signed char       sint7;        /* Signed 8  bit value */
 <p>可是很<s>不</s>明显的是，预处理器将会<s>像个憨憨一样</s>忠实地按照宏定义的定义，将程序文本中的<code>Add(a,b)</code>全给换成<code>a+b</code>！这样一来……它将会计算<code>c*a+b*d</code>的值！它的逻辑将会变成，分别将a与c、b与d相乘，然后将两个乘积相加！这是我们不期望的。一定要警惕！因此，我们应该使用这样写法才能保证安全：</p>
 <pre><code class="language-cpp">#define Add(a,b) ((a)+(b))
 </code></pre>
+<p>宏定义为了防止错误而使用小括号的例子：</p>
+<pre><code class="language-cpp">#define DUMP_WRITE(addr,nr) {memcpy(bufp,addr,nr); bufp += nr;}//BUG
+#define DO(a,b) do{a+b;a++;}while(0)//应该使用的定义
+</code></pre>
+<p>当这样使用时：</p>
+<pre><code class="language-cpp">if(addr)DUMP_WRITE(addr,nr);
+else do_somethong_else();
+</code></pre>
+<p>宏将展开，程序变为：</p>
+<pre><code class="language-cpp">if(addr){memcpy(bufp,addr,nr); bufp += nr;};
+else do_something_else();
+</code></pre>
+<p>gcc在碰到else前面的“;”时就认为if语句已经结束，因而后面的else不在if语句中。而**采用do{} while(0)的定义，在任何情况下都没有问题。**而改为 <code>#difne DO(a,b) do{a+b;a++;}while(0)</code> 的定义则在任何情况下都不会出错。</p>
 <p>在<strong>避免危险情况出现的前提下</strong>，某些宏定义能够在极短的空间内完成极为复杂的操作！</p>
 <p>比如，我们已经知道，宏是用来<strong>在原文本中替换字符串</strong>的。</p>
 <p>因此，宏定义为我们提供了这几种操作：<code>#</code>、<code>@#</code>和<code>##</code>。先看一个例子：</p>
