@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-09-27T02:31:46.155Z</updated>
+    <updated>2019-09-27T02:36:54.955Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -371,12 +371,12 @@ int main(){
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[C++二分查找函数实用性说明]]></title>
+        <title type="html"><![CDATA[C++STL二分查找函数实用性说明]]></title>
         <id>https://malachiten.github.io/post/cer-fen-cha-zhao-han-shu-shi-yong-xing-shuo-ming</id>
         <link href="https://malachiten.github.io/post/cer-fen-cha-zhao-han-shu-shi-yong-xing-shuo-ming">
         </link>
         <updated>2019-09-27T02:04:43.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="c二分查找函数实用性说明">C++二分查找函数实用性说明</h1>
+        <content type="html"><![CDATA[<h1 id="cstl二分查找函数实用性说明">C++STL二分查找函数实用性说明</h1>
 <p>平时我们需要“快速查找”的值，我们一般会采用二分查找来找到。二分查找的代码一般如下：</p>
 <pre><code class="language-cpp">while(l&lt;=r){
     mid=(l+r)/2;
