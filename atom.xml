@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-09-27T13:10:42.502Z</updated>
+    <updated>2019-09-27T13:22:19.914Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -89,8 +89,8 @@ typedef  signed char       sint7;        /* Signed 8  bit value */
 <p>本例中，提到了这几种预处理器命令:本文主要介绍的<code>#define</code>,以及依附于它而存在的命令<code>#ifdef</code>、<code>ifndef</code>、<code>else</code>、<code>endif</code>。这些命令，一般被称为“<strong>条件编译开关</strong>”。<s>(虽然我觉得叫预处理器条件分歧之类的更好听……)</s></p>
 <p><code>ifdef</code>,展开缩写为：if define，表示<strong>如果定义了</strong>某个宏，则编译从此处开始直到一个<code>endif</code>标记的位置的代码。如果没有定义，则这一部分的代码不会被编译。<s>(就像被注释掉了一样)</s></p>
 <p><code>ifndef</code>,展开缩写为：if not define，表示<strong>若未定义</strong>某个宏，则编译从此处开始直到一个<code>endif</code>标记的位置的代码。如果没有定义，则不会编译这些代码。</p>
-<p><code>else</code>,表示否则，用于对上述两个预处理器条件命令的“条件表达式”(有没有定义)进行“取反”，只能用于这两个命令作为开头、<code>endif</code>命令作为结尾的区间内。换言之，现有一个区间，从<code>#ifdef test</code>到<code>#endif</code>，</p>
-<p><code>endif</code>,则是表示对于<code>ifdef</code>、<code>ifndef</code>的界限的命令。<code>endif</code>标记之后的所有代码，<strong>不受</strong>之前标记的<code>ifdef</code>和<code>ifndef</code>影响。</p>
+<p><code>else</code>,表示否则，用于对上述两个预处理器条件命令的“条件表达式”(有没有定义)进行“取反”，只能用于这两个命令作为开头、<code>endif</code>命令作为结尾的区间内。换言之，现有一个区间，从<code>#ifdef test</code>到<code>#endif</code>，其中具备了一个<code>else</code>。那么，如果本程序在该区间开始前定义了宏<code>test</code>，那么，它将编译从<code>#ifdef test</code>后到<code>#else</code>前的部分。如果没有定义该宏，则将编译从<code>else</code>后到<code>endif</code>前的部分。</p>
+<p><code>endif</code>,则是表示对于<code>ifdef</code>、<code>ifndef</code>的界限的命令。<code>endif</code>标记之后的所有代码，<strong>不受</strong>之前标记的<code>ifdef</code>、<code>else</code>和<code>ifndef</code>影响。</p>
 <p>在大规模的开发过程中，特别是跨平台和系统的软件里，define最重要的功能是条件编译。就像这样，define可以用于跨平台:</p>
 <pre><code class="language-cpp">#ifdef WINDOWS
 //do something
@@ -133,15 +133,15 @@ else do_somethong_else();
 <pre><code class="language-cpp">if(addr){memcpy(bufp,addr,nr); bufp += nr;};
 else do_something_else();
 </code></pre>
-<p>gcc在碰到else前面的“;”时就认为if语句已经结束，因而后面的else不在if语句中。而**采用do{} while(0)的定义，在任何情况下都没有问题。**而改为 <code>#difne DO(a,b) do{a+b;a++;}while(0)</code> 的定义则在任何情况下都不会出错。</p>
+<p>gcc在碰到else前面的“;”时就认为if语句已经结束，因而后面的else不在if语句中。而**采用do{} while(0)的定义，在任何情况下都没有问题。**而改为 <code>#define DO(a,b) do{a+b;a++;}while(0)</code> 的定义则在任何情况下都不会出错。</p>
 <p>在<strong>避免危险情况出现的前提下</strong>，某些宏定义能够在极短的空间内完成极为复杂的操作！</p>
 <p>比如，我们已经知道，宏是用来<strong>在原文本中替换字符串</strong>的。</p>
 <p>因此，宏定义为我们提供了这几种操作：<code>#</code>、<code>@#</code>和<code>##</code>。先看一个例子：</p>
 <pre><code class="language-cpp">#define paster(n) printf(&quot;token&quot;#n&quot;=%d\n&quot;,token##n)
 </code></pre>
 <p>我们了解：</p>
-<p><code>#</code>用来将宏定义的形式参数转换为**“作为字符串(string/char[])数据类型存在的”**字符串，并用于替换。</p>
-<p><code>##</code>则用于将转换成**“程序文本意义上的”<strong>字符串</strong>与其他程序文本相连接**。</p>
+<p><code>#</code>用来将宏定义的形式参数转换为**“作为字符串** (string/char[]) **数据类型存在的”**字符串，并用于替换。</p>
+<p><code>##</code>则用于将转换成**“程序文本意义上的”** 字符串 <strong>与其他程序文本相连接</strong>。</p>
 <p>于是我们可以知道：</p>
 <p><strong>设token1=1,token2=2,……,tokenn=n</strong></p>
 <ul>
