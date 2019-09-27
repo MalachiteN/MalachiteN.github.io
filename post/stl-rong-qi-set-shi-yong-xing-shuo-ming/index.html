@@ -1,97 +1,108 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>STL容器 set 实用性说明 | Malachite</title>
-<meta name="description" content="夕焼けの中に吸い込まれて消えてった" />
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569553494426">
+<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569554705460">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://malachiten.github.io">
-  <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569553494426" alt="">
-  </a>
-  <h1 class="site-title">
-    Malachite
-  </h1>
-  <p class="site-description">
-    夕焼けの中に吸い込まれて消えてった
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://malachiten.github.io">
+        <img src="https://malachiten.github.io/images/avatar.png?v=1569554705460" class="site-logo">
+        <h1 class="site-title">Malachite</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      夕焼けの中に吸い込まれて消えてった
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              STL容器 set 实用性说明
-            </h2>
-            <div class="post-info">
-              <span>
-                2019-09-27
-              </span>
-              <span>
-                3 min read
-              </span>
-              
-                <a href="https://malachiten.github.io/tag/TNO1SHAiH" class="post-tag">
-                  # 技巧/说明
-                </a>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">STL容器 set 实用性说明</h2>
+            <div class="post-date">2019-09-27</div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h1 id="stl容器-set-实用性说明">STL容器 set 实用性说明</h1>
+            <div class="post-content">
+              <h1 id="stl容器-set-实用性说明">STL容器 set 实用性说明</h1>
 <p><strong>set</strong>是一种 <em>STL</em> 中的容器，采用<strong>set&lt;type_of_set&gt; name_of_set</strong>的方式进行声明。可以使用迭代器( <em>iterator</em> )对其中的元素进行指示，并使用其成员函数进行操作。<strong>set</strong>的性质是： <em>自动排序</em> 、 <em>自动去重</em> 。<strong>set</strong>的本质是“<strong>集合</strong>”，而集合具有确定性和互异性。</p>
 <p>据各类资料描述，<strong>set</strong>的底层实现是一种名为红黑树的二叉搜索树，但是其实现原理及各项操作之复杂度不处于本文描述范围内，此处只是顺带一提。</p>
 <p><strong>set</strong>可以采用这些函数进行操作（只是我觉得很实用的函数，并不是全部）：</p>
@@ -139,103 +150,83 @@ void erase(type_of_set key_value)
 </code></pre>
 <p>就像这样，你就可以完成对<strong>set</strong>中每个元素的访问了。是不是敲简单嘤嘤嘤</p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#stl%E5%AE%B9%E5%99%A8-set-%E5%AE%9E%E7%94%A8%E6%80%A7%E8%AF%B4%E6%98%8E">STL容器 set 实用性说明</a></li>
-</ul>
-
-              </div>
             </div>
-          </article>
-        </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://malachiten.github.io/tag/TNO1SHAiH" class="tag">
+                    技巧/说明
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming">
+                  <h3 class="post-title">
+                    PB_DS容器 trie 实用性说明
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming">
-              <h3 class="post-title">
-                PB_DS容器 trie 实用性说明
-              </h3>
-            </a>
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
           </div>
-        
 
-        
-          
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-<div id="gitalk-container"></div>
-
-<script>
-
-  var gitalk = new Gitalk({
-    clientID: '11823f499e13d196c57b',
-    clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
-    repo: 'MalachiteN.github.io',
-    owner: 'MalachiteN',
-    admin: ['MalachiteN'],
-    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
-
-  gitalk.render('gitalk-container')
-
-</script>
-
-          
-
-          
-        
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-
-  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-  // This should probably be throttled.
-  // Especially because it triggers during smooth scrolling.
-  // https://lodash.com/docs/4.17.10#throttle
-  // You could do like...
-  // window.addEventListener("scroll", () => {
-  //    _.throttle(doThatStuff, 100);
-  // });
-  // Only not doing it here to keep this Pen dependency-free.
-
-  window.addEventListener("scroll", event => {
-    let fromTop = window.scrollY;
-
-    mainNavLinks.forEach((link, index) => {
-      let section = document.getElementById(decodeURI(link.hash).substring(1));
-      let nextSection = null
-      if (mainNavLinks[index + 1]) {
-        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-      }
-      if (section.offsetTop <= fromTop) {
-        if (nextSection) {
-          if (nextSection.offsetTop > fromTop) {
-            link.classList.add("current");
-          } else {
-            link.classList.remove("current");    
-          }
-        } else {
-          link.classList.add("current");
-        }
-      } else {
-        link.classList.remove("current");
-      }
-    });
-  });
-
-</script>
-
+        </div>
       </div>
     </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '11823f499e13d196c57b',
+        clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
+        repo: 'MalachiteN.github.io',
+        owner: 'MalachiteN',
+        admin: ['MalachiteN'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
   </body>
 </html>

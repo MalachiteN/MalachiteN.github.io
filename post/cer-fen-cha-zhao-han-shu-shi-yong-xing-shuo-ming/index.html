@@ -1,97 +1,108 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>C++STL二分查找函数实用性说明 | Malachite</title>
-<meta name="description" content="夕焼けの中に吸い込まれて消えてった" />
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569553494426">
+<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569554705460">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://malachiten.github.io">
-  <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569553494426" alt="">
-  </a>
-  <h1 class="site-title">
-    Malachite
-  </h1>
-  <p class="site-description">
-    夕焼けの中に吸い込まれて消えてった
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://malachiten.github.io">
+        <img src="https://malachiten.github.io/images/avatar.png?v=1569554705460" class="site-logo">
+        <h1 class="site-title">Malachite</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      夕焼けの中に吸い込まれて消えてった
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              C++STL二分查找函数实用性说明
-            </h2>
-            <div class="post-info">
-              <span>
-                2019-09-27
-              </span>
-              <span>
-                3 min read
-              </span>
-              
-                <a href="https://malachiten.github.io/tag/TNO1SHAiH" class="post-tag">
-                  # 技巧/说明
-                </a>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">C++STL二分查找函数实用性说明</h2>
+            <div class="post-date">2019-09-27</div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <h1 id="cstl二分查找函数实用性说明">C++STL二分查找函数实用性说明</h1>
+            <div class="post-content">
+              <h1 id="cstl二分查找函数实用性说明">C++STL二分查找函数实用性说明</h1>
 <p>平时我们需要“快速查找”的值，我们一般会采用二分查找来找到。二分查找的代码一般如下：</p>
 <pre><code class="language-cpp">while(l&lt;=r){
     mid=(l+r)/2;
@@ -129,103 +140,83 @@
 <p>这是<strong>lower_bound</strong>的使用方法——跟之前那个完全一样地传入三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> 。它返回一个内存地址，还是数组中值 <em>val</em> 存在于内存中的位置。若找不到这个值，这个函数还是会返回这个数组的末尾 <em>last</em> 的值+1单位长度的地址！<strong>跟之前一样，如果你不特判这个情况，也会越界的啊!一定要注意！</strong></p>
 <p>跟往常一样……由于这个是实用性说明，所以……这些函数的复杂度证明就不存在了哦<sub>（</sub><sub>其实我也没有证过，不过……**既然是$STL$操作的话……暂且认为它们的复杂度全都是$O(\log_2n)$的吧**</sub>溜啦！~~）</p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#cstl%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE%E5%87%BD%E6%95%B0%E5%AE%9E%E7%94%A8%E6%80%A7%E8%AF%B4%E6%98%8E">C++STL二分查找函数实用性说明</a></li>
-</ul>
-
-              </div>
             </div>
-          </article>
-        </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://malachiten.github.io/tag/TNO1SHAiH" class="tag">
+                    技巧/说明
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling">
+                  <h3 class="post-title">
+                    GCC 全部编译器优化开关启动命令
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling">
-              <h3 class="post-title">
-                GCC 全部编译器优化开关启动命令
-              </h3>
-            </a>
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
           </div>
-        
 
-        
-          
-            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-<div id="gitalk-container"></div>
-
-<script>
-
-  var gitalk = new Gitalk({
-    clientID: '11823f499e13d196c57b',
-    clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
-    repo: 'MalachiteN.github.io',
-    owner: 'MalachiteN',
-    admin: ['MalachiteN'],
-    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-    distractionFreeMode: false  // Facebook-like distraction free mode
-  })
-
-  gitalk.render('gitalk-container')
-
-</script>
-
-          
-
-          
-        
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
-</div>
-
-<script>
-  hljs.initHighlightingOnLoad()
-
-  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-  // This should probably be throttled.
-  // Especially because it triggers during smooth scrolling.
-  // https://lodash.com/docs/4.17.10#throttle
-  // You could do like...
-  // window.addEventListener("scroll", () => {
-  //    _.throttle(doThatStuff, 100);
-  // });
-  // Only not doing it here to keep this Pen dependency-free.
-
-  window.addEventListener("scroll", event => {
-    let fromTop = window.scrollY;
-
-    mainNavLinks.forEach((link, index) => {
-      let section = document.getElementById(decodeURI(link.hash).substring(1));
-      let nextSection = null
-      if (mainNavLinks[index + 1]) {
-        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-      }
-      if (section.offsetTop <= fromTop) {
-        if (nextSection) {
-          if (nextSection.offsetTop > fromTop) {
-            link.classList.add("current");
-          } else {
-            link.classList.remove("current");    
-          }
-        } else {
-          link.classList.add("current");
-        }
-      } else {
-        link.classList.remove("current");
-      }
-    });
-  });
-
-</script>
-
+        </div>
       </div>
     </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '11823f499e13d196c57b',
+        clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
+        repo: 'MalachiteN.github.io',
+        owner: 'MalachiteN',
+        admin: ['MalachiteN'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
   </body>
 </html>
