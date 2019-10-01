@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>GCC 全部编译器优化开关启动命令 | Malachite</title>
+<title>笔记 : 欧拉路 | Malachite</title>
 <meta name="description" content="夕焼けの中に吸い込まれて消えてった">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -86,72 +86,32 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">GCC 全部编译器优化开关启动命令</h2>
+          <h2 class="post-title">笔记 : 欧拉路</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-09-27</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://malachiten.github.io/tag/TNO1SHAiH">
-                    技巧/说明
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2019-10-01</span>
             
           </div>
           <div class="post-content">
-            <h1 id="gcc-全部编译器优化开关启动命令">GCC 全部编译器优化开关启动命令</h1>
-<p>有时，洛谷上的一些题，我们的算法并不能满分通过。一些优化之差，就导致一道题迟迟无法AC。对此，可以在我们的程序前面加上这些预处理器命令：</p>
-<pre><code class="language-cpp">#define fastcall __attribute__((optimize(&quot;-O3&quot;)))
-#pragma GCC optimize(2)
-#pragma GCC optimize(3)
-#pragma GCC optimize(&quot;Ofast&quot;)
-#pragma GCC optimize(&quot;inline&quot;)
-#pragma GCC optimize(&quot;-fgcse&quot;)
-#pragma GCC optimize(&quot;-fgcse-lm&quot;)
-#pragma GCC optimize(&quot;-fipa-sra&quot;)
-#pragma GCC optimize(&quot;-ftree-pre&quot;)
-#pragma GCC optimize(&quot;-ftree-vrp&quot;)
-#pragma GCC optimize(&quot;-fpeephole2&quot;)
-#pragma GCC optimize(&quot;-ffast-math&quot;)
-#pragma GCC optimize(&quot;-fsched-spec&quot;)
-#pragma GCC optimize(&quot;unroll-loops&quot;)
-#pragma GCC optimize(&quot;-falign-jumps&quot;)
-#pragma GCC optimize(&quot;-falign-loops&quot;)
-#pragma GCC optimize(&quot;-falign-labels&quot;)
-#pragma GCC optimize(&quot;-fdevirtualize&quot;)
-#pragma GCC optimize(&quot;-fcaller-saves&quot;)
-#pragma GCC optimize(&quot;-fcrossjumping&quot;)
-#pragma GCC optimize(&quot;-fthread-jumps&quot;)
-#pragma GCC optimize(&quot;-funroll-loops&quot;)
-#pragma GCC optimize(&quot;-freorder-blocks&quot;)
-#pragma GCC optimize(&quot;-fschedule-insns&quot;)
-#pragma GCC optimize(&quot;inline-functions&quot;)
-#pragma GCC optimize(&quot;-ftree-tail-merge&quot;)
-#pragma GCC optimize(&quot;-fschedule-insns2&quot;)
-#pragma GCC optimize(&quot;-fstrict-aliasing&quot;)
-#pragma GCC optimize(&quot;-falign-functions&quot;)
-#pragma GCC optimize(&quot;-fcse-follow-jumps&quot;)
-#pragma GCC optimize(&quot;-fsched-interblock&quot;)
-#pragma GCC optimize(&quot;-fpartial-inlining&quot;)
-#pragma GCC optimize(&quot;no-stack-protector&quot;)
-#pragma GCC optimize(&quot;-freorder-functions&quot;)
-#pragma GCC optimize(&quot;-findirect-inlining&quot;)
-#pragma GCC optimize(&quot;-fhoist-adjacent-loads&quot;)
-#pragma GCC optimize(&quot;-frerun-cse-after-loop&quot;)
-#pragma GCC optimize(&quot;inline-small-functions&quot;)
-#pragma GCC optimize(&quot;-finline-small-functions&quot;)
-#pragma GCC optimize(&quot;-ftree-switch-conversion&quot;)
-#pragma GCC optimize(&quot;-foptimize-sibling-calls&quot;)
-#pragma GCC optimize(&quot;-fexpensive-optimizations&quot;)
-#pragma GCC optimize(&quot;inline-functions-called-once&quot;)
-#pragma GCC optimize(&quot;-fdelete-null-pointer-checks&quot;)
+            <h2 id="什么是欧拉路">什么是欧拉路</h2>
+<p>欧拉路是指从图中任意一个点开始到图中任意一个点结束的路径，并且图中每条边通过的且只通过一次。</p>
+<h2 id="怎样判断有欧拉路存在">怎样判断有欧拉路存在</h2>
+<h3 id="无向图">无向图</h3>
+<p>图一定要联通，且:</p>
+<p>所有顶点度数均为偶数，则存在欧拉回路</p>
+<p>两个点度数为奇数，其余的为偶数，则存在欧拉通路</p>
+<h3 id="有向图">有向图</h3>
+<p>图联通依然是一个必要条件。且:</p>
+<p>每个点的入度等于出度，则存在欧拉回路(任意一点有度的点都可以作为起点)</p>
+<p>除某两点外，所有入度等于出度。这两点中一点的出度比入度大，另一点的出度比入度小，则存在欧拉通路。出度大者是起点，入度大者是终点。</p>
+<h2 id="怎样找到欧拉路">怎样找到欧拉路</h2>
+<p>之前的内容大致只是用于<strong>发现该题目应该使用欧拉回路的方法求解</strong>。</p>
+<p>以下寻找方法均建立在假设图中存在欧拉回路的基础上，其自身并不能判断图是否满足条件。</p>
+<p>从一个非孤立的点开始<em>DFS</em>，点可以重复经过，每次任意走一条边，并将这条边从邻接表中删去。走到目标终点(找到欧拉通路)，或者走回起点(找到欧拉回路)。</p>
+<h2 id="代码">代码</h2>
+<pre><code class="language-cpp">void dfs(int x){
+    
+}
 </code></pre>
-<p>从而开启全部优化开关，亲测将50分TLE变成了100分AC。</p>
-<p>不过……</p>
-<h2 id="警告在noip竞赛中使用任何编译命令可能导致complie-error并且无法申诉因此不要尝试在正式竞赛中使用这些编译命令本技巧仅限平时使用">警告：在NOIp竞赛中使用任何编译命令可能导致Complie Error，并且无法申诉！因此，不要尝试在正式竞赛中使用这些编译命令！本技巧仅限平时使用！！！</h2>
 
           </div>
         </div>
