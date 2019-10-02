@@ -1,11 +1,10 @@
 
-<!DOCTYPE html>
 <html>
   <head>
     
 <meta charset="utf-8" >
 
-<title>压行技巧 | Malachite</title>
+<title>Malachite</title>
 <meta name="description" content="夕焼けの中に吸い込まれて消えてった">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -16,12 +15,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
 
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -84,73 +77,44 @@
 
 
       <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">压行技巧</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-09-27</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://malachiten.github.io/tag/W8VQeBmQY">
-                    题解
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://malachiten.github.io/tag/TNO1SHAiH">
-                    技巧/说明
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <h1 id="压行技巧">压行技巧</h1>
-<p>Luogu P1914 小书童——密码 可能最短的AC代码</p>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-int main(){
-	int n; std::string str;
-	std::cin&gt;&gt;n&gt;&gt;str;
-	for(int i=0;i&lt;str.length();i++) std::cout&lt;&lt;(char)(str[i]+n&gt;122?str[i]+n-26:str[i]+n);
-}
-</code></pre>
-<p>其实是采用了这些方法来缩减长度：</p>
-<p>1.采用**略去using namespace std;**的方法减去一行长度。代价是使用名称空间<code>std</code>中的函数或对象时必须添加<code>std::</code>前缀。不过本方法的用处在压行，对于在一行中增加长度的代价，可以忽略不计。</p>
-<p>2.使用<strong>三目运算符</strong>在一行中实现</p>
-<pre><code class="language-cpp">if(/*the value of the expression isn't False(0)*/){
-    //do something
-}else{
-    //do something
-}
-</code></pre>
-<p>的效果，从而将三行压成一行。</p>
-<p>3.从C++0x(C++11)标准开始，主函数末尾即可略去<code>return 0;</code>。采用这一特性，可以省掉一行。</p>
-
-          </div>
-        </div>
-
         
-          <div class="next-post">
-            <a class="purple-link" href="https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming">
-              <h3 class="post-title">
-                下一篇：STL容器 set 实用性说明
-              </h3>
-            </a>
-          </div>
-          
+        
+<section class="post-item">
+    <div class="content">
+      <a href="https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling">
+        <h2 class="post-title">GCC 全部编译器优化开关启动命令</h2>
+      </a>
+      <div class="post-abstract">
+        
       </div>
+      <div class="post-info">
+        <span><i class="icon icon-calendar-outline"></i> 2019-09-27</span>
+        
+          <span>
+            <i class="icon icon-pricetags-outline"></i>
+            
+              <a href="https://malachiten.github.io/tag/TNO1SHAiH">
+                技巧/说明
+                
+              </a>
+            
+          </span>
+        
+      </div>
+    </div>
+    
+  </section>
 
-      
-        
-          <div id="gitalk-container"></div>
-        
 
-        
-      
+<div class="pagination-container">
+  
+    <a href="https://malachiten.github.io/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
+  
+  
+</div>
+
+
+      </div>
 
       <div class="site-footer">
   <div class="slogan">夕焼けの中に吸い込まれて消えてった</div>
@@ -184,29 +148,6 @@ var app = new Vue({
 })
 
 </script>
-
-
-
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-
-      var gitalk = new Gitalk({
-        clientID: '11823f499e13d196c57b',
-        clientSecret: 'ba7427438b55287100d1b33f90a4c1c39a4e17e3',
-        repo: 'MalachiteN.github.io',
-        owner: 'MalachiteN',
-        admin: ['MalachiteN'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
-    </script>
-  
-
-  
 
 
 
