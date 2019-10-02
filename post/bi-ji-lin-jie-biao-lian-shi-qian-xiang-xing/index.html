@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569993602237">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569997162017">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569993602237" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569997162017" alt="" width="32px" height="32px">
       </a>
       <a href="https://malachiten.github.io">
         <h1 class="site-title">Malachite</h1>
@@ -147,7 +147,39 @@ void clear(){
 <h2 id="实例">实例</h2>
 <p>考虑这样一张图:</p>
 <figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/10/01/uNB6AO.png" alt="graph"></figure>
-<p>可以文字表示为:</p>
+<p>边的连接可以表示为:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">始发点</th>
+<th style="text-align:center">终止点</th>
+<th style="text-align:center">权值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">5</td>
+</tr>
+</tbody>
+</table>
+<p>文字表述(输入的数据)就是:</p>
 <pre><code>1 3 2
 1 2 4
 2 3 1
