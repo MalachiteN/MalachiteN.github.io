@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-02T05:18:46.172Z</updated>
+    <updated>2019-10-02T05:20:04.536Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -10,111 +10,6 @@
     <logo>https://malachiten.github.io/images/avatar.png</logo>
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
-    <entry>
-        <title type="html"><![CDATA[Markdown / 内嵌视频播放器测试]]></title>
-        <id>https://malachiten.github.io/post/markdown-nei-qian-shi-pin-bo-fang-qi-ce-shi1</id>
-        <link href="https://malachiten.github.io/post/markdown-nei-qian-shi-pin-bo-fang-qi-ce-shi1">
-        </link>
-        <updated>2019-10-02T04:47:30.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="最早是什么样的呢">最早是什么样的呢</h2>
-<p>听到这首歌了。然后啊，看到了评论，就去了PV。</p>
-<h2 id="风霜断面">风霜断面</h2>
-<iframe src="//player.bilibili.com/player.html?aid=58663942&cid=102284264&page=1" scrolling="yes" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-<h2 id="词及文案整理">词及文案整理</h2>
-<h3 id="词">词</h3>
-<p>「风霜断面」</p>
-<p>词曲、影像 / Kevinz</p>
-<p>调校 / Funi</p>
-<p>曲绘 / TeaKo (Special Thanks to iFactry)</p>
-<p>演唱 / 言和</p>
-<p>部分素材来自无版权资源站；</p>
-<p>感谢冬菇、saiqomo、斗寒逐星、dust尘宸提供素材拍摄协助。</p>
-<hr>
-<p>谁未曾理想 踏尽命途亦可得敝帚珍藏</p>
-<p>迷津片段若相遇却只顾陌生眉眼跌撞</p>
-<p>谁又用心以一苇渡航 空收集一方沉塘</p>
-<p>繁复命运经由巧妙化简 即告断裂消亡</p>
-<hr>
-<p>任生命 无序抑扬</p>
-<p>雾中仍八面方向</p>
-<p>冻雨击破头颅几次才忍退后虑想 纠集繁杂过往</p>
-<hr>
-<p>我本翻越千重万覆高山深渊身亦遭重创</p>
-<p>失意是陌路只一扇通透不碎窗</p>
-<p>却无端恋上其中周遭莽撞 如冰山中火光</p>
-<p>凭此谁又不可深入荆丛割遍体伤</p>
-<hr>
-<p>我本跋涉千艰万险冻地炎群曦盏换星芒</p>
-<p>却只见木纹次第撰写这绮丽炎凉</p>
-<p>抑或用尽这一生颠沛跌宕 刻画心字形状</p>
-<p>最终燃尽那刻定明亮似个彼方</p>
-<hr>
-<p>谁又敢设想 某段长椅又惹半抔冷日光</p>
-<p>晤面未对讲 打散杯中倒影亦心生惊惶</p>
-<p>谁又甘愿凭恳切想象 令深海涌出太阳</p>
-<p>遮住同盏吊灯同一扇窗 能否惊喜声张</p>
-<hr>
-<p>任牵绊 逻辑未当</p>
-<p>未来仍隐约可望</p>
-<p>只是若了悟结局又如何佯装笑面经历 而无杂想</p>
-<hr>
-<p>我本翻越千重万覆高山深渊身亦遭重创</p>
-<p>失意是陌路只一扇通透不碎窗</p>
-<p>却无端恋上其中周遭莽撞 如冰山中火光</p>
-<p>凭此谁又不可深入荆丛割遍体伤</p>
-<hr>
-<p>我本停驻丹蔷花海恣意轮舞尖刺间放旷</p>
-<p>又有绝美幻象邀我共享这鸩酿</p>
-<p>用曾时构建过简易乌托邦 换刻庭暖花香</p>
-<p>便算风中耳语也渐变温热悠扬</p>
-<hr>
-<p>当极夜降至温宁这刹风光 或戏文草收场</p>
-<p>谁难得凭真实感想领意念疏狂</p>
-<p>我仍可笑容天真不动声响 舐温血以弥伤</p>
-<p>凛冽凌乱尽头或有休憩眠月港</p>
-<hr>
-<h3 id="文案">文案</h3>
-<p>“那些天气很好的，分享一张课桌的日子，时至今日仍蒙着一层金色的华彩。”</p>
-<p>“但那时埋藏在心里逐渐长大的话语，却逐渐变成你无法知晓的，细密又煎熬的凛冽风霜。”</p>
-<p>“那些心绪过去了太久，它们本来已经快要断绝——如果我没有知晓，你也回到了这座城市这件事情。”</p>
-<p>“大学经过几年，日子像流水消逝。我相信你因生活太过充实而始终懒于同我叙旧，而不是忘了我——虽然我也并非深信不疑。”</p>
-<p>“我或许是太小心翼翼、太计较后果了。但你该知道的，越亲密无间，越举步维艰。我不曾我也无从接触、听到，感受你，就像隔着一道玻璃幕墙”</p>
-<p>“这或许是过去四年，我们第一次联系；虽然只是借由再平常不过的网络聊天工具。很奇怪，时间似乎并没有前行，寻找话题比想象中简单太多了。”</p>
-<p>“你会乘着第二天的列车离开。你告知我，作为话题的结尾。我不知道你是否有波澜。但我究竟在执着什么呢？”</p>
-<p>“ 你会来找我吗？ | 你会等着我吗？ ”</p>
-<p>“ 不会吧 | 不会吧 ”</p>
-<p>“ 下一次，我一定不会再胆怯了。 | 下一次，我一定不会再逃避了。 ”</p>
-<p>“只要你看一看我，我就会向你的方向走过去。”</p>
-<p>“或许是我过度敏感了，不然你为何不说出来呢。”</p>
-<p>“我无法相信七十亿分之一相乘的概率。”</p>
-<p>“判断力和直觉都一文不值。”</p>
-<p>“只是在时间轨道剖开的每个断面上。”</p>
-<p>“都有一个难以遏制与你相关心绪的我，饱经漫长而无垠的风霜。”</p>
-<p>“我请求他们告知你我回城的信息，但我不曾想过重逢与告别都未发生。”</p>
-<p>“我不知道，如果天气晴朗，你抵达了车站——我是否会与你寒暄，回忆过去，并延展某些未来呢？谁也无法知道了，这也没有那么重要。”</p>
-<h2 id="2019102修改-本段已删除">【2019/10/2修改】 本段已删除</h2>
-<pre><code class="language-cpp"> 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-  
-   
-    
-    //就这样吧，也挺好的，不是吗？  
-</code></pre>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[笔记 : 二分图匹配 / 最大匹配]]></title>
         <id>https://malachiten.github.io/post/bi-ji-er-fen-tu-pi-pei-zui-da-pi-pei</id>
@@ -1342,6 +1237,64 @@ int main(){
 </code></pre>
 <p>这是<strong>lower_bound</strong>的使用方法——跟之前那个完全一样地传入三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> 。它返回一个内存地址，还是数组中值 <em>val</em> 存在于内存中的位置。若找不到这个值，这个函数还是会返回这个数组的末尾 <em>last</em> 的值+1单位长度的地址！<strong>跟之前一样，如果你不特判这个情况，也会越界的啊!一定要注意！</strong></p>
 <p>跟往常一样……由于这个是实用性说明，所以……这些函数的复杂度证明就不存在了哦<sub>（</sub><sub>其实我也没有证过，不过……**既然是$STL$操作的话……暂且认为它们的复杂度全都是$O(\log_2n)$的吧**</sub>溜啦！~~）</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[GCC 全部编译器优化开关启动命令]]></title>
+        <id>https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling</id>
+        <link href="https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling">
+        </link>
+        <updated>2019-09-27T02:03:24.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="gcc-全部编译器优化开关启动命令">GCC 全部编译器优化开关启动命令</h1>
+<p>有时，洛谷上的一些题，我们的算法并不能满分通过。一些优化之差，就导致一道题迟迟无法AC。对此，可以在我们的程序前面加上这些预处理器命令：</p>
+<pre><code class="language-cpp">#define fastcall __attribute__((optimize(&quot;-O3&quot;)))
+#pragma GCC optimize(2)
+#pragma GCC optimize(3)
+#pragma GCC optimize(&quot;Ofast&quot;)
+#pragma GCC optimize(&quot;inline&quot;)
+#pragma GCC optimize(&quot;-fgcse&quot;)
+#pragma GCC optimize(&quot;-fgcse-lm&quot;)
+#pragma GCC optimize(&quot;-fipa-sra&quot;)
+#pragma GCC optimize(&quot;-ftree-pre&quot;)
+#pragma GCC optimize(&quot;-ftree-vrp&quot;)
+#pragma GCC optimize(&quot;-fpeephole2&quot;)
+#pragma GCC optimize(&quot;-ffast-math&quot;)
+#pragma GCC optimize(&quot;-fsched-spec&quot;)
+#pragma GCC optimize(&quot;unroll-loops&quot;)
+#pragma GCC optimize(&quot;-falign-jumps&quot;)
+#pragma GCC optimize(&quot;-falign-loops&quot;)
+#pragma GCC optimize(&quot;-falign-labels&quot;)
+#pragma GCC optimize(&quot;-fdevirtualize&quot;)
+#pragma GCC optimize(&quot;-fcaller-saves&quot;)
+#pragma GCC optimize(&quot;-fcrossjumping&quot;)
+#pragma GCC optimize(&quot;-fthread-jumps&quot;)
+#pragma GCC optimize(&quot;-funroll-loops&quot;)
+#pragma GCC optimize(&quot;-freorder-blocks&quot;)
+#pragma GCC optimize(&quot;-fschedule-insns&quot;)
+#pragma GCC optimize(&quot;inline-functions&quot;)
+#pragma GCC optimize(&quot;-ftree-tail-merge&quot;)
+#pragma GCC optimize(&quot;-fschedule-insns2&quot;)
+#pragma GCC optimize(&quot;-fstrict-aliasing&quot;)
+#pragma GCC optimize(&quot;-falign-functions&quot;)
+#pragma GCC optimize(&quot;-fcse-follow-jumps&quot;)
+#pragma GCC optimize(&quot;-fsched-interblock&quot;)
+#pragma GCC optimize(&quot;-fpartial-inlining&quot;)
+#pragma GCC optimize(&quot;no-stack-protector&quot;)
+#pragma GCC optimize(&quot;-freorder-functions&quot;)
+#pragma GCC optimize(&quot;-findirect-inlining&quot;)
+#pragma GCC optimize(&quot;-fhoist-adjacent-loads&quot;)
+#pragma GCC optimize(&quot;-frerun-cse-after-loop&quot;)
+#pragma GCC optimize(&quot;inline-small-functions&quot;)
+#pragma GCC optimize(&quot;-finline-small-functions&quot;)
+#pragma GCC optimize(&quot;-ftree-switch-conversion&quot;)
+#pragma GCC optimize(&quot;-foptimize-sibling-calls&quot;)
+#pragma GCC optimize(&quot;-fexpensive-optimizations&quot;)
+#pragma GCC optimize(&quot;inline-functions-called-once&quot;)
+#pragma GCC optimize(&quot;-fdelete-null-pointer-checks&quot;)
+</code></pre>
+<p>从而开启全部优化开关，亲测将50分TLE变成了100分AC。</p>
+<p>不过……</p>
+<h2 id="警告在noip竞赛中使用任何编译命令可能导致complie-error并且无法申诉因此不要尝试在正式竞赛中使用这些编译命令本技巧仅限平时使用">警告：在NOIp竞赛中使用任何编译命令可能导致Complie Error，并且无法申诉！因此，不要尝试在正式竞赛中使用这些编译命令！本技巧仅限平时使用！！！</h2>
 ]]></content>
     </entry>
 </feed>
