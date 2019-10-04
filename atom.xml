@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-04T05:30:40.656Z</updated>
+    <updated>2019-10-04T05:32:39.172Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -33,7 +33,7 @@
 <blockquote>
 <p>给定一个二分图G，在G的一个子图M中，M的边集{E}中的任意两条边都不依附于同一个顶点，则称M是一个匹配。</p>
 </blockquote>
-<h3 id="匹配点-匹配边-未匹配点-非匹配边">匹配点、匹配边、未匹配点、非匹配边</h3>
+<h3 id="匹配点-匹配边-未匹配点-未匹配边">匹配点、匹配边、未匹配点、未匹配边</h3>
 <p>显然，匹配点是指在一种匹配中，连有匹配边的点。未匹配点与之相反，没有匹配边。</p>
 <p>匹配边则是对于连接在两个匹配点之间，满足匹配定义的特定边。</p>
 <p>如图：</p>
