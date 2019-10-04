@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569997162017">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1570166997383">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569997162017" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1570166997383" alt="" width="32px" height="32px">
       </a>
       <a href="https://malachiten.github.io">
         <h1 class="site-title">Malachite</h1>
@@ -132,7 +132,7 @@
 <td style="text-align:center">2→6</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center">Null</td>
 <td style="text-align:center">3→5</td>
 </tr>
 </tbody>
@@ -229,8 +229,10 @@ int main(){
     }
     int ans=0;
     for(int i=1;i&lt;=m;i++){
-        memset(vis,0,sizeof vis);
-        ans+=dfs(i);//有增广路则+1,无则+0
+        if(!matching[i]){
+            memset(vis,0,sizeof vis);
+            ans+=dfs(i);//有增广路则+1,无则+0
+        }
     }
     cout&lt;&lt;ans&lt;&lt;endl;
 }
@@ -306,9 +308,9 @@ int main(){
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing">
+            <a class="purple-link" href="https://malachiten.github.io/post/bi-ji-ou-la-lu">
               <h3 class="post-title">
-                下一篇：笔记 : 图的存储 / 邻接表-链式前向星
+                下一篇：笔记 : 欧拉路 [Ongoing]
               </h3>
             </a>
           </div>

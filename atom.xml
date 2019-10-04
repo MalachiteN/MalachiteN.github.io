@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-02T06:19:26.662Z</updated>
+    <updated>2019-10-04T05:30:40.656Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -56,7 +56,7 @@
 <td style="text-align:center">2→6</td>
 </tr>
 <tr>
-<td style="text-align:center"></td>
+<td style="text-align:center">Null</td>
 <td style="text-align:center">3→5</td>
 </tr>
 </tbody>
@@ -153,8 +153,10 @@ int main(){
     }
     int ans=0;
     for(int i=1;i&lt;=m;i++){
-        memset(vis,0,sizeof vis);
-        ans+=dfs(i);//有增广路则+1,无则+0
+        if(!matching[i]){
+            memset(vis,0,sizeof vis);
+            ans+=dfs(i);//有增广路则+1,无则+0
+        }
     }
     cout&lt;&lt;ans&lt;&lt;endl;
 }
@@ -227,6 +229,29 @@ int main(){
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[笔记 : 欧拉路 [Ongoing]]]></title>
+        <id>https://malachiten.github.io/post/bi-ji-ou-la-lu</id>
+        <link href="https://malachiten.github.io/post/bi-ji-ou-la-lu">
+        </link>
+        <updated>2019-10-01T07:22:40.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="什么是欧拉路">什么是欧拉路</h2>
+<p>欧拉路是指从图中任意一个点开始到图中任意一个点结束的路径，并且图中每条边通过的且只通过一次。</p>
+<h2 id="怎样判断有欧拉路存在">怎样判断有欧拉路存在</h2>
+<h3 id="无向图">无向图</h3>
+<p>图一定要联通，且:</p>
+<p>所有顶点度数均为偶数，则存在欧拉回路</p>
+<p>两个点度数为奇数，其余的为偶数，则存在欧拉通路</p>
+<h3 id="有向图">有向图</h3>
+<p>图联通依然是一个必要条件。且:</p>
+<p>每个点的入度等于出度，则存在欧拉回路(任意一点有度的点都可以作为起点)</p>
+<p>除某两点外，所有入度等于出度。这两点中一点的出度比入度大，另一点的出度比入度小，则存在欧拉通路。出度大者是起点，入度大者是终点。</p>
+<h2 id="怎样找到欧拉路">怎样找到欧拉路</h2>
+<p>之前的内容大致只是用于<strong>发现该题目应该使用欧拉回路的方法求解</strong>。</p>
+<p>以下寻找方法均建立在假设图中存在欧拉回路的基础上，其自身并不能判断图是否满足条件。</p>
+<p>从一个非孤立的点开始<em>DFS</em>，点可以重复经过，每次任意走一条边，并将这条边从邻接表中删去。走到目标终点(找到欧拉通路)，或者走回起点(找到欧拉回路)。</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[笔记 : 图的存储 / 邻接表-链式前向星]]></title>
         <id>https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing</id>
         <link href="https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing">
@@ -245,7 +270,8 @@ for(int i=1;i&lt;=n;i++){
 <p>所以，需要进行优化</p>
 <p>于是，巨佬就搞出了链式前向星( <strong>时间空间均最优的存图数据结构</strong> )</p>
 <p>Talk is cheap,show me the code:</p>
-<pre><code class="language-cpp">int head[maxn],esize;
+<p>结构体实现</p>
+<pre><code class="language-cpp">int head[maxn],ptr;
 struct edge{
     int target,value,next;
     edge(){}
@@ -257,7 +283,20 @@ struct edge{
 }edges[maxn];
 void clear(){
     memset(head,-1,sizeof head);
-    esize=0;
+    ptr=0;
+}
+</code></pre>
+<p>纯数组实现</p>
+<pre><code class="language-cpp">int head[maxn],target[maxn],value[maxn],next[maxn],ptr;
+void addEdge(int x/*起始点*/,int y/*终止点*/,int z/*权值*/){
+    ++ptr;
+    target[ptr]=y;
+    next[ptr]=head[x];
+    value[ptr]=z;
+}
+void clear(){
+    memset(head,-1,sizeof head);
+    ptr=0;
 }
 </code></pre>
 <h2 id="解析">解析</h2>
@@ -1269,64 +1308,6 @@ int main(){
 </code></pre>
 <p>这是<strong>lower_bound</strong>的使用方法——跟之前那个完全一样地传入三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> 。它返回一个内存地址，还是数组中值 <em>val</em> 存在于内存中的位置。若找不到这个值，这个函数还是会返回这个数组的末尾 <em>last</em> 的值+1单位长度的地址！<strong>跟之前一样，如果你不特判这个情况，也会越界的啊!一定要注意！</strong></p>
 <p>跟往常一样……由于这个是实用性说明，所以……这些函数的复杂度证明就不存在了哦<sub>（</sub><sub>其实我也没有证过，不过……**既然是$STL$操作的话……暂且认为它们的复杂度全都是$O(\log_2n)$的吧**</sub>溜啦！~~）</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[GCC 全部编译器优化开关启动命令]]></title>
-        <id>https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling</id>
-        <link href="https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling">
-        </link>
-        <updated>2019-09-27T02:03:24.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="gcc-全部编译器优化开关启动命令">GCC 全部编译器优化开关启动命令</h1>
-<p>有时，洛谷上的一些题，我们的算法并不能满分通过。一些优化之差，就导致一道题迟迟无法AC。对此，可以在我们的程序前面加上这些预处理器命令：</p>
-<pre><code class="language-cpp">#define fastcall __attribute__((optimize(&quot;-O3&quot;)))
-#pragma GCC optimize(2)
-#pragma GCC optimize(3)
-#pragma GCC optimize(&quot;Ofast&quot;)
-#pragma GCC optimize(&quot;inline&quot;)
-#pragma GCC optimize(&quot;-fgcse&quot;)
-#pragma GCC optimize(&quot;-fgcse-lm&quot;)
-#pragma GCC optimize(&quot;-fipa-sra&quot;)
-#pragma GCC optimize(&quot;-ftree-pre&quot;)
-#pragma GCC optimize(&quot;-ftree-vrp&quot;)
-#pragma GCC optimize(&quot;-fpeephole2&quot;)
-#pragma GCC optimize(&quot;-ffast-math&quot;)
-#pragma GCC optimize(&quot;-fsched-spec&quot;)
-#pragma GCC optimize(&quot;unroll-loops&quot;)
-#pragma GCC optimize(&quot;-falign-jumps&quot;)
-#pragma GCC optimize(&quot;-falign-loops&quot;)
-#pragma GCC optimize(&quot;-falign-labels&quot;)
-#pragma GCC optimize(&quot;-fdevirtualize&quot;)
-#pragma GCC optimize(&quot;-fcaller-saves&quot;)
-#pragma GCC optimize(&quot;-fcrossjumping&quot;)
-#pragma GCC optimize(&quot;-fthread-jumps&quot;)
-#pragma GCC optimize(&quot;-funroll-loops&quot;)
-#pragma GCC optimize(&quot;-freorder-blocks&quot;)
-#pragma GCC optimize(&quot;-fschedule-insns&quot;)
-#pragma GCC optimize(&quot;inline-functions&quot;)
-#pragma GCC optimize(&quot;-ftree-tail-merge&quot;)
-#pragma GCC optimize(&quot;-fschedule-insns2&quot;)
-#pragma GCC optimize(&quot;-fstrict-aliasing&quot;)
-#pragma GCC optimize(&quot;-falign-functions&quot;)
-#pragma GCC optimize(&quot;-fcse-follow-jumps&quot;)
-#pragma GCC optimize(&quot;-fsched-interblock&quot;)
-#pragma GCC optimize(&quot;-fpartial-inlining&quot;)
-#pragma GCC optimize(&quot;no-stack-protector&quot;)
-#pragma GCC optimize(&quot;-freorder-functions&quot;)
-#pragma GCC optimize(&quot;-findirect-inlining&quot;)
-#pragma GCC optimize(&quot;-fhoist-adjacent-loads&quot;)
-#pragma GCC optimize(&quot;-frerun-cse-after-loop&quot;)
-#pragma GCC optimize(&quot;inline-small-functions&quot;)
-#pragma GCC optimize(&quot;-finline-small-functions&quot;)
-#pragma GCC optimize(&quot;-ftree-switch-conversion&quot;)
-#pragma GCC optimize(&quot;-foptimize-sibling-calls&quot;)
-#pragma GCC optimize(&quot;-fexpensive-optimizations&quot;)
-#pragma GCC optimize(&quot;inline-functions-called-once&quot;)
-#pragma GCC optimize(&quot;-fdelete-null-pointer-checks&quot;)
-</code></pre>
-<p>从而开启全部优化开关，亲测将50分TLE变成了100分AC。</p>
-<p>不过……</p>
-<h2 id="警告在noip竞赛中使用任何编译命令可能导致complie-error并且无法申诉因此不要尝试在正式竞赛中使用这些编译命令本技巧仅限平时使用">警告：在NOIp竞赛中使用任何编译命令可能导致Complie Error，并且无法申诉！因此，不要尝试在正式竞赛中使用这些编译命令！本技巧仅限平时使用！！！</h2>
 ]]></content>
     </entry>
 </feed>

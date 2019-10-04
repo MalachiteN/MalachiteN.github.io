@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1569997162017">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1570166997383">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
@@ -36,7 +36,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1569997162017" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1570166997383" alt="" width="32px" height="32px">
       </a>
       <a href="https://malachiten.github.io">
         <h1 class="site-title">Malachite</h1>
@@ -115,7 +115,8 @@ for(int i=1;i&lt;=n;i++){
 <p>所以，需要进行优化</p>
 <p>于是，巨佬就搞出了链式前向星( <strong>时间空间均最优的存图数据结构</strong> )</p>
 <p>Talk is cheap,show me the code:</p>
-<pre><code class="language-cpp">int head[maxn],esize;
+<p>结构体实现</p>
+<pre><code class="language-cpp">int head[maxn],ptr;
 struct edge{
     int target,value,next;
     edge(){}
@@ -127,7 +128,20 @@ struct edge{
 }edges[maxn];
 void clear(){
     memset(head,-1,sizeof head);
-    esize=0;
+    ptr=0;
+}
+</code></pre>
+<p>纯数组实现</p>
+<pre><code class="language-cpp">int head[maxn],target[maxn],value[maxn],next[maxn],ptr;
+void addEdge(int x/*起始点*/,int y/*终止点*/,int z/*权值*/){
+    ++ptr;
+    target[ptr]=y;
+    next[ptr]=head[x];
+    value[ptr]=z;
+}
+void clear(){
+    memset(head,-1,sizeof head);
+    ptr=0;
 }
 </code></pre>
 <h2 id="解析">解析</h2>
