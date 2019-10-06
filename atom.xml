@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-04T05:32:39.172Z</updated>
+    <updated>2019-10-06T08:51:09.392Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -10,6 +10,89 @@
     <logo>https://malachiten.github.io/images/avatar.png</logo>
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
+    <entry>
+        <title type="html"><![CDATA[笔记 : 编译原理 / 引论(1) [Ongoing]]]></title>
+        <id>https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun</id>
+        <link href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun">
+        </link>
+        <updated>2019-10-06T03:05:29.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="编译程序">编译程序</h2>
+<p>编译程序特指<strong>将高级语言源程序翻译成低级语言目标程序</strong>的翻译程序.</p>
+<h3 id="翻译程序">&quot;翻译程序&quot;</h3>
+<p>将一种语言的程序(源语言程序)翻译成另一种语言的程序(目标语言程序).</p>
+<h3 id="解释程序">&quot;解释程序&quot;</h3>
+<p>不产生目标程序,将源语言程序逐条取出语句并立即执行的程序.这是和编译程序不一样的.</p>
+<h3 id="编译程序的种类">编译程序的种类</h3>
+<ol>
+<li>帮助找出错误的 诊断编译程序</li>
+<li>提供优化编译开关的 优化编译程序</li>
+<li>交叉编译程序 编译程序</li>
+</ol>
+<h3 id="宿主机与目标机">宿主机与目标机</h3>
+<p>宿主机:编译程序运行的平台.</p>
+<p>目标机:目标代码程序运行的平台.</p>
+<h3 id="可变目标的编译程序">可变目标的编译程序</h3>
+<p>能够通过不同编译开关产生不同的目标代码而运行于不同的目标机上的编译程序,称为可变目标的编译程序.</p>
+<h3 id="设计语言的流程">设计语言的流程</h3>
+<p>设计程序设计语言</p>
+<ol>
+<li>设计程序设计语言的规范</li>
+<li>设计其编译程序</li>
+</ol>
+<h2 id="抽象的思维">抽象的思维</h2>
+<p>经过抽象,就能研究事物的本质与规律.</p>
+<h3 id="引入">引入</h3>
+<ol>
+<li>忽略与当前问题或目标无关的,集中考虑有关的</li>
+<li>忽略非本质的特征,抽取本质性特征</li>
+<li>从个体把握一般,从事物把握本质</li>
+</ol>
+<blockquote>
+<p>毕加索的《牛》的变化.<br>
+伦敦的地铁图的变化.(各个城市的地铁地图)</p>
+</blockquote>
+<h3 id="图灵机">图灵机</h3>
+<p>通过一条无限长的<strong>纸带</strong>,一个<strong>读写头</strong>,一个控制读写头的<strong>规则</strong>,和一个<strong>状态寄存器</strong>,来完成各项的计算.有了这个模型,就可以研究计算的过程的本质.</p>
+<blockquote>
+<p>对&quot;可计算&quot;和&quot;算法&quot;的定义:&quot;如果一个过程<strong>能被图灵机执行</strong>,则其可计算/为一个算法&quot;</p>
+</blockquote>
+<h3 id="编译程序设计中的抽象">编译程序设计中的抽象</h3>
+<p>抽象在编译程序设计中是普遍的.如:形式文法,有限自动机......</p>
+<h4 id="自动化的思维">自动化的思维</h4>
+<p>把事物抽象之后,把抽象的事物在计算机上实现.是将计算思维物化的过程.</p>
+<p>程序的本质是用自动化的思维解决问题.</p>
+<p>自动化的思想,可以指导编译程序设计,并提高开发的效率.(词法分析,语法分析,有限自动机)</p>
+<h2 id="分解的思维">分解的思维</h2>
+<p>即模块化的思想.</p>
+<p>先将问题模块化,分解为各个子问题,如果子问题足够小能够解决则解决,能继续分解则继续分解(将编译过程分解为不同的阶段,先生成中间代码,再生成目标代码)</p>
+<p>实际上,递归就是这样的问题.实际上,递归求解的子问题的结构与父问题相同.只是规模减小了.在编译的过程中,广泛的运用了递归.(应用:递归下降分析,语法制导翻译,基于树的遍历的属性计算)</p>
+<h2 id="权衡-折中">权衡 / 折中</h2>
+<p>对于理论上的设计,由于实际限制条件的存在,实际设计会与理论设计有差别,即需要这种折中的思维.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[笔记 : 欧拉路 [Ongoing]]]></title>
+        <id>https://malachiten.github.io/post/bi-ji-ou-la-lu</id>
+        <link href="https://malachiten.github.io/post/bi-ji-ou-la-lu">
+        </link>
+        <updated>2019-10-04T09:06:53.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="什么是欧拉路">什么是欧拉路</h2>
+<p>欧拉路是指从图中任意一个点开始到图中任意一个点结束的路径，并且图中每条边通过的且只通过一次。</p>
+<h2 id="怎样判断有欧拉路存在">怎样判断有欧拉路存在</h2>
+<h3 id="无向图">无向图</h3>
+<p>图一定要联通，且:</p>
+<p>所有顶点度数均为偶数，则存在欧拉回路</p>
+<p>两个点度数为奇数，其余的为偶数，则存在欧拉通路</p>
+<h3 id="有向图">有向图</h3>
+<p>图联通依然是一个必要条件。且:</p>
+<p>每个点的入度等于出度，则存在欧拉回路(任意一点有度的点都可以作为起点)</p>
+<p>除某两点外，所有入度等于出度。这两点中一点的出度比入度大，另一点的出度比入度小，则存在欧拉通路。出度大者是起点，入度大者是终点。</p>
+<h2 id="怎样找到欧拉路">怎样找到欧拉路</h2>
+<p>之前的内容大致只是用于<strong>发现该题目应该使用欧拉回路的方法求解</strong>。</p>
+<p>以下寻找方法均建立在假设图中存在欧拉回路的基础上，其自身并不能判断图是否满足条件。</p>
+<p>从一个非孤立的点开始<em>DFS</em>，点可以重复经过，每次任意走一条边，并将这条边从邻接表中删去。走到目标终点(找到欧拉通路)，或者走回起点(找到欧拉回路)。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[笔记 : 二分图匹配 / 最大匹配]]></title>
         <id>https://malachiten.github.io/post/bi-ji-er-fen-tu-pi-pei-zui-da-pi-pei</id>
@@ -226,29 +309,6 @@ int main(){
     return 0;
 } 
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[笔记 : 欧拉路 [Ongoing]]]></title>
-        <id>https://malachiten.github.io/post/bi-ji-ou-la-lu</id>
-        <link href="https://malachiten.github.io/post/bi-ji-ou-la-lu">
-        </link>
-        <updated>2019-10-01T07:22:40.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="什么是欧拉路">什么是欧拉路</h2>
-<p>欧拉路是指从图中任意一个点开始到图中任意一个点结束的路径，并且图中每条边通过的且只通过一次。</p>
-<h2 id="怎样判断有欧拉路存在">怎样判断有欧拉路存在</h2>
-<h3 id="无向图">无向图</h3>
-<p>图一定要联通，且:</p>
-<p>所有顶点度数均为偶数，则存在欧拉回路</p>
-<p>两个点度数为奇数，其余的为偶数，则存在欧拉通路</p>
-<h3 id="有向图">有向图</h3>
-<p>图联通依然是一个必要条件。且:</p>
-<p>每个点的入度等于出度，则存在欧拉回路(任意一点有度的点都可以作为起点)</p>
-<p>除某两点外，所有入度等于出度。这两点中一点的出度比入度大，另一点的出度比入度小，则存在欧拉通路。出度大者是起点，入度大者是终点。</p>
-<h2 id="怎样找到欧拉路">怎样找到欧拉路</h2>
-<p>之前的内容大致只是用于<strong>发现该题目应该使用欧拉回路的方法求解</strong>。</p>
-<p>以下寻找方法均建立在假设图中存在欧拉回路的基础上，其自身并不能判断图是否满足条件。</p>
-<p>从一个非孤立的点开始<em>DFS</em>，点可以重复经过，每次任意走一条边，并将这条边从邻接表中删去。走到目标终点(找到欧拉通路)，或者走回起点(找到欧拉回路)。</p>
 ]]></content>
     </entry>
     <entry>
@@ -1149,7 +1209,7 @@ void erase(type_of_set key_value)
 <p>第一种用法：删除<strong>set</strong>中迭代器 it 指向的元素</p>
 <p>第二种用法：删除<strong>set</strong>中迭代器 first 到 end 之间的全部元素。</p>
 <p>第三种用法：删除<strong>set</strong>中的键值 key_value。</p>
-<p>有时，我们也需要访问<strong>set</strong>中的某些元素。然而，<strong>set</strong>并没有重载[]运算符，导致了我们无法进行随机访问。这带来了极大的困扰。不过我们还是可以进行顺序访问。</p>
+<p>有时，我们也需要访问<strong>set</strong>中的某些元素。然而，<strong>set</strong>并没有重载<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">[]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mclose">]</span></span></span></span>运算符，导致了我们无法进行随机访问。这带来了极大的困扰。不过我们还是可以进行顺序访问。</p>
 <p>访问时采用这种方式：</p>
 <p>先声明三个迭代器。一个名为 <em>it_begin</em> 指向开头，一个名为 <em>it_end</em> 指向结尾，一个名为 <em>it</em> 备用。<br>
 我们使用一个for循环进行访问。循环这样写：</p>
@@ -1263,51 +1323,6 @@ int main(){
 </code></pre>
 <p>运行结果如图：<br>
 <img src="https://s2.ax1x.com/2019/08/22/mdNk36.png" alt="运行截图"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[C++STL二分查找函数实用性说明]]></title>
-        <id>https://malachiten.github.io/post/cer-fen-cha-zhao-han-shu-shi-yong-xing-shuo-ming</id>
-        <link href="https://malachiten.github.io/post/cer-fen-cha-zhao-han-shu-shi-yong-xing-shuo-ming">
-        </link>
-        <updated>2019-09-27T02:04:43.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="cstl二分查找函数实用性说明">C++STL二分查找函数实用性说明</h1>
-<p>平时我们需要“快速查找”的值，我们一般会采用二分查找来找到。二分查找的代码一般如下：</p>
-<pre><code class="language-cpp">while(l&lt;=r){
-    mid=(l+r)/2;
-    if(b[mid]&lt;=a[i]){
-        l=mid+1;
-        continue;
-    }
-    r=mid-1;
-}
-</code></pre>
-<p>这导致我们必须背模板，不但难背而且用着还容易出错。</p>
-<p>那么是否存在简单易行，不容易出错而且等效于手写的二分查找的工具呢？</p>
-<p>这样的工具是存在的。而且我们可以确切地指出，它们存在于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>T</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">STL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">L</span></span></span></span>算法库 <code>&lt;algorithm&gt;</code> 中。</p>
-<p>切入正题。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi><mi>T</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">STL</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">L</span></span></span></span>为我们提供了三种不同的二分查找函数，它们分别是：</p>
-<ul>
-<li>
-<p>返回要查找的值<strong>是否存在</strong>的函数<strong>binary_search</strong>。</p>
-</li>
-<li>
-<p>返回第一个<strong>大于或等于</strong>要查找的值的<strong>位置</strong>的函数<strong>lower_bound</strong>。</p>
-</li>
-<li>
-<p>返回第一个<strong>大于</strong>要查找的值的<strong>位置</strong>的函数<strong>upper_bound</strong>。</p>
-</li>
-</ul>
-<p>那么我们应该怎么使用它们呢？</p>
-<pre><code class="language-cpp">bool binary_search(Type[]+int pos_of_begin,Type[]+int pos_of_end,val);
-</code></pre>
-<p>这是<strong>binary_search</strong>的使用方法——传入三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> 。<strong>它将返回一个布尔值，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>代表 <em>val</em> 存在于数组之中，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>则代表其不存在。</strong></p>
-<pre><code class="language-cpp">ADDR lower_bound(Type[]+int pos_of_begin,Type[]+int pos_of_end,val);
-</code></pre>
-<p>这就是<strong>lower_bound</strong>的使用方法了——把三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> ，全部传进去！它将返回一个内存地址，代表着该数组中的值 <em>val</em> 存在在内存中的位置。若找不到这个值，就会返回这个数组的末尾 <em>last</em> 在内存中位置增加1个该数据类型长度的地址！<strong>小心，如果不特判一下就直接调用的话，你就要越界了!</strong></p>
-<pre><code class="language-cpp">ADDR upper_bound(Type[]+int pos_of_begin,Type[]+int pos_of_end,val);
-</code></pre>
-<p>这是<strong>lower_bound</strong>的使用方法——跟之前那个完全一样地传入三个参数：任意类型数组名称加上查找起始位置 <em>pos of begin</em> ，该数组名称加查找结束位置 <em>pos of end</em> ，以及待查找的值 <em>val</em> 。它返回一个内存地址，还是数组中值 <em>val</em> 存在于内存中的位置。若找不到这个值，这个函数还是会返回这个数组的末尾 <em>last</em> 的值+1单位长度的地址！<strong>跟之前一样，如果你不特判这个情况，也会越界的啊!一定要注意！</strong></p>
-<p>跟往常一样……由于这个是实用性说明，所以……这些函数的复杂度证明就不存在了哦<sub>（</sub><sub>其实我也没有证过，不过……**既然是$STL$操作的话……暂且认为它们的复杂度全都是$O(\log_2n)$的吧**</sub>溜啦！~~）</p>
 ]]></content>
     </entry>
 </feed>
