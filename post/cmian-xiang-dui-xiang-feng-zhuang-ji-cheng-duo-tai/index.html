@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>C++面向对象 / 封装 继承 多态 | Malachite</title>
+<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1570456451246">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://malachiten.github.io">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1570456451246" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://malachiten.github.io">
+        <h1 class="site-title">Malachite</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">C++面向对象 / 封装 继承 多态</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-10-07</span>
+            
+          </div>
+          <div class="post-content">
+            <h2 id="概念引入">概念引入</h2>
+<p>我们以一个形象的例子来介绍这几个特性。</p>
+<h3 id="一-显而易见的故事">一 显而易见的故事</h3>
+<p>作为一个<s>沉迷学习的好孩子</s>，你对于<s>如何藏匿你的手机</s>得心应手。</p>
+<p>在你的房间中，有一张<strong>床</strong>、一张<strong>书桌</strong>一个<strong>大大的衣柜</strong>，还有一个<strong>书柜</strong>。</p>
+<p><strong>你的学习用品均储存在书柜中</strong>。</p>
+<p><strong>生活用品均储存在衣柜中</strong>。</p>
+<p>你的_家长_为了检查你的学习，会经常<strong>翻你的书柜和书桌</strong>。</p>
+<p>而我们现在假设他们完全不管你的日常生活，因而<strong>几乎</strong>不管你的衣柜和床板底下。</p>
+<p>同时，你的_家长_还自诩于重视你的隐私，因此他们还将<strong>从来不翻你自己身上的包</strong>“引以为傲”，作为与其他家长的谈资。</p>
+<p>那么我们必定可以得出一个结论</p>
+<blockquote>
+<p>你的手机<strong>必定放在你的衣柜、床板底下或者自己的身上</strong>。这能够保证你的手机一直安全。</p>
+</blockquote>
+<p>这是一个显而易见的结论。然而让我们将情况变得更复杂一点：</p>
+<p>你的同学们中，有一些_好朋友_会到你的家中玩。一得到难得的关上自己房间门的机会，你就拿出手机跟_朋友_一起玩。_朋友_临走时，他<strong>询问你藏匿手机的技巧</strong>，于是你<strong>告诉了他你的大部分技巧</strong>。</p>
+<p>不过，因为朋友的不同，你告诉不同的朋友不同的技巧。你把手机放在身上的事，却因为你不保证_朋友A_的家长是否对他搜身，而提示他不要藏在身上。_朋友B_家更注重孩子隐私，因此从不进他的房间，则可以告诉他全部的技巧。而他也不必提心吊胆地藏在身上。</p>
+<p>于是，你的_朋友A_具有了这样的藏匿手机技巧：</p>
+<blockquote>
+<p>把手机放在衣柜里面或者床板下面。</p>
+</blockquote>
+<p>_朋友B_变成这样：</p>
+<blockquote>
+<p>把手机放在书桌、书柜、衣柜或者床上。</p>
+</blockquote>
+<p>同时我们还发现，你需要悄悄玩手机，但是对于手机的频繁转移，并没有什么需求。不过你还是告诉了他们几个技巧供他们选择。</p>
+<p>后来你的手机被发现了，不过你的朋友们将你的技能发扬光大，<s>代代相传</s>。(大雾)</p>
+<h3 id="二-抽象这个故事">二 抽象这个故事</h3>
+<p>之前也说过：经过抽象,就能研究事物的本质与规律.</p>
+<p>抽象的一般方法：</p>
+<blockquote>
+<ol>
+<li>忽略事物中与当前问题或目标无关的特点,集中考虑有关。</li>
+<li>忽略非本质的特征,抽取本质性特征</li>
+<li>从个体把握一般,从事物把握本质</li>
+</ol>
+</blockquote>
+<p>由此，这个典例事件，我们可以这样抽象：</p>
+<p>将你的房间看做一个<strong>类</strong>( <em>class</em> )。这个类有如下的特性：</p>
+<ul>
+<li>其中的“书柜”和“书桌”是<strong>任由外部访问</strong>的成员。这样的成员，称为<code>public</code>成员。</li>
+<li>“床”和“衣柜”禁止<strong>除了你的朋友以外的人访问</strong>。这样的称为<code>protected</code>成员。</li>
+<li>“自己身上”禁止<strong>一切外部访问</strong>。这样的则称为<code>private</code>成员。</li>
+</ul>
+<p>通过严格的将这些容器给<strong>封装</strong>起来，你严格地控制了外部对于你的成员的访问，保证了你的手机的安全。</p>
+<p>而你的朋友们回家之后就在他的房间上<strong>继承</strong>了你房间的特性。这时，可以将你自己的房间称为他们继承的“基类”。相对而言，他们的房间就变成了“子类”。</p>
+<p>_A_的房间具有了<strong>除了跟你身上以外的一切特性</strong>。他也具有了你的<code>public</code>和<code>protected</code>属性，只有<code>private</code>属性不能被继承下来。这样的继承方式，被称为<code>public</code>继承。</p>
+<p>_B_的房间中，手机则也可以放在相同的地方。不过，显然，他的书柜和书桌禁止<strong>除了他的朋友以外的人访问</strong>。因而，你的<code>public</code>成员变成了他的<code>protected</code>成员。这样的继承方式，则称为<code>protected</code>继承。这种继承方式中，基类除了<code>private</code>之外的成员都会变成子类的<code>protected</code>成员。</p>
+<p>除此之外，还有<code>private</code>继承，用于家长早逝，啥都管不了的孤僻的可怜孩子。所幸你没有这样的一个朋友。<s>不然我就打不完代码了</s>显然可见，对于这样的人而言，他家的空间都是他不为他人访问的的<code>private</code>成员。他也没有必要去继承你的<code>private</code>。</p>
+<p>与此同时，他们继承了你的转移手机方法。你的转移手机方法因为没有必要而并不能执行(因此是一个虚拟函数)，而你的朋友们将其重载而发展开来。这就是由基类提供纯粹的接口而子类通过重载赋予其实际作用的<strong>多态</strong>特性。</p>
+<h2 id="语法总结">语法总结</h2>
+<p>对于刚刚的例子，我们可以将其写成一个例程来体现封装和继承的语法。</p>
+<pre><code class="language-cpp">class your_home{
+    private:
+        void play_phone(){}//玩手机
+        int body;
+    protected:
+        virtual void transfer_phone()=0;//不需要的转移
+        int bed,wardrobe;
+    public:
+        int desk,bookcase;
+};
+//其实这个描述不太形象——你的类并不能实例化，因为其包含了一个纯虚函数transfer_phone()，是一个纯虚类/抽象类。
+class A_home:public your_home{
+    private:
+        void play_phone(){};//玩手机
+    protected:
+        void transfer_phone(){}//实际的转移手机
+};
+class B_home:protected your_home{
+    private:
+        void play_phone(){};//玩手机
+        void transfer_phone(){}//转移手机
+};
+class C_home:private your_home{
+    private:
+        void play_phone(){};//玩手机
+        //没有必要转移手机了。
+};
+</code></pre>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun">
+              <h3 class="post-title">
+                下一篇：笔记 : 编译原理 / 引论(1) [Ongoing]
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">夕焼けの中に吸い込まれて消えてった</div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/MalachiteN" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+        <a href="https://www.zhihu.com/people/bao-chi-leng-jing-rev4/activities" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
+  <div>
+    <span id="busuanzi_container_site_pv">
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </div>
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-07T06:47:49.942Z</updated>
+    <updated>2019-10-07T13:54:14.589Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -10,6 +10,94 @@
     <logo>https://malachiten.github.io/images/avatar.png</logo>
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
+    <entry>
+        <title type="html"><![CDATA[C++面向对象 / 封装 继承 多态]]></title>
+        <id>https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai</id>
+        <link href="https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai">
+        </link>
+        <updated>2019-10-07T12:27:41.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="概念引入">概念引入</h2>
+<p>我们以一个形象的例子来介绍这几个特性。</p>
+<h3 id="一-显而易见的故事">一 显而易见的故事</h3>
+<p>作为一个<s>沉迷学习的好孩子</s>，你对于<s>如何藏匿你的手机</s>得心应手。</p>
+<p>在你的房间中，有一张<strong>床</strong>、一张<strong>书桌</strong>一个<strong>大大的衣柜</strong>，还有一个<strong>书柜</strong>。</p>
+<p><strong>你的学习用品均储存在书柜中</strong>。</p>
+<p><strong>生活用品均储存在衣柜中</strong>。</p>
+<p>你的_家长_为了检查你的学习，会经常<strong>翻你的书柜和书桌</strong>。</p>
+<p>而我们现在假设他们完全不管你的日常生活，因而<strong>几乎</strong>不管你的衣柜和床板底下。</p>
+<p>同时，你的_家长_还自诩于重视你的隐私，因此他们还将<strong>从来不翻你自己身上的包</strong>“引以为傲”，作为与其他家长的谈资。</p>
+<p>那么我们必定可以得出一个结论</p>
+<blockquote>
+<p>你的手机<strong>必定放在你的衣柜、床板底下或者自己的身上</strong>。这能够保证你的手机一直安全。</p>
+</blockquote>
+<p>这是一个显而易见的结论。然而让我们将情况变得更复杂一点：</p>
+<p>你的同学们中，有一些_好朋友_会到你的家中玩。一得到难得的关上自己房间门的机会，你就拿出手机跟_朋友_一起玩。_朋友_临走时，他<strong>询问你藏匿手机的技巧</strong>，于是你<strong>告诉了他你的大部分技巧</strong>。</p>
+<p>不过，因为朋友的不同，你告诉不同的朋友不同的技巧。你把手机放在身上的事，却因为你不保证_朋友A_的家长是否对他搜身，而提示他不要藏在身上。_朋友B_家更注重孩子隐私，因此从不进他的房间，则可以告诉他全部的技巧。而他也不必提心吊胆地藏在身上。</p>
+<p>于是，你的_朋友A_具有了这样的藏匿手机技巧：</p>
+<blockquote>
+<p>把手机放在衣柜里面或者床板下面。</p>
+</blockquote>
+<p>_朋友B_变成这样：</p>
+<blockquote>
+<p>把手机放在书桌、书柜、衣柜或者床上。</p>
+</blockquote>
+<p>同时我们还发现，你需要悄悄玩手机，但是对于手机的频繁转移，并没有什么需求。不过你还是告诉了他们几个技巧供他们选择。</p>
+<p>后来你的手机被发现了，不过你的朋友们将你的技能发扬光大，<s>代代相传</s>。(大雾)</p>
+<h3 id="二-抽象这个故事">二 抽象这个故事</h3>
+<p>之前也说过：经过抽象,就能研究事物的本质与规律.</p>
+<p>抽象的一般方法：</p>
+<blockquote>
+<ol>
+<li>忽略事物中与当前问题或目标无关的特点,集中考虑有关。</li>
+<li>忽略非本质的特征,抽取本质性特征</li>
+<li>从个体把握一般,从事物把握本质</li>
+</ol>
+</blockquote>
+<p>由此，这个典例事件，我们可以这样抽象：</p>
+<p>将你的房间看做一个<strong>类</strong>( <em>class</em> )。这个类有如下的特性：</p>
+<ul>
+<li>其中的“书柜”和“书桌”是<strong>任由外部访问</strong>的成员。这样的成员，称为<code>public</code>成员。</li>
+<li>“床”和“衣柜”禁止<strong>除了你的朋友以外的人访问</strong>。这样的称为<code>protected</code>成员。</li>
+<li>“自己身上”禁止<strong>一切外部访问</strong>。这样的则称为<code>private</code>成员。</li>
+</ul>
+<p>通过严格的将这些容器给<strong>封装</strong>起来，你严格地控制了外部对于你的成员的访问，保证了你的手机的安全。</p>
+<p>而你的朋友们回家之后就在他的房间上<strong>继承</strong>了你房间的特性。这时，可以将你自己的房间称为他们继承的“基类”。相对而言，他们的房间就变成了“子类”。</p>
+<p>_A_的房间具有了<strong>除了跟你身上以外的一切特性</strong>。他也具有了你的<code>public</code>和<code>protected</code>属性，只有<code>private</code>属性不能被继承下来。这样的继承方式，被称为<code>public</code>继承。</p>
+<p>_B_的房间中，手机则也可以放在相同的地方。不过，显然，他的书柜和书桌禁止<strong>除了他的朋友以外的人访问</strong>。因而，你的<code>public</code>成员变成了他的<code>protected</code>成员。这样的继承方式，则称为<code>protected</code>继承。这种继承方式中，基类除了<code>private</code>之外的成员都会变成子类的<code>protected</code>成员。</p>
+<p>除此之外，还有<code>private</code>继承，用于家长早逝，啥都管不了的孤僻的可怜孩子。所幸你没有这样的一个朋友。<s>不然我就打不完代码了</s>显然可见，对于这样的人而言，他家的空间都是他不为他人访问的的<code>private</code>成员。他也没有必要去继承你的<code>private</code>。</p>
+<p>与此同时，他们继承了你的转移手机方法。你的转移手机方法因为没有必要而并不能执行(因此是一个虚拟函数)，而你的朋友们将其重载而发展开来。这就是由基类提供纯粹的接口而子类通过重载赋予其实际作用的<strong>多态</strong>特性。</p>
+<h2 id="语法总结">语法总结</h2>
+<p>对于刚刚的例子，我们可以将其写成一个例程来体现封装和继承的语法。</p>
+<pre><code class="language-cpp">class your_home{
+    private:
+        void play_phone(){}//玩手机
+        int body;
+    protected:
+        virtual void transfer_phone()=0;//不需要的转移
+        int bed,wardrobe;
+    public:
+        int desk,bookcase;
+};
+//其实这个描述不太形象——你的类并不能实例化，因为其包含了一个纯虚函数transfer_phone()，是一个纯虚类/抽象类。
+class A_home:public your_home{
+    private:
+        void play_phone(){};//玩手机
+    protected:
+        void transfer_phone(){}//实际的转移手机
+};
+class B_home:protected your_home{
+    private:
+        void play_phone(){};//玩手机
+        void transfer_phone(){}//转移手机
+};
+class C_home:private your_home{
+    private:
+        void play_phone(){};//玩手机
+        //没有必要转移手机了。
+};
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[笔记 : 编译原理 / 引论(1) [Ongoing]]]></title>
         <id>https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun</id>
@@ -1219,110 +1307,6 @@ void erase(type_of_set key_value)
 }
 </code></pre>
 <p>就像这样，你就可以完成对<strong>set</strong>中每个元素的访问了。是不是敲简单嘤嘤嘤</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[PB_DS容器 trie 实用性说明]]></title>
-        <id>https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming</id>
-        <link href="https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming">
-        </link>
-        <updated>2019-09-27T02:05:13.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="pb_ds容器-trie-实用性说明">PB_DS容器 trie 实用性说明</h1>
-<p>众所周知，C++提供的 <em>STL</em> (标准模板库)具有大量的预制模板，非常优秀。 PB_DS 可能了解的人比较少，但是其也是一个模板库，而且具有更加强大深入的功能。其中，<strong>trie树</strong>这种平时背诵手打模板才能打出来的高级数据结构，也被包括在其中。</p>
-<p>让我们切入正题。首先，要使用 PB_DS 的容器，需要先加上这一行预处理器命令：</p>
-<pre><code class="language-cpp">#include &lt;ext/pb_ds/assoc_container.hpp&gt;
-</code></pre>
-<p>然后包含<strong>trie树</strong>模板：</p>
-<pre><code class="language-cpp">#include&lt;ext/pb_ds/trie_policy.hpp&gt;
-</code></pre>
-<p>而且别忘了使用PB_DS的名称空间！</p>
-<pre><code class="language-cpp">using namespace __gnu_pbds;
-</code></pre>
-<p>这样，就能够使用这个模板了。</p>
-<p>不过，让我们看到一般我们使用的直接声明一棵<strong>trie树</strong>的方式：</p>
-<pre><code class="language-cpp">trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tre;
-</code></pre>
-<p>每声明一棵<strong>trie树</strong>都要进行如此复杂的操作！这是令人望而生畏的。<br>
-可是，我们又想到，以前曾经写过这一句来缩减使用 <em>long long</em> 带来的代码长度：</p>
-<pre><code class="language-cpp">typedef long long ll;
-</code></pre>
-<p>于是，我们想出了这种操作：</p>
-<pre><code class="language-cpp">typedef trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tr;
-tr tre;
-</code></pre>
-<p>通过将复杂的声明定义缩减为一个自定义类型，我们成功地缩减了代码的长度及书写的复杂度。</p>
-<p>既然已经定义了<strong>trie树</strong>类型的<strong>tre</strong>，那么我们能对它进行什么实用的操作呢？</p>
-<p>答案是：<strong>insert</strong>，<strong>erase</strong>，<strong>join</strong>，以及<strong>pair</strong>。</p>
-<pre><code class="language-cpp"> void insert(string t);
-</code></pre>
-<p>这个操作用于向一棵<strong>trie树</strong>中插入一个字符串 <em>t</em> 。</p>
-<pre><code class="language-cpp">void erase(string t);
-</code></pre>
-<p>这个操作用于从一棵<strong>trie树</strong>中删去一个字符串 <em>t</em> 。</p>
-<pre><code class="language-cpp">void join(tr b);
-</code></pre>
-<p>这个操作用于将一棵<strong>trie树</strong> <em>b</em> 并入当前<strong>trie树</strong>。</p>
-<p>而<strong>pair</strong>的使用就较为复杂。</p>
-<p>要使用一个<strong>pair</strong>，首先我们需要声明一个迭代器（ <em>iterator</em> ）：</p>
-<pre><code class="language-cpp">pair&lt;tr::iterator,tr::iterator&gt; area=tre.prefix_range(string x);
-</code></pre>
-<p>这意味着定义了一个将要<strong>依次</strong>指向<strong>每个</strong>以字符串 <em>x</em> 为前缀的字符串的迭代器。</p>
-<p>然后，我们就可以利用这个迭代器读取字典树中以字符串 <em>x</em> 作为前缀的<strong>所有</strong>字符串：</p>
-<pre><code class="language-cpp">for(tr::iterator it=area.first;it!=area.second;it++){
-	cout&lt;&lt;*it&lt;&lt;' '&lt;&lt;endl;
-} 
-</code></pre>
-<p>这就是关于 PB_DS 容器<strong>trie树</strong>的实用操作了。是否感觉有些许不足？是的。<strong>系统</strong>容器的<strong>trie树</strong>虽然<strong>看上去</strong>完成了一个强大的高级数据结构，但是其<strong>本身并不强大</strong>。由于只支持这些模板操作，它难以作为解决问题的利器。不过，由于模板书写的便捷性，只要是它能够出场的时刻，它一定不会辜负众望。</p>
-<p>最后附一个支持PB_DS中trie树容器的所有操作的DEMO代码：</p>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-#include &lt;ext/pb_ds/assoc_container.hpp&gt;
-#include&lt;ext/pb_ds/trie_policy.hpp&gt;
-using namespace std;
-using namespace __gnu_pbds;
-int n,m;
-string s;
-typedef trie&lt;string,null_type,trie_string_access_traits&lt;&gt;,pat_trie_tag,trie_prefix_search_node_update&gt; tr;
-tr tre;
-int main(){
-	int a;
-	cout&lt;&lt;&quot;1:INSERT A STRING TO THE TRIE TREE\n2:PRINT ALL STRINGS WITH A PREFIX IN THE TRIE TREE\n3:DELETE A STRING IN THE TRIE TREE\n4:EXIT&quot;&lt;&lt;endl;
-	while(1){
-		cin&gt;&gt;a;
-		switch(a){
-			case 1:{
-				cout&lt;&lt;&quot;INSERT THIS STRING TO THE TRIE TREE:&quot;;
-				cin&gt;&gt;s;
-				tre.insert(s);
-				break;
-			}
-			case 2:{
-				cout&lt;&lt;&quot;PRINT ALL STRINGS WITH THE PREFIX IN THE TRIE TREE:&quot;;
-				cin&gt;&gt;s;
-				pair&lt;tr::iterator,tr::iterator&gt; range=tre.prefix_range(s);
-				for(tr::iterator it=range.first;it!=range.second;it++){
-					cout&lt;&lt;*it&lt;&lt;' '&lt;&lt;endl;
-				}
-				break;
-			}
-			case 3:{
-				cout&lt;&lt;&quot;DELETE THE STRING IN THE TRIE TREE:&quot;; 
-				cin&gt;&gt;s;
-				tre.erase(s);
-				break;
-			}
-			case 4:{
-				cout&lt;&lt;&quot;EXIT&quot;;
-				goto end;
-				break;
-			}
-		}
-	}
-	end:
-	return 0;
-}
-</code></pre>
-<p>运行结果如图：<br>
-<img src="https://s2.ax1x.com/2019/08/22/mdNk36.png" alt="运行截图"></p>
 ]]></content>
     </entry>
 </feed>
