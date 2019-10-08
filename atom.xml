@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-07T13:54:14.589Z</updated>
+    <updated>2019-10-08T05:52:16.388Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -16,7 +16,7 @@
         <link href="https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai">
         </link>
         <updated>2019-10-07T12:27:41.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="概念引入">概念引入</h2>
+        <content type="html"><![CDATA[<h2 id="引入">引入</h2>
 <p>我们以一个形象的例子来介绍这几个特性。</p>
 <h3 id="一-显而易见的故事">一 显而易见的故事</h3>
 <p>作为一个<s>沉迷学习的好孩子</s>，你对于<s>如何藏匿你的手机</s>得心应手。</p>
@@ -44,7 +44,7 @@
 <p>同时我们还发现，你需要悄悄玩手机，但是对于手机的频繁转移，并没有什么需求。不过你还是告诉了他们几个技巧供他们选择。</p>
 <p>后来你的手机被发现了，不过你的朋友们将你的技能发扬光大，<s>代代相传</s>。(大雾)</p>
 <h3 id="二-抽象这个故事">二 抽象这个故事</h3>
-<p>之前也说过：经过抽象,就能研究事物的本质与规律.</p>
+<p>之前也说过：经过抽象,就能研究事物的本质与规律。</p>
 <p>抽象的一般方法：</p>
 <blockquote>
 <ol>
@@ -60,13 +60,13 @@
 <li>“床”和“衣柜”禁止<strong>除了你的朋友以外的人访问</strong>。这样的称为<code>protected</code>成员。</li>
 <li>“自己身上”禁止<strong>一切外部访问</strong>。这样的则称为<code>private</code>成员。</li>
 </ul>
-<p>通过严格的将这些容器给<strong>封装</strong>起来，你严格地控制了外部对于你的成员的访问，保证了你的手机的安全。</p>
-<p>而你的朋友们回家之后就在他的房间上<strong>继承</strong>了你房间的特性。这时，可以将你自己的房间称为他们继承的“基类”。相对而言，他们的房间就变成了“子类”。</p>
+<p>通过严格的将这些容器给<strong>封装</strong>起来，你严格地控制了外部对于你的成员的访问，保证了你的手机的安全。同时，你的朋友们只需要知道找你(接口)就可以跟你一起玩手机，而并不需要亲自翻箱倒柜(了解接口内部的实现)。</p>
+<p>而你的朋友们回家之后就在他的房间上<strong>继承</strong>了你房间的特性。这时，可以将你自己的房间称为他们继承的“基类”。相对而言，他们的房间就变成了“派生类”。</p>
 <p>_A_的房间具有了<strong>除了跟你身上以外的一切特性</strong>。他也具有了你的<code>public</code>和<code>protected</code>属性，只有<code>private</code>属性不能被继承下来。这样的继承方式，被称为<code>public</code>继承。</p>
-<p>_B_的房间中，手机则也可以放在相同的地方。不过，显然，他的书柜和书桌禁止<strong>除了他的朋友以外的人访问</strong>。因而，你的<code>public</code>成员变成了他的<code>protected</code>成员。这样的继承方式，则称为<code>protected</code>继承。这种继承方式中，基类除了<code>private</code>之外的成员都会变成子类的<code>protected</code>成员。</p>
-<p>除此之外，还有<code>private</code>继承，用于家长早逝，啥都管不了的孤僻的可怜孩子。所幸你没有这样的一个朋友。<s>不然我就打不完代码了</s>显然可见，对于这样的人而言，他家的空间都是他不为他人访问的的<code>private</code>成员。他也没有必要去继承你的<code>private</code>。</p>
-<p>与此同时，他们继承了你的转移手机方法。你的转移手机方法因为没有必要而并不能执行(因此是一个虚拟函数)，而你的朋友们将其重载而发展开来。这就是由基类提供纯粹的接口而子类通过重载赋予其实际作用的<strong>多态</strong>特性。</p>
-<h2 id="语法总结">语法总结</h2>
+<p>_B_的房间中，手机则也可以放在相同的地方。不过，显然，他的书柜和书桌禁止<strong>除了他的朋友以外的人访问</strong>。因而，你的<code>public</code>成员变成了他的<code>protected</code>成员。这样的继承方式，则称为<code>protected</code>继承。这种继承方式中，基类除了<code>private</code>之外的成员都会变成派生类的<code>protected</code>成员。</p>
+<p>除此之外，还有<code>private</code>继承，用于<s>跟Vim一起帮助乌干达的可怜儿童</s>。所幸你没有这样的一个朋友。<s>不然我就打不完代码了</s>显然可见，对于这样的人而言，他家的空间都是他不为他人访问的的<code>private</code>成员。他也没有必要去继承你的<code>private</code>。</p>
+<p>与此同时，他们继承了你的转移手机方法。你的转移手机方法因为没有必要而并不能执行(因此是一个虚拟函数)，而你的朋友们将其重载而发展开来。这就是由基类提供纯粹的接口而派生类通过重载赋予其实际作用的<strong>多态</strong>特性。</p>
+<h2 id="语法">语法</h2>
 <p>对于刚刚的例子，我们可以将其写成一个例程来体现封装和继承的语法。</p>
 <pre><code class="language-cpp">class your_home{
     private:
@@ -96,6 +96,13 @@ class C_home:private your_home{
         //没有必要转移手机了。
 };
 </code></pre>
+<h2 id="总结">总结</h2>
+<p>通过这个形象地例子，我们了解到了类的运用。</p>
+<ul>
+<li>“封装”——将成员封装在对象<code>public</code>、<code>protected</code>、<code>private</code>属性之中。这些对象的开发者和使用者分离，使用者只需要接入对象提供的<code>public</code>接口，而不用了解到它们的内部实现。这样也实现了对于它们的保护。</li>
+<li>“继承”——派生类可以继承基类的属性。在<code>public</code>继承中，派生类会将基类的<code>public</code>属性作为自己的<code>public</code>属性，也可以用使用派生类<code>public</code>成员函数的方式来引用基类中的成员。而在<code>protected</code>继承中，派生类将基类的<code>public</code>属性降级为<code>protected</code>属性，<code>protected</code>保持不变，并废弃<code>private</code>类型属性。<code>private</code>继承只能将基类的<code>public</code>属性变成自己的<code>private</code>属性，将<code>protected</code>和<code>private</code>全部废弃。</li>
+<li>“多态”——基类能够定义一个空的接口，下放到派生类来通过重载的方式实现。这对于抽象有极大的益处。不过要注意的是，如果要实现彻底抽象，就需要明确通过定义一个纯虚函数<code>virtual typename functionName()=0</code>。这样会使这个基类变成一个不能被实例化的抽象类(纯虚类)，只有基类将其重载然后实例化基类才能得到体现。</li>
+</ul>
 ]]></content>
     </entry>
     <entry>
