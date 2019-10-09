@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-08T05:52:16.388Z</updated>
+    <updated>2019-10-09T13:48:37.533Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -10,6 +10,128 @@
     <logo>https://malachiten.github.io/images/avatar.png</logo>
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
+    <entry>
+        <title type="html"><![CDATA[笔记 : 最小生成树 / Kruskal算法]]></title>
+        <id>https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa</id>
+        <link href="https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa">
+        </link>
+        <updated>2019-10-08T07:10:37.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="最小生成树是什么">最小生成树是什么</h2>
+<p>对于一个这样的连通图：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/10/08/ufgOiR.png" alt="graphFull.png"></figure>
+<p>表格形式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">起点</th>
+<th style="text-align:center">终点</th>
+<th style="text-align:center">权值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+</tr>
+</tbody>
+</table>
+<p>它的极小连通子图，可以表现为一棵树的形式，即为最小生成树(如下图所示)。</p>
+<figure data-type="image" tabindex="2"><img src="https://s2.ax1x.com/2019/10/08/uf2tyT.png" alt="graphMini.png"></figure>
+<p>看不出这是一棵树？看这个。</p>
+<figure data-type="image" tabindex="3"><img src="https://s2.ax1x.com/2019/10/08/ufRjKK.png" alt="trueTree.png"></figure>
+<p>表格形式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">起点</th>
+<th style="text-align:center">终点</th>
+<th style="text-align:center">权值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">5</td>
+</tr>
+</tbody>
+</table>
+<p><s>看，是不是特别小？</s></p>
+<p><s>你说是，就是吧</s></p>
+<h2 id="我们怎么生成一个最小生成树呢">我们怎么生成一个最小生成树呢？</h2>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C++面向对象 / 封装 继承 多态]]></title>
         <id>https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai</id>
@@ -1259,61 +1381,6 @@ int main(){
 </code></pre>
 <p>的效果，从而将三行压成一行。</p>
 <p>3.从C++0x(C++11)标准开始，主函数末尾即可略去<code>return 0;</code>。采用这一特性，可以省掉一行。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[STL容器 set 实用性说明]]></title>
-        <id>https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming</id>
-        <link href="https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming">
-        </link>
-        <updated>2019-09-27T02:06:18.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="stl容器-set-实用性说明">STL容器 set 实用性说明</h1>
-<p><strong>set</strong>是一种 <em>STL</em> 中的容器，采用<strong>set&lt;type_of_set&gt; name_of_set</strong>的方式进行声明。可以使用迭代器( <em>iterator</em> )对其中的元素进行指示，并使用其成员函数进行操作。<strong>set</strong>的性质是： <em>自动排序</em> 、 <em>自动去重</em> 。<strong>set</strong>的本质是“<strong>集合</strong>”，而集合具有确定性和互异性。</p>
-<p>据各类资料描述，<strong>set</strong>的底层实现是一种名为红黑树的二叉搜索树，但是其实现原理及各项操作之复杂度不处于本文描述范围内，此处只是顺带一提。</p>
-<p><strong>set</strong>可以采用这些函数进行操作（只是我觉得很实用的函数，并不是全部）：</p>
-<pre><code class="language-cpp">set&lt;type_of_set&gt;::iterator begin()
-</code></pre>
-<p>返回一个指向<strong>set</strong>开头的迭代器</p>
-<pre><code class="language-cpp">set&lt;type_of_set&gt;::iterator end()
-</code></pre>
-<p>返回一个指向<strong>set</strong>结尾的迭代器</p>
-<pre><code class="language-cpp">void clear()
-</code></pre>
-<p>清除<strong>set</strong>中的所有元素</p>
-<pre><code class="language-cpp">int size()
-</code></pre>
-<p>返回<strong>set</strong>中元素的个数。</p>
-<pre><code class="language-cpp">int max_size()
-</code></pre>
-<p>返回该<strong>set</strong>能够容纳的最大元素总数。</p>
-<pre><code class="language-cpp">void insert(type_of_set element)
-</code></pre>
-<p>将 <em>element</em> 插入<strong>set</strong>中适合的位置</p>
-<pre><code class="language-cpp">bool empty()
-</code></pre>
-<p>取该<strong>set</strong>是否为空。</p>
-<p>比较特殊的是</p>
-<pre><code class="language-cpp">void erase()
-</code></pre>
-<p>这个函数。</p>
-<p>这个函数被重载了三次：</p>
-<pre><code class="language-cpp">void erase(set&lt;type_of_set&gt;::iterator it)
-void erase(set&lt;type_of_set&gt;::iterator first,set&lt;type_of_set&gt;::iterator second)
-void erase(type_of_set key_value)
-</code></pre>
-<p>第一种用法：删除<strong>set</strong>中迭代器 it 指向的元素</p>
-<p>第二种用法：删除<strong>set</strong>中迭代器 first 到 end 之间的全部元素。</p>
-<p>第三种用法：删除<strong>set</strong>中的键值 key_value。</p>
-<p>有时，我们也需要访问<strong>set</strong>中的某些元素。然而，<strong>set</strong>并没有重载<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mo>]</mo></mrow><annotation encoding="application/x-tex">[]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mclose">]</span></span></span></span>运算符，导致了我们无法进行随机访问。这带来了极大的困扰。不过我们还是可以进行顺序访问。</p>
-<p>访问时采用这种方式：</p>
-<p>先声明三个迭代器。一个名为 <em>it_begin</em> 指向开头，一个名为 <em>it_end</em> 指向结尾，一个名为 <em>it</em> 备用。<br>
-我们使用一个for循环进行访问。循环这样写：</p>
-<pre><code class="language-cpp">for(it=it_begin;it!=it_end;it++){
-    type_of_set temp=*it;
-    //do something
-}
-</code></pre>
-<p>就像这样，你就可以完成对<strong>set</strong>中每个元素的访问了。是不是敲简单嘤嘤嘤</p>
 ]]></content>
     </entry>
 </feed>

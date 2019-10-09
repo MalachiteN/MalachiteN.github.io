@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>压行技巧 | Malachite</title>
+<title>笔记 : 最小生成树 / Kruskal算法 | Malachite</title>
 <meta name="description" content="夕焼けの中に吸い込まれて消えてった">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,58 +80,135 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">压行技巧</h2>
+          <h2 class="post-title">笔记 : 最小生成树 / Kruskal算法</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-09-27</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://malachiten.github.io/tag/W8VQeBmQY">
-                    题解
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://malachiten.github.io/tag/TNO1SHAiH">
-                    技巧/说明
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2019-10-08</span>
             
           </div>
           <div class="post-content">
-            <h1 id="压行技巧">压行技巧</h1>
-<p>Luogu P1914 小书童——密码 可能最短的AC代码</p>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-int main(){
-	int n; std::string str;
-	std::cin&gt;&gt;n&gt;&gt;str;
-	for(int i=0;i&lt;str.length();i++) std::cout&lt;&lt;(char)(str[i]+n&gt;122?str[i]+n-26:str[i]+n);
-}
-</code></pre>
-<p>其实是采用了这些方法来缩减长度：</p>
-<p>1.采用**略去using namespace std;**的方法减去一行长度。代价是使用名称空间<code>std</code>中的函数或对象时必须添加<code>std::</code>前缀。不过本方法的用处在压行，对于在一行中增加长度的代价，可以忽略不计。</p>
-<p>2.使用<strong>三目运算符</strong>在一行中实现</p>
-<pre><code class="language-cpp">if(/*the value of the expression isn't False(0)*/){
-    //do something
-}else{
-    //do something
-}
-</code></pre>
-<p>的效果，从而将三行压成一行。</p>
-<p>3.从C++0x(C++11)标准开始，主函数末尾即可略去<code>return 0;</code>。采用这一特性，可以省掉一行。</p>
+            <h2 id="最小生成树是什么">最小生成树是什么</h2>
+<p>对于一个这样的连通图：</p>
+<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/10/08/ufgOiR.png" alt="graphFull.png"></figure>
+<p>表格形式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">起点</th>
+<th style="text-align:center">终点</th>
+<th style="text-align:center">权值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">11</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">6</td>
+</tr>
+</tbody>
+</table>
+<p>它的极小连通子图，可以表现为一棵树的形式，即为最小生成树(如下图所示)。</p>
+<figure data-type="image" tabindex="2"><img src="https://s2.ax1x.com/2019/10/08/uf2tyT.png" alt="graphMini.png"></figure>
+<p>看不出这是一棵树？看这个。</p>
+<figure data-type="image" tabindex="3"><img src="https://s2.ax1x.com/2019/10/08/ufRjKK.png" alt="trueTree.png"></figure>
+<p>表格形式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">起点</th>
+<th style="text-align:center">终点</th>
+<th style="text-align:center">权值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">5</td>
+</tr>
+</tbody>
+</table>
+<p><s>看，是不是特别小？</s></p>
+<p><s>你说是，就是吧</s></p>
+<h2 id="我们怎么生成一个最小生成树呢">我们怎么生成一个最小生成树呢？</h2>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming">
+            <a class="purple-link" href="https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai">
               <h3 class="post-title">
-                下一篇：STL容器 set 实用性说明
+                下一篇：C++面向对象 / 封装 继承 多态
               </h3>
             </a>
           </div>
