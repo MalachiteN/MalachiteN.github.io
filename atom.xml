@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-10T21:45:34.974Z</updated>
+    <updated>2019-10-11T07:37:05.290Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -130,6 +130,76 @@
 <p><s>看，是不是特别小？</s></p>
 <p><s>你说是，就是吧</s></p>
 <h2 id="我们怎么生成一个最小生成树呢">我们怎么生成一个最小生成树呢？</h2>
+<p>此时，我们可以采用多种算法。</p>
+<p>其中较好理解的是 <em>Kruskal</em> 算法。</p>
+<h3 id="kruskal算法">Kruskal算法</h3>
+<p>这种算法的核心是，先建立一个结构体<code>Edge</code>用来描述边：</p>
+<pre><code class="language-cpp">struct Edge{
+    int u,v,w;
+    Edge(){}//数组用默认构造函数
+    Edge(int t1,int t2,int t3){
+        u=t1;
+        v=t2;
+        w=t3;
+    }
+    bool operator &lt; (const Edge &amp;other) const{
+        return w&lt;other.w;
+    }
+}edges[10005];
+</code></pre>
+<p>其中的<code>u</code>代表了这条边的起点，<code>v</code>代表了这条边的终点，<code>w</code>代表的则是这条边的边权。<strong>重载构造函数是为了以后存边方便</strong>，而<strong>重载运算符则是为了边权排序方便</strong>。数组就是边的<strong>实例</strong>，用来进行存储。</p>
+<p>我们通过<strong>并查集连边</strong>的方式，将所有的顶点<strong>依权值次序</strong>相连。所以，我们需要实现一个并查集：</p>
+<pre><code class="language-cpp">int fa[10005];//集
+int find(int x){//查
+    return fa[x]==x?x:fa[x]=find(fa[x]);
+}
+bool merge(int x,int y){//并
+    int a=find(x),b=find(y);
+    if(a!=b){
+        fa[a]=b;
+        return 1;//成功，记录
+    }else{
+        return 0;//失败，放弃
+    }
+}
+</code></pre>
+<p>这里可能产生疑问：并查集实现中的<code>merge</code>函数不应该只是个像这样的<code>void</code>类型的“存储过程”吗？</p>
+<pre><code class="language-cpp">void merge(int x,int y){
+    fa[find(x)]=find(y);
+}
+</code></pre>
+<p>为什么要给一个<code>bool</code>类型的返回值呢？</p>
+<p>原因就在于之后的处理当中，纯粹贪心地连接<strong>权值最小</strong>的边，会发生“连接出<strong>环</strong>”的情况。明显可以看出：</p>
+<blockquote>
+<p>出现有环的图不成为树。</p>
+</blockquote>
+<p>为了避免这种情况的发生，我们需要检查即将连接的这一条边的两个顶点<strong>是否已经被连接在一个并查集中</strong>。此处<code>merge</code>函数的这种写法，就实现了<strong>判断是否已经连接</strong>和<strong>告知程序主体部分连接状况</strong>的功能。显而易见，返回0代表<strong>已经连过了</strong>，本次连接失败，需要跳下一条边；返回1表示<strong>之前没有连接过</strong>，现在连边成功。</p>
+<p>那么我们可以得出我们的主函数:</p>
+<pre><code class="language-cpp">int main(){
+    int n/*边数*/,m/*点数*/;
+    cin&gt;&gt;n&gt;&gt;m;//初始化
+    //存边
+    for(int i=1;i&lt;=n;i++){
+        int t1,t2,t3;
+        cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;
+        edges[i]=Edge(t1,t2,t3);
+    }
+    //排序
+    sort(edges+1,edges+n+1);
+    //生成树
+    for(int i=1;i&lt;=m-1;i++){
+        if(!merge(edges[i].u,edges[i].v)){
+            m++;
+        }
+    }
+}
+</code></pre>
+<p>对于“生成树”这一环节中的循环退出条件<code>i&lt;=m-1</code>，可能也会产生一些疑惑。这里用到了一个定理：</p>
+<blockquote>
+<p>将一个图生成树，则其总边数为总点数-1。</p>
+</blockquote>
+<p>同时，我们发现，每次遇到连接中出现环的情况，<code>merge</code>都不会进行连接，而是报告<code>main</code>将变量<code>m</code>的值增加1。这是因为，我们跳过了这条边，就<strong>一定要从后方加一条边来补偿</strong>。否则最终边数每次跳边都减少1，无法生成完整的树。</p>
+<p>这就是算法的基础实现了。它没有输出，但是它能够承接多数的最小生成树任务：设置一个变量<code>ans</code>用来作为最终的输出结果。如果要输出边数，则只需每次连接成功时<code>ans++</code>;如果要输出总权值，则在连接成功时<code>ans+=edges[i].w</code>即可。</p>
 ]]></content>
     </entry>
     <entry>
