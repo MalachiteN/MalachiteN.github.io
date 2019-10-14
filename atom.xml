@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-11T07:41:02.768Z</updated>
+    <updated>2019-10-14T07:37:49.924Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -10,6 +10,15 @@
     <logo>https://malachiten.github.io/images/avatar.png</logo>
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
+    <entry>
+        <title type="html"><![CDATA[测试 / 通过 Linux平台]]></title>
+        <id>https://malachiten.github.io/post/ce-shi-tong-guo-linux-ping-tai</id>
+        <link href="https://malachiten.github.io/post/ce-shi-tong-guo-linux-ping-tai">
+        </link>
+        <updated>2019-10-14T07:37:11.000Z</updated>
+        <content type="html"><![CDATA[<p>Hello, Ubuntu !</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[笔记 : 最小生成树 / Kruskal算法]]></title>
         <id>https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa</id>
@@ -1423,34 +1432,6 @@ int main(){
 <h2 id="过了就过了">过了？？！就过了？？？？？！</h2>
 <p>历经千辛万苦，终于过了啊……<s>（接受现实）</s></p>
 <p><s>bilibili干杯！（好像并没有什么不对）</s></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[压行技巧]]></title>
-        <id>https://malachiten.github.io/post/zhong-ji-ya-xing-ji-qiao</id>
-        <link href="https://malachiten.github.io/post/zhong-ji-ya-xing-ji-qiao">
-        </link>
-        <updated>2019-09-27T02:07:19.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="压行技巧">压行技巧</h1>
-<p>Luogu P1914 小书童——密码 可能最短的AC代码</p>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-int main(){
-	int n; std::string str;
-	std::cin&gt;&gt;n&gt;&gt;str;
-	for(int i=0;i&lt;str.length();i++) std::cout&lt;&lt;(char)(str[i]+n&gt;122?str[i]+n-26:str[i]+n);
-}
-</code></pre>
-<p>其实是采用了这些方法来缩减长度：</p>
-<p>1.采用**略去using namespace std;**的方法减去一行长度。代价是使用名称空间<code>std</code>中的函数或对象时必须添加<code>std::</code>前缀。不过本方法的用处在压行，对于在一行中增加长度的代价，可以忽略不计。</p>
-<p>2.使用<strong>三目运算符</strong>在一行中实现</p>
-<pre><code class="language-cpp">if(/*the value of the expression isn't False(0)*/){
-    //do something
-}else{
-    //do something
-}
-</code></pre>
-<p>的效果，从而将三行压成一行。</p>
-<p>3.从C++0x(C++11)标准开始，主函数末尾即可略去<code>return 0;</code>。采用这一特性，可以省掉一行。</p>
 ]]></content>
     </entry>
 </feed>
