@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-22T05:47:47.192Z</updated>
+    <updated>2019-10-22T05:52:35.018Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -16,7 +16,8 @@
         <link href="https://malachiten.github.io/post/screeps-jiao-cheng">
         </link>
         <updated>2019-10-22T01:12:35.000Z</updated>
-        <content type="html"><![CDATA[<p>不了解的人可以前往<a href="https://screeps.com/">Screeps官网</a>了解一下，也许我们能成为同一个<code>Shard</code>的邻居233</p>
+        <content type="html"><![CDATA[<p>不了解的人可以前往<a href="https://screeps.com/">Screeps官网</a>了解一下，也许我们能成为同一个<code>Shard</code>的邻居。</p>
+<p>不过，看完简介也不要贸然在Steam购买，我打教程都打了不止一整天，肯定是退不了款的。在真正接触到本身之前，也不会知道它到底怎样玩。不过，在官网上有它的 Live DEMO 可供试玩，建议尝试。</p>
 <h2 id="让我们开始吧界面简介">让我们开始吧：界面简介</h2>
 <blockquote>
 <p>Let's begin. This is a playing field called a &quot;room&quot;. In the real game, rooms are connected to each other with exits, but in the simulation mode only one room is available to you.</p>
