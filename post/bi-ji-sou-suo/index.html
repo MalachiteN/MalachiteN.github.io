@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1571039378503">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1571723261802">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1571039378503" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1571723261802" alt="" width="32px" height="32px">
       </a>
       <a href="https://malachiten.github.io">
         <h1 class="site-title">Malachite</h1>
@@ -96,8 +96,16 @@
             
           </div>
           <div class="post-content">
-            <h2 id="dfs-深度优先搜索">DFS / 深度优先搜索</h2>
-<h3 id="寻找最优解这是最常用的方法">寻找最优解(这是最常用的方法)</h3>
+            <p>在NOIP中，搜索主要会考察模拟，考验代码能力。有一句名言：</p>
+<blockquote>
+<p>n方过百万，暴力压标算</p>
+</blockquote>
+<h2 id="dfs-深度优先搜索">DFS / 深度优先搜索</h2>
+<p>这更符合人类的思考方式。(<s>人类的本质是什么鸭？</s>)</p>
+<p>适合<strong>状态不容易存储</strong>的情况(每次只会存储这一次的状态并推导下一次的状态)。</p>
+<p>深度优先搜索主要使用栈来实现。</p>
+<p>搜索的流程：首先找到一个状态开始向下发展，直到发展到末端，向上回溯一级再次向下搜索。</p>
+<h3 id="寻找最优解这是最常用的">寻找最优解(这是最常用的)</h3>
 <p>这种情况下,一般会有很多种不同的状态</p>
 <pre><code class="language-cpp">void dfs(int cur){
     if(!check(cur)){
@@ -205,6 +213,9 @@ int main()
 </code></pre>
 <p>可见，该算法是<strong>将过程全部输出</strong>的DFS。</p>
 <h2 id="bfs-广度优先搜索">BFS / 广度优先搜索</h2>
+<p>广度优先搜索是序列式的搜索，适合状态容易储存，并且<strong>不清楚搜索深度会有多深</strong>的情景。</p>
+<p>广度优先搜索一般使用队列实现。</p>
+<p>搜索的流程：找到第一个状态，一次生成其下方一层的节点并全部储存，以此向下发展。</p>
 <pre><code class="language-cpp">void bfs(){
     q.push(st_start);
     vis[st_start]=true;
