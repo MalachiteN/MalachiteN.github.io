@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1571748390232">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1571821940219">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1571748390232" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1571821940219" alt="" width="32px" height="32px">
       </a>
       <a href="https://malachiten.github.io">
         <h1 class="site-title">Malachite</h1>
@@ -122,7 +122,7 @@
 </blockquote>
 <p>你的命令返回一个结果或一个错误，将立即显示在控制台。</p>
 <blockquote>
-<p>It is time to put the creep to work! This yellow square is an energy source — a valuable game resource. It can be harvested by creeps with one or more WORK body parts and transported to the spawn by creeps with CARRY parts.</p>
+<p>It is time to put the creep to work! This yellow square is an energy source — a valuable game resource. It can be harvested by creeps with one or more <code>WORK</code> body parts and transported to the spawn by creeps with <code>CARRY</code> parts.</p>
 </blockquote>
 <p>下面测试下控制台，在控制台中生成一个具有<code>WORK</code>,<code>CARRY</code>,<code>MOVE</code> 的身体部件的 Creep 。</p>
 <p>其实这使用了 API ：</p>
@@ -186,11 +186,11 @@ Creep.harvest</p>
 <p><strong>It works!</strong></p>
 <p>可是，当其收集满自身容量之后，就需要返回出生点 (即<code>Creep</code>的生成器，<code>Spawn</code>) 。</p>
 <blockquote>
-<p>To make the creep transfer energy back to the spawn, you need to use the method Creep.transfer. However, remember that it should be done when the creep is next to the spawn, so the creep needs to walk back.</p>
+<p>To make the creep transfer energy back to the spawn, you need to use the method <code>Creep.transfer</code>. However, remember that it should be done when the creep is next to the spawn, so the creep needs to walk back.</p>
 </blockquote>
 <p>使用 API 提供的方法<code>Creep.transfer</code>来达成这个任务。</p>
 <blockquote>
-<p>If you modify the code by adding the check .carry.energy &lt; .carryCapacity to the creep, it will be able to go back and forth on its own, giving energy to the spawn and returning to the source.</p>
+<p>If you modify the code by adding the check <code>.carry.energy</code> &lt; <code>.carryCapacity</code>to the creep, it will be able to go back and forth on its own, giving energy to the spawn and returning to the source.</p>
 </blockquote>
 <p>这是算法的实现方法：简单判断目标<code>Creep</code>的携带能量是否小于其最大容量。如果小于，则一直让它收集。否则，令其返回<code>Spawn</code>，将能量注入其中。</p>
 <p>要实现这些，可参见 API 文档：</p>
@@ -222,7 +222,7 @@ Creep.carryCapacity</p>
 <p>这样就完成了让它一直收集能量直到死亡的规划。</p>
 <p>值得一提的是，每个<code>Creep</code>在出生时均具备 1500 个<code>Ticks</code>的生命时长，之后逐步减少。不过，这个行为在教程中被禁用了，目前你的<code>Creep</code>具有无限寿命。</p>
 <blockquote>
-<p>Let's create another worker creep to help the first one. It will cost another 200 energy units, so you may need to wait until your harvester collects enough energy. The spawnCreep method will return an error code ERR_NOT_ENOUGH_ENERGY (-6) until then.</p>
+<p>Let's create another worker creep to help the first one. It will cost another 200 energy units, so you may need to wait until your harvester collects enough energy. The spawnCreep method will return an error code <code>ERR_NOT_ENOUGH_ENERGY</code> (-6) until then.</p>
 </blockquote>
 <p>我们马上就要建造另一个工人<code>Creep</code>来帮助减轻第一个的负担了。这会消耗 200 个之前的工人收集来的能量单位，所以你需要等待你的收集者收集足够的能量。在 API 中提供的<code>spawnCreep</code>方法在没有足够能量的时候，不会生成<code>Creep</code>，而是返回一个错误常量<code>ERR_NOT_ENOUGH_ENERGY</code>。值得一提的是，它的值为 -6 。</p>
 <blockquote>
@@ -237,7 +237,7 @@ Creep.carryCapacity</p>
 </blockquote>
 <p>由于我们根本没写它的脚本，所以它暂时还不会动。</p>
 <blockquote>
-<p>To set the behavior of both creeps we could just duplicate the entire script for the second one, but it's much better to use the for loop against all the screeps in Game.creeps.</p>
+<p>To set the behavior of both creeps we could just duplicate the entire script for the second one, but it's much better to use the for loop against all the screeps in <code>Game.creeps</code>.</p>
 </blockquote>
 <p>我们可以单独为它编写脚本，但是我们注意到它的脚本和第一个几乎没有差别。为了<s>偷懒</s>提高代码复用率，我们可以使用循环来解决这个问题。</p>
 <p>Code:</p>
@@ -261,7 +261,7 @@ Creep.carryCapacity</p>
 </code></pre>
 <h2 id="为了更加极致的脱发体验我们还可以编写其他模块达成目的">为了更加极致的脱发体验，我们还可以编写其他模块达成目的。</h2>
 <blockquote>
-<p>Now let's improve our code by taking the workers' behavior out into a separate module. Create a module called role.harvester with the help of the Modules section on the left of the script editor and define a run function inside the module.exports object, containing the creep behavior.</p>
+<p>Now let's improve our code by taking the workers' behavior out into a separate module. Create a module called role.harvester with the help of the Modules section on the left of the script editor and define a run function inside the <code>module.exports</code> object, containing the creep behavior.</p>
 </blockquote>
 <p>除了<code>Main</code>之外的模块就像 C / C++ 中的头文件，供给<code>Main</code>调用。我们可以使用这个特性，编写一个专们描述收集能量的工人<code>Creep</code>的行为的模块。</p>
 <p>Code:</p>
@@ -288,7 +288,7 @@ module.exports = roleHarvester;
 <p>这份脚本描述了所有具有<code>Harvester</code>性质的<code>Creep</code>的工作流程，此处不再赘述。</p>
 <p>那么现在，我们如何编写我们的<code>Main</code>来调用刚刚写的这些呢？</p>
 <blockquote>
-<p>Now you can rewrite the main module code, leaving only the loop and a call to your new module by the method require('role.harvester').</p>
+<p>Now you can rewrite the main module code, leaving only the loop and a call to your new module by the method <code>require('role.harvester')</code>.</p>
 </blockquote>
 <p>明显，只需要使用<code>require('role.harvester')</code>的语句，就可以达成与 C / C++ 中<code>#include &quot;role_harvester.hpp&quot;</code>一样的效果了。</p>
 <blockquote>
@@ -301,7 +301,7 @@ module.exports = roleHarvester;
 <p>通过给你的<code>creep</code>们添加新的角色和模块，你能控制并管理大量的<code>creeps</code>。下一步，我们要开发一个新的角色。</p>
 <h2 id="升级房间控制器roomcontroller">升级房间控制器RoomController</h2>
 <blockquote>
-<p>In this Tutorial section we’ll talk about a key strategic object in your room: Room Controller. By controlling this invincible structure you can build facilities in the room. The higher the controller level, the more structures available to build.</p>
+<p>In this Tutorial section we’ll talk about a key strategic object in your room: <code>Room Controller</code>. By controlling this invincible structure you can build facilities in the room. The higher the controller level, the more structures available to build.</p>
 </blockquote>
 <p>在设计这个新的角色之前，我们需要认识一个新东西，叫<code>Room Controller</code>。这个东西的等级决定了你能在你房间里面建造哪些结构。</p>
 <blockquote>
@@ -327,15 +327,15 @@ module.exports = roleHarvester;
  Game.creeps['Upgrader1'].memory.role = 'upgrader';
 </code></pre>
 <blockquote>
-<p>You can check your creeps' memory in either the creep information panel on the left or on the &quot;Memory&quot; tab.</p>
+<p>You can check your creeps' memory in either the creep information panel on the left or on the <code>Memory</code> tab.</p>
 </blockquote>
 <p>通过检查<code>Memory</code>面板，你可以确认“你的<code>Creeps</code>有没有深入贯彻你的思想”。</p>
 <blockquote>
-<p>Now let's define the behavior of the new creep. Both creeps should harvest energy, but the creep with the role harvester should bring it to the spawn, while the creep with the role upgrader should go to the Controller and apply the function upgradeController to it (you can get the Controller object with the help of the Creep.room.controller property).</p>
+<p>Now let's define the behavior of the new creep. Both creeps should harvest energy, but the creep with the role harvester should bring it to the spawn, while the creep with the role upgrader should go to the Controller and apply the function <code>upgradeController</code> to it (you can get the Controller object with the help of the <code>Creep.room.controller</code> property).</p>
 </blockquote>
 <p>现在开工了，去设计新<code>creep</code>的行为。每一个<code>creep</code>都应当收集能量，但是<code>harvester</code>应该把能量送到<code>spawn</code>，而<code>upgrader</code>应该把能量送去<code>Room Controller</code>。</p>
 <blockquote>
-<p>In order to do this, we’ll create a new module called role.upgrader.</p>
+<p>In order to do this, we’ll create a new module called <code>role.upgrader</code>.</p>
 </blockquote>
 <p>为此，我们应当创建一个名为<code>role.upgrader</code>的<code>module</code>。</p>
 <p>这用到了这些 API ：</p>
@@ -366,7 +366,7 @@ Creep.upgradeController</p>
 module.exports = roleUpgrader;
 </code></pre>
 <blockquote>
-<p>In our main module, all creeps run the same role. We need to divide their behavior depending on the previously defined property Creep.memory.role by connecting the new module.</p>
+<p>In our main module, all creeps run the same role. We need to divide their behavior depending on the previously defined property <code>Creep.memory.role</code> by connecting the new module.</p>
 </blockquote>
 <p>目前我们的<code>main</code>模块中，所有<code>creeps</code>还被当作同一种角色处理。这是不行的：如果<code>main</code>说是一样的就是一样的，那我多没面子。所以</p>
 <p>Code:</p>
@@ -750,6 +750,204 @@ module.exports.loop = function () {
 <blockquote>
 <p>StructureSpawn.renewCreep</p>
 </blockquote>
+<h2 id="守卫你的房间">守卫你的房间</h2>
+<blockquote>
+<p>The world of Screeps is not the safest place. Other players may have claims on your territory. Besides, your room may be raided by neutral NPC creeps occasionally. So you ought to think about your colony defense in order to develop it successfully.</p>
+</blockquote>
+<p>Screeps中，玩家可以互相攻击，还会产生敌对NPC。所以，我们需要开发防御脚本。</p>
+<blockquote>
+<p>This hostile creep has come from the left entry and attacked your colony. It’s good that we have walls to restrain it temporarily. But they will fall sooner or later, so we need to deal with the problem.</p>
+</blockquote>
+<p>入侵者已经从左侧入口进入并已经在攻击你的领地。我们有墙可以防御，但是这些墙迟早会倒下。所以，我们应该积极应对这一问题。</p>
+<blockquote>
+<p>The surest way to fend off an attack is using the room Safe Mode. In safe mode, no other creep will be able to use any harmful methods in the room (but you’ll still be able to defend against strangers).</p>
+</blockquote>
+<p>目前最可靠的防御方式，是使用房间安全模式<code>room Safe Mode</code>。在安全模式时限内，敌人的所有有害方法都会被锁死。这是对于陌生来访者最好的防御方式。</p>
+<blockquote>
+<p>The safe mode is activated via the room controller which should have activations available to use. Let’s spend one activation to turn it on in our room.</p>
+</blockquote>
+<p>我们需要通过房间控制器才能打开房间安全模式。让我们试试。<s>(试试就逝世)</s></p>
+<p>这个操作所用的方法涉及 API：</p>
+<blockquote>
+<p>StructureController.activateSafeMode</p>
+</blockquote>
+<p>这种即时性强的代码使用控制台来执行：</p>
+<p>Code:</p>
+<pre><code class="language-javascript">Game.spawns['Spawn1'].room.controller.activateSafeMode();
+</code></pre>
+<blockquote>
+<p>As you can see, the enemy creep stopped attacking the wall – its harmful methods are blocked. We recommend that you activate safe mode when your defenses fail.</p>
+</blockquote>
+<p>可见，该敌对<code>Creep</code>停止攻击墙壁，一切有害行为均已锁定。我们建议你在防守失败时激活房间安全模式。</p>
+<blockquote>
+<p>Now let’s cleanse the room from unwanted guests.</p>
+</blockquote>
+<p>那么现在，让我们清除不受欢迎的入侵者。</p>
+<blockquote>
+<p>Towers are the easiest way to actively defend a room. They use energy and can be targeted at any creep in a room to attack or heal it. The effect depends on the distance between the tower and the target.</p>
+</blockquote>
+<p>塔是积极活跃防御房间的优秀方式。它们消耗能量，并以<code>Creep</code>为目标进行维护或攻击。效果取决于塔离目标的距离</p>
+<blockquote>
+<p>To start with, let’s lay a foundation for our new tower. You can set any place you wish inside the walls and place the construction site there with the help of the button “Construct” on the upper panel.</p>
+</blockquote>
+<p>首先，我们为建造新塔打好基础。你能够使用<code>Construct</code>视图在墙内任意位置建造一座塔。</p>
+<p>API 调用如下：</p>
+<blockquote>
+<p>StructureTower<br>
+Room.createConstructionSite</p>
+</blockquote>
+<p>Code:</p>
+<pre><code class="language-javascript">Game.spawns['Spawn1'].room.createConstructionSite( 23, 22, STRUCTURE_TOWER );
+</code></pre>
+<blockquote>
+<p>A tower uses energy, so let’s set the harvester role to bring energy to the tower along with other structures. To do this, you need to add the constant STRUCTURE_TOWER to the filter of structures your harvester is aimed at.</p>
+</blockquote>
+<p>塔消耗能源。所以，我们需要更改<code>Harvester</code>的模块，使该角色将能源带给塔及其他结构。</p>
+<pre><code class="language-javascript">var roleHarvester = {
+
+    /** @param {Creep} creep **/
+    run: function(creep) {
+	    if(creep.carry.energy &lt; creep.carryCapacity) {
+            var sources = creep.room.find(FIND_SOURCES);
+            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+                creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+            }
+        }
+        else {
+            var targets = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) =&gt; {
+                        return (structure.structureType == STRUCTURE_EXTENSION ||
+                                structure.structureType == STRUCTURE_SPAWN ||
+                                structure.structureType == STRUCTURE_TOWER) &amp;&amp; structure.energy &lt; structure.energyCapacity;
+                    }
+            });
+            if(targets.length &gt; 0) {
+                if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
+                }
+            }
+        }
+	}
+};
+
+module.exports = roleHarvester;
+</code></pre>
+<blockquote>
+<p>Excellent, your tower is ready to use!</p>
+</blockquote>
+<p>众所周知，塔消耗头发而产生某种效果……嗯。</p>
+<blockquote>
+<p>Like a creep, a tower has several similar methods: attack, heal, and repair. Each action spends 10 energy units. We need to use attack on the closest enemy creep upon its discovery. Remember that distance is vital: the effect can be several times stronger with the same energy cost!</p>
+</blockquote>
+<p>就像一个<code>Creep</code>，塔可以攻击、给<code>Creep</code>回复生命、维修建筑物。每一项方法的执行均消耗10单位能量。我们现在对它进行设定，使它攻击最近的敌人。记住，它的效果取决于离目标的距离！</p>
+<blockquote>
+<p>To get the tower object directly you can use its ID from the right panel and the method <code>Game.getObjectById</code>.</p>
+</blockquote>
+<p>我们可以通过右边的面板以及 API 方法<code>Game.getObjectById</code>来操作直接获取塔对象。</p>
+<p>这回用到的 API 不少：</p>
+<blockquote>
+<p>Game.getObjectById<br>
+RoomObject.pos<br>
+RoomPosition.findClosestByRange<br>
+StructureTower.attack</p>
+</blockquote>
+<p>这样修改主模块：</p>
+<pre><code class="language-javascript">var roleHarvester = require('role.harvester');
+var roleUpgrader = require('role.upgrader');
+var roleBuilder = require('role.builder');
+
+module.exports.loop = function () {
+
+    var tower = Game.getObjectById('d629245dccf490c645352fb6');
+    if(tower) {
+        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+        if(closestHostile) {
+            tower.attack(closestHostile);
+        }
+    }
+
+    for(var name in Game.creeps) {
+        var creep = Game.creeps[name];
+        if(creep.memory.role == 'harvester') {
+            roleHarvester.run(creep);
+        }
+        if(creep.memory.role == 'upgrader') {
+            roleUpgrader.run(creep);
+        }
+        if(creep.memory.role == 'builder') {
+            roleBuilder.run(creep);
+        }
+    }
+}
+</code></pre>
+<p>可见，这次塔的 ID 为：<code>d629245dccf490c645352fb6</code>。</p>
+<blockquote>
+<p>The enemy creep is eliminated and our colony can breathe easy. However, the invader has damaged some walls during the brief attack. You’d better set up auto-repair.</p>
+</blockquote>
+<p>敌人已经被消灭，但是它留下的伤害还没有被磨灭。敌对目标攻击了你的墙，因此你需要维护它，以应对下一次入侵。实际上，实现一个自动修复是很好的解决方案。</p>
+<blockquote>
+<p>Damaged structures can be repaired by both creeps and towers. Let’s try to use a tower for that. We’ll need the method <code>repair</code>. You will also need the method <code>Room.find</code> and a filter to locate the damaged walls.</p>
+</blockquote>
+<p>受伤的结构，能够被<code>creeps</code>和<code>towers</code>修复。让我们试试我们这座塔的<code>repair</code>方法。在实际的实现过程中，我们使用<code>Room.find</code>方法配合过滤器找到墙上受到损伤的位置。</p>
+<p>API：</p>
+<blockquote>
+<p>Room.find<br>
+StructureTower.repair</p>
+</blockquote>
+<p>主模块代码：</p>
+<pre><code class="language-javascript">var roleHarvester = require('role.harvester');
+var roleUpgrader = require('role.upgrader');
+var roleBuilder = require('role.builder');
+
+module.exports.loop = function () {
+
+    var tower = Game.getObjectById('d629245dccf490c645352fb6');
+    if(tower) {
+        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
+            filter: (structure) =&gt; structure.hits &lt; structure.hitsMax
+        });
+        if(closestDamagedStructure) {
+            tower.repair(closestDamagedStructure);
+        }
+
+        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+        if(closestHostile) {
+            tower.attack(closestHostile);
+        }
+    }
+
+    for(var name in Game.creeps) {
+        var creep = Game.creeps[name];
+        if(creep.memory.role == 'harvester') {
+            roleHarvester.run(creep);
+        }
+        if(creep.memory.role == 'upgrader') {
+            roleUpgrader.run(creep);
+        }
+        if(creep.memory.role == 'builder') {
+            roleBuilder.run(creep);
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>All the damage from the attack has been repaired</p>
+</blockquote>
+<p>我们注意到了你发量见底了。</p>
+<blockquote>
+<p>Congratulations, you have completed the Tutorial! Now you have enough knowledge and code to start playing in the online mode. Choose your room, found a colony, and set out on your own quest for domination in the world of Screeps!</p>
+</blockquote>
+<p>所以教程结束了。恭喜你，你已经练成了进入秃头服务器的能力。选择你的房间，建立你的领地，跟我们一起脱发叭！</p>
+<p>在这些地方，你能继续找到你们需要的东西：</p>
+<blockquote>
+<p>Documentation<br>
+Community forums<br>
+Slack chat</p>
+</blockquote>
+<blockquote>
+<p>Have fun scripting!</p>
+</blockquote>
+<p>在脱发中寻找快乐！</p>
 
           </div>
         </div>
