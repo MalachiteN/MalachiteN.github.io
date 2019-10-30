@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-30T08:26:58.504Z</updated>
+    <updated>2019-10-30T23:29:45.850Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
     <entry>
-        <title type="html"><![CDATA[树形数据结构 / 树状数组]]></title>
+        <title type="html"><![CDATA[树形数据结构 / 树状数组 [Ongoing]]]></title>
         <id>https://malachiten.github.io/post/shu-xing-shu-ju-jie-gou-shu-zhuang-shu-zu</id>
         <link href="https://malachiten.github.io/post/shu-xing-shu-ju-jie-gou-shu-zhuang-shu-zu">
         </link>
@@ -38,16 +38,198 @@
 <li>输出迭代器</li>
 </ul>
 <h2 id="迭代器的作用">迭代器的作用</h2>
-<p>所有的迭代器都可执行默认构造函数、拷贝构造函数、默认析构函数，并且可递增。<s>不然怎么迭代</s></p>
+<p>所有的迭代器都可执行默认构造函数、拷贝构造函数、默认析构函数，并且可递增。</p>
+<p><s>不然怎么迭代</s></p>
 <h3 id="输入输出迭代器">输入输出迭代器</h3>
 <p>输入输出迭代器都是顺序访问迭代器。该类型迭代器指向的元素只会被它访问一次，然后迭代器就会递增。</p>
 <p>所有的前向迭代器、双向迭代器、随机访问迭代器都是一种特殊的输入输出迭代器。</p>
-<p>输入输出迭代器之间可以比较是否相等。其重载了 &quot;==&quot; 和 &quot;!=&quot; 运算符而使得用户无需了解其内部实现。然而，已经迭代到作用域外的迭代器之间的比较是无意义的。</p>
-<p>可以向容器中写入内容，或将容器中的内容取出。单一类型的迭代器只能进行输入或输出的单一操作。</p>
+<p>输入输出迭代器之间可以比较是否相等。其重载了 <code>==</code> 和 <code>!=</code> 运算符而使得用户无需了解其内部实现。然而，已经迭代到作用域外的迭代器之间的比较是无意义的。</p>
+<p>可以向容器中写入内容，或将容器中的内容取出。单一类型的迭代器只能进行输入或输出的单一操作。所有的输入迭代器都可以使用<code>*</code>指针运算符解引用为右值，同时，对于非常量输出迭代器，还能解引用为左值。(对于左值和右值如果有不懂的，可以去康一下我的另一篇博客)。</p>
 <h3 id="前向迭代器">前向迭代器</h3>
-<p>非常量前向迭代器具备输入输出迭代器一样的功能。同时，它们受到迭代方向限制而只能向前迭代。它们是最基本的迭代器，所有的容器均至少支持前向迭代器。</p>
+<p>非常量前向迭代器具备输入输出迭代器一样的功能。同时，它们受到迭代方向限制而只能向前迭代。它们是最基本的迭代器，所有的容器 / 容器适配器均至少支持前向迭代器。</p>
+<p>输入输出迭代器都是前向迭代器的一种。</p>
+<p>同时，前向迭代器可以被多次地递增、解引用，无论操作多少次，只要迭代器指向的目标还在作用域内，就不会失去引用性质。</p>
 <h3 id="双向迭代器">双向迭代器</h3>
-<p>双向迭代器就是</p>
+<p>双向迭代器，说白了就是正着倒着都能迭代的迭代器。</p>
+<p>因此，它比起前向迭代器，只增加了对于递减运算符<code>--</code>的支持。其它部分均保持一致。</p>
+<h3 id="随机访问迭代器">随机访问迭代器</h3>
+<p>随机访问迭代器支持以上所有迭代器的全部特性。同时，它还具有自己的特性。</p>
+<p>它能够支持<code>+</code>、<code>+=</code>和<code>-</code>、<code>-=</code>运算符，能够通过这种方式立即迭代到作用域内的随机地址。</p>
+<p>不等比较<code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code>等也都是支持的。</p>
+<p>这种迭代器甚至能被 <s>调教</s> 成数组头指针一样的存在——它能使用偏移量解引用运算符，也就是我们常说的数组下标运算符<code>[]</code>，来访问从该地址偏移随机值后抵达的地址。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C++ 高级语法 / 引用、右值和左值]]></title>
+        <id>https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi</id>
+        <link href="https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi">
+        </link>
+        <updated>2019-10-23T08:42:08.000Z</updated>
+        <content type="html"><![CDATA[<p>一般而言，传统的为了竞赛的 C++ 教学中对 “引用” (使用运算符<code>&amp;</code>) 的解释和 C 一样，就是 “取得这个变量的地址”。</p>
+<p>和指针一样，这是常规 OIer 无需了解的知识，为了避免浪费时间，老师一般对于这一方面的知识根本不讲或者放下 C++ 而拿出 “ C 语言从入门到入土” 简单带过。然而，在工程开发中，正确、灵活地使用引用，可以使程序简洁、高效。了解左值、右值引用，更能与最新 C++ 标准接轨，了解最近产生的特性，有助于理解他人程序、简化自己的代码。</p>
+<h2 id="引用">引用</h2>
+<h3 id="特性">特性</h3>
+<p>之前说过，这个语言要素和<strong>指针</strong>相似。这是 C++ 相对 C 的重要扩充。为了给函数传递地址，除了可以使用指针，引用提供了一种全新的途径。这种途径，被称为 “<strong>按引用传递</strong>” 。</p>
+<p>声明一个引用的方法：</p>
+<pre><code class="language-cpp">typename &amp;referenceName = varName;
+</code></pre>
+<p>此处，<code>&amp;</code>运算符的作用不是像 C 一样获取地址，而是将<code>referenceName</code>声明为<code>varName</code>的引用。</p>
+<blockquote>
+<p>引用即别名。</p>
+</blockquote>
+<p>变量名，实际上就是一段内存的引用。程序通过变量来申请和使用连续的内存段。而引用，就是某一变量（也就是目标内存地址）的一个别名，对引用的操作所产生的结果与对变量直接操作的结果完全一样。</p>
+<p>因此，我们可推导如下注意事项：</p>
+<ol>
+<li>类型<code>Typename</code>与目标变量类型一致。</li>
+<li>声明引用时，必须同时对其进行初始化。</li>
+<li>引用声明完毕后，相当于目标变量名有两个名称，即该目标原名称和引用名，且不能再把该引用名作为其他变量名的别名。而对于一个目标变量，可以存在多个引用。<s>一夫多妻</s></li>
+<li>声明引用的过程，不是在新定义变量，它声明的是对应引用是目标变量的一个别名，它本身不是一种数据类型，因此引用本身不占存储单元，系统也不给引用分配存储单元。故：对引用求地址，就是对目标变量求地址。也就是说，当<code>&amp;</code>作取地址运算符时，<code>&amp;ra</code>与<code>&amp;a</code>得出的地址相等。</li>
+<li>不能声明对数组的引用。因为数组是连续变量单元构成的大片空间，引用一次只能引一个变量的地址。</li>
+<li>对 NULL 的引用是无效的。因为引用必须引用一片真实存在的内存空间。</li>
+</ol>
+<p>上面的描述，似乎很多地方都和指针特性重合，实际上，在编译器实现上，引用也和指针是一样的。</p>
+<p>那么我们为什么要引用？</p>
+<blockquote>
+<p>C++主张用引用传递取代地址传递的方式，因为引用语法容易且不易出错。</p>
+<p>指针地址可以修改，可以为空，而引用不行，一个未初始化的引用是不能使用的，避免了用户传递空指针野指针悬垂指针之类奇奇怪怪导致 RE 的垃圾玩意儿。</p>
+<p>通过sizeof的计算，指针只能得到指针本身的大小，而引用优化为得到指向对象本身的大小，这点可以推导编译器记录对象符号的时候，指针记录指针自身地址，引用则记录引用对象自身地址。</p>
+<p>从引用的使用方式上，可以推导出T&amp; == T* const,一个指向的地址不可变的指针，但指向内容非const，依然可以修改内容。在编译期即避免了对指针赋值可能引起的隐秘运行时错误。</p>
+<p>如果函数做左值，那么必须返回引用。</p>
+</blockquote>
+<h3 id="用途">用途</h3>
+<h4 id="作为函数参数">作为函数参数</h4>
+<p>一般而言，对于大块参数需要输入函数时，采用指针来指向该参数区域，从而避免了大量数据进入系统栈空间引起爆栈。</p>
+<p>但是，现在我们又有了一种新的传参方式：引用。</p>
+<p>在程序中调用以引用为参数的函数时，在主调函数的调用点处，直接以需要操作的变量作为实参进行调用即可，不对变量有任何的特殊要求。</p>
+<pre><code class="language-cpp">void swap(int &amp;a, int &amp;b){
+    int t;
+    t = b;
+    b = a;
+    a = t;
+}
+</code></pre>
+<p>例为一个常见的三变量交换的代码，其中使用了引用来直接操作实际参数的值。其主调函数可直接这样书写：</p>
+<pre><code class="language-cpp">typename functionName(int a, int b, ...){
+    ...
+    swap(m, n);
+    ...
+}
+</code></pre>
+<h4 id="常引用">常引用</h4>
+<p>如果既要利用引用提高程序的效率，又要保护传递给函数的数据不在函数中被改变，就应使用常引用。</p>
+<p>一个常量引用应该这样声明：</p>
+<pre><code class="language-cpp">const typename &amp;referenceName = varName;
+</code></pre>
+<p>之前我们已经了解，常量的地址在运行初始化过程即确定，操作速度比变量快。这是常引用高效的基础。</p>
+<p>同时，常量可以避免修改。同样，常引用可以绑定一个常量值，而不一定是一个对象，这样作为参数的时候，常引用可以使用临时对象和常量值作为参数，而如果将一般的引用作为参数，就只能使用一个引用对象作为参数。因此，应用常引用的工程代码的健壮性提升。</p>
+<h4 id="引用作为返回值">引用作为返回值</h4>
+<p>要想使用引用作为返回值，则函数定义时要按以下格式：</p>
+<pre><code class="language-cpp">typename &amp;funcName(typename a, typename b, ...){
+    //do something
+}
+</code></pre>
+<p>显而易见，以引用返回函数值，定义函数时需要在函数名前加<code>&amp;</code>。</p>
+<p>用引用返回一个函数值的最大好处是，在内存中不产生被返回值的副本。</p>
+<h4 id="多态的引用实现方式">多态的引用实现方式</h4>
+<p>引用是除指针外另一个可以产生多态效果的手段。这意味着，一个基类的引用可以指向它的派生类实例。</p>
+<pre><code class="language-cpp">class A{
+    ...
+};
+
+class B:public A{
+    ...
+};
+
+B b;
+A &amp;referenceName = b;
+</code></pre>
+<p>这样实现的<code>referenceName</code>只能访问派生类中从基类继承下来的成员。如果 A 中存在被 B 继承的虚函数，同时 B 将这些虚函数进行了重写，那么就可以使用这个 <code>referenceName</code> 来实现多态。</p>
+<h2 id="右值和左值">右值和左值</h2>
+<p>先要有一个认识：</p>
+<blockquote>
+<p>在C++11中所有的值必属于左值、临时对象、纯右值三者之一。</p>
+</blockquote>
+<h3 id="区别">区别</h3>
+<blockquote>
+<p>右值和左值的区别在于能否获取地址。</p>
+</blockquote>
+<p>可以通过&amp;运算符获取地址的，就是左值；若否就是右值。既然可以取得某个变量的地址，就可以将其放置在赋值运算符的<strong>左端</strong>进行直接操作，同时可以支持<code>++</code>/<code>--</code>/<code>+=</code>等直接改变变量自身值的操作。因此，这种最传统的引用方式被称为<code>左值引用</code>。</p>
+<p>在 C++11 标准中，产生了函数对象、lambda 表达式等特殊的对象，而且还产生了对常量的值进行修改、延长临时对象的生命周期等特殊的需求。这些对象无法作为左值进行引用，因此它们被称为右值。当需要更改它们的值、延长它们的生命周期时，需进行<strong>右值引用</strong>。为了与传统引用区别，专门将传统引用重定义为 “左值引用”。</p>
+<h3 id="右值">右值</h3>
+<p>右值，也就是匿名量，是无法获取地址的值。右值分为纯右值和临时对象。</p>
+<p>实际上，常量值就是纯右值。比如程序中使用的：</p>
+<pre><code class="language-cpp">'c'
+
+&quot;Hello, World!&quot;
+
+2
+
+const int a = 1;
+
+true
+</code></pre>
+<p>如此等等。</p>
+<p>而这样的，则是临时对象：</p>
+<pre><code class="language-cpp">a++;//变量自增减返回值是临时对象
+
+a + 10;//运算符返回值是临时对象
+
+getvalue();//函数返回值是临时对象
+</code></pre>
+<p>甚至</p>
+<pre><code class="language-cpp">[](int n, int m){
+    return n &gt; m ? n : m;
+};
+</code></pre>
+<p><s>断头学姐</s> lambda表达式本身和返回值也都是临时对象</p>
+<p>如果一个临时对象的值赋予给一个左值，这个临时对象会<s>当 场 去 世</s>（指立即被析构）。因此，临时对象还有一个名字，叫做 “将亡值” 。非常贴切。</p>
+<h3 id="右值引用">右值引用</h3>
+<blockquote>
+<p>可以绑定右值的引用称为右值引用。</p>
+</blockquote>
+<h4 id="声明">声明</h4>
+<p>为了声明一个右值引用，我们使用双引用运算符(<code>&amp;&amp;</code>)。</p>
+<pre><code class="language-cpp">int &amp;&amp;i = 0;
+</code></pre>
+<p>这里，我们清晰可见，0 必定是个右值(是个常量)。而 i 是个右值引用。<strong>右值引用的第一个特点就是使其绑定的右值的生命周期与右值引用声明的生命周期一样长</strong>。只要引用还活着，该右值将会一直存活下去。</p>
+<pre><code class="language-cpp">int x = 0;
+int &amp;&amp;y = 0;
+int &amp;&amp;z = x;
+</code></pre>
+<p>可以看出，这里的 x 是一个变量，而 0 是右值。 y 是对于右值的引用，这也毋庸置疑。那么问题来了，z 是个什么玩意儿？</p>
+<p>实际上， z 也是右值引用。右值引用不一定非得引用一个右值，左值也能引用……这是右值引用的第二一个特点。</p>
+<p>我们知道，在 C++11 中，出现了一个全新的关键字： <code>auto</code> 。这意味着，从支持这一标准开始，新的编译器具备了自动类型推导的功能。</p>
+<p>除了使用<code>auto</code>标识符之外，还有一种隐式使用自动类型推导的方法：当一个未经详细定义的标识符出现在程序中时， C++11 之前的编译器会直接放弃编译然后报错 <s>真绝情</s> ，而从这一标准开始，编译器会分析你的程序如何初始化该变量，并自动推导该变量可能的类型，然后帮你加上定义。 <s>小朋友们，请联系上下文，分析作者的思想感情</s> 如果死活推不出来，才报错。(会不会有警告呢？我没试过……)</p>
+<p>那么，当一个右值引用引用一个将被自动推导类型的变量，或右值引用自身的声明即需要自动类型推导时，会发生什么？</p>
+<p>实际上，这并无需担心。右值引用可能是左值也可能是右值，依赖于初始化。可以说，右值引用本身就跟自动类型推导有点关系。因此，当<code>typename &amp;&amp;t</code>在发生自动类型推断的时候，它是未定的引用类型。如果被一个左值初始化，它就是一个左值；如果它被一个右值初始化，它就是一个右值，它是左值还是右值取决于它的初始化。</p>
+<p>设有程序如下：</p>
+<pre><code class="language-cpp">template&lt;typename T&gt;
+void f(T &amp;&amp;arg); 
+
+template&lt;typename T&gt;
+class b{
+    b(b &amp;&amp;c){...}; 
+};
+</code></pre>
+<p>在这种情况下，模板函数发生了类型推导，会自动推导 arg 的类型，而模板类 b 的构造函数中的右值引用 c 因为已经有了确定的对象类型 b ，所以不会发生推导。</p>
+<p>那么，当多重引用叠加时……</p>
+<p>C++ 提供了这一规则：</p>
+<blockquote>
+<p>所有的右值引用叠加到右值引用上仍然还是一个右值引用；</p>
+<p>所有的其他引用类型之间的叠加都将变成左值引用。</p>
+</blockquote>
+<p>这就是著名的引用折叠。</p>
+<h2 id="这篇博客的引用声明">这篇博客的引用声明</h2>
+<p><strong>不是 C++ 的引用！是写作中的引用！</strong></p>
+<blockquote>
+<p>这篇博客能够创作，离不开这几位巨佬的博客：</p>
+<p><a href="https://www.cnblogs.com/mmc9527/p/10429601.html">c++引用（reference）</a></p>
+<p><a href="https://www.cnblogs.com/mlgjb/p/8821340.html">C++中引用（&amp;）的用法和应用实例</a></p>
+<p><a href="https://www.cnblogs.com/KaiMing-Prince/p/9741393.html">C++引用详解</a></p>
+<p><a href="https://www.cnblogs.com/likaiming/p/9045642.html">c++右值引用以及使用</a></p>
+<p><a href="https://www.cnblogs.com/qicosmos/p/4283455.html">从4行代码看右值引用</a></p>
+<p><s>抄得可真多啊</s></p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
@@ -1641,7 +1823,7 @@ void clear(){
 <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 
-int head[maxn],esize;
+int head[maxn];
 
 struct edge{
     int target,value,next;
@@ -1655,7 +1837,6 @@ struct edge{
 
 void clear(){
     memset(head,-1,sizeof head);
-    esize=0;
 }
 
 int main(){
@@ -1668,331 +1849,12 @@ int main(){
 	    head[t1]=i;
     }
     for(int i=1;i&lt;=m;++i){
-	    for(int j=head[i];~j.next;j=edges[j].next){
+	    for(int j=head[i];~edges[j].next;j=edges[j].next){
 		    cout&lt;&lt;i&lt;&lt;' '&lt;&lt;edges[k].target&lt;&lt;' '&lt;&lt;edges[k].value&lt;&lt;endl;
 	    }
     }
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[预处理器命令 #define / 宏定义 实用性说明]]></title>
-        <id>https://malachiten.github.io/post/yu-chu-li-qi-ming-ling-define-hong-ding-yi-shi-yong-xing-shuo-ming</id>
-        <link href="https://malachiten.github.io/post/yu-chu-li-qi-ming-ling-define-hong-ding-yi-shi-yong-xing-shuo-ming">
-        </link>
-        <updated>2019-09-27T09:04:09.000Z</updated>
-        <content type="html"><![CDATA[<p>注明:本文大量引用、摘抄、改编自 <a href="https://blog.csdn.net/king110108/article/details/80728010">king110108的CSDN博客</a>。若重复引用本文，请别忘了添加对以上博客的引用。</p>
-<p>正如引用源标题(《#define用法集锦(非常全)》)所言，该文对<code>#define</code>的用法总结的极为全面，但是对于每种用法的详细介绍较少。因此，本文主要进行的是对该文章内容的总结和重排。</p>
-<h2 id="0宏定义是什么">0.宏定义是什么</h2>
-<p>define，顾名思义，表示的是进行某些定义。这种定义被称为宏(marco)。</p>
-<p>宏定义是一种传递给预处理器的命令。通过提前告诉预处理器本文件中定义的宏，能够使预处理器按照定义的方式自动替换文本中的字符串(这种过程一般称为“宏展开”)，从而大大<strong>简化</strong>代码。</p>
-<h2 id="1如何定义宏-取消宏">1.如何定义宏、取消宏</h2>
-<p>定义一个宏:</p>
-<pre><code class="language-cpp">#define [MacroName)] [MacroValue]
-</code></pre>
-<p>定义之后，除非存在取消指令，否则对于文件中所有出现该MacroName的地方，就替换为对应的MacroValue。</p>
-<p>取消一个宏:</p>
-<pre><code class="language-cpp">#undef [MacroName]
-</code></pre>
-<p>取消之后，除非再次定义，否则对于该MacroName不再进行替换。<s>(形象地理解就是这个MarcoName被预处理器甩了)</s></p>
-<h2 id="2定义常量">2.定义常量</h2>
-<p>例1:</p>
-<pre><code class="language-cpp">#define MAXN 2147483647
-</code></pre>
-<p>本例将当前文件中所有字符串&quot;MAXN&quot;全部替换成了<code>INT_MAX</code>的值<code>2147483647</code>。这就是简单的使用#define定义常量的方式。<strong>(依然建议使用const关键字来声明常量，以免引起不可预知的问题。)</strong></p>
-<h2 id="3定义数据类型">3.定义数据类型</h2>
-<p>很多时候，很像定义常量时，我们想<s>少打几个字而实现相同的效果</s>咳咳，使数据修改方便，我们也想使较长的数据类型名称被一个自定义的关键字代表。这时我们可以自定义一个宏来简化数据类型。</p>
-<p>例:</p>
-<pre><code class="language-cpp">#define ull unsigned long long
-</code></pre>
-<p>本例将当前文件中所有字符串&quot;ull&quot;全部替换成了<code>unsigned long long</code>。这可以使一个较长的类型名称变得非常短，从而简化代码。<strong>(跟上面一样，通常情况下依然建议使用专门的关键字typedef来简化指定类型的名称，如果发生了不可预知的问题可别怪我啊)</strong></p>
-<p>所谓“不可预知的问题”就像下面这个：</p>
-<pre><code class="language-cpp">#define pin (int*);
-pin a,b;
-</code></pre>
-<p>a是<code>int</code>型指针类型，而b是<code>int</code>型常规变量。而我们期望的其实是使a和b均为<code>int</code>型指针(<code>int*</code>)。</p>
-<p>要使a和b就都是<code>int</code>型指针，我们只能使用<code>typedef</code>了。这也使我们注意到一点：我们在定义的时候，一定要养成一个良好的习惯，建议所有的层次都要加括号。</p>
-<p>不过，在某些特殊情形下，比如开发机与目标机的操作系统及硬件存在巨大差异~~(比如你硬要用Core i9的机子给上世纪的80486写程序)~~的时候，由于编译器、操作系统对代码中数据类型的理解大不相同，<code>typedef</code>完全无法满足我们的需求(如果强行通过<code>typedef</code>改变编译器数据类型的定义，似乎会直接报出重复定义的错误)。这时，我们反而建议使用<code>#define</code>。</p>
-<p>例:</p>
-<pre><code class="language-cpp">typedef  unsigned char      boolean;     /* Boolean value type. */
-typedef  unsigned long int  uint32;      /* Unsigned 32 bit value */
-typedef  unsigned short     uint16;      /* Unsigned 16 bit value */
-typedef  unsigned char      uint8;       /* Unsigned 8  bit value */
-typedef  signed long int    int32;       /* Signed 32 bit value */
-typedef  signed short       int16;       /* Signed 16 bit value */
-typedef  signed char        int8;        /* Signed 8  bit value */
-</code></pre>
-<p>对于另外一些数据类型，即使是非常情况下，依然不建议使用哦……</p>
-<p>就是这些啦</p>
-<pre><code class="language-cpp">typedef  unsigned char     byte;         /* Unsigned 8  bit value type. */
-typedef  unsigned short    word;         /* Unsinged 16 bit value type. */
-typedef  unsigned long     dword;        /* Unsigned 32 bit value type. */
-typedef  unsigned char     uint1;        /* Unsigned 8  bit value type. */
-typedef  unsigned short    uint2;        /* Unsigned 16 bit value type. */
-typedef  unsigned long     uint4;        /* Unsigned 32 bit value type. */
-typedef  signed char       int1;         /* Signed 8  bit value type. */
-typedef  signed short      int2;         /* Signed 16 bit value type. */
-typedef  long int          int4;         /* Signed 32 bit value type. */
-typedef  signed long       sint31;       /* Signed 32 bit value */
-typedef  signed short      sint15;       /* Signed 16 bit value */
-typedef  signed char       sint7;        /* Signed 8  bit value */
-</code></pre>
-<h2 id="4条件编译">4.条件编译</h2>
-<p>例:</p>
-<pre><code class="language-cpp">#define debug
-#ifdef debug
-//do something
-#else
-//do something
-#endif
-#ifndef debug
-//do something 
-#else
-//do something
-#endif
-</code></pre>
-<p>本例中，提到了这几种预处理器命令:本文主要介绍的<code>#define</code>,以及依附于它而存在的命令<code>#ifdef</code>、<code>ifndef</code>、<code>else</code>、<code>endif</code>。这些命令，一般被称为“<strong>条件编译开关</strong>”。<s>(虽然我觉得叫预处理器条件分歧之类的更好听……)</s></p>
-<p><code>ifdef</code>,展开缩写为：if define，表示<strong>如果定义了</strong>某个宏，则编译从此处开始直到一个<code>endif</code>标记的位置的代码。如果没有定义，则这一部分的代码不会被编译。<s>(就像被注释掉了一样)</s></p>
-<p><code>ifndef</code>,展开缩写为：if not define，表示<strong>若未定义</strong>某个宏，则编译从此处开始直到一个<code>endif</code>标记的位置的代码。如果没有定义，则不会编译这些代码。</p>
-<p><code>else</code>,表示否则，用于对上述两个预处理器条件命令的“条件表达式”(有没有定义)进行“取反”，只能用于这两个命令作为开头、<code>endif</code>命令作为结尾的区间内。换言之，现有一个区间，从<code>#ifdef test</code>到<code>#endif</code>，其中具备了一个<code>else</code>。那么，如果本程序在该区间开始前定义了宏<code>test</code>，那么，它将编译从<code>#ifdef test</code>后到<code>#else</code>前的部分。如果没有定义该宏，则将编译从<code>else</code>后到<code>endif</code>前的部分。</p>
-<p><code>endif</code>,则是表示对于<code>ifdef</code>、<code>ifndef</code>的界限的命令。<code>endif</code>标记之后的所有代码，<strong>不受</strong>之前标记的<code>ifdef</code>、<code>else</code>和<code>ifndef</code>影响。</p>
-<p>在大规模的开发过程中，特别是跨平台和系统的软件里，define最重要的功能是条件编译。就像这样，define可以用于跨平台:</p>
-<pre><code class="language-cpp">#ifdef WINDOWS
-//do something
-#endif
-#ifdef LINUX
-//do something
-#endif
-</code></pre>
-<p>这样就能通过在文件开始时写上<code>#define WINDOWS</code>、<code>#define LINUX</code>而简单地在Windows和Linux中编译不同的代码，而不需要麻烦地寻找哪些需要在Windows下编译，哪些需要在Linux下编译，然后在需要编译出对应平台的程序时注释掉另一部分……<s>(人生苦短，C++可能真比不上Python)</s></p>
-<h2 id="5函数式的宏定义">5.函数式的宏定义</h2>
-<p>这是一个<strong>宏定义的说明文章不可或缺的部分</strong>哦！敲黑板看重点啦！</p>
-<p>~~众所周知，宏定义的知识博大精深。~~它甚至可以当做一个类似函数的东西来用！</p>
-<p>例：</p>
-<pre><code class="language-cpp">#define Add(a,b) (a)+(b);
-</code></pre>
-<p>这<strong>看起来似乎</strong>是一个实现将形式参数a与b相加并返回其值的函数。</p>
-<p>我们观察这个宏定义，发现其中的结构其实是这样的：</p>
-<pre><code class="language-cpp">#define [FunctionalMarcoName]([Argument1],[Argument2],...) [FunctionalMarcoValue]
-</code></pre>
-<p>同时要注意，FunctionalMarcoValue中对于形式参数的引用，应该使用小括号“()”将它们括起来，否则这些参数变成替换上去的字符串之后是否产生歧义将无法保证！</p>
-<p>正因为如此上面这样写，与下面这个函数的效果其实也有差别哦！这些歧义也使函数式宏定义在某些意义下不安全。</p>
-<pre><code class="language-cpp">int Add(int a,int b){
-    return a+b;
-}
-</code></pre>
-<p>我们考虑这样一个情况：<code>c*Add(a,b)*d</code>。</p>
-<p>我们将会发现，正常来说，这行程序的逻辑是：先将a与b相加，将它们的和与c、d连乘。</p>
-<p>可是很<s>不</s>明显的是，预处理器将会<s>像个憨憨一样</s>忠实地按照宏定义的定义，将程序文本中的<code>Add(a,b)</code>全给换成<code>a+b</code>！这样一来……它将会计算<code>c*a+b*d</code>的值！它的逻辑将会变成，分别将a与c、b与d相乘，然后将两个乘积相加！这是我们不期望的。一定要警惕！因此，我们应该使用这样写法才能保证安全：</p>
-<pre><code class="language-cpp">#define Add(a,b) ((a)+(b))
-</code></pre>
-<p>宏定义为了防止错误而使用小括号的例子：</p>
-<pre><code class="language-cpp">#define DUMP_WRITE(addr,nr) {memcpy(bufp,addr,nr); bufp += nr;}//BUG
-#define DO(a,b) do{a+b;a++;}while(0)//应该使用的定义
-</code></pre>
-<p>当这样使用时：</p>
-<pre><code class="language-cpp">if(addr)DUMP_WRITE(addr,nr);
-else do_somethong_else();
-</code></pre>
-<p>宏将展开，程序变为：</p>
-<pre><code class="language-cpp">if(addr){memcpy(bufp,addr,nr); bufp += nr;};
-else do_something_else();
-</code></pre>
-<p>gcc在碰到else前面的“;”时就认为if语句已经结束，因而后面的else不在if语句中。而**采用do{} while(0)的定义，在任何情况下都没有问题。**而改为 <code>#define DO(a,b) do{a+b;a++;}while(0)</code> 的定义则在任何情况下都不会出错。</p>
-<p>在<strong>避免危险情况出现的前提下</strong>，某些宏定义能够在极短的空间内完成极为复杂的操作！</p>
-<p>比如，我们已经知道，宏是用来<strong>在原文本中替换字符串</strong>的。</p>
-<p>因此，宏定义为我们提供了这几种操作：<code>#</code>、<code>@#</code>和<code>##</code>。先看一个例子：</p>
-<pre><code class="language-cpp">#define paster(n) printf(&quot;token&quot;#n&quot;=%d\n&quot;,token##n)
-</code></pre>
-<p>我们了解：</p>
-<p><code>#</code>用来将宏定义的形式参数转换为“作为字符串(string/char数组)数据类型存在的”字符串，并用于替换。</p>
-<p><code>##</code>则用于将转换成“程序文本意义上的”字符串与其他程序文本相连接。</p>
-<p>于是我们可以知道：</p>
-<p><strong>设token1=1,token2=2,……,tokenn=n</strong></p>
-<ul>
-<li><code>paster(1)</code>等效于<code>printf(&quot;token1=%d\n&quot;,token1);</code>，输出&quot;token1=1&quot;,</li>
-<li><code>paster(2)</code>等效于<code>printf(&quot;token2=%d\n&quot;,token2);</code>，输出&quot;token2=2&quot;;</li>
-<li>……</li>
-<li><code>paster(n)</code>等效于<code>printf(&quot;tokenn=%d\n&quot;,tokenn);</code>，输出&quot;tokenn=n&quot;。</li>
-</ul>
-<p>不过我们必须知道，这些处理是在预处理器中完成的！不要希望使用预处理器命令在程序运行过程中临时声明常规变量！不过这种写法不受影响：</p>
-<pre><code class="language-cpp">#define newInt(n) int* (n)=new int(##n))
-</code></pre>
-<p>上例没有提到的写法是<code>@#</code>。它用于将后面的参数变为<strong>单字符(char)字符数据类型意义上的</strong>字符串。</p>
-<p>原文作者通过引用另一个作者hustli的文章，提供了几个少见的例子用来阐明这些操作之间的差别,不过日常开发中几乎不会出现，看看就好吧：</p>
-<pre><code class="language-cpp">#define A(x) T_##x
-#define B（x) #@x
-#define C（x) #x
-</code></pre>
-<p>我们假设：x=1，则有：</p>
-<ul>
-<li>A(1)等效于程序文本T_1</li>
-<li>B(1)等效于字符'1'</li>
-<li>C(1)等效于字符串&quot;1&quot;</li>
-</ul>
-<p><code>#define</code>的特殊操作就这些，很简单吧~</p>
-<p>下一个知识点！就像一般函数都包含换行，写成函数形式的宏定义也能包含换行哦。</p>
-<p>很出名的MFC官方例：</p>
-<pre><code class="language-cpp">#define MACRO(arg1, arg2) do { /
-/* declarations */ /
-stmt1; /
-stmt2; /
-/* ... */ /
-} while(0) /* (no trailing ; ) */
-</code></pre>
-<p>可见，要在每一个换行的时候加上一个&quot;/&quot;。这种写法其实非常麻烦，已经违背了实用性说明的原则，因此我其实不建议使用这种写法。<s>(同时希望大家都学着压行)</s></p>
-<p>引用源的作者也这样认为。他在原文中对这个例子的评价是：&quot;非常的经典，虽然让人看了恶心&quot;。</p>
-<p>对于函数式的宏定义，就说到这里了。下面是几个常用的方便例子：</p>
-<ul>
-<li>得到指定地址上的一个字节或字</li>
-</ul>
-<pre><code class="language-cpp">#define  MEM_B(x) (*((byte*)(x)))
-#define  MEM_W(x) (*((word*)(x)))
-</code></pre>
-<ul>
-<li>求最大值和最小值</li>
-</ul>
-<pre><code class="language-cpp">#define  MAX( x, y ) ( ((x) &gt; (y)) ? (x) : (y) )
-#define  MIN( x, y ) ( ((x) &lt; (y)) ? (x) : (y) )
-</code></pre>
-<ul>
-<li>得到一个field在结构体(struct)中的偏移量</li>
-</ul>
-<pre><code class="language-cpp">#define FPOS( type, field ) /
-/*lint -e545 */ ( (dword) &amp;(( type *) 0)-&gt; field ) /*lint +e545 */
-</code></pre>
-<ul>
-<li>得到一个结构体中field所占用的字节数</li>
-</ul>
-<pre><code class="language-cpp">#define FSIZ( type, field ) sizeof( ((type *) 0)-&gt;field )
-</code></pre>
-<ul>
-<li>按照LSB格式把两个字节转化为一个Word</li>
-</ul>
-<pre><code class="language-cpp">#define  FLIPW( ray ) ( (((word) (ray)[0]) * 256) + (ray)[1] )
-</code></pre>
-<ul>
-<li>按照LSB格式把一个Word转化为两个字节</li>
-</ul>
-<pre><code class="language-cpp">#define  FLOPW( ray, val ) /
-  (ray)[0] = ((val) / 256); /
-  (ray)[1] = ((val) &amp; 0xFF)
-</code></pre>
-<ul>
-<li>得到一个变量的地址（word宽度）</li>
-</ul>
-<pre><code class="language-cpp">#define  B_PTR( var )  ( (byte *) (void *) &amp;(var) )
-#define  W_PTR( var )  ( (word *) (void *) &amp;(var) )
-</code></pre>
-<ul>
-<li>得到一个字的高位和低位字节</li>
-</ul>
-<pre><code class="language-cpp">#define  WORD_LO(xxx)  ((byte) ((word)(xxx) &amp; 255))
-#define  WORD_HI(xxx)  ((byte) ((word)(xxx) &gt;&gt; 8))
-</code></pre>
-<ul>
-<li>返回一个比X大的最接近的8的倍数</li>
-</ul>
-<pre><code class="language-cpp">#define RND8( x )    ((((x) + 7) / 8 ) * 8 )
-</code></pre>
-<ul>
-<li>将一个字母转换为大写</li>
-</ul>
-<pre><code class="language-cpp">#define  UPCASE( c ) ( ((c) &gt;= 'a' &amp;&amp; (c) &lt;= 'z') ? ((c) - 0x20) : (c) )
-</code></pre>
-<ul>
-<li>判断字符是不是10进值的数字</li>
-</ul>
-<pre><code class="language-cpp">#define  DECCHK( c ) ((c) &gt;= '0' &amp;&amp; (c) &lt;= '9')
-</code></pre>
-<ul>
-<li>判断字符是不是16进值的数字</li>
-</ul>
-<pre><code class="language-cpp">#define  HEXCHK( c ) (  ((c) &gt;= '0' &amp;&amp; (c) &lt;= '9') ||/
-                        ((c) &gt;= 'A' &amp;&amp; (c) &lt;= 'F') ||/
-                        ((c) &gt;= 'a' &amp;&amp; (c) &lt;= 'f') )
-</code></pre>
-<ul>
-<li>防止溢出的一个方法</li>
-</ul>
-<pre><code class="language-cpp">#define  INC_SAT( val )  (val = ((val)+1 &gt; (val)) ? (val)+1 : (val))
-</code></pre>
-<ul>
-<li>返回数组元素的个数</li>
-</ul>
-<pre><code class="language-cpp">#define  ARR_SIZE( a )  ( sizeof( (a) ) / sizeof( (a[0]) ) )
-</code></pre>
-<ul>
-<li>返回一个无符号数n尾的值</li>
-</ul>
-<pre><code class="language-cpp">#define MOD_BY_POWER_OF_TWO( val, mod_by ) /
-                           ( (dword)(val) &amp; (dword)((mod_by)-1) )
-</code></pre>
-<ul>
-<li>对于IO空间映射在存储空间的结构，输入输出处理</li>
-</ul>
-<pre><code class="language-cpp">#define inp(port)         (*((volatile byte *) (port)))
-#define inpw(port)        (*((volatile word *) (port)))
-#define inpdw(port)       (*((volatile dword *)(port)))
-#define outp(port, val)   (*((volatile byte *) (port)) = ((byte) (val)))
-#define outpw(port, val)  (*((volatile word *) (port)) = ((word) (val)))
-#define outpdw(port, val) (*((volatile dword *) (port)) = ((dword) (val)))
-</code></pre>
-<ul>
-<li>使用一些宏跟踪调试</li>
-</ul>
-<p>这一部分原文说明得相当清晰，因此直接引用原文。</p>
-<p>ANSI标准说明了五个预定义的宏名。它们是：</p>
-<pre><code class="language-cpp">__LINE__
-__FILE__
-
-//__LINE__ 及 __FILE__ 宏指示，#line指令可以改变它的值，简单的讲，编译时，它们包含程序的当前行数和文件名。
-
-__DATE__
-
-//__DATE__ 宏指令含有形式为月/日/年的串,表示源文件被翻译到代码时的日期。
-
-__TIME__
-
-//__TIME__ 宏指令包含程序编译的时间。时间用字符串表示，其形式为：分：秒
-
-__STDC__
-
-//__STDC__ 宏指令的意义是编译时定义的。一般来讲，如果__STDC__已经定义，编译器将仅接受不包含任何非标准扩展的标准C/C++代码。如果实现是标准的,则宏__STDC__含有十进制常量1。如果它含有任何其它数,则实现是非标准的。
-</code></pre>
-<p>C++中还定义了 <code>__cplusplus</code>。__cplusplus 与标准c++一致的编译器把它定义为一个包含至少6为的数值。与标准c++不一致的编译器将使用具有5位或更少的数值。</p>
-<p>如果编译器不是标准的,则可能仅支持以上宏名中的几个,或根本不支持。记住编译程序也许还提供其它预定义的宏名。</p>
-<p>为了调试，我们还可以定义宏,例如:</p>
-<p>当定义了_DEBUG,输出数据信息和所在文件所在行</p>
-<pre><code class="language-cpp">#ifdef _DEBUG
-#define DEBUGMSG(msg,date) printf(msg);printf(“%d%d%d”,date,_LINE_,_FILE_)
-#else
-#define DEBUGMSG(msg,date)
-#endif
-</code></pre>
-<p>原文引用结束(看这个引用区域，像不像<code>ifdef</code>和<code>endif</code>呢?)</p>
-<h2 id="6避免重复包含-重复定义">6.避免重复包含、重复定义</h2>
-<p>由于头文件包含可以嵌套，那么 * / *.cpp / *.h / *.hpp 文件就有可能多次包含同一个头文件，就可能出现重复定义的错误，而且极难查出。<s>(我一个题的解题代码因为写反true和false这样极为???的问题，调了一个小时，如果我在数个文件中发生重复定义，怕是一年都调不出来……)</s></p>
-<p>不过好在，有了<strong>条件编译开关</strong>，就可以避免重复包含(重复定义)啦！</p>
-<p>例:</p>
-<pre><code class="language-cpp">#ifndef __headerfileXXX__
-#define __headerfileXXX__
-//file
-#endif
-</code></pre>
-<p>这样，我们就能保证即使头文件被多次包含，也不会导致里面的内容被多次定义啦！</p>
-<h2 id="7总结">7.总结</h2>
-<p>写了这么多，感觉也把<code>#define</code>这个预处理器命令整理的比较明白了吧。</p>
-<p>同时，引用源也提供了大量的模板供给大家参考。感谢king110108巨佬的博客！</p>
-<p>最后附上<code>#define</code>的英文原版定义，供给有兴趣的同学们参考：</p>
-<pre><code>The define Directive
-You can use the #define directive to give a meaningful name to a constant in your program. The two forms of the syntax are:
-Syntax
-define identifier token-stringopt
-define identifier[( identifieropt, ... , identifieropt )] token-stringopt
-</code></pre>
-<p>那么，下篇博客再见咯！</p>
 ]]></content>
     </entry>
 </feed>

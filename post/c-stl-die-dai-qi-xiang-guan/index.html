@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1572424002998">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1572478174538">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="site-header">
     <div class="left">
       <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1572424002998" alt="" width="32px" height="32px">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1572478174538" alt="" width="32px" height="32px">
       </a>
       <a href="https://malachiten.github.io">
         <h1 class="site-title">Malachite</h1>
@@ -99,25 +99,34 @@
 <li>输出迭代器</li>
 </ul>
 <h2 id="迭代器的作用">迭代器的作用</h2>
-<p>所有的迭代器都可执行默认构造函数、拷贝构造函数、默认析构函数，并且可递增。<s>不然怎么迭代</s></p>
+<p>所有的迭代器都可执行默认构造函数、拷贝构造函数、默认析构函数，并且可递增。</p>
+<p><s>不然怎么迭代</s></p>
 <h3 id="输入输出迭代器">输入输出迭代器</h3>
 <p>输入输出迭代器都是顺序访问迭代器。该类型迭代器指向的元素只会被它访问一次，然后迭代器就会递增。</p>
 <p>所有的前向迭代器、双向迭代器、随机访问迭代器都是一种特殊的输入输出迭代器。</p>
-<p>输入输出迭代器之间可以比较是否相等。其重载了 &quot;==&quot; 和 &quot;!=&quot; 运算符而使得用户无需了解其内部实现。然而，已经迭代到作用域外的迭代器之间的比较是无意义的。</p>
-<p>可以向容器中写入内容，或将容器中的内容取出。单一类型的迭代器只能进行输入或输出的单一操作。</p>
+<p>输入输出迭代器之间可以比较是否相等。其重载了 <code>==</code> 和 <code>!=</code> 运算符而使得用户无需了解其内部实现。然而，已经迭代到作用域外的迭代器之间的比较是无意义的。</p>
+<p>可以向容器中写入内容，或将容器中的内容取出。单一类型的迭代器只能进行输入或输出的单一操作。所有的输入迭代器都可以使用<code>*</code>指针运算符解引用为右值，同时，对于非常量输出迭代器，还能解引用为左值。(对于左值和右值如果有不懂的，可以去康一下我的另一篇博客)。</p>
 <h3 id="前向迭代器">前向迭代器</h3>
-<p>非常量前向迭代器具备输入输出迭代器一样的功能。同时，它们受到迭代方向限制而只能向前迭代。它们是最基本的迭代器，所有的容器均至少支持前向迭代器。</p>
+<p>非常量前向迭代器具备输入输出迭代器一样的功能。同时，它们受到迭代方向限制而只能向前迭代。它们是最基本的迭代器，所有的容器 / 容器适配器均至少支持前向迭代器。</p>
+<p>输入输出迭代器都是前向迭代器的一种。</p>
+<p>同时，前向迭代器可以被多次地递增、解引用，无论操作多少次，只要迭代器指向的目标还在作用域内，就不会失去引用性质。</p>
 <h3 id="双向迭代器">双向迭代器</h3>
-<p>双向迭代器就是</p>
+<p>双向迭代器，说白了就是正着倒着都能迭代的迭代器。</p>
+<p>因此，它比起前向迭代器，只增加了对于递减运算符<code>--</code>的支持。其它部分均保持一致。</p>
+<h3 id="随机访问迭代器">随机访问迭代器</h3>
+<p>随机访问迭代器支持以上所有迭代器的全部特性。同时，它还具有自己的特性。</p>
+<p>它能够支持<code>+</code>、<code>+=</code>和<code>-</code>、<code>-=</code>运算符，能够通过这种方式立即迭代到作用域内的随机地址。</p>
+<p>不等比较<code>&lt;</code>、<code>&gt;</code>、<code>&lt;=</code>、<code>&gt;=</code>等也都是支持的。</p>
+<p>这种迭代器甚至能被 <s>调教</s> 成数组头指针一样的存在——它能使用偏移量解引用运算符，也就是我们常说的数组下标运算符<code>[]</code>，来访问从该地址偏移随机值后抵达的地址。</p>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://malachiten.github.io/post/screeps-jiao-cheng">
+            <a class="purple-link" href="https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi">
               <h3 class="post-title">
-                下一篇：Screeps 教程
+                下一篇：C++ 高级语法 / 引用、右值和左值
               </h3>
             </a>
           </div>
