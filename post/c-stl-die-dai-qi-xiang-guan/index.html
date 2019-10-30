@@ -5,7 +5,7 @@
     
 <meta charset="utf-8" >
 
-<title>压行技巧 | Malachite</title>
+<title>C++ STL / 迭代器相关 | Malachite</title>
 <meta name="description" content="夕焼けの中に吸い込まれて消えてった">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -80,58 +80,44 @@
       <div class="content-container">
         <div class="post-detail">
           
-          <h2 class="post-title">压行技巧</h2>
+          <h2 class="post-title">C++ STL / 迭代器相关</h2>
           <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-09-27</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://malachiten.github.io/tag/W8VQeBmQY">
-                    题解
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://malachiten.github.io/tag/TNO1SHAiH">
-                    技巧/说明
-                    
-                  </a>
-                
-              </span>
+            <span><i class="icon-calendar-outline"></i> 2019-10-24</span>
             
           </div>
           <div class="post-content">
-            <h1 id="压行技巧">压行技巧</h1>
-<p>Luogu P1914 小书童——密码 可能最短的AC代码</p>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-int main(){
-	int n; std::string str;
-	std::cin&gt;&gt;n&gt;&gt;str;
-	for(int i=0;i&lt;str.length();i++) std::cout&lt;&lt;(char)(str[i]+n&gt;122?str[i]+n-26:str[i]+n);
-}
-</code></pre>
-<p>其实是采用了这些方法来缩减长度：</p>
-<p>1.采用**略去using namespace std;**的方法减去一行长度。代价是使用名称空间<code>std</code>中的函数或对象时必须添加<code>std::</code>前缀。不过本方法的用处在压行，对于在一行中增加长度的代价，可以忽略不计。</p>
-<p>2.使用<strong>三目运算符</strong>在一行中实现</p>
-<pre><code class="language-cpp">if(/*the value of the expression isn't False(0)*/){
-    //do something
-}else{
-    //do something
-}
-</code></pre>
-<p>的效果，从而将三行压成一行。</p>
-<p>3.从C++0x(C++11)标准开始，主函数末尾即可略去<code>return 0;</code>。采用这一特性，可以省掉一行。</p>
+            <p>C++ 中的 STL 使用 <code>&lt;iterator&gt;</code> 即迭代器处理对于容器的操作。</p>
+<h2 id="迭代器的定义">迭代器的定义</h2>
+<p>迭代器是一种指向容器中元素的特殊的指针。</p>
+<h2 id="迭代器的分类">迭代器的分类</h2>
+<p>目前存在这样几种迭代器：</p>
+<ul>
+<li>输入迭代器</li>
+<li>前向迭代器</li>
+<li>双向迭代器</li>
+<li>随机访问迭代器</li>
+<li>输出迭代器</li>
+</ul>
+<h2 id="迭代器的作用">迭代器的作用</h2>
+<p>所有的迭代器都可执行默认构造函数、拷贝构造函数、默认析构函数，并且可递增。<s>不然怎么迭代</s></p>
+<h3 id="输入输出迭代器">输入输出迭代器</h3>
+<p>输入输出迭代器都是顺序访问迭代器。该类型迭代器指向的元素只会被它访问一次，然后迭代器就会递增。</p>
+<p>所有的前向迭代器、双向迭代器、随机访问迭代器都是一种特殊的输入输出迭代器。</p>
+<p>输入输出迭代器之间可以比较是否相等。其重载了 &quot;==&quot; 和 &quot;!=&quot; 运算符而使得用户无需了解其内部实现。然而，已经迭代到作用域外的迭代器之间的比较是无意义的。</p>
+<p>可以向容器中写入内容，或将容器中的内容取出。单一类型的迭代器只能进行输入或输出的单一操作。</p>
+<h3 id="前向迭代器">前向迭代器</h3>
+<p>非常量前向迭代器具备输入输出迭代器一样的功能。同时，它们受到迭代方向限制而只能向前迭代。它们是最基本的迭代器，所有的容器均至少支持前向迭代器。</p>
+<h3 id="双向迭代器">双向迭代器</h3>
+<p>双向迭代器就是</p>
 
           </div>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming">
+            <a class="purple-link" href="https://malachiten.github.io/post/screeps-jiao-cheng">
               <h3 class="post-title">
-                下一篇：STL容器 set 实用性说明
+                下一篇：Screeps 教程
               </h3>
             </a>
           </div>

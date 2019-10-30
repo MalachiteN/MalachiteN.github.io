@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-24T08:39:50.414Z</updated>
+    <updated>2019-10-30T08:26:58.504Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -10,6 +10,46 @@
     <logo>https://malachiten.github.io/images/avatar.png</logo>
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
+    <entry>
+        <title type="html"><![CDATA[树形数据结构 / 树状数组]]></title>
+        <id>https://malachiten.github.io/post/shu-xing-shu-ju-jie-gou-shu-zhuang-shu-zu</id>
+        <link href="https://malachiten.github.io/post/shu-xing-shu-ju-jie-gou-shu-zhuang-shu-zu">
+        </link>
+        <updated>2019-10-28T08:40:17.000Z</updated>
+        <content type="html"><![CDATA[<p>当我们需要求解区间和问题时，我们可以使用前缀和的方法。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C++ STL / 迭代器相关]]></title>
+        <id>https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan</id>
+        <link href="https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan">
+        </link>
+        <updated>2019-10-24T08:40:08.000Z</updated>
+        <content type="html"><![CDATA[<p>C++ 中的 STL 使用 <code>&lt;iterator&gt;</code> 即迭代器处理对于容器的操作。</p>
+<h2 id="迭代器的定义">迭代器的定义</h2>
+<p>迭代器是一种指向容器中元素的特殊的指针。</p>
+<h2 id="迭代器的分类">迭代器的分类</h2>
+<p>目前存在这样几种迭代器：</p>
+<ul>
+<li>输入迭代器</li>
+<li>前向迭代器</li>
+<li>双向迭代器</li>
+<li>随机访问迭代器</li>
+<li>输出迭代器</li>
+</ul>
+<h2 id="迭代器的作用">迭代器的作用</h2>
+<p>所有的迭代器都可执行默认构造函数、拷贝构造函数、默认析构函数，并且可递增。<s>不然怎么迭代</s></p>
+<h3 id="输入输出迭代器">输入输出迭代器</h3>
+<p>输入输出迭代器都是顺序访问迭代器。该类型迭代器指向的元素只会被它访问一次，然后迭代器就会递增。</p>
+<p>所有的前向迭代器、双向迭代器、随机访问迭代器都是一种特殊的输入输出迭代器。</p>
+<p>输入输出迭代器之间可以比较是否相等。其重载了 &quot;==&quot; 和 &quot;!=&quot; 运算符而使得用户无需了解其内部实现。然而，已经迭代到作用域外的迭代器之间的比较是无意义的。</p>
+<p>可以向容器中写入内容，或将容器中的内容取出。单一类型的迭代器只能进行输入或输出的单一操作。</p>
+<h3 id="前向迭代器">前向迭代器</h3>
+<p>非常量前向迭代器具备输入输出迭代器一样的功能。同时，它们受到迭代方向限制而只能向前迭代。它们是最基本的迭代器，所有的容器均至少支持前向迭代器。</p>
+<h3 id="双向迭代器">双向迭代器</h3>
+<p>双向迭代器就是</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Screeps 教程]]></title>
         <id>https://malachiten.github.io/post/screeps-jiao-cheng</id>
@@ -1953,357 +1993,6 @@ define identifier token-stringopt
 define identifier[( identifieropt, ... , identifieropt )] token-stringopt
 </code></pre>
 <p>那么，下篇博客再见咯！</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[笔记 : 搜索 / DFS BFS ID A*]]></title>
-        <id>https://malachiten.github.io/post/bi-ji-sou-suo</id>
-        <link href="https://malachiten.github.io/post/bi-ji-sou-suo">
-        </link>
-        <updated>2019-09-27T06:08:30.000Z</updated>
-        <content type="html"><![CDATA[<p>在NOIP中，搜索主要会考察模拟，考验代码能力。有一句名言：</p>
-<blockquote>
-<p>n方过百万，暴力压标算</p>
-</blockquote>
-<h2 id="dfs-深度优先搜索">DFS / 深度优先搜索</h2>
-<p>这更符合人类的思考方式。(<s>人类的本质是什么鸭？</s>)</p>
-<p>适合<strong>状态不容易存储</strong>的情况(每次只会存储这一次的状态并推导下一次的状态)。</p>
-<p>深度优先搜索主要使用栈来实现。</p>
-<p>搜索的流程：首先找到一个状态开始向下发展，直到发展到末端，向上回溯一级再次向下搜索。</p>
-<h3 id="寻找最优解这是最常用的">寻找最优解(这是最常用的)</h3>
-<p>这种情况下,一般会有很多种不同的状态</p>
-<pre><code class="language-cpp">void dfs(int cur){
-    if(!check(cur)){
-        //可行性剪枝。如果预测到某个状态以下的所有答案走到底均不可行，则剪去剩余搜索子树
-        return;
-    }
-    if(cur无法比当前最优解更优)){
-        //最优性剪枝。如果预测到某个状态下所有答案不能比当前ans更优，则剪去剩余搜索子树
-        return;
-    }
-    标记当前状态已访问;
-    存储当前状态的信息或者更新答案;//这一步在答案比较简单时可放到dfs的参数里面避免手动回溯
-    for(枚举当前状态所有决策){
-        dfs(next(cur));
-    }
-    //回溯:
-    消除当前状态存储的信息并将其对答案的影响消去;
-    将当前状态标记为未访问;
-    //因为DFS算法必须通过回溯消去影响，因此又称为回溯算法
-}
-</code></pre>
-<h3 id="寻找可行解">寻找可行解</h3>
-<pre><code class="language-cpp">bool dfs(int cur){
-    if(!check(cur)){
-        //可行性剪枝
-        return 0;
-    }
-    将当前状态标记为已访问;
-    if(goal(cur)){
-        记录可行解;
-        return 1;
-    }
-    for(枚举当前状态的所有决策){
-        if(dfs(next(cur))){
-            return 1;
-        }
-    }
-    将当前状态标记为未访问;
-    return 0;
-}
-</code></pre>
-<h3 id="dfs例题-luogu-p3154-cqoi2009循环赛">DFS例题: Luogu P3154 [CQOI2009]循环赛</h3>
-<p>解析(<strong>转载自:<a href="http://www.cnblogs.com/autsky-jadek/">AutSky_JadeK的博客</a></strong>)</p>
-<p><strong>思路</strong></p>
-<ul>
-<li>dfs+剪枝*4</li>
-<li>1.只枚举一半的比赛，另一半直接得出</li>
-<li>2.处理前缀和，若大于目标得分则剪枝</li>
-<li>3.前缀和加上若接下来全胜的得分 仍小于目标得分，则剪枝。</li>
-<li>4.枚举到每个人的最后一场比赛时直接用目标得分-前缀和 计算出最后一场的应得分。</li>
-</ul>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-using namespace std;
-const int f[]={3,1,0,0};
-int n,a[9],ans,Pre[9];
-void dfs(int x,int y)
-{
-    if(Pre[x]&gt;a[x])return;
-    if(Pre[x]+(n-y+1)*3&lt;a[x])return;
-    if(x==n){ans++;return;}
-    if(y==n)
-      {
-          int tmp=a[x]-Pre[x];
-          if(tmp==2)return;
-          Pre[y]+=f[tmp];
-        dfs(x+1,x+2);
-          Pre[y]-=f[tmp];
-      }else{
-    Pre[x]+=3;dfs(x,y+1);Pre[x]-=3;
-    Pre[y]+=3;dfs(x,y+1);Pre[y]-=3;
-    Pre[x]++;Pre[y]++;dfs(x,y+1);Pre[x]--;Pre[y]--;}
-}
-int main()
-{
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++)
-      scanf(&quot;%d&quot;,&amp;a[i]);
-    dfs(1,2);
-    printf(&quot;%d\n&quot;,ans);
-    return 0;
-}
-</code></pre>
-<h3 id="dfs-枚举子集">DFS 枚举子集</h3>
-<pre><code class="language-cpp">void dfs(int cur){
-    if(cur){
-        将cur添加进当前集合;
-    }
-    对子集的处理;
-    for(int i=cur+1;i&lt;=n;i++){
-        dfs(i);
-    }
-}
-</code></pre>
-<p>该算法处理集合 {1,2,3,4} 的过程如下:</p>
-<pre><code>1
-1 2
-1 2 3
-1 2 3 4
-2
-2 3
-2 3 4
-3
-3 4
-4
-</code></pre>
-<p>可见，该算法是<strong>将过程全部输出</strong>的DFS。</p>
-<h2 id="bfs-广度优先搜索">BFS / 广度优先搜索</h2>
-<p>广度优先搜索是序列式的搜索，适合状态容易储存，并且<strong>不清楚搜索深度会有多深</strong>的情景。</p>
-<p>广度优先搜索一般使用队列实现。</p>
-<p>搜索的流程：找到第一个状态，一次生成其下方一层的节点并全部储存，以此向下发展。</p>
-<pre><code class="language-cpp">void bfs(){
-    q.push(st_start);
-    vis[st_start]=true;
-    while(!q.empty()){
-        st U=q.front();
-        for(i in next(st)){
-            if(!vis[i]&amp;&amp;check(i)){
-                vis[i]=true;
-                i.d=st.d+1;
-                if(goal(i)){
-                    对最终状态的处理;
-                    return;
-                }
-                q.push(i);
-            }
-        }
-        q.pop();
-    }
-}
-</code></pre>
-<h2 id="id-dfs-迭代加深-深度优先搜索">ID DFS / 迭代加深 深度优先搜索</h2>
-<p><strong>首先深度优先搜索k层，若没有找到可行解，再深度优先搜索k+1层，直到找到可行解为止</strong>。由于深度是从小到大逐渐增加的，所以当搜索到结果时可以保证搜索深度是最小的。这也是迭代加深搜索在一部分情况下可以代替广度优先搜索的原因。</p>
-<h2 id="id-a-迭代加深-启发式搜索">ID A* / 迭代加深 启发式搜索</h2>
-<pre><code class="language-cpp">void dfs(int cur){
-    if(!check(cur)){
-        //可行性剪枝。如果预测到某个状态以下的所有答案走到底均不可行，则剪去剩余搜索子树
-        return;
-    }
-    if(/*估价函数*/cantBetter(cur)){
-        //最优性剪枝。如果预测到某个状态下所有答案不能比当前ans更优，则剪去剩余搜索子树
-        return;
-    }
-    标记当前状态已访问;
-    存储当前状态的信息或者更新答案;//这一步在答案比较简单时可放到dfs的参数里面避免手动回溯
-    for(枚举当前状态所有决策){
-        dfs(next(cur));
-    }
-    //回溯:
-    消除当前状态存储的信息并将其对答案的影响消去;
-    将当前状态标记为未访问;
-    //因为DFS算法必须通过回溯消去影响，因此又称为回溯算法
-}
-</code></pre>
-<p>上面就是DFS的例子。其实ID A*就是用了启发式搜索的估价函数来改写最优性剪枝的方案。</p>
-<h2 id="a-启发式搜索">A* / 启发式搜索</h2>
-<ul>
-<li>给广搜的状态一个估价函数，然后以估价参数为优先级使用优先队列代替队列。</li>
-<li>重点是估价函数的设计。</li>
-<li>估价函数h(s)是当前状态到目标状态的乐观估计最优解。</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Luogu P1305 新二叉树 题解]]></title>
-        <id>https://malachiten.github.io/post/p1305-xin-er-cha-shu-ti-jie</id>
-        <link href="https://malachiten.github.io/post/p1305-xin-er-cha-shu-ti-jie">
-        </link>
-        <updated>2019-09-27T02:16:55.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="luogu-p1305-新二叉树-题解">Luogu P1305 新二叉树 题解</h1>
-<p>很水的一道二叉树的题。其实并不需要真正利用在程序中构造二叉树进行求解的思路，而是利用二叉树的性质，找出规律，从而得出结果。</p>
-<p>首先让我们看到题目：</p>
-<h2 id="题目描述">题目描述</h2>
-<p><strong>输入一串二叉树，用遍历前序打出。</strong></p>
-<p>一看这个题目，似乎还无法得出一个规律。不过我们产生了问题：如何输入这一串二叉树？</p>
-<h2 id="输入格式">输入格式</h2>
-<p><strong>第一行为二叉树的节点数</strong><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mo>≤</mo><mn>26</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">(n≤26)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">6</span><span class="mclose">)</span></span></span></span>。</p>
-<p><strong>后面n行，每一个字母为节点，后两个字母分别为其左右儿子。</strong></p>
-<p><strong>空节点用星号表示。</strong></p>
-<p>这样似乎就明了了：二叉树好像是通过这几种形式输入的：</p>
-<ul>
-<li>父亲 左儿子 右儿子</li>
-<li>父亲 儿子 星号</li>
-<li>父亲 星号 星号</li>
-</ul>
-<h2 id="输出格式">输出格式</h2>
-<p><strong>前序排列的二叉树。</strong></p>
-<p>既然要求这样输出，那么我们就可以寻找一下前序排列的规律：</p>
-<p>在只有一个节点的情况下，这棵树长这样：</p>
-<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/08/22/mwEKi9.png" alt="1"></figure>
-<p>它的前序排列自然是这样： <code>A</code></p>
-<p>如果有了两个节点，则会变成这样：</p>
-<figure data-type="image" tabindex="2"><img src="https://s2.ax1x.com/2019/08/22/mwEma4.png" alt="2"></figure>
-<p>前序排列为： <code>AB</code></p>
-<p>有了三个节点，会变成这样：</p>
-<figure data-type="image" tabindex="3"><img src="https://s2.ax1x.com/2019/08/22/mwEnIJ.png" alt="3"></figure>
-<p>前序排列为： <code>ABC</code></p>
-<p>似乎还没有看出什么端倪。不过，让我们继续向下发展这棵二叉树：</p>
-<figure data-type="image" tabindex="4"><img src="https://s2.ax1x.com/2019/08/22/mwEeZF.png" alt="4"></figure>
-<p>前序排列： <code>ABDC</code></p>
-<p>等等，怎么……顺序发生了一些变化？不再是依字母表顺序排列了？</p>
-<p>再来！</p>
-<figure data-type="image" tabindex="5"><img src="https://s2.ax1x.com/2019/08/22/mwEMGR.png" alt="5"></figure>
-<p>前序排列： <code>ABDEC</code></p>
-<p>原来规律是这样！</p>
-<p><strong>每次第一个输入的序列（根节点及其子节点） 直接被加入前序中；</strong></p>
-<p><strong>后续有两种儿子的，则忽略 “ 星号 ” 字符，将左儿子插入序列中其父亲节点后的一位，将右儿子插入序列中其左儿子节点的后一位。</strong></p>
-<p><strong>仅有一种儿子的（表现形式为 父亲 儿子 星号 ），就简单将其儿子插入父亲节点的后一位即可。</strong></p>
-<p><strong>找到父亲节点或左儿子的方法很简单：通过 <code>string</code> 类的这个成员函数即可完成：</strong></p>
-<pre><code class="language-cpp">int find(string s);
-</code></pre>
-<p>这个成员函数的作用是<strong>返回子字符串s在原串中的位置</strong>。如果找不到，则返回：</p>
-<pre><code class="language-cpp">string::npos
-</code></pre>
-<p>这个常量。（这个常量在不同的编译器中，有不同的值，虽然有些时候是 <code>static_cast&lt;size_type&gt;(-1)</code> ，但是可能其他时候会出差错(比如变成size_t的最大值,4294967295)。因此，我们在这里不写-1，而写这个常量更为保险。如果想继续深入了解这个用于标记<code>find</code>失败的常量，可以参考<a href="https://blog.csdn.net/JIEJINQUANIL/article/details/51789682">其他巨佬的博客</a>）</p>
-<p>然后，我们再使用这个类里面的另一个函数 <code>insert</code> 向指定的位置插入代表子节点的字符：</p>
-<pre><code class="language-cpp">void insert(int position,int length,string s);
-</code></pre>
-<p>它的作用是 <strong>从字符串中的第position个位置开始，插入length个字符，这些字符来源于s</strong> 。</p>
-<p>这样，我们就可以得到这题的代码！</p>
-<h3 id="代码如下">代码如下：</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-string t;
-int n;
-string s;
-int main(){
-	cin&gt;&gt;n;
-	for(int i=0;i&lt;n;i++){
-		cin&gt;&gt;s;
-		if(t.find(s[0])==string::npos){t=s;continue;}
-		if(s[1]!='*') t.insert(t.find(s[0])+1,1,s[1]);
-		if(s[2]!='*') t.insert(t.find(s[1])+1,1,s[2]);
-	}
-	cout&lt;&lt;t&lt;&lt;endl;
-}
-</code></pre>
-<h5 id="你觉得一次就能ac了">你觉得一次就能AC了？</h5>
-<h4 id="并不是">并不是！</h4>
-<h3 id="实际上">实际上！</h3>
-<h2 id="这个只有20分">这个只有20分！！！</h2>
-<figure data-type="image" tabindex="6"><img src="https://s2.ax1x.com/2019/08/22/mwmhAU.png" alt="x1"></figure>
-<p>为什么？为什么只有20分？</p>
-<p>很简单。下载数据后，你会发现这是因为这份代码没有考虑到这种数据的存在：</p>
-<p><strong>“指示根节点及其子节点的第一行就含星号 ！！！”</strong></p>
-<p>这种数据会带来什么影响？</p>
-<p><strong>你的程序将把“ 星号 ”当作一种子节点！！！</strong></p>
-<p>于是，之后的输出就完全混乱了。毕竟，由于第一行是特判全部输入，“ 星号 ”这样的鬼东西都被插进了字符串里面。</p>
-<p>不过这样一来，你就找到了修改的思路：</p>
-<p>使用 <code>string</code> 类的这个成员函数： <code>erase</code> ！</p>
-<pre><code class="language-cpp">void erase(string::iterator start,string::iterator end);
-</code></pre>
-<p>直接运用它，产生的作用其实是消除<strong>一个字符串中的一段连续的长度</strong>。那么怎么达到消除<strong>全部指定字符</strong>（此处为标明了根节点及其儿子的字符串中的 “ * ” ）呢？</p>
-<p>使用 <code>algorithm</code> 库中的 <code>remove</code> 函数！</p>
-<pre><code class="language-cpp">iterator remove(iterator start,iterator end,auto c);
-</code></pre>
-<p>有了这个，我们就能够不断地清除字符串中的目标字符，并不断返回指向其未被删除元素的下一个元素的迭代器，从而使用erase函数清除它。</p>
-<p>于是，我们得到了用于<strong>清除一段字符串中全部指定字符</strong>的完整代码：</p>
-<pre><code class="language-cpp">erase(remove(string::iterator start,string::iterator end,char c),string::iterator end);
-</code></pre>
-<p>那么，新的代码也呼之欲出了！</p>
-<h3 id="新代码如下">新代码如下：</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-string t;
-int n;
-string s;
-int main(){
-	cin&gt;&gt;n;
-	for(int i=0;i&lt;n;i++){
-		cin&gt;&gt;s;
-		if(t.find(s[0])==string::npos){
-			s.erase(remove(s.begin(),s.end(),'*'),s.end());
-			t=s;
-			continue;
-		}
-		if(s[1]!='*') t.insert(t.find(s[0])+1,1,s[1]);
-		if(s[2]!='*') t.insert(t.find(s[1])+1,1,s[2]);
-	}
-	cout&lt;&lt;t&lt;&lt;endl;
-}
-</code></pre>
-<h5 id="你又觉得这次就能ac了">你又觉得这次就能AC了？</h5>
-<h4 id="并不是-2">并不是！</h4>
-<h3 id="其实">其实！</h3>
-<h2 id="这个只有30分">这个只有30分！！！</h2>
-<figure data-type="image" tabindex="7"><img src="https://s2.ax1x.com/2019/08/22/mwm4NF.png" alt="x2"></figure>
-<p><s>才多过了一个点啊……</s></p>
-<p>这次又是为什么？？！</p>
-<p>下载数据后发现，这次是栽在了一种之前<strong>从未考虑到的输入情况</strong>上。</p>
-<p>这次导致出错的输入数据为：</p>
-<ul>
-<li>父亲 星号 儿子</li>
-</ul>
-<p>……</p>
-<p><s>这也太坑了吧</s></p>
-<p>我们为了AC此题，只能继续努力了……</p>
-<p>这次更改并不需要什么新的技术，只需要添加几个判断即可绕过大坑。</p>
-<h3 id="代码如下-2">代码如下：</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-string t;
-int n;
-string s;
-int main(){
-	cin&gt;&gt;n;
-	for(int i=0;i&lt;n;i++){
-		cin&gt;&gt;s;
-		if(t.find(s[0])==string::npos){
-			s.erase(remove(s.begin(),s.end(),'*'),s.end());
-			t=s;
-			continue;
-		}
-		if(s[1]!='*'&amp;&amp;s[2]!='*'){
-			t.insert(t.find(s[0])+1,1,s[1]);
-			t.insert(t.find(s[1])+1,1,s[2]);
-		}
-		if(s[1]=='*'&amp;&amp;s[2]!='*'){
-			t.insert(t.find(s[0])+1,1,s[2]);
-		}
-		if(s[1]!='*'&amp;&amp;s[2]=='*'){
-			t.insert(t.find(s[0])+1,1,s[1]);
-		}
-	}
-	cout&lt;&lt;t&lt;&lt;endl;
-}
-</code></pre>
-<p>看着屏幕上蓝色方块上转着白色的圈圈，你想到：之前（指20分变30分那次）做了那么大的修改，才多过了一个点，想必这个算法还存在很多问题吧……难不成<strong>还得再重写几次？？！</strong></p>
-<p>然后……</p>
-<figure data-type="image" tabindex="8"><img src="https://s2.ax1x.com/2019/08/22/mwK3hF.png" alt="v"></figure>
-<p>？？？？？？</p>
-<h2 id="过了就过了">过了？？！就过了？？？？？！</h2>
-<p>历经千辛万苦，终于过了啊……<s>（接受现实）</s></p>
-<p><s>bilibili干杯！（好像并没有什么不对）</s></p>
 ]]></content>
     </entry>
 </feed>
