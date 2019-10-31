@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>C++ 语法 / Assert 断言 | Malachite</title>
+<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1572505109874">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://malachiten.github.io">
+        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1572505109874" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://malachiten.github.io">
+        <h1 class="site-title">Malachite</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">C++ 语法 / Assert 断言</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-10-31</span>
+            
+          </div>
+          <div class="post-content">
+            <p>断言广泛存在于我所了解的几乎全部语言中。</p>
+<p>C，C++，Python，Haskell，Lisp，……，都有自己的断言实现，且不同语言中的断言按照各自语法解读之后的“人话”几乎没有任何歧义。</p>
+<p>当然，正如标题所言：本文主要讲的是 C/C++ 的断言。</p>
+<h2 id="引入">引入</h2>
+<p>一般而言，如果我们的程序一切正常，在某些时候，会产生一些必然的结果。</p>
+<p>如 Leetcode 第一题，计算两数之和，并在目标数组中找到对应值，并返回其下标。</p>
+<p>那么，我们就可以<strong>断言</strong>：数组中，必定存在我们要找的两数之和。如果找不到，不是查找写错了，就是两数之和算错了。</p>
+<p><s>两数之和都算错还写你🐎的程序啊</s>（在线暴躁）</p>
+<p>我们通过 Assert 来告诉程序我们的 “断言” ，然后，程序会每次执行到断言处就判断一次数组中到底有没有我们要查找的数。如果找不到，就打断程序，输出错误信息然后退出。</p>
+<h2 id="定义">定义</h2>
+<blockquote>
+<p>Evaluates an expression and, when the result is false, prints a diagnostic message and aborts the program.</p>
+</blockquote>
+<p>断言本身，是语言为了调试方便，实现的进行真假检定的语句。一旦断言为假，立刻终止程序执行，并输出错误信息和错误发生位置到标准错误。在在线测评平台上，断言为假引发的错误被划归到RE / 运行时错误。</p>
+<h2 id="实现">实现</h2>
+<p>可以通过查阅头文件得知。</p>
+<p>以下是来源于 C 的头文件：</p>
+<pre><code class="language-cpp">/**
+ * This file has no copyright assigned and is placed in the Public Domain.
+ * This file is part of the mingw-w64 runtime package.
+ * No warranty is given; refer to the file DISCLAIMER.PD within this package.
+ */
+
+/* According to C99 standard (section 7.2) the assert
+   macro shall be redefined each time assert.h gets
+   included depending on the status of NDEBUG macro.  */
+#undef assert
+
+#ifndef __ASSERT_H_
+#define __ASSERT_H_
+
+#include &lt;crtdefs.h&gt;
+#ifdef __cplusplus
+#include &lt;stdlib.h&gt;
+#endif
+
+#ifdef __cplusplus
+extern &quot;C&quot; {
+#endif
+
+#ifndef _CRT_TERMINATE_DEFINED
+#define _CRT_TERMINATE_DEFINED
+  void __cdecl __MINGW_NOTHROW exit(int _Code) __MINGW_ATTRIB_NORETURN;
+  void __cdecl __MINGW_NOTHROW _exit(int _Code) __MINGW_ATTRIB_NORETURN;
+
+#if !defined __NO_ISOCEXT /* extern stub in static libmingwex.a */
+  /* C99 function name */
+  void __cdecl _Exit(int) __MINGW_ATTRIB_NORETURN;
+#ifndef __CRT__NO_INLINE
+  __CRT_INLINE __MINGW_ATTRIB_NORETURN void  __cdecl _Exit(int status)
+  {  _exit(status); }
+#endif /* !__CRT__NO_INLINE */
+#endif /* Not  __NO_ISOCEXT */
+
+#pragma push_macro(&quot;abort&quot;)
+#undef abort
+  void __cdecl __MINGW_ATTRIB_NORETURN abort(void);
+#pragma pop_macro(&quot;abort&quot;)
+
+#endif /* _CRT_TERMINATE_DEFINED */
+
+extern void __cdecl
+_wassert(const wchar_t *_Message,const wchar_t *_File,unsigned _Line);
+extern void __cdecl
+_assert (const char *_Message, const char *_File, unsigned _Line);
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* !defined (__ASSERT_H_) */
+
+#if (defined _ISOC11_SOURCE \
+     || (defined __STDC_VERSION__ &amp;&amp; __STDC_VERSION__ &gt;= 201112L)) \
+    &amp;&amp; !defined (__cplusplus)
+/* Static assertion.  Requires support in the compiler.  */
+#undef static_assert
+#define static_assert _Static_assert
+#endif
+
+#ifdef NDEBUG
+#define assert(_Expression) ((void)0)
+#else /* !defined (NDEBUG) */
+#if defined(_UNICODE) || defined(UNICODE)
+#define assert(_Expression) \
+ (void) \
+ ((!!(_Expression)) || \
+  (_wassert(_CRT_WIDE(#_Expression),_CRT_WIDE(__FILE__),__LINE__),0))
+#else /* not unicode */
+#define assert(_Expression) \
+ (void) \
+ ((!!(_Expression)) || \
+  (_assert(#_Expression,__FILE__,__LINE__),0))
+#endif /* _UNICODE||UNICODE */
+#endif /* !defined (NDEBUG) */
+
+</code></pre>
+<p>以下为 C++ 的头文件：</p>
+<pre><code class="language-cpp">// -*- C++ -*- forwarding header.
+
+// Copyright (C) 1997-2018 Free Software Foundation, Inc.
+//
+// This file is part of the GNU ISO C++ Library.  This library is free
+// software; you can redistribute it and/or modify it under the
+// terms of the GNU General Public License as published by the
+// Free Software Foundation; either version 3, or (at your option)
+// any later version.
+
+// This library is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// Under Section 7 of GPL version 3, you are granted additional
+// permissions described in the GCC Runtime Library Exception, version
+// 3.1, as published by the Free Software Foundation.
+
+// You should have received a copy of the GNU General Public License and
+// a copy of the GCC Runtime Library Exception along with this program;
+// see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+// &lt;http://www.gnu.org/licenses/&gt;.
+
+/** @file cassert
+ *  This is a Standard C++ Library file.  You should @c \#include this file
+ *  in your programs, rather than any of the @a *.h implementation files.
+ *
+ *  This is the C++ version of the Standard C Library header @c assert.h,
+ *  and its contents are (mostly) the same as that header, but are all
+ *  contained in the namespace @c std (except for names which are defined
+ *  as macros in C).
+ */
+
+//
+// ISO C++ 14882: 19.2  Assertions
+//
+
+// No include guards on this header...
+
+#pragma GCC system_header
+
+#include &lt;bits/c++config.h&gt;
+#include &lt;assert.h&gt;
+</code></pre>
+<p>可见，很有趣的一点是，在 C / C++ 中，“断言” 即 assert 并不是个函数，而是个宏，定义在 assert.h 中。</p>
+<p>而 C++ 中的 cassert 头文件就不作任何定义，仅 <code>#include</code> 了 assert.h 。assert.h 中通过<code>extern &quot;C&quot;</code>的方式支持了 C++ 使用 C 头文件。</p>
+<p>你问我为什么这么搞？</p>
+<p><s>因为C你太美</s>我咋知道。</p>
+<h3 id="普通断言">普通断言</h3>
+<p>对于这样的一般断言，使用的方法相当简单：</p>
+<pre><code class="language-cpp">assert(bool expression);
+</code></pre>
+<p>断言检查表达式的值是不是 0 。如果是，触发 <code>abort</code>。</p>
+<h3 id="静态断言">静态断言</h3>
+<p>有一个东西叫<code>static_assert</code>，属于 C++ 的标准语法，是从 C++11 标准开始应用的，不需要任何头文件就可以使用，就像<code>__built_in_scanf</code>和<code>__built_in_printf</code>那样。</p>
+<p><s>祝你早日实现头文件自由！</s></p>
+<p>这个东西有一个非常特殊的能力：它在编译期判断程序有没有违反断言。如果违反，直接终止编译，然后输出编译错误信息。这个信息可以自由定义。</p>
+<p>然而由于这事是编译器而不是运行时干的，静态断言具有一个限制：断言表达式本身必须是常量，如果不是常量，静态断言不符合语法。<s>你不是想编译错误🐎？让你编译错误个够。</s></p>
+<h2 id="限制">限制</h2>
+<p>每一次执行到断言，程序都会执行断言表达式，引起性能的大规模损耗。因此，我们在发布可用产品的时候，应该设法清除 Debug 时设置的断言带来的影响。</p>
+<p><s>当然如果你想卖软件赚钱，可以试试免费版不清除断言，付费版清除断言……可别跟别人说是我教的啊！</s></p>
+<h3 id="消除断言">消除断言</h3>
+<p><strong>嘿，停下！没叫你一个一个删！</strong></p>
+<p><strong>也没叫你注释掉！</strong></p>
+<p>实际上，C / C++ 自身就提供了大量取消断言的办法。</p>
+<p>只需定义宏<code>NDEBUG</code>就可以取消程序中所有的断言。</p>
+<p>还有，断言只有在 Debug 版本中才有效，如果编译为 Release 版本则被忽略。</p>
+<p>通过这些方式，我们就能在调试完成后，发挥出程序原本应有的性能。</p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan">
+              <h3 class="post-title">
+                下一篇：C++ STL / 迭代器相关
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">夕焼けの中に吸い込まれて消えてった</div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/MalachiteN" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+        <a href="https://www.zhihu.com/people/bao-chi-leng-jing-rev4/activities" target="_blank">
+          <i class="fab fa-zhihu"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
+  <div>
+    <span id="busuanzi_container_site_pv">
+      本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </div>
+</div>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
