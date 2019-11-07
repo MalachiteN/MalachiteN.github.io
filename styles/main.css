@@ -251,10 +251,14 @@ p {
   margin: 0;
 }
 h1,
-h2,
 h4 {
   margin: 0;
   font-weight: normal;
+}
+h2 {
+  margin: 0;
+  font-weight: normal;
+  font-weight: 500;
 }
 h3 {
   font-weight: 400;
@@ -273,7 +277,7 @@ img {
 }
 code {
   font-size: 90%;
-  font-family: Menlo, monospace;
+  font-family: 'Courier New', Courier, Consolas;
 }
 p > code {
   padding: 0.2em 0.4em;
@@ -282,10 +286,10 @@ p > code {
 pre {
   overflow-x: scroll;
   padding: 10pt 15pt;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
+  border: 1px solid #f5f5f5;
+  border-radius: 5px;
   background-color: #f5f5f5;
-  color: #333;
+  color: #F790A4;
   text-align: left;
   font-size: 13px;
 }
@@ -524,6 +528,7 @@ body {
   height: 50px;
 }
 .header .nav .logo .site-title h1 {
+  font-family: 'Microsoft YaHei', 'Consolas';
   margin-right: 25px;
   color: #17233d;
   font-weight: 100;
@@ -595,7 +600,8 @@ body {
 }
 .post-container .post .post-title {
   margin-bottom: 10px;
-  border-bottom: 1px solid #2e9fff;
+  border-bottom: 1px solid #e0ffff;
+  font-size: 1.7em;
 }
 .post-container .post .post-title a:hover {
   color: #2e9fff;
@@ -609,7 +615,7 @@ body {
   color: rgba(81, 90, 110, 0.9);
 }
 .post-container .post .post-info .post-tag {
-  margin: 5px;
+  margin: 10px;
 }
 .post-container .post .post-article {
   display: flex;
@@ -764,9 +770,10 @@ body {
   flex-direction: column;
 }
 .post-detail .post .post-title {
+  font-family: 'Microsoft YaHei', 'Consolas';
   padding: 24px;
   text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 32px;
 }
 .post-detail .post .post-info {
@@ -916,6 +923,7 @@ body {
 }
 .id_card .id_card-title {
   margin-top: 10px;
+  font-family: 'Microsoft YaHei';
   font-weight: 100;
   font-size: 24px;
 }
