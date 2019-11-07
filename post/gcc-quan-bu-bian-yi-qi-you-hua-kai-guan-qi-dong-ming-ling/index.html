@@ -1,103 +1,119 @@
-
-<!DOCTYPE html>
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>GCC 全部编译器优化开关启动命令 | Malachite</title>
-<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1572505318973">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    GCC 全部编译器优化开关启动命令 | Malachite
+</title>
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1573107931171">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://malachiten.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+        
+</head>
 
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1572505318973" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://malachiten.github.io">
-        <h1 class="site-title">Malachite</h1>
-      </a>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://malachiten.github.io">
+                <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1573107931171" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Malachite
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">GCC 全部编译器优化开关启动命令</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-09-27</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://malachiten.github.io/tag/TNO1SHAiH">
-                    技巧/说明
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <h1 id="gcc-全部编译器优化开关启动命令">GCC 全部编译器优化开关启动命令</h1>
-<p>有时，洛谷上的一些题，我们的算法并不能满分通过。一些优化之差，就导致一道题迟迟无法AC。对此，可以在我们的程序前面加上这些预处理器命令：</p>
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            GCC 全部编译器优化开关启动命令
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-09-27</time>
+                            
+                                <a href="https://malachiten.github.io/tag/TNO1SHAiH" class="post-tag i-tag
+                            i-tag-success">
+                            #技巧/说明
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>有时，洛谷上的一些题，我们的算法并不能满分通过。一些优化之差，就导致一道题迟迟无法AC。对此，可以在我们的程序前面加上这些预处理器命令：</p>
+<!-- more -->
 <pre><code class="language-cpp">#define fastcall __attribute__((optimize(&quot;-O3&quot;)))
 #pragma GCC optimize(2)
 #pragma GCC optimize(3)
@@ -147,72 +163,94 @@
 <p>不过……</p>
 <h2 id="警告在noip竞赛中使用任何编译命令可能导致complie-error并且无法申诉因此不要尝试在正式竞赛中使用这些编译命令本技巧仅限平时使用">警告：在NOIp竞赛中使用任何编译命令可能导致Complie Error，并且无法申诉！因此，不要尝试在正式竞赛中使用这些编译命令！本技巧仅限平时使用！！！</h2>
 
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://malachiten.github.io/post/markdown-nei-qian-shi-pin-bo-fang-qi-ce-shi1">
+                                <h3 class="post-title">
+                                    Markdown / 内嵌视频播放器测试
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%AD%A6%E5%91%8A%E5%9C%A8noip%E7%AB%9E%E8%B5%9B%E4%B8%AD%E4%BD%BF%E7%94%A8%E4%BB%BB%E4%BD%95%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4%E5%8F%AF%E8%83%BD%E5%AF%BC%E8%87%B4complie-error%E5%B9%B6%E4%B8%94%E6%97%A0%E6%B3%95%E7%94%B3%E8%AF%89%E5%9B%A0%E6%AD%A4%E4%B8%8D%E8%A6%81%E5%B0%9D%E8%AF%95%E5%9C%A8%E6%AD%A3%E5%BC%8F%E7%AB%9E%E8%B5%9B%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%BF%99%E4%BA%9B%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4%E6%9C%AC%E6%8A%80%E5%B7%A7%E4%BB%85%E9%99%90%E5%B9%B3%E6%97%B6%E4%BD%BF%E7%94%A8">警告：在NOIp竞赛中使用任何编译命令可能导致Complie Error，并且无法申诉！因此，不要尝试在正式竞赛中使用这些编译命令！本技巧仅限平时使用！！！</a></li>
+</ul>
+</li>
+</ul>
+
         </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
 
-        
-          <div class="next-post">
-            <a class="purple-link" href="https://malachiten.github.io/post/markdown-nei-qian-shi-pin-bo-fang-qi-ce-shi1">
-              <h3 class="post-title">
-                下一篇：Markdown / 内嵌视频播放器测试
-              </h3>
-            </a>
-          </div>
-          
-      </div>
+                </div>
 
-      
 
-      <div class="site-footer">
-  <div class="slogan">夕焼けの中に吸い込まれて消えてった</div>
-  <div class="social-container">
-    
-      
-        <a href="https://github.com/MalachiteN" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-      
-    
-      
-    
-      
-    
-      
-        <a href="https://www.zhihu.com/people/bao-chi-leng-jing-rev4/activities" target="_blank">
-          <i class="fab fa-zhihu"></i>
-        </a>
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
-  <div>
-    <span id="busuanzi_container_site_pv">
-      本站总访问量<span id="busuanzi_value_site_pv"></span>次
-    </span>
-  </div>
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | 
+  <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
+
 
     </div>
-    <script type="application/javascript">
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
 
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
-</script>
-
-
-
-
-  </body>
 </html>

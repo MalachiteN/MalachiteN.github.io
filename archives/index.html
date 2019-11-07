@@ -1,395 +1,347 @@
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>Malachite</title>
-<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1572505318973">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Malachite
+</title>
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1573107931171">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://malachiten.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+</head>
 
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1572505318973" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://malachiten.github.io">
-        <h1 class="site-title">Malachite</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-        <div class="content-container">
-          
-          
-
-<div class="archives-container">
-  
-    <h2 class="year">2019</h2>
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/assert-duan-yan">
-            <h2 class="post-title">
-              C++ 语法 / Assert 断言
-              <small>2019-10-31</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan">
-            <h2 class="post-title">
-              C++ STL / 迭代器相关
-              <small>2019-10-24</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi">
-            <h2 class="post-title">
-              C++ 高级语法 / 引用、右值和左值
-              <small>2019-10-23</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/screeps-jiao-cheng">
-            <h2 class="post-title">
-              Screeps 教程
-              <small>2019-10-22</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa">
-            <h2 class="post-title">
-              笔记 : 最小生成树 / Kruskal算法
-              <small>2019-10-08</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai">
-            <h2 class="post-title">
-              C++面向对象 / 封装 继承 多态
-              <small>2019-10-07</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun">
-            <h2 class="post-title">
-              笔记 : 编译原理 / 引论(1) [Ongoing]
-              <small>2019-10-06</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/bi-ji-ou-la-lu">
-            <h2 class="post-title">
-              笔记 : 欧拉路 [Ongoing]
-              <small>2019-10-04</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/bi-ji-er-fen-tu-pi-pei-zui-da-pi-pei">
-            <h2 class="post-title">
-              笔记 : 二分图匹配 / 最大匹配
-              <small>2019-10-02</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing">
-            <h2 class="post-title">
-              笔记 : 图的存储 / 邻接表-链式前向星
-              <small>2019-10-01</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/yu-chu-li-qi-ming-ling-define-hong-ding-yi-shi-yong-xing-shuo-ming">
-            <h2 class="post-title">
-              预处理器命令 #define / 宏定义 实用性说明
-              <small>2019-09-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/bi-ji-sou-suo">
-            <h2 class="post-title">
-              笔记 : 搜索 / DFS BFS ID A*
-              <small>2019-09-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/p1305-xin-er-cha-shu-ti-jie">
-            <h2 class="post-title">
-              Luogu P1305 新二叉树 题解
-              <small>2019-09-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/zhong-ji-ya-xing-ji-qiao">
-            <h2 class="post-title">
-              压行技巧
-              <small>2019-09-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming">
-            <h2 class="post-title">
-              STL容器 set 实用性说明
-              <small>2019-09-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming">
-            <h2 class="post-title">
-              PB_DS容器 trie 实用性说明
-              <small>2019-09-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/cer-fen-cha-zhao-han-shu-shi-yong-xing-shuo-ming">
-            <h2 class="post-title">
-              C++STL二分查找函数实用性说明
-              <small>2019-09-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling">
-            <h2 class="post-title">
-              GCC 全部编译器优化开关启动命令
-              <small>2019-09-27</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-      
-    
-  
-    <h2 class="year">2000</h2>
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-        <article class="post">
-          <a href="https://malachiten.github.io/post/markdown-nei-qian-shi-pin-bo-fang-qi-ce-shi1">
-            <h2 class="post-title">
-              Markdown / 内嵌视频播放器测试
-              <small>2000-01-01</small>
-            </h2>
-          </a>
-        </article>
-      
-    
-  
-</div>
-
-
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://malachiten.github.io">
+                <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1573107931171" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Malachite
+                </h1>
+            </div>
         </div>
-
-        <div class="site-footer">
-  <div class="slogan">夕焼けの中に吸い込まれて消えてった</div>
-  <div class="social-container">
-    
-      
-        <a href="https://github.com/MalachiteN" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-      
-    
-      
-    
-      
-    
-      
-        <a href="https://www.zhihu.com/people/bao-chi-leng-jing-rev4/activities" target="_blank">
-          <i class="fab fa-zhihu"></i>
-        </a>
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
-  <div>
-    <span id="busuanzi_container_site_pv">
-      本站总访问量<span id="busuanzi_value_site_pv"></span>次
-    </span>
-  </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
+    </div>
 </div>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
 </script>
 
-      </div>
-      <script type="application/javascript">
+            
 
-hljs.initHighlightingOnLoad()
+    <div class="archives-container main-container">
+        <ul class="timeline">
+            
+                <li>
+                    <h3 class="year">
+                        2019
+                    </h3>
+                    <ul class="year-wrapper">
+                        
+                            
+                                <li>
+                                    <span class="date">2019-10-31</span>
+                                    <a class="title" href="https://malachiten.github.io/post/assert-duan-yan">
+                                        <span>C++ 语法 / Assert 断言</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-10-24</span>
+                                    <a class="title" href="https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan">
+                                        <span>C++ STL / 迭代器相关</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-10-23</span>
+                                    <a class="title" href="https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi">
+                                        <span>C++ 高级语法 / 引用、右值和左值</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-10-22</span>
+                                    <a class="title" href="https://malachiten.github.io/post/screeps-jiao-cheng">
+                                        <span>Screeps 教程</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-10-08</span>
+                                    <a class="title" href="https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa">
+                                        <span>笔记 : 最小生成树 / Kruskal算法</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-10-07</span>
+                                    <a class="title" href="https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai">
+                                        <span>C++面向对象 / 封装 继承 多态</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-10-06</span>
+                                    <a class="title" href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun">
+                                        <span>笔记 : 编译原理 / 引论(1) [Ongoing]</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-10-04</span>
+                                    <a class="title" href="https://malachiten.github.io/post/bi-ji-ou-la-lu">
+                                        <span>笔记 : 欧拉路 [Ongoing]</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-10-02</span>
+                                    <a class="title" href="https://malachiten.github.io/post/bi-ji-er-fen-tu-pi-pei-zui-da-pi-pei">
+                                        <span>笔记 : 二分图匹配 / 最大匹配</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-10-01</span>
+                                    <a class="title" href="https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing">
+                                        <span>笔记 : 图的存储 / 邻接表-链式前向星</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-09-27</span>
+                                    <a class="title" href="https://malachiten.github.io/post/yu-chu-li-qi-ming-ling-define-hong-ding-yi-shi-yong-xing-shuo-ming">
+                                        <span>预处理器命令 #define / 宏定义 实用性说明</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-09-27</span>
+                                    <a class="title" href="https://malachiten.github.io/post/bi-ji-sou-suo">
+                                        <span>笔记 : 搜索 / DFS BFS ID A*</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-09-27</span>
+                                    <a class="title" href="https://malachiten.github.io/post/p1305-xin-er-cha-shu-ti-jie">
+                                        <span>Luogu P1305 新二叉树 题解</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-09-27</span>
+                                    <a class="title" href="https://malachiten.github.io/post/zhong-ji-ya-xing-ji-qiao">
+                                        <span>压行技巧</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-09-27</span>
+                                    <a class="title" href="https://malachiten.github.io/post/stl-rong-qi-set-shi-yong-xing-shuo-ming">
+                                        <span>STL容器 set 实用性说明</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-09-27</span>
+                                    <a class="title" href="https://malachiten.github.io/post/pb_ds-rong-qi-trie-shi-yong-xing-shuo-ming">
+                                        <span>PB_DS容器 trie 实用性说明</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-09-27</span>
+                                    <a class="title" href="https://malachiten.github.io/post/cer-fen-cha-zhao-han-shu-shi-yong-xing-shuo-ming">
+                                        <span>C++STL二分查找函数实用性说明</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                <li>
+                                    <span class="date">2019-09-27</span>
+                                    <a class="title" href="https://malachiten.github.io/post/gcc-quan-bu-bian-yi-qi-you-hua-kai-guan-qi-dong-ming-ling">
+                                        <span>GCC 全部编译器优化开关启动命令</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                            
+                                    
+                    </ul>
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+                </li>
+                
+                <li>
+                    <h3 class="year">
+                        2000
+                    </h3>
+                    <ul class="year-wrapper">
+                        
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                    
+                            
+                                <li>
+                                    <span class="date">2000-01-01</span>
+                                    <a class="title" href="https://malachiten.github.io/post/markdown-nei-qian-shi-pin-bo-fang-qi-ce-shi1">
+                                        <span>Markdown / 内嵌视频播放器测试</span>
+                                    </a>
+                                </li>
+                                
+                                    
+                    </ul>
 
+                </li>
+                
+        </ul>
+    </div>
+
+                
+
+                    <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | 
+  <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
-
-
-
 
     </div>
-  </body>
+</body>
+
 </html>

@@ -1,268 +1,311 @@
-
-<!DOCTYPE html>
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>笔记 | Malachite</title>
-<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1572505318973">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    笔记 | Malachite
+</title>
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1573107931171">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://malachiten.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+</head>
 
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1572505318973" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://malachiten.github.io">
-        <h1 class="site-title">Malachite</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
-</div>
-
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
-
-        <div class="current-tag-container">
-          <h2 class="title">
-            <i class="icon icon-pricetags-outline"></i> 笔记
-          </h2> 
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://malachiten.github.io">
+                <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1573107931171" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Malachite
+                </h1>
+            </div>
         </div>
-
-        
-<section class="post-item">
-    <div class="content">
-      <a href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun">
-        <h2 class="post-title">笔记 : 编译原理 / 引论(1) [Ongoing]</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-06</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://malachiten.github.io/tag/ZYvYPh-Zn">
-                未完成
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
                 
-                  ，
-                
-              </a>
-            
-              <a href="https://malachiten.github.io/tag/9nUIq-Ba4">
-                笔记
-                
-              </a>
-            
-          </span>
-        
-      </div>
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://malachiten.github.io/post/bi-ji-ou-la-lu">
-        <h2 class="post-title">笔记 : 欧拉路 [Ongoing]</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-04</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://malachiten.github.io/tag/ZYvYPh-Zn">
-                未完成
-                
-                  ，
-                
-              </a>
-            
-              <a href="https://malachiten.github.io/tag/9nUIq-Ba4">
-                笔记
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing">
-        <h2 class="post-title">笔记 : 图的存储 / 邻接表-链式前向星</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-10-01</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://malachiten.github.io/tag/9nUIq-Ba4">
-                笔记
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-<section class="post-item">
-    <div class="content">
-      <a href="https://malachiten.github.io/post/bi-ji-sou-suo">
-        <h2 class="post-title">笔记 : 搜索 / DFS BFS ID A*</h2>
-      </a>
-      <div class="post-abstract">
-        
-      </div>
-      <div class="post-info">
-        <span><i class="icon icon-calendar-outline"></i> 2019-09-27</span>
-        
-          <span>
-            <i class="icon icon-pricetags-outline"></i>
-            
-              <a href="https://malachiten.github.io/tag/9nUIq-Ba4">
-                笔记
-                
-              </a>
-            
-          </span>
-        
-      </div>
-    </div>
-    
-  </section>
-
-
-<div class="pagination-container">
-  
-  
 </div>
 
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-      </div>
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-      <div class="site-footer">
-  <div class="slogan">夕焼けの中に吸い込まれて消えてった</div>
-  <div class="social-container">
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        笔记</b>
+    </div>
     
-      
-        <a href="https://github.com/MalachiteN" target="_blank">
-          <i class="fab fa-github"></i>
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun">
+                        笔记 : 编译原理 / 引论(1) [Ongoing]
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-10-06</time>
+                    
+                        <a href="https://malachiten.github.io/tag/ZYvYPh-Zn" class="post-tag i-tag
+                            i-tag-other_1">
+            #未完成
         </a>
-      
-    
-      
-    
-      
-    
-      
-        <a href="https://www.zhihu.com/people/bao-chi-leng-jing-rev4/activities" target="_blank">
-          <i class="fab fa-zhihu"></i>
+                        
+                        <a href="https://malachiten.github.io/tag/9nUIq-Ba4" class="post-tag i-tag
+                            i-tag-warning">
+            #笔记
         </a>
-      
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>毕竟是神书，不容易懂。<s>所以咕了</s></p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://malachiten.github.io/post/bi-ji-ou-la-lu">
+                        笔记 : 欧拉路 [Ongoing]
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-10-04</time>
+                    
+                        <a href="https://malachiten.github.io/tag/ZYvYPh-Zn" class="post-tag i-tag
+                            i-tag-other_4">
+            #未完成
+        </a>
+                        
+                        <a href="https://malachiten.github.io/tag/9nUIq-Ba4" class="post-tag i-tag
+                            i-tag-error">
+            #笔记
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            什么是欧拉路
+欧拉路是指从图中任意一个点开始到图中任意一个点结束的路径，并且图中每条边通过的且只通过一次。
+怎样判断有欧拉路存在
+无向图
+图一定要联通，且:
+所有顶点度数均为偶数，则存在欧拉回路
+两个点度数为奇数，其余的为偶数，则存在欧拉通路
+有向图
+图联通依然是一个必要条件。且:
+每个点的入度等于出度，则存在欧拉回路(任意一点有度的点都可以作为起点)
+除某两点外，所有入度等于出度。这两点中一点的出度比入度大，另一点的出度比入度小，则存在欧拉通路。出度大者是起点，入度大者是终点。
+怎样找到欧拉路
+之前的内容大致只是用于发现该题目应该使用欧拉回路的方法求解。
+以下寻找方法均建立在假设图中存在欧拉回路的基础上，其自身并不能判断图是否满足条件。
+从一个非孤立的点开始DFS，点可以重复经过，每次任意走一条边，并将这条边从邻接表中删去。走到目标终点(找到欧拉通路)，或者走回起点(找到欧拉回路)。
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://malachiten.github.io/post/bi-ji-ou-la-lu">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing">
+                        笔记 : 图的存储 / 邻接表-链式前向星
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-10-01</time>
+                    
+                        <a href="https://malachiten.github.io/tag/9nUIq-Ba4" class="post-tag i-tag
+                            i-tag-error">
+            #笔记
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>OI 常用算法，链式前向星。</p>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://malachiten.github.io/post/bi-ji-sou-suo">
+                        笔记 : 搜索 / DFS BFS ID A*
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2019-09-27</time>
+                    
+                        <a href="https://malachiten.github.io/tag/9nUIq-Ba4" class="post-tag i-tag
+                            i-tag-warning">
+            #笔记
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                    <div class="post-content-abstract">
+                                        <p>在NOIP中，搜索主要会考察模拟，考验代码能力。有一句名言：</p>
+<blockquote>
+<p>n方过百万，暴力压标算</p>
+</blockquote>
+
+                                    </div>
+                                    
+                                            <a class="btn btn-text" href="https://malachiten.github.io/post/bi-ji-sou-suo">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://malachiten.github.io/images/avatar.png?v=1573107931171)">
+        </div>
+        <h1 class="id_card-title">
+            Malachite
+        </h1>
+        <h2 class="id_card-description">
+            夕焼けの中に吸い込まれて消えてった
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                <a href="https://github.com/MalachiteN" target="_blank" rel="noopener noreferrer"><i
+                class="fa fa-github"></i></a>
+                
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
     
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
-  <div>
-    <span id="busuanzi_container_site_pv">
-      本站总访问量<span id="busuanzi_value_site_pv"></span>次
-    </span>
-  </div>
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | 
+  <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
     </div>
-    <script type="application/javascript">
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
 
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
-</script>
-
-
-
-
-  </body>
 </html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-10-31T07:02:01.683Z</updated>
+    <updated>2019-11-07T06:41:54.255Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -16,9 +16,14 @@
         <link href="https://malachiten.github.io/post/assert-duan-yan">
         </link>
         <updated>2019-10-31T06:04:40.000Z</updated>
+        <summary type="html"><![CDATA[<p>断言广泛存在于我所了解的几乎全部语言中。</p>
+<p>C，C++，Python，Haskell，Lisp，……，都有自己的断言实现，且不同语言中的断言按照各自语法解读之后的“人话”几乎没有任何歧义。</p>
+<p>当然，正如标题所言：本文主要讲的是 C/C++ 的断言。</p>
+]]></summary>
         <content type="html"><![CDATA[<p>断言广泛存在于我所了解的几乎全部语言中。</p>
 <p>C，C++，Python，Haskell，Lisp，……，都有自己的断言实现，且不同语言中的断言按照各自语法解读之后的“人话”几乎没有任何歧义。</p>
 <p>当然，正如标题所言：本文主要讲的是 C/C++ 的断言。</p>
+<!-- more -->
 <h2 id="引入">引入</h2>
 <p>一般而言，如果我们的程序一切正常，在某些时候，会产生一些必然的结果。</p>
 <p>如 Leetcode 第一题，计算两数之和，并在目标数组中找到对应值，并返回其下标。</p>
@@ -33,7 +38,7 @@
 <h2 id="实现">实现</h2>
 <p>可以通过查阅头文件得知。</p>
 <p>以下是来源于 C 的头文件：</p>
-<pre><code class="language-cpp">/**
+<pre><code class="language-c">/**
  * This file has no copyright assigned and is placed in the Public Domain.
  * This file is part of the mingw-w64 runtime package.
  * No warranty is given; refer to the file DISCLAIMER.PD within this package.
@@ -191,7 +196,10 @@ _assert (const char *_Message, const char *_File, unsigned _Line);
         <link href="https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan">
         </link>
         <updated>2019-10-24T08:40:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>C++ 中的 STL 使用 <code>&lt;iterator&gt;</code> 即迭代器处理对于容器的操作。</p>
+]]></summary>
         <content type="html"><![CDATA[<p>C++ 中的 STL 使用 <code>&lt;iterator&gt;</code> 即迭代器处理对于容器的操作。</p>
+<!-- more -->
 <h2 id="迭代器的定义">迭代器的定义</h2>
 <p>迭代器是一种指向容器中元素的特殊的指针。</p>
 <h2 id="迭代器的分类">迭代器的分类</h2>
@@ -231,8 +239,12 @@ _assert (const char *_Message, const char *_File, unsigned _Line);
         <link href="https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi">
         </link>
         <updated>2019-10-23T08:42:08.000Z</updated>
+        <summary type="html"><![CDATA[<p>一般而言，传统的为了竞赛的 C++ 教学中对 “引用” (使用运算符<code>&amp;</code>) 的解释和 C 一样，就是 “取得这个变量的地址”。</p>
+<p>和指针一样，这是常规 OIer 无需了解的知识，为了避免浪费时间，老师一般对于这一方面的知识根本不讲或者放下 C++ 而拿出 “ C 语言从入门到入土” 简单带过。然而，在工程开发中，正确、灵活地使用引用，可以使程序简洁、高效。了解左值、右值引用，更能与最新 C++ 标准接轨，了解最近产生的特性，有助于理解他人程序、简化自己的代码。</p>
+]]></summary>
         <content type="html"><![CDATA[<p>一般而言，传统的为了竞赛的 C++ 教学中对 “引用” (使用运算符<code>&amp;</code>) 的解释和 C 一样，就是 “取得这个变量的地址”。</p>
 <p>和指针一样，这是常规 OIer 无需了解的知识，为了避免浪费时间，老师一般对于这一方面的知识根本不讲或者放下 C++ 而拿出 “ C 语言从入门到入土” 简单带过。然而，在工程开发中，正确、灵活地使用引用，可以使程序简洁、高效。了解左值、右值引用，更能与最新 C++ 标准接轨，了解最近产生的特性，有助于理解他人程序、简化自己的代码。</p>
+<!-- more -->
 <h2 id="引用">引用</h2>
 <h3 id="特性">特性</h3>
 <p>之前说过，这个语言要素和<strong>指针</strong>相似。这是 C++ 相对 C 的重要扩充。为了给函数传递地址，除了可以使用指针，引用提供了一种全新的途径。这种途径，被称为 “<strong>按引用传递</strong>” 。</p>
@@ -404,7 +416,10 @@ class b{
         <link href="https://malachiten.github.io/post/screeps-jiao-cheng">
         </link>
         <updated>2019-10-22T01:12:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>不了解的人可以前往<a href="https://screeps.com/">Screeps官网</a>了解一下，也许我们能成为同一个<code>Shard</code>的邻居。</p>
+]]></summary>
         <content type="html"><![CDATA[<p>不了解的人可以前往<a href="https://screeps.com/">Screeps官网</a>了解一下，也许我们能成为同一个<code>Shard</code>的邻居。</p>
+<!-- more -->
 <p>不过，看完简介也不要贸然在Steam购买，我打教程都打了不止一整天，肯定是退不了款的。在真正接触到本身之前，也不会知道它到底怎样玩。不过，在官网上有它的 Live DEMO 可供试玩，建议尝试。</p>
 <h2 id="让我们开始吧界面简介">让我们开始吧：界面简介</h2>
 <blockquote>
@@ -1274,7 +1289,11 @@ Slack chat</p>
         <link href="https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa">
         </link>
         <updated>2019-10-08T07:10:37.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="最小生成树是什么">最小生成树是什么</h2>
+        <summary type="html"><![CDATA[<p>OI常用算法，最小生成树。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>OI常用算法，最小生成树。</p>
+<!-- more -->
+<h2 id="最小生成树是什么">最小生成树是什么</h2>
 <p>对于一个这样的连通图：</p>
 <figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/10/08/ufgOiR.png" alt="graphFull.png"></figure>
 <p>表格形式：</p>
@@ -1466,7 +1485,11 @@ bool merge(int x,int y){//并
         <link href="https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai">
         </link>
         <updated>2019-10-07T12:27:41.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="引入">引入</h2>
+        <summary type="html"><![CDATA[<p>有一说，称 C++ 即为 C with STL。还有一说，C++ 为 C with OOP。OOP 的核心，就是封装，继承，与多态。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>有一说，称 C++ 即为 C with STL。还有一说，C++ 为 C with OOP。OOP 的核心，就是封装，继承，与多态。</p>
+<!-- more -->
+<h2 id="引入">引入</h2>
 <p>我们以一个形象的例子来介绍这几个特性。</p>
 <h3 id="一-显而易见的故事">一 显而易见的故事</h3>
 <p>作为一个<s>沉迷学习的好孩子</s>，你对于<s>如何藏匿你的手机</s>得心应手。</p>
@@ -1561,7 +1584,11 @@ class C_home:private your_home{
         <link href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun">
         </link>
         <updated>2019-10-06T03:05:29.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="编译程序">编译程序</h2>
+        <summary type="html"><![CDATA[<p>毕竟是神书，不容易懂。<s>所以咕了</s></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>毕竟是神书，不容易懂。<s>所以咕了</s></p>
+<!-- more -->
+<h2 id="编译程序">编译程序</h2>
 <p>编译程序特指<strong>将高级语言源程序翻译成低级语言目标程序</strong>的翻译程序.</p>
 <h3 id="翻译程序">&quot;翻译程序&quot;</h3>
 <p>将一种语言的程序(源语言程序)翻译成另一种语言的程序(目标语言程序).</p>
@@ -1644,7 +1671,11 @@ class C_home:private your_home{
         <link href="https://malachiten.github.io/post/bi-ji-er-fen-tu-pi-pei-zui-da-pi-pei">
         </link>
         <updated>2019-10-02T00:52:02.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="定义">定义</h2>
+        <summary type="html"><![CDATA[<p>OI 常用算法，二分图匹配。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>OI 常用算法，二分图匹配。</p>
+<!-- more -->
+<h2 id="定义">定义</h2>
 <h3 id="什么是二分图">什么是二分图</h3>
 <p>从理解意义上，二分图是指一种特殊的图，其中的顶点可以被划分到两个不同的集合中，同时，每个顶点都有一条到另一个集合中的点的边。</p>
 <p>其等效理解则是，图中不含具有奇数边数的环。</p>
@@ -1862,7 +1893,11 @@ int main(){
         <link href="https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing">
         </link>
         <updated>2019-10-01T00:52:20.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="引入">引入</h2>
+        <summary type="html"><![CDATA[<p>OI 常用算法，链式前向星。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>OI 常用算法，链式前向星。</p>
+<!-- more -->
+<h2 id="引入">引入</h2>
 <p>一般而言采用这种朴素的存储方式( <strong>邻接矩阵</strong> )，读写图时间为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，存图空间为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</p>
 <pre><code class="language-cpp">int graph[maxn][maxn],n;
 cin&gt;&gt;n;
@@ -1872,7 +1907,7 @@ for(int i=1;i&lt;=n;i++){
 }
 </code></pre>
 <p>但是当图特别大的时候，这种操作会直接爆掉内存然后<code>Memory Limit Execeed</code></p>
-<p>所以，需要进行优化</p>
+<p>所以，需要进行优化。</p>
 <p>于是，巨佬就搞出了链式前向星( <strong>时间空间均最优的存图数据结构</strong> )</p>
 <p>Talk is cheap,show me the code:</p>
 <p>结构体实现</p>

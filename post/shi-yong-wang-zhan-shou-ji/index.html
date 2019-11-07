@@ -1,109 +1,123 @@
-
-<!DOCTYPE html>
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>实用网站收集 | Malachite</title>
-<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1572505318973">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    实用网站收集 | Malachite
+</title>
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1573107931171">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://malachiten.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+        
+</head>
 
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1572505318973" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://malachiten.github.io">
-        <h1 class="site-title">Malachite</h1>
-      </a>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://malachiten.github.io">
+                <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1573107931171" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Malachite
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">实用网站收集</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2000-12-01</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://malachiten.github.io/tag/9nUIq-Ba4">
-                    笔记
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://malachiten.github.io/tag/TNO1SHAiH">
-                    技巧/说明
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <h2 id="常用网站">常用网站</h2>
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            实用网站收集
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2000-12-01</time>
+                            
+                                <a href="https://malachiten.github.io/tag/9nUIq-Ba4" class="post-tag i-tag
+                            i-tag-other_1">
+                            #笔记
+                        </a>
+                                
+                                <a href="https://malachiten.github.io/tag/TNO1SHAiH" class="post-tag i-tag
+                            i-tag-other_1">
+                            #技巧/说明
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h2 id="常用网站">常用网站</h2>
 <p><a href="https://github.com">Github</a></p>
 <h2 id="在线评测平台">在线评测平台</h2>
 <p><a href="https://www.acwing.com">AcWing</a></p>
@@ -118,64 +132,88 @@
 <p><a href="http://zhao.wtf/">Zhao001的博客</a></p>
 <p><a href="http://kevinz.cn/">Kevinz的博客</a></p>
 
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%B8%B8%E7%94%A8%E7%BD%91%E7%AB%99">常用网站</a></li>
+<li><a href="#%E5%9C%A8%E7%BA%BF%E8%AF%84%E6%B5%8B%E5%B9%B3%E5%8F%B0">在线评测平台</a></li>
+<li><a href="#%E6%96%87%E7%AB%A0">文章</a></li>
+<li><a href="#%E5%8D%9A%E5%AE%A2">博客</a></li>
+</ul>
+</li>
+</ul>
+
         </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
 
-        
-      </div>
+                </div>
 
-      
 
-      <div class="site-footer">
-  <div class="slogan">夕焼けの中に吸い込まれて消えてった</div>
-  <div class="social-container">
-    
-      
-        <a href="https://github.com/MalachiteN" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-      
-    
-      
-    
-      
-    
-      
-        <a href="https://www.zhihu.com/people/bao-chi-leng-jing-rev4/activities" target="_blank">
-          <i class="fab fa-zhihu"></i>
-        </a>
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
-  <div>
-    <span id="busuanzi_container_site_pv">
-      本站总访问量<span id="busuanzi_value_site_pv"></span>次
-    </span>
-  </div>
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | 
+  <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
+
 
     </div>
-    <script type="application/javascript">
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
 
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
-</script>
-
-
-
-
-  </body>
 </html>

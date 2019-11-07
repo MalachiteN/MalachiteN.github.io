@@ -1,92 +1,114 @@
-
-<!DOCTYPE html>
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>Screeps 教程 | Malachite</title>
-<meta name="description" content="夕焼けの中に吸い込まれて消えてった">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1572505318973">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Screeps 教程 | Malachite
+</title>
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1573107931171">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://malachiten.github.io/styles/main.css">
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://malachiten.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+        
+</head>
 
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://malachiten.github.io">
-        <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1572505318973" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://malachiten.github.io">
-        <h1 class="site-title">Malachite</h1>
-      </a>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://malachiten.github.io">
+                <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1573107931171" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    Malachite
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">Screeps 教程</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2019-10-22</span>
-            
-          </div>
-          <div class="post-content">
-            <p>不了解的人可以前往<a href="https://screeps.com/">Screeps官网</a>了解一下，也许我们能成为同一个<code>Shard</code>的邻居。</p>
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Screeps 教程
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2019-10-22</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>不了解的人可以前往<a href="https://screeps.com/">Screeps官网</a>了解一下，也许我们能成为同一个<code>Shard</code>的邻居。</p>
+<!-- more -->
 <p>不过，看完简介也不要贸然在Steam购买，我打教程都打了不止一整天，肯定是退不了款的。在真正接触到本身之前，也不会知道它到底怎样玩。不过，在官网上有它的 Live DEMO 可供试玩，建议尝试。</p>
 <h2 id="让我们开始吧界面简介">让我们开始吧：界面简介</h2>
 <blockquote>
@@ -949,72 +971,101 @@ Slack chat</p>
 </blockquote>
 <p>在脱发中寻找快乐！</p>
 
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa">
+                                <h3 class="post-title">
+                                    笔记 : 最小生成树 / Kruskal算法
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%AE%A9%E6%88%91%E4%BB%AC%E5%BC%80%E5%A7%8B%E5%90%A7%E7%95%8C%E9%9D%A2%E7%AE%80%E4%BB%8B">让我们开始吧：界面简介</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%80%E4%B8%AA%E8%A6%81%E6%8E%A5%E8%A7%A6%E7%9A%84%E4%B8%9C%E8%A5%BF%E6%8E%A7%E5%88%B6%E5%8F%B0">第一个要接触的东西：控制台</a></li>
+<li><a href="#%E7%84%B6%E5%90%8E%E5%B0%B1%E6%98%AF%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E8%84%9A%E6%9C%AC%E4%B8%AD%E7%9A%84-main-%E6%A8%A1%E5%9D%97">然后就是最重要的，脚本中的 Main 模块</a></li>
+<li><a href="#%E4%B8%BA%E4%BA%86%E6%9B%B4%E5%8A%A0%E6%9E%81%E8%87%B4%E7%9A%84%E8%84%B1%E5%8F%91%E4%BD%93%E9%AA%8C%E6%88%91%E4%BB%AC%E8%BF%98%E5%8F%AF%E4%BB%A5%E7%BC%96%E5%86%99%E5%85%B6%E4%BB%96%E6%A8%A1%E5%9D%97%E8%BE%BE%E6%88%90%E7%9B%AE%E7%9A%84">为了更加极致的脱发体验，我们还可以编写其他模块达成目的。</a></li>
+<li><a href="#%E5%8D%87%E7%BA%A7%E6%88%BF%E9%97%B4%E6%8E%A7%E5%88%B6%E5%99%A8roomcontroller">升级房间控制器RoomController</a></li>
+<li><a href="#%E5%BB%BA%E9%80%A0%E6%96%B0%E7%BB%93%E6%9E%84">建造新结构</a></li>
+<li><a href="#%E5%85%A8%E8%87%AA%E5%8A%A8%E7%94%9F%E4%BA%A7%E6%96%B0creeps">全自动生产新Creeps</a></li>
+<li><a href="#%E5%AE%88%E5%8D%AB%E4%BD%A0%E7%9A%84%E6%88%BF%E9%97%B4">守卫你的房间</a></li>
+</ul>
+</li>
+</ul>
+
         </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
 
-        
-          <div class="next-post">
-            <a class="purple-link" href="https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa">
-              <h3 class="post-title">
-                下一篇：笔记 : 最小生成树 / Kruskal算法
-              </h3>
-            </a>
-          </div>
-          
-      </div>
+                </div>
 
-      
 
-      <div class="site-footer">
-  <div class="slogan">夕焼けの中に吸い込まれて消えてった</div>
-  <div class="social-container">
-    
-      
-        <a href="https://github.com/MalachiteN" target="_blank">
-          <i class="fab fa-github"></i>
-        </a>
-      
-    
-      
-    
-      
-    
-      
-        <a href="https://www.zhihu.com/people/bao-chi-leng-jing-rev4/activities" target="_blank">
-          <i class="fab fa-zhihu"></i>
-        </a>
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
-  <div>
-    <span id="busuanzi_container_site_pv">
-      本站总访问量<span id="busuanzi_value_site_pv"></span>次
-    </span>
-  </div>
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> and <a herf="https://github.com/MalachiteN">MalachiteN</a> | 
+  <a class="rss" href="https://malachiten.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
+
 
     </div>
-    <script type="application/javascript">
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
 
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
-</script>
-
-
-
-
-  </body>
 </html>
