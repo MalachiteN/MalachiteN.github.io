@@ -639,6 +639,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   padding: 10px 0;
+  color: darkgray;
 }
 .post-container .post .post-article .post-content .post-content-content {
   display: -webkit-box;
@@ -852,6 +853,7 @@ body {
   padding: 16px;
   border-left: 2px solid #006cff;
   background: #f3f5f7;
+  color: darkgray;
 }
 .post-detail .post .post-content blockquote p {
   margin-bottom: 0;
