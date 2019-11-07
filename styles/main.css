@@ -280,7 +280,8 @@ code {
   font-family: 'Courier New', Courier, Consolas;
 }
 p > code {
-  padding: 0.2em 0.4em;
+  /*padding: 0.2em 0.4em;*/
+  border-radius: 5px;
   background: #e1e9ed;
 }
 pre {
@@ -813,24 +814,38 @@ body {
 .post-detail .post .post-content p code,
 .post-detail .post .post-content li code {
   padding: 0 2px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 2px 2px;
-  background-color: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(110, 209, 248, 0.11);
+  border-radius: 5px;
+  background-color: rgba(110, 209, 248, 0.11);
+  color: dimgray;
   text-indent: 0;
   word-wrap: break-word;
   font-size: inherit;
-  font-family: monospace;
+  font-family: consolas;
   line-height: initial;
 }
 .post-detail .post .post-content pre {
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 .post-detail .post .post-content pre code {
-  padding: 1em;
-  border-radius: 5px;
-  font-size: 16px;
+  font-size: 14px;
   font-family: 'Source Code Pro', Consolas, Menlo, Monaco, 'Courier New', monospace;
+  padding: 2em 1em 1em;
+  border-radius: 5px;
   line-height: 1.375;
+  position: relative;
+  background: #fafafa;
+  display: block;
+}
+.post-detail .post .post-content pre code:after {
+  content: 'Code:';
+  display: block;
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #ccc;
 }
 .post-detail .post .post-content blockquote {
   margin-bottom: 16px;
@@ -1107,4 +1122,81 @@ body {
 .toc-card .toc-content ul ol,
 .toc-card .toc-content ol ol {
   margin-bottom: 0;
+}
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+.hljs-subst {
+  font-weight: normal;
+}
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+.hljs-deletion {
+  background: #fdd;
+}
+.hljs-addition {
+  background: #dfd;
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: bold;
 }
