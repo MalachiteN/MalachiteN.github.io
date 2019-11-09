@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2019-11-07T14:01:35.594Z</updated>
+    <updated>2019-11-09T02:37:08.267Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -10,6 +10,127 @@
     <logo>https://malachiten.github.io/images/avatar.png</logo>
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, Malachite</rights>
+    <entry>
+        <title type="html"><![CDATA[C++ STL容器 / bitset]]></title>
+        <id>https://malachiten.github.io/post/c-stl-rong-qi-bitset</id>
+        <link href="https://malachiten.github.io/post/c-stl-rong-qi-bitset">
+        </link>
+        <updated>2019-11-08T11:04:46.000Z</updated>
+        <summary type="html"><![CDATA[<p>bitset 是 C++ STL 中的一种特殊容器。正如它的名称，它是 0 或 1 的位的集合。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>bitset 是 C++ STL 中的一种特殊容器。正如它的名称，它是 0 或 1 的位的集合。</p>
+<!-- more -->
+<h2 id="简介">简介</h2>
+<p>该容器位于头文件<code>&lt;bitset&gt;</code>中。能够存储一系列的 0 和 1 的位，占据的空间比<code>bool</code>数组少，同时还能简单地转换为<code>unsigned long</code>、<code>unsigned long long</code>和<code>string</code>类型。</p>
+<h2 id="成员函数">成员函数</h2>
+<h3 id="声明">声明</h3>
+<p>声明一个<code>bitset</code>的语句如下：</p>
+<pre><code class="language-cpp">bitset&lt;length&gt; name;
+</code></pre>
+<p>必须注意的一点是，<code>bitset</code> 有长度限制，且这个长度限制是写在<strong>尖括号</strong>里的！不要将其写在偏移量解引用运算符(也就是数组下标<code>[]</code>)或者函数调用运算符(圆括号<code>()</code>)中。</p>
+<blockquote>
+<p>仅供了解：之所以有这种特殊设置，是因为<code>bitset</code>本质上是一个模板类，其模板是一个常量表达式(<code>const int</code>)而不是一个<code>typename</code>，也就产生这个尖括号中的内容与其它模板类不同的现象。</p>
+</blockquote>
+<h3 id="构造">构造</h3>
+<p>STL 已经提供了它的赋值运算符重载。可以直接将正整数值(<code>unsigned int</code>、<code>unsigned short int</code>、<code>unsigned long int</code>、<code>unsigned long long int</code>)或赋予给它，它会自动获得表示该数值的布尔位。也能通过构造函数直接赋予它布尔数组的值。甚至可以使用一个<code>string</code>类型的 01 串对它进行构造。</p>
+<p>构造方法：</p>
+<pre><code class="language-cpp">bitset&lt;length&gt; name = n; // n 为`unsigned int`或`unsigned short int`或`unsigned long int`或`unsigned long long int
+bitset&lt;length&gt; name(n); // n 为`unsigned int`或`unsigned short int`或`unsigned long int`或`unsigned long long int
+bitset&lt;length&gt; name(s); // s 为一个 string 类型的 01 串
+bitset&lt;length&gt; name(b, pos, num); // b 为一个布尔数组，pos、num 为一个整数，bitset 从 b 第  pos 位开始的 num 个中获得值。
+</code></pre>
+<p>需要注意的是，用于构造的类型需要匹配 bitset 的长度。超过 bitet 长度的类型将被从高位开始丢弃！</p>
+<h3 id="访问">访问</h3>
+<p>它提供偏移量解引用运算符，用于随机访问其中的位。<strong>值得一提的是，它自右向左访问</strong>，不同于数组和向量的偏移量解引用运算符自左向右访问。</p>
+<h3 id="输出">输出</h3>
+<p>可以使用输出数组的方法，通过循环和偏移量解引用运算符直接输出。</p>
+<pre><code class="language-cpp">for(int i=length; i&gt;=0; i--){
+    cout&lt;&lt;name[i]&lt;&lt;' ';
+}
+</code></pre>
+<p>不过，如果<s>不要求打字带空格</s>，你也可以尝试直接输出：</p>
+<pre><code class="language-cpp">cout&lt;&lt;name&lt;&lt;endl;
+</code></pre>
+<p>也可以将其转换成字符串输出：</p>
+<pre><code class="language-cpp">cout&lt;&lt;name.to_str()&lt;&lt;endl;
+</code></pre>
+<p>如果想进行位操作后变成正整数，还能这么干：</p>
+<pre><code class="language-cpp">cout&lt;&lt;name.to_ulong()&lt;&lt;endl;
+</code></pre>
+<p>输出的是一个 <code>unsigned long</code> 型的值。<s>其实就是 unsigned int</s></p>
+<h3 id="其它操作">其它操作</h3>
+<pre><code class="language-cpp">b.any() // 询问 b 中是否存在值为 1 的位
+b.none() // 询问 b 中不存在置为 1 的位
+b.count() // 返回 b 中置为 1 的位的个数
+b.size() // b 中位的个数
+b.test(pos) // 查询 b 中在 pos 处的位是否为 1
+b.set() // 把 b 中所有位变为 1
+b.set(pos) // 把 b 中第 pos 位变为 1
+b.reset() // 把 b 中所有位都变为0
+b.reset(pos) // 把 b 中第 pos 位的变为0
+b.flip() // 把 b 中所有位取反
+b.flip(pos) // 把 b 中第 pos 位取反
+</code></pre>
+<h2 id="例题">例题</h2>
+<h3 id="题目">题目</h3>
+<p>给出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个整数，将其转换成 8 位长度的 <code>bool</code> 数组并依次首尾相接，按相邻的相同位切割成长度不等的段，再照首位为自身原本的值，后 7 位为段长度的方式进行压缩，最后输出每个改造之后的 8 位 <code>bool</code> 数组对应为整数的值。</p>
+<h3 id="代码实现">代码实现</h3>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;bitset&gt;
+using namespace std;
+int n;
+struct change{
+	int len;
+	bool val;
+	change(int y, int v){
+		this-&gt;len = y; this-&gt;val = v;
+	}
+};
+int main(){
+	cin&gt;&gt;n;
+	vector&lt;bool&gt; line;
+	vector&lt;change&gt; changes;
+	for(int i=0;i&lt;(n/8);i++){
+		int t;
+		bitset&lt;8&gt; tmp;
+		cin&gt;&gt;t;
+		tmp=t;
+		for(int b=7;b&gt;=0;b--){
+			line.push_back(tmp[b]);
+		}
+	}
+	int len=0;
+	if(line[line.size()-1]==0){
+		line.push_back(1);
+	}else{
+		line.push_back(0);
+	}
+	for(int i=1;i&lt;line.size();i++){
+		if(line[i-1]==line[i]){
+			len++;
+		}else{
+			len++;
+			change tmp(len,line.at(i-1));
+			changes.push_back(tmp);
+			len=0;
+		}
+	}
+	bitset&lt;8&gt; oans;
+	vector&lt;unsigned long&gt; ans;
+	for(int i=0;i&lt;changes.size();i++){
+		oans=changes[i].len;
+		oans[7]=changes[i].val;
+		ans.push_back(oans.to_ulong());
+	}
+	for(int i=0;i&lt;ans.size();i++){
+		cout&lt;&lt;ans[i]&lt;&lt;' ';
+	}
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C++ 语法 / Assert 断言]]></title>
         <id>https://malachiten.github.io/post/assert-duan-yan</id>
@@ -1884,177 +2005,6 @@ int main(){
     }
     return 0;
 } 
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[笔记 : 图的存储 / 邻接表-链式前向星]]></title>
-        <id>https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing</id>
-        <link href="https://malachiten.github.io/post/bi-ji-lin-jie-biao-lian-shi-qian-xiang-xing">
-        </link>
-        <updated>2019-10-01T00:52:20.000Z</updated>
-        <summary type="html"><![CDATA[<p>OI 常用算法，链式前向星。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>OI 常用算法，链式前向星。</p>
-<!-- more -->
-<h2 id="引入">引入</h2>
-<p>一般而言采用这种朴素的存储方式( <strong>邻接矩阵</strong> )，读写图时间为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，存图空间为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>。</p>
-<pre><code class="language-cpp">int graph[maxn][maxn],n;
-cin&gt;&gt;n;
-for(int i=1;i&lt;=n;i++){
-    cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;
-    graph[t1][t2]=t3;
-}
-</code></pre>
-<p>但是当图特别大的时候，这种操作会直接爆掉内存然后<code>Memory Limit Execeed</code></p>
-<p>所以，需要进行优化。</p>
-<p>于是，巨佬就搞出了链式前向星( <strong>时间空间均最优的存图数据结构</strong> )</p>
-<p>Talk is cheap,show me the code:</p>
-<p>结构体实现</p>
-<pre><code class="language-cpp">int head[maxn],ptr;
-struct edge{
-    int target,value,next;
-    edge(){}
-    edge(int x,int y,int z){
-        target=x;
-        value=y;
-        next=z;
-    }
-}edges[maxn];
-void clear(){
-    memset(head,-1,sizeof head);
-    ptr=0;
-}
-</code></pre>
-<p>纯数组实现</p>
-<pre><code class="language-cpp">int head[maxn],target[maxn],value[maxn],next[maxn],ptr;
-void addEdge(int x/*起始点*/,int y/*终止点*/,int z/*权值*/){
-    ++ptr;
-    target[ptr]=y;
-    next[ptr]=head[x];
-    value[ptr]=z;
-}
-void clear(){
-    memset(head,-1,sizeof head);
-    ptr=0;
-}
-</code></pre>
-<h2 id="解析">解析</h2>
-<h3 id="结构体-edge">结构体 edge</h3>
-<p>显然这个结构体描述的是图中的<strong>边</strong>。它具有三个成员变量: <code>target</code>,<code>value</code>,<code>next</code></p>
-<ul>
-<li><code>target</code>表示了这条边的终点。</li>
-<li><code>value</code>表示了这条边的边权。</li>
-<li><code>next</code>表示了与这条边起点相同的上一条边的编号。</li>
-</ul>
-<h3 id="数组-edges">数组 edges</h3>
-<p>显然，这个数组用于存储边，然而其中的边是按照读入顺序存储，对于有序遍历图是乱序的。要想顺序读取则需要由一定的规范进行。</p>
-<p>描述这个规范的，就是用于中途遍历的<code>edge</code>型对象的<code>next</code>成员，以及用于查找遍历起点的<code>head</code>数组。</p>
-<h3 id="数组-head">数组 head</h3>
-<p>这个数组描述了“以点<code>n</code>为起点，那么应该在找到<code>edge[head[n]]</code>，从这个<strong>真实起点</strong>开始遍历”。换句话说，这个数组就是用于描述起点的。</p>
-<p>而实际上，它存储的是“从点<code>n</code>出发的存入链式前向星的最后一条边”在<code>edge[]</code>中的位置。</p>
-<h2 id="实例">实例</h2>
-<p>考虑这样一张图:</p>
-<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/10/01/uNB6AO.png" alt="graph"></figure>
-<p>边的连接可以表示为:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">始发点</th>
-<th style="text-align:center">终止点</th>
-<th style="text-align:center">权值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">2</td>
-</tr>
-<tr>
-<td style="text-align:center">1</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">4</td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">2</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">5</td>
-</tr>
-</tbody>
-</table>
-<p>文字表述(输入的数据)就是:</p>
-<pre><code>1 3 2
-1 2 4
-2 3 1
-2 4 5
-</code></pre>
-<p>这样一来，</p>
-<p><code>head[1]</code>中的数据是2，<code>head[2]</code>的数据是4</p>
-<p><code>edges[1]</code>中<code>target</code>的值是3，<code>value</code>存的是2，<code>next</code> 中存的是-1(表示没有前驱了)</p>
-<p><code>edges[2]</code>中<code>target</code>值是2，<code>value</code>存的是4，<code>next</code>值是1(表示前驱是<code>edges[1]</code>)</p>
-<p><code>edges[3]</code>中<code>target</code>值就是3，<code>value</code>存的是1，<code>next</code>则是-1(无前驱)</p>
-<p><code>edges[4]</code>中<code>target</code>是4，<code>value</code>存的是5，<code>next</code>是3(前驱为<code>edges[3]</code>)</p>
-<h2 id="存储过程">存储过程</h2>
-<p>一共n条边，具体到每一步读入，应该是这样的:</p>
-<pre><code class="language-cpp">for(int i=1;i&lt;=n;++i){
-	int t1,t2,t3;
-	cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;
-    edges[i]=edge(t2,t3,head[t1]);
-	head[t1]=i;
-}
-</code></pre>
-<p>通过一直更新<code>head[i]</code>的值，来达到链式的作用。实际上，邻接表就是个链表。</p>
-<h2 id="遍历过程">遍历过程</h2>
-<p>这个例程目的为预计将读入的原封不动输出。实际操作时应当在遍历到目标之后进行某种操作，比如跑最短路</p>
-<pre><code class="language-cpp">for(int i=1;i&lt;=m;++i){
-	for(int j=head[i];~j.next;j=edges[j].next){
-		cout&lt;&lt;i&lt;&lt;' '&lt;&lt;edges[k].target&lt;&lt;' '&lt;&lt;edges[k].value&lt;&lt;endl;
-	}
-}
-</code></pre>
-<p>因为我们以<code>j.next==-1</code>为链表上一条链的终止点标记，所以使用<code>~j.next</code>来作为循环终止条件。</p>
-<h2 id="总结">总结</h2>
-<p>一个整体的代码:</p>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-
-int head[maxn];
-
-struct edge{
-    int target,value,next;
-    edge(){}
-    edge(int x,int y,int z){
-        target=x;
-        value=y;
-        next=z;
-    }
-}edges[maxn];
-
-void clear(){
-    memset(head,-1,sizeof head);
-}
-
-int main(){
-    int n;
-    cin&gt;&gt;n;
-    for(int i=1;i&lt;=n;++i){
-	    int t1,t2,t3;
-	    cin&gt;&gt;t1&gt;&gt;t2&gt;&gt;t3;
-        edges[i]=edge(t2,t3,head[t1]);
-	    head[t1]=i;
-    }
-    for(int i=1;i&lt;=m;++i){
-	    for(int j=head[i];~edges[j].next;j=edges[j].next){
-		    cout&lt;&lt;i&lt;&lt;' '&lt;&lt;edges[k].target&lt;&lt;' '&lt;&lt;edges[k].value&lt;&lt;endl;
-	    }
-    }
-}
 </code></pre>
 ]]></content>
     </entry>
