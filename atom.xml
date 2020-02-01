@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2020-02-01T12:58:17.982Z</updated>
+    <updated>2020-02-01T14:29:41.551Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -10,6 +10,68 @@
     <logo>https://malachiten.github.io/images/avatar.png</logo>
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Malachite</rights>
+    <entry>
+        <title type="html"><![CDATA[氧化还原反应]]></title>
+        <id>https://malachiten.github.io/post/yang-hua-huan-yuan-fan-ying</id>
+        <link href="https://malachiten.github.io/post/yang-hua-huan-yuan-fan-ying">
+        </link>
+        <updated>2020-02-01T12:59:53.000Z</updated>
+        <summary type="html"><![CDATA[<p>可爱的 Malachite 回来啦！详情请见更新的关于页面。</p>
+<p>并删除了具有悲观色彩的 CSP 游记和东拼西凑的 <code>#pragma</code> 教程。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>可爱的 Malachite 回来啦！详情请见更新的关于页面。</p>
+<p>并删除了具有悲观色彩的 CSP 游记和东拼西凑的 <code>#pragma</code> 教程。</p>
+<!-- more -->
+<h1 id="定义">定义</h1>
+<p><strong>有元素化合价升降</strong>的反应，称为氧化还原反应。</p>
+<h2 id="反应类型">反应类型</h2>
+<p>氧化还原反应的反应类型分为<strong>氧化反应</strong>和<strong>还原反应</strong>。</p>
+<h3 id="氧化反应">氧化反应</h3>
+<p>物质所含元素化合价升高的反应称为氧化反应。</p>
+<h3 id="还原反应">还原反应</h3>
+<p>物质所含元素化合价降低的反应称为还原反应。</p>
+<h2 id="反应相关物质">反应相关物质</h2>
+<p>氧化还原反应的反应物分为<strong>氧化剂</strong>和<strong>还原剂</strong>，生成物分为<strong>氧化产物</strong>和<strong>还原产物</strong>。</p>
+<p>实际上，氧化还原反应就是氧化剂抢夺还原剂的电子而发生还原反应，被还原，成为还原产物，而还原剂被夺走电子而发生氧化反应，被氧化，成为氧化产物。</p>
+<h3 id="反应物">反应物</h3>
+<h4 id="氧化剂">氧化剂</h4>
+<p>反应中<strong>得到电子</strong>或<strong>电子对偏向</strong>的物质。</p>
+<h4 id="还原剂">还原剂</h4>
+<p>反应中<strong>失去电子</strong>或<strong>电子对偏离</strong>的物质。</p>
+<h3 id="生成物">生成物</h3>
+<h4 id="氧化产物">氧化产物</h4>
+<p>氧化反应得到的产物。</p>
+<h4 id="还原产物">还原产物</h4>
+<p>还原反应得到的产物。</p>
+<h2 id="重点">重点</h2>
+<ol>
+<li>氧化剂发生的不是氧化反应，变成的也不是氧化产物，**它是被还原了，发生的是还原反应，变成了还原产物。**还原剂同理。</li>
+<li>氧化还原反应不是基本反应类型。它也不是某个基本反应类型的子集。置换反应是氧化还原反应的子集，化合反应和分解反应与氧化还原有交集。<strong>复分解反应一定不是氧化还原反应。</strong></li>
+<li><strong>有单质参与的化合反应和有单质生成的分解反应，一定是氧化还原反应。</strong></li>
+</ol>
+<h1 id="氧化还原反应方程式配平">氧化还原反应方程式配平</h1>
+<p><s>大家跟上哦，车速有点快</s></p>
+<h2 id="配平方法">配平方法</h2>
+<pre><code class="language-cpp">化学反应式 氧化还原配平(化学反应式 反应式){
+    反应式.find(氧化剂，还原剂，氧化产物，还原产物);
+    通过双线桥标出它们反应前后的化合价和电子转移数目;
+    int 最小公倍数 = __lcm(电子转移数目);
+    在氧化剂、氧化产物、还原剂、还原产物前加上适当的化学计量数; //电子守恒
+    if(反应式.type == 化学方程式){
+        继续配平非氧化还原相关物质;
+        return 反应式;
+    }else if(反应式.type == 离子方程式){
+        使用带电荷的非氧化还原相关物质(如H+、OH-)使两边电荷数相同;
+        继续配平非氧化还原相关物质;
+        return 反应式;
+    }else{
+        throw std::logic_error(&quot;你给的这反应式是假的叭&quot;);
+    }
+}
+</code></pre>
+<p><s>果然还是改不了写代码的习惯</s></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[C++ STL容器 / bitset]]></title>
         <id>https://malachiten.github.io/post/c-stl-rong-qi-bitset</id>
@@ -1784,228 +1846,6 @@ class C_home:private your_home{
 <p>之前的内容大致只是用于<strong>发现该题目应该使用欧拉回路的方法求解</strong>。</p>
 <p>以下寻找方法均建立在假设图中存在欧拉回路的基础上，其自身并不能判断图是否满足条件。</p>
 <p>从一个非孤立的点开始<em>DFS</em>，点可以重复经过，每次任意走一条边，并将这条边从邻接表中删去。走到目标终点(找到欧拉通路)，或者走回起点(找到欧拉回路)。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[笔记 : 二分图匹配 / 最大匹配]]></title>
-        <id>https://malachiten.github.io/post/bi-ji-er-fen-tu-pi-pei-zui-da-pi-pei</id>
-        <link href="https://malachiten.github.io/post/bi-ji-er-fen-tu-pi-pei-zui-da-pi-pei">
-        </link>
-        <updated>2019-10-02T00:52:02.000Z</updated>
-        <summary type="html"><![CDATA[<p>OI 常用算法，二分图匹配。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>OI 常用算法，二分图匹配。</p>
-<!-- more -->
-<h2 id="定义">定义</h2>
-<h3 id="什么是二分图">什么是二分图</h3>
-<p>从理解意义上，二分图是指一种特殊的图，其中的顶点可以被划分到两个不同的集合中，同时，每个顶点都有一条到另一个集合中的点的边。</p>
-<p>其等效理解则是，图中不含具有奇数边数的环。</p>
-<p>对此，百度百科的定义:</p>
-<blockquote>
-<p>二分图又称作二部图，是图论中的一种特殊模型。 设G=(V,E)是一个无向图，如果顶点V可分割为两个互不相交的子集(A,B)，并且图中的每条边(i，j)所关联的两个顶点i和j分别属于这两个不同的顶点集(i in A,j in B)，则称图G为一个二分图。</p>
-</blockquote>
-<h3 id="二分图匹配是啥意思">二分图匹配是啥意思</h3>
-<p>这指的是“二分图”的“匹配”。“匹配”则是图论中的一个定义:</p>
-<blockquote>
-<p>一个<strong>匹配</strong>是一个由边组成的集合，其中任意两条边都没有公共顶点。</p>
-</blockquote>
-<p>附: 百度百科的定义</p>
-<blockquote>
-<p>给定一个二分图G，在G的一个子图M中，M的边集{E}中的任意两条边都不依附于同一个顶点，则称M是一个匹配。</p>
-</blockquote>
-<h3 id="匹配点-匹配边-未匹配点-未匹配边">匹配点、匹配边、未匹配点、未匹配边</h3>
-<p>显然，匹配点是指在一种匹配中，连有匹配边的点。未匹配点与之相反，没有匹配边。</p>
-<p>匹配边则是对于连接在两个匹配点之间，满足匹配定义的特定边。</p>
-<p>如图：</p>
-<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/10/02/uaMNL9.png" alt="uaMNL9.png"></figure>
-<p>在这张图中，有这样两种匹配方式:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">1→5</td>
-<td style="text-align:center">1→4</td>
-</tr>
-<tr>
-<td style="text-align:center">2→6</td>
-<td style="text-align:center">2→6</td>
-</tr>
-<tr>
-<td style="text-align:center">Null</td>
-<td style="text-align:center">3→5</td>
-</tr>
-</tbody>
-</table>
-<p>那么，按照第一种匹配方式，匹配点有<code>1</code>,<code>2</code>,<code>4</code>,<code>6</code>这4个,其他点均为未匹配点。匹配边有<code>1→5</code>,<code>2→6</code>这两条,其他边均为未匹配边。</p>
-<p>按照第二种匹配方式，匹配点就有<code>1</code>,<code>2</code>,<code>3</code>,<code>4</code>,<code>5</code>,<code>6</code>,全部匹配完了。匹配边有<code>1→4</code>,<code>2→6</code>,<code>3→5</code>,剩下的其他边就是未匹配边了。</p>
-<p>因为:</p>
-<blockquote>
-<p>既得易见平凡，仿照上例显然。留作习题答案略，读者自证不难。</p>
-</blockquote>
-<p>(手动滑稽)</p>
-<h3 id="最大匹配-完美匹配">最大匹配 &amp; 完美匹配</h3>
-<p><strong>最大匹配</strong>的定义:</p>
-<blockquote>
-<p>一个图所有匹配中，所含匹配边数最多的匹配，称为这个图的最大匹配。<br>
-每个图必定存在一个最大匹配。</p>
-</blockquote>
-<p>而<strong>完美匹配</strong>是指:</p>
-<blockquote>
-<p>如果一个图的某个匹配中，所有的顶点都是匹配点，那么它就是一个完美匹配。<br>
-不是每一个图都有完美匹配。<br>
-完美匹配的任何一个点都已经匹配，添加一条新的匹配边一定会与已有的匹配边冲突</p>
-</blockquote>
-<p>需要注意的是，由于完美匹配中所有顶点均为匹配点，所以一个二分图的完美匹配一定是这个图的最大匹配。然而，不是每个二分图都能够找到它的完美匹配，但最大匹配一定存在。因此，每个图的最大匹配不一定是完美匹配。</p>
-<p>因此，按照上例:</p>
-<p>第一种匹配方式仅仅是一种常规的匹配。</p>
-<p>第二种匹配方式是匹配所有点的完美匹配。<strong>因此它又是该图的最大匹配</strong>。</p>
-<p>因为:</p>
-<blockquote>
-<p>反之亦然同理，推论自然成立。略去过程QED，由上可知证毕。</p>
-</blockquote>
-<p>(手动滑稽)</p>
-<p>需要前置了解的基本定义就这些了。</p>
-<p>那么，分析算法实现。</p>
-<h2 id="算法实现">算法实现</h2>
-<h3 id="算法介绍">算法介绍</h3>
-<p>一般，求二分图最大匹配的问题由<strong>匈牙利算法</strong>解决。</p>
-<p>下面有两个<strong>专为解释该算法而生</strong>(非基础)的概念:</p>
-<ul>
-<li><strong>交替路</strong></li>
-</ul>
-<blockquote>
-<p>若二分图中存在一种路径，其起点是一个非匹配点，而<strong>依次交替</strong>经过非匹配边、匹配边、非匹配边……那么这样的路径称为<strong>交替路</strong>。</p>
-</blockquote>
-<ul>
-<li><strong>增广路</strong></li>
-</ul>
-<blockquote>
-<p>若二分图中存在一条交替路，其经过一个<strong>除起点外的</strong>非匹配点，那么这一条路径称为<strong>增广路</strong>。</p>
-</blockquote>
-<blockquote>
-<p>注: (2019/10/2)当前暂未开始学习<code>[ 网络流 / 最大流 ]</code>的课程，但是早有耳闻网络流中的增广路。不知道这里有没有联系呢？</p>
-</blockquote>
-<p>增广路具有一个性质: 非匹配边比匹配边多一条。由此，研究增广路能改进匹配。我们要做的只是:</p>
-<ol>
-<li>对于当前交替路，找到一条增广路。</li>
-<li>把这条增广路中的匹配边和非匹配边调换(把匹配边变成非匹配边，非匹配边变成匹配边)，由此造出一条新的交替路。这样一来，我们的路径长度就比原来增加了1。匹配被改进了。</li>
-<li>一直以当前交替路为基础重复找增广路，不断改进匹配。</li>
-<li>当当前交替路找不到增广路，即找到最大匹配。</li>
-</ol>
-<p>实际上，这就是<strong>增广路定理</strong>。匈牙利算法正是利用该定理的流程来找到最大匹配。</p>
-<h3 id="模板代码实现">模板代码实现</h3>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
-using namespace std;
-
-//const prepare
-const int N=101;
-
-//prepare
-int n/*集合1中的点数*/,m/*集合2中的点数*/,s/*边数*/,l[N][N]/*邻接矩阵*/,matching[N]/*存储与这一个点相匹配的*/;
-
-//kernel
-bool dfs(int node){
-    for(int i=1;i&lt;=n;i++){
-        if(l[node][i]==1&amp;&amp;!vis[i]){
-            vis[i]=1;
-            if(!matching[i]||dfs(matching[i])){//节点从1开始的。如果是从0开始的,需要先memset(matching,-1,sizeof matching);,这里||的左边判matching[i]==-1
-                matching[i]=node;
-                return 1;
-            }
-        }
-    }
-    return 0;
-}
-
-//main process
-int main(){
-    cin&gt;&gt;s&gt;&gt;n&gt;&gt;m;
-    for(int i=1;i&lt;=s;i++){
-        int tmp1,tmp2;
-        cin&gt;&gt;tmp1&gt;&gt;tmp2;
-        l[tmp1][tmp2]=1;
-        l[tmp2][tmp1]=1;//对于有向图去除这句
-    }
-    int ans=0;
-    for(int i=1;i&lt;=m;i++){
-        if(!matching[i]){
-            memset(vis,0,sizeof vis);
-            ans+=dfs(i);//有增广路则+1,无则+0
-        }
-    }
-    cout&lt;&lt;ans&lt;&lt;endl;
-}
-</code></pre>
-<h2 id="例题-hdu2063">例题 HDU2063</h2>
-<h3 id="题目描述">题目描述</h3>
-<p><code>RPG girls</code>今天和大家一起去游乐场玩，终于可以坐上梦寐以求的过山车了。可是，过山车的每一排只有两个座位，而且还有条不成文的规矩，就是每个女生必须找个个男生做<code>partner</code>和她同坐。但是，每个女孩都有各自的想法，举个例子把，<code>Rabbit</code>只愿意和<code>XHD</code>或<code>PQK</code>做<code>partner</code>，<code>Grass</code>只愿意和<code>linle</code>或<code>LL</code>做<code>partner</code>，<code>PrincessSnow</code>愿意和<code>水域浪子</code>或<code>伪酷儿</code>做<code>partner</code>。考虑到经费问题，<code>boss刘</code>决定只让找到<code>partner</code>的人去坐过山车，其他的人，嘿嘿，就站在下面看着吧。聪明的ACMer，你可以帮忙算算最多有多少对组合可以坐上过山车吗？</p>
-<h3 id="输入">输入</h3>
-<p>输入数据的第一行是三个整数<code>K</code>,<code>M</code>,<code>N</code>，分别表示可能的组合数目，女生的人数，男生的人数。<code>0&lt;K&lt;=1000</code>,<code>1&lt;=N</code>,<code>M&lt;=500</code>.接下来的K行，每行有两个数，分别表示女生<code>Ai</code>愿意和男生<code>Bj</code>做<code>partner</code>。最后一个<code>0</code>结束输入。</p>
-<h3 id="输出">输出</h3>
-<p>对于每组数据，输出一个整数，表示可以坐上过山车的最多组合数。</p>
-<h3 id="样例数据">样例数据</h3>
-<h4 id="样例输入">样例输入</h4>
-<p><code>6 3 3 1 1 1 2 1 3 2 1 2 3 3 1 0</code></p>
-<h4 id="样例输出">样例输出</h4>
-<p><code>3</code></p>
-<h3 id="代码实现">代码实现</h3>
-<p>引用自<a href="https://article.itxueyuan.com/Aeava9">乌克兰大野猪</a>的<a href="https://www.itxueyuan.com/">IT学院</a>博客,有改动。</p>
-<p><strong>可以看出本题只需要实现有向图的版本</strong></p>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;string&gt;
-#include&lt;iostream&gt;
-using namespace std;
-
-//const prepare
-const int N = 505;
-
-//normal prepare
-int mat[N][N];
-int boy[N];                                   //记录男孩i被女孩选择的女孩编号，未被选则0
-int vis[N];                                   //很巧妙的使用，每次记录男孩i是否被占用了
-int k, m, n;
-
-//kernel
-bool dfs(int x){
-    for(int i = 1; i &lt;= n; i++){              //遍历所有的男生编号 
-        if(mat[x][i] == 1 &amp;&amp; vis[i] == 0){    //如果有连线且boy[i]没有被本次查找遍历过 
-            vis[i] = 1;                       //假设i号boy被遍历到了 
-            if(boy[i] == 0 || dfs(boy[i])){   //如果boy[i]没有被占用或者能把占用boy[i]的人换一个连线，短路原则如果没有被占用则不会执行后面的部分 
-                boy[i] = x;                   //这一步的作用是执意要将boy[i]匹配给x(尽可能给腾位置出来，因为她可能占了别的女生相匹配的男生)        
-                return true;
-            } 
-        }
-    }
-    return false;
-}
-
-//main process
-int main(){
-    while(scanf(&quot;%d&quot;, &amp;k) != EOF){
-        if(k == 0) break;
-        scanf(&quot;%d%d&quot;, &amp;m, &amp;n);
-        memset(mat, 0, sizeof(mat));
-        memset(boy, 0, sizeof(boy));           //boy[]数组存放的是已经匹配好的方案，如果是0则未匹配 
-        for(int i = 1; i &lt;= k; i++){
-            int x, y;
-            scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
-            mat[x][y] = 1;
-        }
-        int ans = 0;
-        for(int i = 1; i &lt;= m; i++){
-            memset(vis, 0, sizeof(vis));        //vis每一次都将所有的男生编号都标记为没遍历过，注意区分vis[]和boy[]数组功能的区别 
-            if(dfs(i)) ans++;                   //如果能直接相连或别人腾出位置总数+1 
-        }
-        printf(&quot;%dn&quot;, ans);
-    }
-    return 0;
-} 
-</code></pre>
 ]]></content>
     </entry>
 </feed>

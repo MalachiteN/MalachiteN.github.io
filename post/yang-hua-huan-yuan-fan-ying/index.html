@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    C++ STL容器 / bitset | Malachite
+    氧化还原反应 | Malachite
 </title>
 <link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1580567287823">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,125 +99,65 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            C++ STL容器 / bitset
+                            氧化还原反应
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-11-08</time>
+                            <time class="post-time">2020-02-01</time>
                             
                         </div>
                         
                                 <div class="post-content">
-                                    <p>bitset 是 C++ STL 中的一种特殊容器。正如它的名称，它是 0 或 1 的位的集合。</p>
+                                    <p>可爱的 Malachite 回来啦！详情请见更新的关于页面。</p>
+<p>并删除了具有悲观色彩的 CSP 游记和东拼西凑的 <code>#pragma</code> 教程。</p>
 <!-- more -->
-<h2 id="简介">简介</h2>
-<p>该容器位于头文件<code>&lt;bitset&gt;</code>中。能够存储一系列的 0 和 1 的位，占据的空间比<code>bool</code>数组少，同时还能简单地转换为<code>unsigned long</code>、<code>unsigned long long</code>和<code>string</code>类型。</p>
-<h2 id="成员函数">成员函数</h2>
-<h3 id="声明">声明</h3>
-<p>声明一个<code>bitset</code>的语句如下：</p>
-<pre><code class="language-cpp">bitset&lt;length&gt; name;
-</code></pre>
-<p>必须注意的一点是，<code>bitset</code> 有长度限制，且这个长度限制是写在<strong>尖括号</strong>里的！不要将其写在偏移量解引用运算符(也就是数组下标<code>[]</code>)或者函数调用运算符(圆括号<code>()</code>)中。</p>
-<blockquote>
-<p>仅供了解：之所以有这种特殊设置，是因为<code>bitset</code>本质上是一个模板类，其模板是一个常量表达式(<code>const int</code>)而不是一个<code>typename</code>，也就产生这个尖括号中的内容与其它模板类不同的现象。</p>
-</blockquote>
-<h3 id="构造">构造</h3>
-<p>STL 已经提供了它的赋值运算符重载。可以直接将正整数值(<code>unsigned int</code>、<code>unsigned short int</code>、<code>unsigned long int</code>、<code>unsigned long long int</code>)或赋予给它，它会自动获得表示该数值的布尔位。也能通过构造函数直接赋予它布尔数组的值。甚至可以使用一个<code>string</code>类型的 01 串对它进行构造。</p>
-<p>构造方法：</p>
-<pre><code class="language-cpp">bitset&lt;length&gt; name = n; // n 为`unsigned int`或`unsigned short int`或`unsigned long int`或`unsigned long long int
-bitset&lt;length&gt; name(n); // n 为`unsigned int`或`unsigned short int`或`unsigned long int`或`unsigned long long int
-bitset&lt;length&gt; name(s); // s 为一个 string 类型的 01 串
-bitset&lt;length&gt; name(b, pos, num); // b 为一个布尔数组，pos、num 为一个整数，bitset 从 b 第  pos 位开始的 num 个中获得值。
-</code></pre>
-<p>需要注意的是，用于构造的类型需要匹配 bitset 的长度。超过 bitet 长度的类型将被从高位开始丢弃！</p>
-<h3 id="访问">访问</h3>
-<p>它提供偏移量解引用运算符，用于随机访问其中的位。<strong>值得一提的是，它自右向左访问</strong>，不同于数组和向量的偏移量解引用运算符自左向右访问。</p>
-<h3 id="输出">输出</h3>
-<p>可以使用输出数组的方法，通过循环和偏移量解引用运算符直接输出。</p>
-<pre><code class="language-cpp">for(int i=length; i&gt;=0; i--){
-    cout&lt;&lt;name[i]&lt;&lt;' ';
+<h1 id="定义">定义</h1>
+<p><strong>有元素化合价升降</strong>的反应，称为氧化还原反应。</p>
+<h2 id="反应类型">反应类型</h2>
+<p>氧化还原反应的反应类型分为<strong>氧化反应</strong>和<strong>还原反应</strong>。</p>
+<h3 id="氧化反应">氧化反应</h3>
+<p>物质所含元素化合价升高的反应称为氧化反应。</p>
+<h3 id="还原反应">还原反应</h3>
+<p>物质所含元素化合价降低的反应称为还原反应。</p>
+<h2 id="反应相关物质">反应相关物质</h2>
+<p>氧化还原反应的反应物分为<strong>氧化剂</strong>和<strong>还原剂</strong>，生成物分为<strong>氧化产物</strong>和<strong>还原产物</strong>。</p>
+<p>实际上，氧化还原反应就是氧化剂抢夺还原剂的电子而发生还原反应，被还原，成为还原产物，而还原剂被夺走电子而发生氧化反应，被氧化，成为氧化产物。</p>
+<h3 id="反应物">反应物</h3>
+<h4 id="氧化剂">氧化剂</h4>
+<p>反应中<strong>得到电子</strong>或<strong>电子对偏向</strong>的物质。</p>
+<h4 id="还原剂">还原剂</h4>
+<p>反应中<strong>失去电子</strong>或<strong>电子对偏离</strong>的物质。</p>
+<h3 id="生成物">生成物</h3>
+<h4 id="氧化产物">氧化产物</h4>
+<p>氧化反应得到的产物。</p>
+<h4 id="还原产物">还原产物</h4>
+<p>还原反应得到的产物。</p>
+<h2 id="重点">重点</h2>
+<ol>
+<li>氧化剂发生的不是氧化反应，变成的也不是氧化产物，**它是被还原了，发生的是还原反应，变成了还原产物。**还原剂同理。</li>
+<li>氧化还原反应不是基本反应类型。它也不是某个基本反应类型的子集。置换反应是氧化还原反应的子集，化合反应和分解反应与氧化还原有交集。<strong>复分解反应一定不是氧化还原反应。</strong></li>
+<li><strong>有单质参与的化合反应和有单质生成的分解反应，一定是氧化还原反应。</strong></li>
+</ol>
+<h1 id="氧化还原反应方程式配平">氧化还原反应方程式配平</h1>
+<p><s>大家跟上哦，车速有点快</s></p>
+<h2 id="配平方法">配平方法</h2>
+<pre><code class="language-cpp">化学反应式 氧化还原配平(化学反应式 反应式){
+    反应式.find(氧化剂，还原剂，氧化产物，还原产物);
+    通过双线桥标出它们反应前后的化合价和电子转移数目;
+    int 最小公倍数 = __lcm(电子转移数目);
+    在氧化剂、氧化产物、还原剂、还原产物前加上适当的化学计量数; //电子守恒
+    if(反应式.type == 化学方程式){
+        继续配平非氧化还原相关物质;
+        return 反应式;
+    }else if(反应式.type == 离子方程式){
+        使用带电荷的非氧化还原相关物质(如H+、OH-)使两边电荷数相同;
+        继续配平非氧化还原相关物质;
+        return 反应式;
+    }else{
+        throw std::logic_error(&quot;你给的这反应式是假的叭&quot;);
+    }
 }
 </code></pre>
-<p>不过，如果<s>不要求打字带空格</s>，你也可以尝试直接输出：</p>
-<pre><code class="language-cpp">cout&lt;&lt;name&lt;&lt;endl;
-</code></pre>
-<p>也可以将其转换成字符串输出：</p>
-<pre><code class="language-cpp">cout&lt;&lt;name.to_str()&lt;&lt;endl;
-</code></pre>
-<p>如果想进行位操作后变成正整数，还能这么干：</p>
-<pre><code class="language-cpp">cout&lt;&lt;name.to_ulong()&lt;&lt;endl;
-</code></pre>
-<p>输出的是一个 <code>unsigned long</code> 型的值。<s>其实就是 unsigned int</s></p>
-<h3 id="其它操作">其它操作</h3>
-<pre><code class="language-cpp">b.any() // 询问 b 中是否存在值为 1 的位
-b.none() // 询问 b 中不存在置为 1 的位
-b.count() // 返回 b 中置为 1 的位的个数
-b.size() // b 中位的个数
-b.test(pos) // 查询 b 中在 pos 处的位是否为 1
-b.set() // 把 b 中所有位变为 1
-b.set(pos) // 把 b 中第 pos 位变为 1
-b.reset() // 把 b 中所有位都变为0
-b.reset(pos) // 把 b 中第 pos 位的变为0
-b.flip() // 把 b 中所有位取反
-b.flip(pos) // 把 b 中第 pos 位取反
-</code></pre>
-<h2 id="例题">例题</h2>
-<h3 id="题目">题目</h3>
-<p>给出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个整数，将其转换成 8 位长度的 <code>bool</code> 数组并依次首尾相接，按相邻的相同位切割成长度不等的段，再照首位为自身原本的值，后 7 位为段长度的方式进行压缩，最后输出每个改造之后的 8 位 <code>bool</code> 数组对应为整数的值。</p>
-<h3 id="代码实现">代码实现</h3>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;vector&gt;
-#include&lt;bitset&gt;
-using namespace std;
-int n;
-struct change{
-	int len;
-	bool val;
-	change(int y, int v){
-		this-&gt;len = y; this-&gt;val = v;
-	}
-};
-int main(){
-	cin&gt;&gt;n;
-	vector&lt;bool&gt; line;
-	vector&lt;change&gt; changes;
-	for(int i=0;i&lt;(n/8);i++){
-		int t;
-		bitset&lt;8&gt; tmp;
-		cin&gt;&gt;t;
-		tmp=t;
-		for(int b=7;b&gt;=0;b--){
-			line.push_back(tmp[b]);
-		}
-	}
-	int len=0;
-	if(line[line.size()-1]==0){
-		line.push_back(1);
-	}else{
-		line.push_back(0);
-	}
-	for(int i=1;i&lt;line.size();i++){
-		if(line[i-1]==line[i]){
-			len++;
-		}else{
-			len++;
-			change tmp(len,line.at(i-1));
-			changes.push_back(tmp);
-			len=0;
-		}
-	}
-	bitset&lt;8&gt; oans;
-	vector&lt;unsigned long&gt; ans;
-	for(int i=0;i&lt;changes.size();i++){
-		oans=changes[i].len;
-		oans[7]=changes[i].val;
-		ans.push_back(oans.to_ulong());
-	}
-	for(int i=0;i&lt;ans.size();i++){
-		cout&lt;&lt;ans[i]&lt;&lt;' ';
-	}
-	return 0;
-}
-</code></pre>
+<p><s>果然还是改不了写代码的习惯</s></p>
 
                                 </div>
                     </article>
@@ -225,9 +165,9 @@ int main(){
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://malachiten.github.io/post/assert-duan-yan">
+                            <a href="https://malachiten.github.io/post/c-stl-rong-qi-bitset">
                                 <h3 class="post-title">
-                                    C++ 语法 / Assert 断言
+                                    C++ STL容器 / bitset
                                 </h3>
                             </a>
                         </div>
@@ -246,24 +186,36 @@ int main(){
         <div class="toc-title i-card-title">目录</div>
         <div class="toc-content">
             <ul class="markdownIt-TOC">
-<li>
+<li><a href="#%E5%AE%9A%E4%B9%89">定义</a>
 <ul>
-<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
-<li><a href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">成员函数</a>
+<li><a href="#%E5%8F%8D%E5%BA%94%E7%B1%BB%E5%9E%8B">反应类型</a>
 <ul>
-<li><a href="#%E5%A3%B0%E6%98%8E">声明</a></li>
-<li><a href="#%E6%9E%84%E9%80%A0">构造</a></li>
-<li><a href="#%E8%AE%BF%E9%97%AE">访问</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA">输出</a></li>
-<li><a href="#%E5%85%B6%E5%AE%83%E6%93%8D%E4%BD%9C">其它操作</a></li>
+<li><a href="#%E6%B0%A7%E5%8C%96%E5%8F%8D%E5%BA%94">氧化反应</a></li>
+<li><a href="#%E8%BF%98%E5%8E%9F%E5%8F%8D%E5%BA%94">还原反应</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BE%8B%E9%A2%98">例题</a>
+<li><a href="#%E5%8F%8D%E5%BA%94%E7%9B%B8%E5%85%B3%E7%89%A9%E8%B4%A8">反应相关物质</a>
 <ul>
-<li><a href="#%E9%A2%98%E7%9B%AE">题目</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现</a></li>
+<li><a href="#%E5%8F%8D%E5%BA%94%E7%89%A9">反应物</a>
+<ul>
+<li><a href="#%E6%B0%A7%E5%8C%96%E5%89%82">氧化剂</a></li>
+<li><a href="#%E8%BF%98%E5%8E%9F%E5%89%82">还原剂</a></li>
 </ul>
 </li>
+<li><a href="#%E7%94%9F%E6%88%90%E7%89%A9">生成物</a>
+<ul>
+<li><a href="#%E6%B0%A7%E5%8C%96%E4%BA%A7%E7%89%A9">氧化产物</a></li>
+<li><a href="#%E8%BF%98%E5%8E%9F%E4%BA%A7%E7%89%A9">还原产物</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%87%8D%E7%82%B9">重点</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B0%A7%E5%8C%96%E8%BF%98%E5%8E%9F%E5%8F%8D%E5%BA%94%E6%96%B9%E7%A8%8B%E5%BC%8F%E9%85%8D%E5%B9%B3">氧化还原反应方程式配平</a>
+<ul>
+<li><a href="#%E9%85%8D%E5%B9%B3%E6%96%B9%E6%B3%95">配平方法</a></li>
 </ul>
 </li>
 </ul>
