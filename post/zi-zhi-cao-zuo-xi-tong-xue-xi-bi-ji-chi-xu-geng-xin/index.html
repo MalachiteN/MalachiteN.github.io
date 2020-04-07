@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    C++ STL容器 / bitset | Malachite
+    自制操作系统 学习笔记（持续更新） | Malachite
 </title>
 <link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1586278453500">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,125 +99,122 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            C++ STL容器 / bitset
+                            自制操作系统 学习笔记（持续更新）
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2019-11-08</time>
+                            <time class="post-time">2020-04-04</time>
                             
                         </div>
                         
                                 <div class="post-content">
-                                    <p>bitset 是 C++ STL 中的一种特殊容器。正如它的名称，它是 0 或 1 的位的集合。</p>
-<!-- more -->
-<h2 id="简介">简介</h2>
-<p>该容器位于头文件<code>&lt;bitset&gt;</code>中。能够存储一系列的 0 和 1 的位，占据的空间比<code>bool</code>数组少，同时还能简单地转换为<code>unsigned long</code>、<code>unsigned long long</code>和<code>string</code>类型。</p>
-<h2 id="成员函数">成员函数</h2>
-<h3 id="声明">声明</h3>
-<p>声明一个<code>bitset</code>的语句如下：</p>
-<pre><code class="language-cpp">bitset&lt;length&gt; name;
-</code></pre>
-<p>必须注意的一点是，<code>bitset</code> 有长度限制，且这个长度限制是写在<strong>尖括号</strong>里的！不要将其写在偏移量解引用运算符(也就是数组下标<code>[]</code>)或者函数调用运算符(圆括号<code>()</code>)中。</p>
-<blockquote>
-<p>仅供了解：之所以有这种特殊设置，是因为<code>bitset</code>本质上是一个模板类，其模板是一个常量表达式(<code>const int</code>)而不是一个<code>typename</code>，也就产生这个尖括号中的内容与其它模板类不同的现象。</p>
-</blockquote>
-<h3 id="构造">构造</h3>
-<p>STL 已经提供了它的赋值运算符重载。可以直接将正整数值(<code>unsigned int</code>、<code>unsigned short int</code>、<code>unsigned long int</code>、<code>unsigned long long int</code>)或赋予给它，它会自动获得表示该数值的布尔位。也能通过构造函数直接赋予它布尔数组的值。甚至可以使用一个<code>string</code>类型的 01 串对它进行构造。</p>
-<p>构造方法：</p>
-<pre><code class="language-cpp">bitset&lt;length&gt; name = n; // n 为`unsigned int`或`unsigned short int`或`unsigned long int`或`unsigned long long int
-bitset&lt;length&gt; name(n); // n 为`unsigned int`或`unsigned short int`或`unsigned long int`或`unsigned long long int
-bitset&lt;length&gt; name(s); // s 为一个 string 类型的 01 串
-bitset&lt;length&gt; name(b, pos, num); // b 为一个布尔数组，pos、num 为一个整数，bitset 从 b 第  pos 位开始的 num 个中获得值。
-</code></pre>
-<p>需要注意的是，用于构造的类型需要匹配 bitset 的长度。超过 bitet 长度的类型将被从高位开始丢弃！</p>
-<h3 id="访问">访问</h3>
-<p>它提供偏移量解引用运算符，用于随机访问其中的位。<strong>值得一提的是，它自右向左访问</strong>，不同于数组和向量的偏移量解引用运算符自左向右访问。</p>
-<h3 id="输出">输出</h3>
-<p>可以使用输出数组的方法，通过循环和偏移量解引用运算符直接输出。</p>
-<pre><code class="language-cpp">for(int i=length; i&gt;=0; i--){
-    cout&lt;&lt;name[i]&lt;&lt;' ';
-}
-</code></pre>
-<p>不过，如果<s>不要求打字带空格</s>，你也可以尝试直接输出：</p>
-<pre><code class="language-cpp">cout&lt;&lt;name&lt;&lt;endl;
-</code></pre>
-<p>也可以将其转换成字符串输出：</p>
-<pre><code class="language-cpp">cout&lt;&lt;name.to_str()&lt;&lt;endl;
-</code></pre>
-<p>如果想进行位操作后变成正整数，还能这么干：</p>
-<pre><code class="language-cpp">cout&lt;&lt;name.to_ulong()&lt;&lt;endl;
-</code></pre>
-<p>输出的是一个 <code>unsigned long</code> 型的值。<s>其实就是 unsigned int</s></p>
-<h3 id="其它操作">其它操作</h3>
-<pre><code class="language-cpp">b.any() // 询问 b 中是否存在值为 1 的位
-b.none() // 询问 b 中不存在置为 1 的位
-b.count() // 返回 b 中置为 1 的位的个数
-b.size() // b 中位的个数
-b.test(pos) // 查询 b 中在 pos 处的位是否为 1
-b.set() // 把 b 中所有位变为 1
-b.set(pos) // 把 b 中第 pos 位变为 1
-b.reset() // 把 b 中所有位都变为0
-b.reset(pos) // 把 b 中第 pos 位的变为0
-b.flip() // 把 b 中所有位取反
-b.flip(pos) // 把 b 中第 pos 位取反
-</code></pre>
-<h2 id="例题">例题</h2>
-<h3 id="题目">题目</h3>
-<p>给出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个整数，将其转换成 8 位长度的 <code>bool</code> 数组并依次首尾相接，按相邻的相同位切割成长度不等的段，再照首位为自身原本的值，后 7 位为段长度的方式进行压缩，最后输出每个改造之后的 8 位 <code>bool</code> 数组对应为整数的值。</p>
-<h3 id="代码实现">代码实现</h3>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;vector&gt;
-#include&lt;bitset&gt;
-using namespace std;
-int n;
-struct change{
-	int len;
-	bool val;
-	change(int y, int v){
-		this-&gt;len = y; this-&gt;val = v;
-	}
-};
-int main(){
-	cin&gt;&gt;n;
-	vector&lt;bool&gt; line;
-	vector&lt;change&gt; changes;
-	for(int i=0;i&lt;(n/8);i++){
-		int t;
-		bitset&lt;8&gt; tmp;
-		cin&gt;&gt;t;
-		tmp=t;
-		for(int b=7;b&gt;=0;b--){
-			line.push_back(tmp[b]);
-		}
-	}
-	int len=0;
-	if(line[line.size()-1]==0){
-		line.push_back(1);
-	}else{
-		line.push_back(0);
-	}
-	for(int i=1;i&lt;line.size();i++){
-		if(line[i-1]==line[i]){
-			len++;
-		}else{
-			len++;
-			change tmp(len,line.at(i-1));
-			changes.push_back(tmp);
-			len=0;
-		}
-	}
-	bitset&lt;8&gt; oans;
-	vector&lt;unsigned long&gt; ans;
-	for(int i=0;i&lt;changes.size();i++){
-		oans=changes[i].len;
-		oans[7]=changes[i].val;
-		ans.push_back(oans.to_ulong());
-	}
-	for(int i=0;i&lt;ans.size();i++){
-		cout&lt;&lt;ans[i]&lt;&lt;' ';
-	}
-	return 0;
-}
-</code></pre>
+                                    <p><em>Malachite 2020</em></p>
+<h2 id="第一天">第一天</h2>
+<h3 id="工具列表">工具列表</h3>
+<ul>
+<li>十六进制编辑器：<strong>Bz162</strong></li>
+<li>模拟器：<strong>QEMU</strong></li>
+<li>汇编器：<strong>nask</strong></li>
+</ul>
+<h3 id="知识">知识</h3>
+<ul>
+<li>计算机只会忠实地执行表示“开”或“关”的电信号</li>
+<li>二进制数和十六进制数的对照表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">BIN</th>
+<th style="text-align:center">HEX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0000</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">0010</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">0011</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">0100</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">0101</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">0110</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">0111</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">1001</td>
+<td style="text-align:center">9</td>
+</tr>
+<tr>
+<td style="text-align:center">1010</td>
+<td style="text-align:center">A</td>
+</tr>
+<tr>
+<td style="text-align:center">1011</td>
+<td style="text-align:center">B</td>
+</tr>
+<tr>
+<td style="text-align:center">1100</td>
+<td style="text-align:center">C</td>
+</tr>
+<tr>
+<td style="text-align:center">1101</td>
+<td style="text-align:center">D</td>
+</tr>
+<tr>
+<td style="text-align:center">1110</td>
+<td style="text-align:center">E</td>
+</tr>
+<tr>
+<td style="text-align:center">1111</td>
+<td style="text-align:center">F</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>汇编指令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>DB x</code></td>
+<td style="text-align:center">define byte / 写入一个字节的数据或指令 n</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>RESB n</code></td>
+<td style="text-align:center">reverse byte / 预定 n 个字节的 0x00</td>
+</tr>
+</tbody>
+</table>
 
                                 </div>
                     </article>
@@ -225,9 +222,9 @@ int main(){
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://malachiten.github.io/post/assert-duan-yan/">
+                            <a href="https://malachiten.github.io/post/c-stl-rong-qi-bitset/">
                                 <h3 class="post-title">
-                                    C++ 语法 / Assert 断言
+                                    C++ STL容器 / bitset
                                 </h3>
                             </a>
                         </div>
@@ -248,20 +245,10 @@ int main(){
             <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
-<li><a href="#%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0">成员函数</a>
+<li><a href="#%E7%AC%AC%E4%B8%80%E5%A4%A9">第一天</a>
 <ul>
-<li><a href="#%E5%A3%B0%E6%98%8E">声明</a></li>
-<li><a href="#%E6%9E%84%E9%80%A0">构造</a></li>
-<li><a href="#%E8%AE%BF%E9%97%AE">访问</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA">输出</a></li>
-<li><a href="#%E5%85%B6%E5%AE%83%E6%93%8D%E4%BD%9C">其它操作</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BE%8B%E9%A2%98">例题</a>
-<ul>
-<li><a href="#%E9%A2%98%E7%9B%AE">题目</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0">代码实现</a></li>
+<li><a href="#%E5%B7%A5%E5%85%B7%E5%88%97%E8%A1%A8">工具列表</a></li>
+<li><a href="#%E7%9F%A5%E8%AF%86">知识</a></li>
 </ul>
 </li>
 </ul>

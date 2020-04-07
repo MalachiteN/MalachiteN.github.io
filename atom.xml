@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://malachiten.github.io</id>
     <title>Malachite</title>
-    <updated>2020-02-01T14:29:41.551Z</updated>
+    <updated>2020-04-07T16:54:19.296Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://malachiten.github.io"/>
     <link rel="self" href="https://malachiten.github.io/atom.xml"/>
@@ -11,71 +11,125 @@
     <icon>https://malachiten.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Malachite</rights>
     <entry>
-        <title type="html"><![CDATA[氧化还原反应]]></title>
-        <id>https://malachiten.github.io/post/yang-hua-huan-yuan-fan-ying</id>
-        <link href="https://malachiten.github.io/post/yang-hua-huan-yuan-fan-ying">
+        <title type="html"><![CDATA[自制操作系统 学习笔记（持续更新）]]></title>
+        <id>https://malachiten.github.io/post/zi-zhi-cao-zuo-xi-tong-xue-xi-bi-ji-chi-xu-geng-xin/</id>
+        <link href="https://malachiten.github.io/post/zi-zhi-cao-zuo-xi-tong-xue-xi-bi-ji-chi-xu-geng-xin/">
         </link>
-        <updated>2020-02-01T12:59:53.000Z</updated>
-        <summary type="html"><![CDATA[<p>可爱的 Malachite 回来啦！详情请见更新的关于页面。</p>
-<p>并删除了具有悲观色彩的 CSP 游记和东拼西凑的 <code>#pragma</code> 教程。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>可爱的 Malachite 回来啦！详情请见更新的关于页面。</p>
-<p>并删除了具有悲观色彩的 CSP 游记和东拼西凑的 <code>#pragma</code> 教程。</p>
-<!-- more -->
-<h1 id="定义">定义</h1>
-<p><strong>有元素化合价升降</strong>的反应，称为氧化还原反应。</p>
-<h2 id="反应类型">反应类型</h2>
-<p>氧化还原反应的反应类型分为<strong>氧化反应</strong>和<strong>还原反应</strong>。</p>
-<h3 id="氧化反应">氧化反应</h3>
-<p>物质所含元素化合价升高的反应称为氧化反应。</p>
-<h3 id="还原反应">还原反应</h3>
-<p>物质所含元素化合价降低的反应称为还原反应。</p>
-<h2 id="反应相关物质">反应相关物质</h2>
-<p>氧化还原反应的反应物分为<strong>氧化剂</strong>和<strong>还原剂</strong>，生成物分为<strong>氧化产物</strong>和<strong>还原产物</strong>。</p>
-<p>实际上，氧化还原反应就是氧化剂抢夺还原剂的电子而发生还原反应，被还原，成为还原产物，而还原剂被夺走电子而发生氧化反应，被氧化，成为氧化产物。</p>
-<h3 id="反应物">反应物</h3>
-<h4 id="氧化剂">氧化剂</h4>
-<p>反应中<strong>得到电子</strong>或<strong>电子对偏向</strong>的物质。</p>
-<h4 id="还原剂">还原剂</h4>
-<p>反应中<strong>失去电子</strong>或<strong>电子对偏离</strong>的物质。</p>
-<h3 id="生成物">生成物</h3>
-<h4 id="氧化产物">氧化产物</h4>
-<p>氧化反应得到的产物。</p>
-<h4 id="还原产物">还原产物</h4>
-<p>还原反应得到的产物。</p>
-<h2 id="重点">重点</h2>
-<ol>
-<li>氧化剂发生的不是氧化反应，变成的也不是氧化产物，**它是被还原了，发生的是还原反应，变成了还原产物。**还原剂同理。</li>
-<li>氧化还原反应不是基本反应类型。它也不是某个基本反应类型的子集。置换反应是氧化还原反应的子集，化合反应和分解反应与氧化还原有交集。<strong>复分解反应一定不是氧化还原反应。</strong></li>
-<li><strong>有单质参与的化合反应和有单质生成的分解反应，一定是氧化还原反应。</strong></li>
-</ol>
-<h1 id="氧化还原反应方程式配平">氧化还原反应方程式配平</h1>
-<p><s>大家跟上哦，车速有点快</s></p>
-<h2 id="配平方法">配平方法</h2>
-<pre><code class="language-cpp">化学反应式 氧化还原配平(化学反应式 反应式){
-    反应式.find(氧化剂，还原剂，氧化产物，还原产物);
-    通过双线桥标出它们反应前后的化合价和电子转移数目;
-    int 最小公倍数 = __lcm(电子转移数目);
-    在氧化剂、氧化产物、还原剂、还原产物前加上适当的化学计量数; //电子守恒
-    if(反应式.type == 化学方程式){
-        继续配平非氧化还原相关物质;
-        return 反应式;
-    }else if(反应式.type == 离子方程式){
-        使用带电荷的非氧化还原相关物质(如H+、OH-)使两边电荷数相同;
-        继续配平非氧化还原相关物质;
-        return 反应式;
-    }else{
-        throw std::logic_error(&quot;你给的这反应式是假的叭&quot;);
-    }
-}
-</code></pre>
-<p><s>果然还是改不了写代码的习惯</s></p>
+        <updated>2020-04-04T13:30:27.000Z</updated>
+        <content type="html"><![CDATA[<p><em>Malachite 2020</em></p>
+<h2 id="第一天">第一天</h2>
+<h3 id="工具列表">工具列表</h3>
+<ul>
+<li>十六进制编辑器：<strong>Bz162</strong></li>
+<li>模拟器：<strong>QEMU</strong></li>
+<li>汇编器：<strong>nask</strong></li>
+</ul>
+<h3 id="知识">知识</h3>
+<ul>
+<li>计算机只会忠实地执行表示“开”或“关”的电信号</li>
+<li>二进制数和十六进制数的对照表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">BIN</th>
+<th style="text-align:center">HEX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0000</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">0010</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">0011</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">0100</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">0101</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">0110</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">0111</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">8</td>
+</tr>
+<tr>
+<td style="text-align:center">1001</td>
+<td style="text-align:center">9</td>
+</tr>
+<tr>
+<td style="text-align:center">1010</td>
+<td style="text-align:center">A</td>
+</tr>
+<tr>
+<td style="text-align:center">1011</td>
+<td style="text-align:center">B</td>
+</tr>
+<tr>
+<td style="text-align:center">1100</td>
+<td style="text-align:center">C</td>
+</tr>
+<tr>
+<td style="text-align:center">1101</td>
+<td style="text-align:center">D</td>
+</tr>
+<tr>
+<td style="text-align:center">1110</td>
+<td style="text-align:center">E</td>
+</tr>
+<tr>
+<td style="text-align:center">1111</td>
+<td style="text-align:center">F</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>汇编指令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>DB x</code></td>
+<td style="text-align:center">define byte / 写入一个字节的数据或指令 n</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>RESB n</code></td>
+<td style="text-align:center">reverse byte / 预定 n 个字节的 0x00</td>
+</tr>
+</tbody>
+</table>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[C++ STL容器 / bitset]]></title>
-        <id>https://malachiten.github.io/post/c-stl-rong-qi-bitset</id>
-        <link href="https://malachiten.github.io/post/c-stl-rong-qi-bitset">
+        <id>https://malachiten.github.io/post/c-stl-rong-qi-bitset/</id>
+        <link href="https://malachiten.github.io/post/c-stl-rong-qi-bitset/">
         </link>
         <updated>2019-11-08T11:04:46.000Z</updated>
         <summary type="html"><![CDATA[<p>bitset 是 C++ STL 中的一种特殊容器。正如它的名称，它是 0 或 1 的位的集合。</p>
@@ -195,8 +249,8 @@ int main(){
     </entry>
     <entry>
         <title type="html"><![CDATA[C++ 语法 / Assert 断言]]></title>
-        <id>https://malachiten.github.io/post/assert-duan-yan</id>
-        <link href="https://malachiten.github.io/post/assert-duan-yan">
+        <id>https://malachiten.github.io/post/assert-duan-yan/</id>
+        <link href="https://malachiten.github.io/post/assert-duan-yan/">
         </link>
         <updated>2019-10-31T06:04:40.000Z</updated>
         <summary type="html"><![CDATA[<p>断言广泛存在于我所了解的几乎全部语言中。</p>
@@ -375,8 +429,8 @@ _assert (const char *_Message, const char *_File, unsigned _Line);
     </entry>
     <entry>
         <title type="html"><![CDATA[C++ STL / 迭代器相关]]></title>
-        <id>https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan</id>
-        <link href="https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan">
+        <id>https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan/</id>
+        <link href="https://malachiten.github.io/post/c-stl-die-dai-qi-xiang-guan/">
         </link>
         <updated>2019-10-24T08:40:08.000Z</updated>
         <summary type="html"><![CDATA[<p>C++ 中的 STL 使用 <code>&lt;iterator&gt;</code> 即迭代器处理对于容器的操作。</p>
@@ -418,8 +472,8 @@ _assert (const char *_Message, const char *_File, unsigned _Line);
     </entry>
     <entry>
         <title type="html"><![CDATA[C++ 高级语法 / 引用、右值和左值]]></title>
-        <id>https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi</id>
-        <link href="https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi">
+        <id>https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi/</id>
+        <link href="https://malachiten.github.io/post/c-gao-ji-yu-fa-yin-yong-you-zhi-he-zuo-zhi/">
         </link>
         <updated>2019-10-23T08:42:08.000Z</updated>
         <summary type="html"><![CDATA[<p>一般而言，传统的为了竞赛的 C++ 教学中对 “引用” (使用运算符<code>&amp;</code>) 的解释和 C 一样，就是 “取得这个变量的地址”。</p>
@@ -595,8 +649,8 @@ class b{
     </entry>
     <entry>
         <title type="html"><![CDATA[Screeps 教程]]></title>
-        <id>https://malachiten.github.io/post/screeps-jiao-cheng</id>
-        <link href="https://malachiten.github.io/post/screeps-jiao-cheng">
+        <id>https://malachiten.github.io/post/screeps-jiao-cheng/</id>
+        <link href="https://malachiten.github.io/post/screeps-jiao-cheng/">
         </link>
         <updated>2019-10-22T01:12:35.000Z</updated>
         <summary type="html"><![CDATA[<p>不了解的人可以前往<a href="https://screeps.com/">Screeps官网</a>了解一下，也许我们能成为同一个<code>Shard</code>的邻居。</p>
@@ -1468,8 +1522,8 @@ Slack chat</p>
     </entry>
     <entry>
         <title type="html"><![CDATA[笔记 : 最小生成树 / Kruskal算法]]></title>
-        <id>https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa</id>
-        <link href="https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa">
+        <id>https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa/</id>
+        <link href="https://malachiten.github.io/post/bi-ji-zui-xiao-sheng-cheng-shu-kruskal-suan-fa/">
         </link>
         <updated>2019-10-08T07:10:37.000Z</updated>
         <summary type="html"><![CDATA[<p>OI常用算法，最小生成树。</p>
@@ -1478,7 +1532,7 @@ Slack chat</p>
 <!-- more -->
 <h2 id="最小生成树是什么">最小生成树是什么</h2>
 <p>对于一个这样的连通图：</p>
-<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/10/08/ufgOiR.png" alt="graphFull.png"></figure>
+<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/10/08/ufgOiR.png" alt="graphFull.png" loading="lazy"></figure>
 <p>表格形式：</p>
 <table>
 <thead>
@@ -1552,9 +1606,9 @@ Slack chat</p>
 </tbody>
 </table>
 <p>它的极小连通子图，可以表现为一棵树的形式，即为最小生成树(如下图所示)。</p>
-<figure data-type="image" tabindex="2"><img src="https://s2.ax1x.com/2019/10/08/uf2tyT.png" alt="graphMini.png"></figure>
+<figure data-type="image" tabindex="2"><img src="https://s2.ax1x.com/2019/10/08/uf2tyT.png" alt="graphMini.png" loading="lazy"></figure>
 <p>看不出这是一棵树？看这个。</p>
-<figure data-type="image" tabindex="3"><img src="https://s2.ax1x.com/2019/10/08/ufRjKK.png" alt="trueTree.png"></figure>
+<figure data-type="image" tabindex="3"><img src="https://s2.ax1x.com/2019/10/08/ufRjKK.png" alt="trueTree.png" loading="lazy"></figure>
 <p>表格形式：</p>
 <table>
 <thead>
@@ -1664,8 +1718,8 @@ bool merge(int x,int y){//并
     </entry>
     <entry>
         <title type="html"><![CDATA[C++面向对象 / 封装 继承 多态]]></title>
-        <id>https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai</id>
-        <link href="https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai">
+        <id>https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai/</id>
+        <link href="https://malachiten.github.io/post/cmian-xiang-dui-xiang-feng-zhuang-ji-cheng-duo-tai/">
         </link>
         <updated>2019-10-07T12:27:41.000Z</updated>
         <summary type="html"><![CDATA[<p>有一说，称 C++ 即为 C with STL。还有一说，C++ 为 C with OOP。OOP 的核心，就是封装，继承，与多态。</p>
@@ -1763,8 +1817,8 @@ class C_home:private your_home{
     </entry>
     <entry>
         <title type="html"><![CDATA[笔记 : 编译原理 / 引论(1) [Ongoing]]]></title>
-        <id>https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun</id>
-        <link href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun">
+        <id>https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun/</id>
+        <link href="https://malachiten.github.io/post/bi-ji-bian-yi-yuan-li-yin-lun/">
         </link>
         <updated>2019-10-06T03:05:29.000Z</updated>
         <summary type="html"><![CDATA[<p>毕竟是神书，不容易懂。<s>所以咕了</s></p>
@@ -1827,8 +1881,8 @@ class C_home:private your_home{
     </entry>
     <entry>
         <title type="html"><![CDATA[笔记 : 欧拉路 [Ongoing]]]></title>
-        <id>https://malachiten.github.io/post/bi-ji-ou-la-lu</id>
-        <link href="https://malachiten.github.io/post/bi-ji-ou-la-lu">
+        <id>https://malachiten.github.io/post/bi-ji-ou-la-lu/</id>
+        <link href="https://malachiten.github.io/post/bi-ji-ou-la-lu/">
         </link>
         <updated>2019-10-04T09:06:53.000Z</updated>
         <content type="html"><![CDATA[<h2 id="什么是欧拉路">什么是欧拉路</h2>

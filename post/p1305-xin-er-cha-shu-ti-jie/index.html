@@ -7,7 +7,7 @@
 <title>
     Luogu P1305 新二叉树 题解 | Malachite
 </title>
-<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1580567287823">
+<link rel="shortcut icon" href="https://malachiten.github.io/favicon.ico?v=1586278453500">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -28,7 +28,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://malachiten.github.io">
-                <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1580567287823" alt="">
+                <img class="avatar" src="https://malachiten.github.io/images/avatar.png?v=1586278453500" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -104,8 +104,8 @@
                         <div class="post-info">
                             <time class="post-time">2019-09-27</time>
                             
-                                <a href="https://malachiten.github.io/tag/W8VQeBmQY" class="post-tag i-tag
-                            i-tag-other_4">
+                                <a href="https://malachiten.github.io/tag/W8VQeBmQY/" class="post-tag i-tag
+                            i-tag-success">
                             #题解
                         </a>
                                 
@@ -132,20 +132,20 @@
 <p><strong>前序排列的二叉树。</strong></p>
 <p>既然要求这样输出，那么我们就可以寻找一下前序排列的规律：</p>
 <p>在只有一个节点的情况下，这棵树长这样：</p>
-<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/08/22/mwEKi9.png" alt="1"></figure>
+<figure data-type="image" tabindex="1"><img src="https://s2.ax1x.com/2019/08/22/mwEKi9.png" alt="1" loading="lazy"></figure>
 <p>它的前序排列自然是这样： <code>A</code></p>
 <p>如果有了两个节点，则会变成这样：</p>
-<figure data-type="image" tabindex="2"><img src="https://s2.ax1x.com/2019/08/22/mwEma4.png" alt="2"></figure>
+<figure data-type="image" tabindex="2"><img src="https://s2.ax1x.com/2019/08/22/mwEma4.png" alt="2" loading="lazy"></figure>
 <p>前序排列为： <code>AB</code></p>
 <p>有了三个节点，会变成这样：</p>
-<figure data-type="image" tabindex="3"><img src="https://s2.ax1x.com/2019/08/22/mwEnIJ.png" alt="3"></figure>
+<figure data-type="image" tabindex="3"><img src="https://s2.ax1x.com/2019/08/22/mwEnIJ.png" alt="3" loading="lazy"></figure>
 <p>前序排列为： <code>ABC</code></p>
 <p>似乎还没有看出什么端倪。不过，让我们继续向下发展这棵二叉树：</p>
-<figure data-type="image" tabindex="4"><img src="https://s2.ax1x.com/2019/08/22/mwEeZF.png" alt="4"></figure>
+<figure data-type="image" tabindex="4"><img src="https://s2.ax1x.com/2019/08/22/mwEeZF.png" alt="4" loading="lazy"></figure>
 <p>前序排列： <code>ABDC</code></p>
 <p>等等，怎么……顺序发生了一些变化？不再是依字母表顺序排列了？</p>
 <p>再来！</p>
-<figure data-type="image" tabindex="5"><img src="https://s2.ax1x.com/2019/08/22/mwEMGR.png" alt="5"></figure>
+<figure data-type="image" tabindex="5"><img src="https://s2.ax1x.com/2019/08/22/mwEMGR.png" alt="5" loading="lazy"></figure>
 <p>前序排列： <code>ABDEC</code></p>
 <p>原来规律是这样！</p>
 <p><strong>每次第一个输入的序列（根节点及其子节点） 直接被加入前序中；</strong></p>
@@ -184,7 +184,7 @@ int main(){
 <h4 id="并不是">并不是！</h4>
 <h3 id="实际上">实际上！</h3>
 <h2 id="这个只有20分">这个只有20分！！！</h2>
-<figure data-type="image" tabindex="6"><img src="https://s2.ax1x.com/2019/08/22/mwmhAU.png" alt="x1"></figure>
+<figure data-type="image" tabindex="6"><img src="https://s2.ax1x.com/2019/08/22/mwmhAU.png" alt="x1" loading="lazy"></figure>
 <p>为什么？为什么只有20分？</p>
 <p>很简单。下载数据后，你会发现这是因为这份代码没有考虑到这种数据的存在：</p>
 <p><strong>“指示根节点及其子节点的第一行就含星号 ！！！”</strong></p>
@@ -229,7 +229,7 @@ int main(){
 <h4 id="并不是-2">并不是！</h4>
 <h3 id="其实">其实！</h3>
 <h2 id="这个只有30分">这个只有30分！！！</h2>
-<figure data-type="image" tabindex="7"><img src="https://s2.ax1x.com/2019/08/22/mwm4NF.png" alt="x2"></figure>
+<figure data-type="image" tabindex="7"><img src="https://s2.ax1x.com/2019/08/22/mwm4NF.png" alt="x2" loading="lazy"></figure>
 <p><s>才多过了一个点啊……</s></p>
 <p>这次又是为什么？？！</p>
 <p>下载数据后发现，这次是栽在了一种之前<strong>从未考虑到的输入情况</strong>上。</p>
@@ -272,7 +272,7 @@ int main(){
 </code></pre>
 <p>看着屏幕上蓝色方块上转着白色的圈圈，你想到：之前（指20分变30分那次）做了那么大的修改，才多过了一个点，想必这个算法还存在很多问题吧……难不成<strong>还得再重写几次？？！</strong></p>
 <p>然后……</p>
-<figure data-type="image" tabindex="8"><img src="https://s2.ax1x.com/2019/08/22/mwK3hF.png" alt="v"></figure>
+<figure data-type="image" tabindex="8"><img src="https://s2.ax1x.com/2019/08/22/mwK3hF.png" alt="v" loading="lazy"></figure>
 <p>？？？？？？</p>
 <h2 id="过了就过了">过了？？！就过了？？？？？！</h2>
 <p>历经千辛万苦，终于过了啊……<s>（接受现实）</s></p>
@@ -284,7 +284,7 @@ int main(){
                     
                         <div class="next-post">
                             <div class="next">下一篇</div>
-                            <a href="https://malachiten.github.io/post/zhong-ji-ya-xing-ji-qiao">
+                            <a href="https://malachiten.github.io/post/zhong-ji-ya-xing-ji-qiao/">
                                 <h3 class="post-title">
                                     压行技巧
                                 </h3>
